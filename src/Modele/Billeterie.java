@@ -12,5 +12,6 @@ import java.util.List;
 public class Billeterie {
 	private ListePersonnes listePersonnes;
 	private ListeBillets listeBillets;
+	//TODO
 
 }
