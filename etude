@@ -1,0 +1,12 @@
+Strategies : 
+- on met en mémoire les billets et les personnes au lancement de l'application
+- les achats sont mis en mémoire lorsque l'on accède à une personne
+- Dès que l'on modifie un objet ou on en ajoute un, on enregistre dans la bdd
+
+
+
+Classes
+- interface sql
+- implémentation sql
+- classe de querry
+- 
