@@ -14,4 +14,13 @@ public class Personne {
 		//TODO
 		return null;
 	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+	
 }

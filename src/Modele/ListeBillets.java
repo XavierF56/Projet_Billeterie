@@ -32,9 +32,11 @@ public class ListeBillets {
 	/*
 	 * Ajoute un billet dans la liste
 	 * @param billet le billet à ajouter
+	 * @return vrai si l'ajout est effectue, faux sinon
 	 */
-	public void ajoutBillet(Billet billet){
+	public boolean ajoutBillet(Billet billet){
 		//TODO
+		return true;
 	}
 	
 }
