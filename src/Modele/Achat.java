@@ -1,7 +1,7 @@
 package Modele;
 
 public class Achat {
-	//TODO
+	//TODO2
 	private Personne acheteur;
 	private Billet bill;
 	private int quantite;
