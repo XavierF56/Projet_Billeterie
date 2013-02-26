@@ -1,6 +1,9 @@
+//Test12315616
+
 package Modele;
 
 public class Achat {
+	//TODO2
 	private Personne acheteur;
 	private Billet bill;
 	private int quantite;
