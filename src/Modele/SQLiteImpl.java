@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
+import java.util.Map;
 
 public class SQLiteImpl implements SQLInterface{
 	// register the driver 
@@ -101,6 +103,11 @@ public class SQLiteImpl implements SQLInterface{
 	public void create(String query) throws UnsupportedOperationException {
 		throw new UnsupportedOperationException();
 		
+	}
+	
+	public static List<Map<String,Object>> transforme (ResultSet rs){
+		//TODO
+		return null;
 	}
 	
 }

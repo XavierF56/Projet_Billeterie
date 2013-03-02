@@ -1,26 +1,37 @@
 package Modele;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Personne {
-	private String nom;
-	private String prenom;
+	private int id;
+	private Map<String,Object> map = new HashMap<String,Object>();
 	
-	public Personne (String nom, String Prenom){
+	// id utilise par la prochaine personne cree
+	private static int prochainId; 
+	
+	public Personne (Map<String,Object> map){
 		//TODO
 	}
 	
 	public List<Achat> Achats (){
 		//TODO
+		// utiliser la methode qui transforme un Resultset en List de Map
 		return null;
 	}
 
-	public String getNom() {
-		return nom;
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getPrenom() {
-		return prenom;
+	public void enregistre() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
