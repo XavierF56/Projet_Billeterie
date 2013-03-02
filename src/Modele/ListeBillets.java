@@ -1,14 +1,20 @@
 package Modele;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class ListeBillets {
+	/********** Attributs ************/
 	private Billeterie billeterie;	
-	private List<Billet> listeBillets = new ArrayList<Billet>();
+	private Map<Integer, Billet> listeBillets = new HashMap<Integer, Billet>();
 	
 	
+	/********** Methodes ************/
 	/* 
 	 * Crée l'objet en mettant en mémoire l ensemble des billets de la bdd
 	 * @param billeterie 
@@ -20,12 +26,21 @@ public class ListeBillets {
 	
 	/*
 	 * Met en memoire l'ensemble des billets.
-	 * Cette methode commence par executer une requete sur la bdd. Un ResultSet est obtenu.
-	 * Ce Result Set est transforme en une List de Billets.
-	 * Le ResultSet est cloture a la fin de l operation.
 	 */
 	public void metEnMemoire() {
-		//TODO
+		try {
+			// Execute une requete sur la bdd pour obtenir un ResultSet
+			ResultSet set = billeterie.getBdd().query("select * from billets");
+			
+			// Ce Result Set est transforme en une Map associant id a billet. ID etant le premier parametre du ResultSet
+			//TODO
+			
+			// Cloture le ResultSet
+			set.close();
+		} catch (SQLException e){
+			//TODO
+			e.printStackTrace();
+		}
 	}
 	
 	/*
@@ -34,7 +49,7 @@ public class ListeBillets {
 	 * @param chaine la chaine a trouver dans le billet
 	 * @return la liste des billets
 	 */
-	public List<Billet> recherche(String chaine) {
+	public HashMap<Integer, Billet> recherche(String chaine) {
 		//TODO
 		/*
 		 * diviser la chaine grace aux espaces
@@ -49,16 +64,35 @@ public class ListeBillets {
 	 * @param billet le billet à ajouter
 	 * @return vrai si l'ajout est effectue, faux sinon
 	 */
-	public boolean ajoutBillet(Billet billet) {
-		//TODO
-		
-		// tester la presence du billet dans la List
-		
-		// atribuer un id a ce billet (mettre un membre static dans la classe Billet)
+	public void ajoutBillet(Billet billet) {
+		// atribuer un id a ce billet
+		billet.setId(Billet.getProchainId());
+		Billet.setProchainId(Billet.getProchainId() + 1);
+		billet.setBill(billeterie);
 		
 		// enregistre le billet dans la bdd
-		billet.enregistre();
-		return true;
+		billet.ajoutBDD();
+		
+		// ajout du billet a ListeBillets
+		listeBillets.put(billet.getId(), billet);
 	}
+	
+	/*
+	 * Retourne le billet correspondant a l id 
+	 * @param id du billet
+	 * @return le billet
+	 */
+	public Billet chercheBillet(int id) {
+		//TODO
+		return null;
+	}
+	
+	public String toString () {
+		//TODO
+		return null;
+	}
+	
+	/********** Methodes de base ************/
+
 	
 }

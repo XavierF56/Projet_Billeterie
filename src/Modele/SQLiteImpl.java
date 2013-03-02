@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ public class SQLiteImpl implements SQLInterface{
 	
 	int iTimeout = 30;	 
 
-	public SQLiteImpl(String name) throws ClassNotFoundException{
+	public SQLiteImpl(String name) throws Exception{
 		sTempDb = name;
 		Class.forName(sDriverName);
 	}
@@ -105,9 +106,17 @@ public class SQLiteImpl implements SQLInterface{
 		
 	}
 	
-	public static List<Map<String,Object>> transforme (ResultSet rs){
+	public List<Map<String,Object>> transforme (ResultSet rs){
 		//TODO
 		return null;
+	}
+	
+	public void enregistreBDD (String table, int id, HashMap<String, Object> map) {
+		//TODO
+	}
+	
+	public void ajoutBDD (String table, int id, HashMap<String, Object> map) {
+		//TODO
 	}
 	
 }

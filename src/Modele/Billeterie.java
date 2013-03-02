@@ -10,11 +10,50 @@ import java.util.List;
  */
 
 public class Billeterie {
+	/********** Attributs ************/
 	private ListePersonnes listePersonnes;
 	private ListeBillets listeBillets;
-	//TODO2
+	private SQLInterface bdd;
 	
-	public static void main (String[] args){ 
+	public Billeterie (String nomBdd) {
+		try{
+			bdd = new SQLiteImpl(nomBdd);
+		} catch (Exception e) {
+			//TODO
+		}
+		listePersonnes = new ListePersonnes(this);
+		listeBillets = new ListeBillets(this);
+		
+		listeBillets.metEnMemoire();
+		listePersonnes.metEnMemoire();
+	}
+	
+	/********** Methodes ************/
+	
+	
+	
+	/********** Methodes de base ************/
+	public ListePersonnes getListePersonnes() {
+		return listePersonnes;
+	}
+	public void setListePersonnes(ListePersonnes listePersonnes) {
+		this.listePersonnes = listePersonnes;
+	}
+	public ListeBillets getListeBillets() {
+		return listeBillets;
+	}
+	public void setListeBillets(ListeBillets listeBillets) {
+		this.listeBillets = listeBillets;
+	}
+	public SQLInterface getBdd() {
+		return bdd;
+	}
+	public void setBdd(SQLInterface bdd) {
+		this.bdd = bdd;
+	}
+
+	public static void main (String[] args){
+		Billeterie bill = new Billeterie("database.sqlite");
 		System.out.println("Hello World"); 
 	}
 }

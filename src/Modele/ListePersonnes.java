@@ -1,11 +1,15 @@
 package Modele;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ListePersonnes {
 	private Billeterie billeterie;	
-	private List<Personne> listePersonnes = new ArrayList<Personne>();
+	private Map<Integer, Personne> listePersonnes = new HashMap<Integer, Personne>();
 	
 	
 	/* 
@@ -18,13 +22,22 @@ public class ListePersonnes {
 	}
 	
 	/*
-	 * Met en memoire l'ensemble des personnes.
-	 * Cette methode commence par executer une requete sur la bdd. Un ResultSet est obtenu.
-	 * Ce Result Set est transforme en une List de Personnes.
-	 * Le ResultSet est cloture a la fin de l operation.
+	 * Met en memoire l'ensemble des billets.
 	 */
 	public void metEnMemoire() {
-		//TODO
+		try {
+			// Execute une requete sur la bdd pour obtenir un ResultSet
+			ResultSet set = billeterie.getBdd().query("select * from personnes");
+			
+			// Ce Result Set est transforme en une Map associant id à billet. ID etant le premier parametre du ResultSet
+			//TODO
+			
+			// Cloture le ResultSet
+			set.close();
+		} catch (SQLException e){
+			//TODO
+			e.printStackTrace();
+		}
 	}
 	
 	
@@ -33,7 +46,7 @@ public class ListePersonnes {
 	 * @param chaine la chaine a trouver dans le billet
 	 * @return la liste des billets
 	 */
-	public List<Personne> recherche(String chaine){
+	public HashMap<Integer, Personne> recherche(String chaine){
 		//TODO
 		return null;
 	}
@@ -47,5 +60,20 @@ public class ListePersonnes {
 	public boolean ajoutPersonne(Personne personne){
 		//TODO
 		return true;
+	}
+	
+	/*
+	 * Retourne la personne correspondant a l id 
+	 * @param id du personne
+	 * @return le personnne
+	 */
+	public Personne cherchePersonne (int id){
+		//TODO
+		return null;
+	}
+	
+	public String toString () {
+		//TODO
+		return null;
 	}
 }

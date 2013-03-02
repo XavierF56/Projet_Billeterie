@@ -3,6 +3,9 @@ package Modele;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * SqlInterface is the interface for the DataBase
@@ -37,4 +40,10 @@ public interface SQLInterface {
 	 * @param query
 	 */
 	public void create(String query) throws UnsupportedOperationException ;	
+	
+	public List<Map<String,Object>> transforme (ResultSet rs);
+	
+	public void enregistreBDD (String table, int id, HashMap<String, Object> map);
+	
+	public void ajoutBDD (String table, int id, HashMap<String, Object> map);
 }
