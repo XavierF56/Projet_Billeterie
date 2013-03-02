@@ -20,7 +20,8 @@ public class Billet {
 	}
 	
 	/*
-	 * Cette methode retourne l'ensemble 
+	 * Cette methode retourne l'ensemble des achats lies a un billet
+	 * @return liste des achats
 	 */
 	public List<Achat> Achats (){
 		//TODO
@@ -35,9 +36,19 @@ public class Billet {
 		this.id = id;
 		
 	}
-
+	
+	/*
+	 *  Cette methode enregistre un billet en memoire grace a une requete update
+	 */
 	public void enregistre() {
 		// TODO Auto-generated method stub
+		
+	}
+	
+	/*
+	 *  Cette methode enregistre un billet en memoire grace a une requete insert
+	 */
+	public void ajoutBDD(){
 		
 	}
 }

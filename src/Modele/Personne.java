@@ -7,17 +7,18 @@ import java.util.Map;
 public class Personne {
 	private int id;
 	private Map<String,Object> map = new HashMap<String,Object>();
-	
-	// id utilise par la prochaine personne cree
-	private static int prochainId; 
+	private static int prochainId; // id utilise par la prochaine personne cree
 	
 	public Personne (Map<String,Object> map){
 		//TODO
 	}
 	
+	/*
+	 * Cette methode retourne l'ensemble des achats effectues par une personne
+	 * @return liste des achats
+	 */
 	public List<Achat> Achats (){
 		//TODO
-		// utiliser la methode qui transforme un Resultset en List de Map
 		return null;
 	}
 
@@ -29,9 +30,19 @@ public class Personne {
 		this.id = id;
 	}
 
+	/*
+	 *  Cette methode enregistre un billet en memoire grace a une requete update
+	 */
 	public void enregistre() {
 		// TODO Auto-generated method stub
 		
 	}
 	
+	/*
+	 *  Cette methode enregistre un billet en memoire grace a une requete insert
+	 */
+	public void ajoutBDD(){
+		//TODO
+		
+	}
 }
