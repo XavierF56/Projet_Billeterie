@@ -27,7 +27,7 @@ public interface SQLInterface {
 	 * @param query
 	 * @return ResultSet with the information
 	 */
-	public ResultSet query(String query) throws SQLException;
+	public List<List<Object>> query(String query) throws SQLException;
 	
 	/**
 	 * Update a database
@@ -41,9 +41,10 @@ public interface SQLInterface {
 	 */
 	public void create(String query) throws UnsupportedOperationException ;	
 	
-	public List<Map<String,Object>> transforme (ResultSet rs);
+	public List<List<Object>> transforme (ResultSet rs);
 	
 	public void enregistreBDD (String table, int id, HashMap<String, Object> map);
 	
 	public void ajoutBDD (String table, int id, HashMap<String, Object> map);
+
 }

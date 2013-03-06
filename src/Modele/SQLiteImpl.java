@@ -2,9 +2,13 @@ package Modele;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,30 +43,32 @@ public class SQLiteImpl implements SQLInterface{
 	 * @param query
 	 * @return ResultSet with the information
 	 */
-	public ResultSet query(String query) throws SQLException {
+	public List<List<Object>> query(String query) throws SQLException {
 		// Check if this a SELECT query, if not, throw an exception
 		String pattern = "^SELECT.*";
-		if(query.matches(pattern)){
-			
-			Connection conn = connect();
-			ResultSet res; /*Must be close by rs.close() after utilization*/
-			try {
-				// create statement
-				Statement stmt = conn.createStatement();
-				try {
-					//execute query
-					stmt.setQueryTimeout(iTimeout);
-					res = stmt.executeQuery(query);
-				} finally {
-				    try { stmt.close(); } catch (Exception ignore) {}
-				}
-			} finally {
-			    try { conn.close(); } catch (Exception ignore) {}
-			}
-			return res;
-		}
+		List<List<Object>> resul = new ArrayList<List<Object>>();
 		
-		else{
+		if(query.matches(pattern)){
+			Connection conn = connect();
+			ResultSet res = null; 
+			try {
+				// Cree statement
+				Statement stmt = conn.createStatement();
+				
+				// Execute query
+				stmt.setQueryTimeout(iTimeout);
+				res = stmt.executeQuery(query);
+				resul = this.transforme(res);
+				
+				// Fermeture des statements ...
+				res.close(); 
+			    stmt.close();
+			    conn.close();
+			} catch (SQLException e){
+				e.printStackTrace();
+			}
+			return resul;
+		} else {
 			throw new SQLException("The query is not a SELECT query : " + query);
 		}
 	}
@@ -73,7 +79,7 @@ public class SQLiteImpl implements SQLInterface{
 	 */
 	public void update(String query) throws SQLException {
 		// Check if this an UPDATE query, if not, throw an exception
-				String pattern = "^UPDATE.*";
+				String pattern = "^.*";
 				if(query.matches(pattern)){
 					
 					Connection conn = connect();
@@ -82,8 +88,18 @@ public class SQLiteImpl implements SQLInterface{
 						Statement stmt = conn.createStatement();
 						try {
 							//execute query
-							stmt.setQueryTimeout(iTimeout);
-							stmt.executeQuery(query);
+							/*stmt.setQueryTimeout(iTimeout);
+							stmt.executeUpdate(query);*/
+							for (int w = 21000; w < 32000; w++){
+								String sql = "INSERT INTO people \nSELECT " + w + ", 'pierre', 'Durand'";
+	
+								for (int y = w + 1 ; y < w + 500; y++){
+									sql = sql.concat(" \n UNION \n SELECT " + y + ", 'pierre', 'durand'");
+								}
+								w += 500;
+								System.out.println(sql);
+								stmt.executeUpdate(sql);
+							}
 						} finally {
 						    try { stmt.close(); } catch (Exception ignore) {}
 						}
@@ -106,9 +122,29 @@ public class SQLiteImpl implements SQLInterface{
 		
 	}
 	
-	public List<Map<String,Object>> transforme (ResultSet rs){
-		//TODO
-		return null;
+	/**
+	 * Transforme un ResultSet en une List de Map.
+	 * @param ResultSet
+	 * @ return List
+	 */
+	public List<List<Object>> transforme (ResultSet rs) {
+		List<List<Object>> resul = new ArrayList<List<Object>>();
+		ResultSetMetaData metadata;
+
+		try {
+			metadata = rs.getMetaData();
+			int nombreColonnes = metadata.getColumnCount();
+			while (rs.next()) {
+				List<Object> record = new ArrayList<Object>();
+				for (int i = 1; i <= nombreColonnes; i++){
+					record.add(rs.getObject(i));
+				}
+				resul.add(record);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return resul;
 	}
 	
 	public void enregistreBDD (String table, int id, HashMap<String, Object> map) {
@@ -117,6 +153,21 @@ public class SQLiteImpl implements SQLInterface{
 	
 	public void ajoutBDD (String table, int id, HashMap<String, Object> map) {
 		//TODO
+	}
+	
+	
+
+	
+	public static void main (String[] args) throws SQLException{
+		Billeterie bill = new Billeterie("database.sqlite");
+		
+		List<List<Object>> list = bill.getBdd().query("SELECT * FROM people");
+		System.out.println(list);
+
+		//bill.getBdd().update("hello");
+		
+		
+		
 	}
 	
 }

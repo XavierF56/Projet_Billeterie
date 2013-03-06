@@ -21,11 +21,11 @@ public class Billeterie {
 		} catch (Exception e) {
 			//TODO
 		}
-		listePersonnes = new ListePersonnes(this);
+		/*listePersonnes = new ListePersonnes(this);
 		listeBillets = new ListeBillets(this);
 		
 		listeBillets.metEnMemoire();
-		listePersonnes.metEnMemoire();
+		listePersonnes.metEnMemoire();*/
 	}
 	
 	/********** Methodes ************/
@@ -52,7 +52,7 @@ public class Billeterie {
 		this.bdd = bdd;
 	}
 
-	public static void main (String[] args){
+	public static void mainBill (String[] args){
 		Billeterie bill = new Billeterie("database.sqlite");
 		System.out.println("Hello World"); 
 	}
