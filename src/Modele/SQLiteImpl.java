@@ -78,39 +78,29 @@ public class SQLiteImpl implements SQLInterface{
 	 * @param query
 	 */
 	public void update(String query) throws SQLException {
-		// Check if this an UPDATE query, if not, throw an exception
-				String pattern = "^.*";
-				if(query.matches(pattern)){
-					
-					Connection conn = connect();
-					try {
-						// create statement
-						Statement stmt = conn.createStatement();
-						try {
-							//execute query
-							/*stmt.setQueryTimeout(iTimeout);
-							stmt.executeUpdate(query);*/
-							for (int w = 21000; w < 32000; w++){
-								String sql = "INSERT INTO people \nSELECT " + w + ", 'pierre', 'Durand'";
-	
-								for (int y = w + 1 ; y < w + 500; y++){
-									sql = sql.concat(" \n UNION \n SELECT " + y + ", 'pierre', 'durand'");
-								}
-								w += 500;
-								System.out.println(sql);
-								stmt.executeUpdate(sql);
-							}
-						} finally {
-						    try { stmt.close(); } catch (Exception ignore) {}
-						}
-					} finally {
-					    try { conn.close(); } catch (Exception ignore) {}
-					}
-				}
+		// Check if this a SELECT query, if not, throw an exception
+		String pattern = "^['UPDATE''INSERT INTO'].*";
+		
+		if(query.matches(pattern)){
+			Connection conn = connect();
+			ResultSet res = null; 
+			try {
+				// Cree statement
+				Statement stmt = conn.createStatement();
 				
-				else{
-					throw new SQLException("The query is not a UPDATE query : " + query);
-				}
+				// Execute query
+				stmt.setQueryTimeout(iTimeout);
+				stmt.executeUpdate(query);
+				
+				// Fermeture des statements ...
+			    stmt.close();
+			    conn.close();
+			} catch (SQLException e){
+				e.printStackTrace();
+			}
+		} else {
+			throw new SQLException("The query is not a SELECT query : " + query);
+		}
 	}
 
 	/**
@@ -161,10 +151,23 @@ public class SQLiteImpl implements SQLInterface{
 	public static void main (String[] args) throws SQLException{
 		Billeterie bill = new Billeterie("database.sqlite");
 		
-		List<List<Object>> list = bill.getBdd().query("SELECT * FROM people");
-		System.out.println(list);
+		/*List<List<Object>> list = bill.getBdd().query("SELECT * FROM people");
+		System.out.println(list);*/
 
-		//bill.getBdd().update("hello");
+		bill.getBdd().update("UPDATE");
+		
+		
+		//CREATION MULTIBLE D ENTREES POUR METHODE UPDATE
+		/*for (int w = 21000; w < 32000; w++){
+			String sql = "INSERT INTO people \nSELECT " + w + ", 'pierre', 'Durand'";
+
+			for (int y = w + 1 ; y < w + 500; y++){
+				sql = sql.concat(" \n UNION \n SELECT " + y + ", 'pierre', 'durand'");
+			}
+			w += 500;
+			System.out.println(sql);
+			stmt.executeUpdate(sql);
+		}*/
 		
 		
 		

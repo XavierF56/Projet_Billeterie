@@ -40,9 +40,7 @@ public interface SQLInterface {
 	 * @param query
 	 */
 	public void create(String query) throws UnsupportedOperationException ;	
-	
-	public List<List<Object>> transforme (ResultSet rs);
-	
+		
 	public void enregistreBDD (String table, int id, HashMap<String, Object> map);
 	
 	public void ajoutBDD (String table, int id, HashMap<String, Object> map);
