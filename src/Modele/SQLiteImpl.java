@@ -123,6 +123,18 @@ public class SQLiteImpl implements SQLInterface{
 				stmt.setQueryTimeout(iTimeout);
 				stmt.executeUpdate(query);
 				
+				//CREATION MULTIBLE D ENTREES POUR METHODE UPDATE
+				/*for (int w = 21000; w < 32000; w++){
+					String sql = "INSERT INTO people \nSELECT " + w + ", 'pierre', 'Durand'";
+
+					for (int y = w + 1 ; y < w + 500; y++){
+						sql = sql.concat(" \n UNION \n SELECT " + y + ", 'pierre', 'durand'");
+					}
+					w += 500;
+					System.out.println(sql);
+					stmt.executeUpdate(sql);
+				}*/
+				
 				// Fermeture des statements
 			    stmt.close();
 			    conn.close();
@@ -209,7 +221,7 @@ public class SQLiteImpl implements SQLInterface{
 	
 
 	
-	public static void main (String[] args) throws SQLException{
+	public static void mainTest (String[] args) throws SQLException{
 		long start; 
 		start = System.nanoTime();
 		
@@ -220,36 +232,15 @@ public class SQLiteImpl implements SQLInterface{
 		personne.put("name", "Le Gaulois");
 		personne.put("first_name", "Guy");
 
-		/*
-		
 		List<Map<String, Object>> list = bill.getBdd().query("SELECT * FROM people");
 		for(int i = 0; i < list.size(); i++){
 			System.out.println(list.get(i));
-		}*/
+		}
+		
 		bill.getBdd().ajoutBDD("people",personne);
-
+		bill.getBdd().enregistreBDD("people", list.get(0));
+		
 		long duree = System.nanoTime() - start;
 		System.out.println(duree);
-		
-		//bill.getBdd().enregistreBDD("people", list.get(0));
-		
-		//bill.getBdd().update("UPDATE");
-		
-		
-		//CREATION MULTIBLE D ENTREES POUR METHODE UPDATE
-		/*for (int w = 21000; w < 32000; w++){
-			String sql = "INSERT INTO people \nSELECT " + w + ", 'pierre', 'Durand'";
-
-			for (int y = w + 1 ; y < w + 500; y++){
-				sql = sql.concat(" \n UNION \n SELECT " + y + ", 'pierre', 'durand'");
-			}
-			w += 500;
-			System.out.println(sql);
-			stmt.executeUpdate(sql);
-		}*/
-		
-		
-		
 	}
-	
 }
