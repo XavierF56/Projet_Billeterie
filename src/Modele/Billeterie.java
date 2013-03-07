@@ -54,6 +54,7 @@ public class Billeterie {
 
 	public static void main (String[] args){
 		Billeterie bill = new Billeterie("database.sqlite");
-		System.out.println(bill.getListeBillets()); 
+		System.out.println(bill.getListeBillets() + "\n\n\n"); 
+		System.out.println(bill.getListeBillets().recherche("cin")); 
 	}
 }

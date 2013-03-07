@@ -82,5 +82,5 @@ public class Billet {
 	public static void setProchainId(int prochainId) {Billet.prochainId = prochainId;}
 	public int getId() {return (Integer) map.get("id");}
 	public boolean equal(Billet bill) {return this.getId() == bill.getId();}
-	public String toString () {return "\n Billet numero " + id + " : " + map;}
+	public String toString () {return "\n Billet : " + map;}
 }
