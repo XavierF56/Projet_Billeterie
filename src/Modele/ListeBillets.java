@@ -11,7 +11,7 @@ import java.util.Map;
 public class ListeBillets {
 	/********** Attributs ************/
 	private Billeterie billeterie;	
-	private Map<Integer, Billet> listeBillets = new HashMap<Integer, Billet>();
+	private List<Billet> listeBillets = new ArrayList<Billet>();
 	
 	
 	/********** Methodes ************/
@@ -29,16 +29,12 @@ public class ListeBillets {
 	 */
 	public void metEnMemoire() {
 		try {
-			// Execute une requete sur la bdd pour obtenir un ResultSet
-			ResultSet set = billeterie.getBdd().query("select * from billets");
-			
-			// Ce Result Set est transforme en une Map associant id a billet. ID etant le premier parametre du ResultSet
-			//TODO
-			
-			// Cloture le ResultSet
-			set.close();
+			List<Map<String, Object>> list = billeterie.getBdd().query("SELECT * from tickets");
+			for (int i = 0; i < list.size(); i++){
+				listeBillets.add(new Billet(list.get(i), billeterie));
+			}
+			Billet.setProchainId(listeBillets.get(listeBillets.size() - 1).getId());
 		} catch (SQLException e){
-			//TODO
 			e.printStackTrace();
 		}
 	}
@@ -49,7 +45,7 @@ public class ListeBillets {
 	 * @param chaine la chaine a trouver dans le billet
 	 * @return la liste des billets
 	 */
-	public HashMap<Integer, Billet> recherche(String chaine) {
+	public List<Billet> recherche(String chaine) {
 		//TODO
 		/*
 		 * diviser la chaine grace aux espaces
@@ -59,22 +55,12 @@ public class ListeBillets {
 	}
 	
 	
-	/*
+	/**
 	 * Ajoute un billet dans la liste
-	 * @param billet le billet à ajouter
-	 * @return vrai si l'ajout est effectue, faux sinon
+	 * @param billet
 	 */
 	public void ajoutBillet(Billet billet) {
-		// atribuer un id a ce billet
-		billet.setId(Billet.getProchainId());
-		Billet.setProchainId(Billet.getProchainId() + 1);
-		billet.setBill(billeterie);
-		
-		// enregistre le billet dans la bdd
-		billet.ajoutBDD();
-		
-		// ajout du billet a ListeBillets
-		listeBillets.put(billet.getId(), billet);
+		listeBillets.add(billet);
 	}
 	
 	/*
@@ -88,8 +74,7 @@ public class ListeBillets {
 	}
 	
 	public String toString () {
-		//TODO
-		return null;
+		return listeBillets.toString();
 	}
 	
 	/********** Methodes de base ************/

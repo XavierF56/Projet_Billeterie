@@ -186,7 +186,7 @@ public class SQLiteImpl implements SQLInterface{
 	 * @param table
 	 * @param map
 	 */
-	public void ajoutBDD (String table, HashMap<String, Object> map) throws SQLException {
+	public void ajoutBDD (String table, Map<String, Object> map) throws SQLException {
 		if (map.containsKey("id")) {
 			String query = "INSERT INTO " + table + " (";
 			String fin = ") VALUES (";

@@ -37,6 +37,6 @@ public interface SQLInterface {
 		
 	public void enregistreBDD (String table, Map<String, Object> map) throws SQLException;
 	
-	public void ajoutBDD (String table, HashMap<String, Object> map) throws SQLException;
+	public void ajoutBDD (String table, Map<String, Object> map) throws SQLException;
 
 }
