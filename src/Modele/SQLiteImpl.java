@@ -2,16 +2,16 @@ package Modele;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Types;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class SQLiteImpl implements SQLInterface{
 	// register the driver 
@@ -24,10 +24,12 @@ public class SQLiteImpl implements SQLInterface{
 	
 	int iTimeout = 30;	 
 
+	
 	public SQLiteImpl(String name) throws Exception{
 		sTempDb = name;
 		Class.forName(sDriverName);
 	}
+	
 	
 	/**
 	 * Create a database connection. BTW, this method may need more param
@@ -38,21 +40,23 @@ public class SQLiteImpl implements SQLInterface{
 		return DriverManager.getConnection(sDbUrl);	
 	}
 
+	
 	/**
 	 * Create and send a query to the database
 	 * @param query
 	 * @return ResultSet with the information
 	 */
-	public List<List<Object>> query(String query) throws SQLException {
+	public List<Map<String, Object>> query(String query) throws SQLException {
 		// Check if this a SELECT query, if not, throw an exception
 		String pattern = "^SELECT.*";
-		List<List<Object>> resul = new ArrayList<List<Object>>();
+		List<Map<String, Object>> resul = new ArrayList<Map<String, Object>>();
 		
 		if(query.matches(pattern)){
-			Connection conn = connect();
-			ResultSet res = null; 
+			
 			try {
-				// Cree statement
+				// Creation statement
+				Connection conn = connect();
+				ResultSet res = null; 
 				Statement stmt = conn.createStatement();
 				
 				// Execute query
@@ -73,88 +77,163 @@ public class SQLiteImpl implements SQLInterface{
 		}
 	}
 
-	/**
-	 * Update a database
-	 * @param query
-	 */
-	public void update(String query) throws SQLException {
-		// Check if this a SELECT query, if not, throw an exception
-		String pattern = "^['UPDATE''INSERT INTO'].*";
-		
-		if(query.matches(pattern)){
-			Connection conn = connect();
-			ResultSet res = null; 
-			try {
-				// Cree statement
-				Statement stmt = conn.createStatement();
-				
-				// Execute query
-				stmt.setQueryTimeout(iTimeout);
-				stmt.executeUpdate(query);
-				
-				// Fermeture des statements ...
-			    stmt.close();
-			    conn.close();
-			} catch (SQLException e){
-				e.printStackTrace();
-			}
-		} else {
-			throw new SQLException("The query is not a SELECT query : " + query);
-		}
-	}
-
-	/**
-	 * Create a new table
-	 * @param query
-	 */
-	public void create(String query) throws UnsupportedOperationException {
-		throw new UnsupportedOperationException();
-		
-	}
 	
 	/**
 	 * Transforme un ResultSet en une List de Map.
 	 * @param ResultSet
 	 * @ return List
 	 */
-	public List<List<Object>> transforme (ResultSet rs) {
-		List<List<Object>> resul = new ArrayList<List<Object>>();
+	public List<Map<String, Object>> transforme (ResultSet rs) {
+		List<Map<String, Object>> resul = new ArrayList<Map<String, Object>>();
 		ResultSetMetaData metadata;
 
 		try {
 			metadata = rs.getMetaData();
 			int nombreColonnes = metadata.getColumnCount();
 			while (rs.next()) {
-				List<Object> record = new ArrayList<Object>();
+				Map<String, Object> record = new HashMap<String, Object>();
 				for (int i = 1; i <= nombreColonnes; i++){
-					record.add(rs.getObject(i));
+					record.put(metadata.getColumnName(i), rs.getObject(i));
 				}
 				resul.add(record);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return resul;
 	}
 	
-	public void enregistreBDD (String table, int id, HashMap<String, Object> map) {
-		//TODO
+	
+	/**
+	 * Update a database
+	 * @param query
+	 */
+	public void update(String query) throws SQLException {
+		// Check if this a UPDATE query, if not, throw an exception
+		String pattern = "^['UPDATE''INSERT INTO'].*";
+		
+		if(query.matches(pattern)){
+			Connection conn = connect();
+			try {
+				// Creation statement
+				Statement stmt = conn.createStatement();
+				
+				// Execute query
+				stmt.setQueryTimeout(iTimeout);
+				stmt.executeUpdate(query);
+				
+				// Fermeture des statements
+			    stmt.close();
+			    conn.close();
+			} catch (SQLException e){
+				e.printStackTrace();
+			}
+		} else {
+			throw new SQLException("The query is not a UPDATE query : " + query);
+		}
 	}
 	
-	public void ajoutBDD (String table, int id, HashMap<String, Object> map) {
-		//TODO
+	
+	/**
+	 * MAJ un objet dans la bonne table
+	 * @param table
+	 * @param map
+	 */
+	public void enregistreBDD (String table, Map<String, Object> map) throws SQLException {
+		if (map.containsKey("id")) {
+			String query = "UPDATE " + table + " SET ";
+			boolean first = true;
+			Set set = map.keySet();
+			Iterator it = set.iterator();
+			while (it.hasNext()) {
+				if (first) {
+					first = false;
+				} else {
+					query = query.concat(", ");
+				}
+				Object key = it.next();
+				query = query.concat( key + "='" + map.get(key) + "'");
+			}
+			
+			query = query.concat(" WHERE id=" + map.get("id"));
+			
+			try {
+				this.update(query);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} else {
+			throw new SQLException("Pas de champ id dans la map");
+		}
+	}
+	
+
+	/**
+	 * Ajoute un objet dans la bonne table
+	 * @param table
+	 * @param map
+	 */
+	public void ajoutBDD (String table, HashMap<String, Object> map) throws SQLException {
+		if (map.containsKey("id")) {
+			String query = "INSERT INTO " + table + " (";
+			String fin = ") VALUES (";
+			boolean first = true;
+			Set set = map.keySet();
+			Iterator it = set.iterator();
+			while (it.hasNext()) {
+				if (first) {
+					first = false;
+				} else {
+					query = query.concat(", ");
+					fin = fin.concat(", ");
+				}
+				Object key = it.next();
+				query = query.concat(key.toString());
+				fin = fin.concat("'"+map.get(key).toString()+"'");
+			}
+			
+			query = query.concat(fin);
+			query = query.concat(")");
+			System.out.println(query);
+			try {
+				this.update(query);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} else {
+			throw new SQLException("Pas de champ id dans la map");
+		}
 	}
 	
 	
 
 	
 	public static void main (String[] args) throws SQLException{
+		long start; 
+		start = System.nanoTime();
+		
 		Billeterie bill = new Billeterie("database.sqlite");
 		
-		/*List<List<Object>> list = bill.getBdd().query("SELECT * FROM people");
-		System.out.println(list);*/
+		HashMap<String, Object> personne = new HashMap<String, Object>();
+		personne.put("id", 4);
+		personne.put("name", "Le Gaulois");
+		personne.put("first_name", "Guy");
 
-		bill.getBdd().update("UPDATE");
+		/*
+		
+		List<Map<String, Object>> list = bill.getBdd().query("SELECT * FROM people");
+		for(int i = 0; i < list.size(); i++){
+			System.out.println(list.get(i));
+		}*/
+		bill.getBdd().ajoutBDD("people",personne);
+
+		long duree = System.nanoTime() - start;
+		System.out.println(duree);
+		
+		//bill.getBdd().enregistreBDD("people", list.get(0));
+		
+		//bill.getBdd().update("UPDATE");
 		
 		
 		//CREATION MULTIBLE D ENTREES POUR METHODE UPDATE

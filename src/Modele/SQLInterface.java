@@ -27,22 +27,16 @@ public interface SQLInterface {
 	 * @param query
 	 * @return ResultSet with the information
 	 */
-	public List<List<Object>> query(String query) throws SQLException;
+	public List<Map<String, Object>> query(String query) throws SQLException;
 	
 	/**
 	 * Update a database
 	 * @param query
 	 */
 	public void update(String query) throws SQLException;
-	
-	/**
-	 * Create a new table. Useless function. May not be implemented
-	 * @param query
-	 */
-	public void create(String query) throws UnsupportedOperationException ;	
 		
-	public void enregistreBDD (String table, int id, HashMap<String, Object> map);
+	public void enregistreBDD (String table, Map<String, Object> map) throws SQLException;
 	
-	public void ajoutBDD (String table, int id, HashMap<String, Object> map);
+	public void ajoutBDD (String table, HashMap<String, Object> map) throws SQLException;
 
 }
