@@ -85,8 +85,9 @@ public class Personne {
 	 * @param paye
 	 * @return vrai si l operation a reussie
 	 */
-	public boolean faireAchat(Billet billet, int quantite, boolean paye) {//autres pra ?
+	public boolean faireAchat(Billet billet, int quantite, boolean paye) {//autres para ?
 		return true;
+		//Doit balancer des exceptions => afficher des messages d erreurs
 	}
 	
 	/**
