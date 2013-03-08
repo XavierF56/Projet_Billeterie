@@ -46,9 +46,9 @@ public class ListeBillets {
 	 * @param chaine la chaine a trouver dans le billet
 	 * @return la liste des billets
 	 */
-	public List<Billet> recherche(String chaine) {
+	public Map<Integer, Billet> recherche(String chaine) {
 		//A develloper ! 
-		List<Billet> resul= new ArrayList<Billet>();
+		Map<Integer, Billet> resul= new HashMap<Integer, Billet>();
 		
 		try {
 			String query = "SELECT id FROM tickets WHERE name_cat LIKE '" + chaine +"%'"; //NOM BDD
@@ -56,7 +56,7 @@ public class ListeBillets {
 			for (int i = 0; i < list.size(); i++) {
 				int valI = (Integer)list.get(i).get("id");
 				if (listeBillets.containsKey(valI)) {
-					resul.add(listeBillets.get(valI));
+					resul.put(valI, listeBillets.get(valI));
 				}
 			}
 		} catch (SQLException e){

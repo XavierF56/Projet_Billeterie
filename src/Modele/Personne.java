@@ -9,6 +9,10 @@ public class Personne {
 	/********** Attributs ************/
 	private Map<String,Object> map = new HashMap<String,Object>(); // le champ id n'est pas present dans cette map
 	private Billeterie bill;
+	
+	private List<Map<String,Object>> achats; //INIT ?
+	// Booleen permettant de savoir si il faut recuperrer/maj les achats depuis la bdd
+	private boolean achatEnMem;
 
 	// id utilise par le prochain billet cree
 	private static int prochainId; 
@@ -21,6 +25,7 @@ public class Personne {
 	public Personne (Map<String, Object> map, Billeterie bill){
 		this.map = map;
 		this.bill = bill;
+		this.achatEnMem = false;
 	}
 	
 	/**
@@ -63,13 +68,46 @@ public class Personne {
 	public void ajoutBillet() {
 		this.setId();
 		this.ajoutBDD();
-		bill.getListePersonnes().ajoutPersonne(this);
+		bill.getListePersonnes().ajoutPersonne(this.getId(), this);
 	}
+	
+	/**
+	 * Met en memoire les achats de la personne courante en memoire dans achats
+	 */
+	private void metEnMemAchats () {
+		//purger la precedente liste
+	}
+	
+	/**
+	 * Realise un achat si cela est possible
+	 * @param billet
+	 * @param quantite
+	 * @param paye
+	 * @return vrai si l operation a reussie
+	 */
+	public boolean faireAchat(Billet billet, int quantite, boolean paye) {//autres pra ?
+		return true;
+	}
+	
+	/**
+	 * Verifie si cette personne peut profiter d un prix reduit
+	 * @return
+	 */
+	public boolean prixReduit() {
+		return true;
+	}
+	
+	public int nbAchete(Billet billet) {
+		return 0;
+	}
+	
+	
+	
 
 	
 	public static int getProchainId() {return prochainId;}
 	public static void setProchainId(int prochainId) {Personne.prochainId = prochainId;}
 	public int getId() {return (Integer) map.get("id");}
 	public boolean equal(Personne pers) {return this.getId() == pers.getId();}
-	public String toString () {return "\n Personne : " + map;}
+	public String toString () {return map +"\n";}
 }

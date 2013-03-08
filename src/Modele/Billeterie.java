@@ -21,11 +21,11 @@ public class Billeterie {
 		} catch (Exception e) {
 			//TODO
 		}
-		//listePersonnes = new ListePersonnes(this);
+		listePersonnes = new ListePersonnes(this);
 		listeBillets = new ListeBillets(this);
 		
 		listeBillets.metEnMemoire();
-		//listePersonnes.metEnMemoire();
+		listePersonnes.metEnMemoire();
 	}
 	
 	/********** Methodes ************/
@@ -57,8 +57,11 @@ public class Billeterie {
 		start = System.nanoTime();
 		
 		Billeterie bill = new Billeterie("database.sqlite");
+		System.out.println(bill.getListePersonnes() + "\n\n\n"); 
 		System.out.println(bill.getListeBillets() + "\n\n\n"); 
+		
 		System.out.println(bill.getListeBillets().recherche("cin")); 
+		System.out.println(bill.getListePersonnes().recherche("bon"));
 		
 		long duree = System.nanoTime() - start;
 		System.out.println(duree);
