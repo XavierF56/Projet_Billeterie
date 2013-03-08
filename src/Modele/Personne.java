@@ -1,48 +1,76 @@
 package Modele;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Personne {
-	private int id;
-	private Map<String,Object> map = new HashMap<String,Object>();
-	private static int prochainId; // id utilise par la prochaine personne cree
+	/********** Attributs ************/
+	private Map<String,Object> map = new HashMap<String,Object>(); // le champ id n'est pas present dans cette map
+	private Billeterie bill;
+
+	// id utilise par le prochain billet cree
+	private static int prochainId; 
 	
-	public Personne (Map<String,Object> map){
-		//TODO
-	}
-	
-	/*
-	 * Cette methode retourne l'ensemble des achats effectues par une personne
-	 * @return liste des achats
+	/********** Methodes ************/
+	/**
+	 * A partir de la Map, ce constructeur renseigne le champ id(contenu dans la map) et map
+	 * @param map2
 	 */
-	public List<Achat> Achats (){
-		//TODO
-		return null;
-	}
-
-	public int getId() {
-		return id;
+	public Personne (Map<String, Object> map, Billeterie bill){
+		this.map = map;
+		this.bill = bill;
 	}
 	
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	/*
+	/**
 	 *  Cette methode enregistre un billet en memoire grace a une requete update
 	 */
-	public void enregistre() {
-		// TODO Auto-generated method stub
-		
+	private void enregistre() {
+		try {
+			bill.getBdd().enregistreBDD("people", map); //NOM BDD
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
-	/*
+	/**
 	 *  Cette methode enregistre un billet en memoire grace a une requete insert
 	 */
-	public void ajoutBDD(){
-		//TODO
-		
+	private void ajoutBDD(){
+		try {
+			bill.getBdd().ajoutBDD("people", map); //NOM BDD
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
+	
+	/**
+	 * Attribue un id au billet
+	 */
+	private void setId() {
+		if (map.containsKey("id")) {
+			map.put("id", prochainId);
+			prochainId++;
+		}
+	}
+	
+	/**
+	 * Methode a utiliser apres la creation d une nouvelle personne
+	 * Elle attribuera cette personne un nouvel id unique
+	 * Elle l ajoutera a la bdd et dans listPersonnes
+	 */
+	public void ajoutBillet() {
+		this.setId();
+		this.ajoutBDD();
+		bill.getListePersonnes().ajoutPersonne(this);
+	}
+
+	
+	/********** Methodes de base ************/
+	public static int getProchainId() {return prochainId;}
+	public static void setProchainId(int prochainId) {Personne.prochainId = prochainId;}
+	public int getId() {return (Integer) map.get("id");}
+	public boolean equal(Personne pers) {return this.getId() == pers.getId();}
+	public String toString () {return "\n Personne : " + map;}
 }

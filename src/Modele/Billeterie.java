@@ -53,8 +53,14 @@ public class Billeterie {
 	}
 
 	public static void main (String[] args){
+		long start; 
+		start = System.nanoTime();
+		
 		Billeterie bill = new Billeterie("database.sqlite");
 		System.out.println(bill.getListeBillets() + "\n\n\n"); 
 		System.out.println(bill.getListeBillets().recherche("cin")); 
+		
+		long duree = System.nanoTime() - start;
+		System.out.println(duree);
 	}
 }
