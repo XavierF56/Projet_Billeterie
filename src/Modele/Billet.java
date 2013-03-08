@@ -67,11 +67,10 @@ public class Billet {
 	public void ajoutBillet() {
 		this.setId();
 		this.ajoutBDD();
-		bill.getListeBillets().ajoutBillet(this);
+		bill.getListeBillets().ajoutBillet(this.getId(), this);
 	}
 
 	
-	/********** Methodes de base ************/
 	public static int getProchainId() {return prochainId;}
 	public static void setProchainId(int prochainId) {Billet.prochainId = prochainId;}
 	public int getId() {return (Integer) map.get("id");}

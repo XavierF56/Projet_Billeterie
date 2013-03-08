@@ -13,7 +13,7 @@ import javax.swing.text.html.HTMLDocument.Iterator;
 public class ListeBillets {
 	/********** Attributs ************/
 	private Billeterie billeterie;	
-	private List<Billet> listeBillets = new ArrayList<Billet>();
+	private Map<Integer, Billet> listeBillets = new HashMap<Integer, Billet>();
 	
 	
 	/********** Methodes ************/
@@ -31,11 +31,11 @@ public class ListeBillets {
 	 */
 	public void metEnMemoire() {
 		try {
-			List<Map<String, Object>> list = billeterie.getBdd().query("SELECT * from tickets");
+			List<Map<String, Object>> list = billeterie.getBdd().query("SELECT * from tickets"); //NOM BDD
 			for (int i = 0; i < list.size(); i++){
-				listeBillets.add(new Billet(list.get(i), billeterie));
+				listeBillets.put((Integer)list.get(i).get("id"),new Billet(list.get(i), billeterie));
 			}
-			Billet.setProchainId(listeBillets.get(listeBillets.size() - 1).getId());
+			Billet.setProchainId((Integer)list.get(listeBillets.size() - 1).get("id"));
 		} catch (SQLException e){
 			e.printStackTrace();
 		}
@@ -47,28 +47,17 @@ public class ListeBillets {
 	 * @return la liste des billets
 	 */
 	public List<Billet> recherche(String chaine) {
-		//A develloper !
+		//A develloper ! 
 		List<Billet> resul= new ArrayList<Billet>();
 		
 		try {
-			String query = "SELECT id FROM tickets WHERE name_cat LIKE '" + chaine +"%'";
+			String query = "SELECT id FROM tickets WHERE name_cat LIKE '" + chaine +"%'"; //NOM BDD
 			List<Map<String, Object>> list = billeterie.getBdd().query(query);
-			int i = 0, j = 0;
-
-			while (j < list.size() && i < listeBillets.size()) {
-				int vali = listeBillets.get(i).getId();
-				int valj = (Integer) list.get(j).get("id");
-				if (vali == valj) {
-					resul.add(listeBillets.get(i));
-					i++;
-					j++;
-				} else if (vali > valj) {
-					j++;
-				} else {
-					i++;
-
+			for (int i = 0; i < list.size(); i++) {
+				int valI = (Integer)list.get(i).get("id");
+				if (listeBillets.containsKey(valI)) {
+					resul.add(listeBillets.get(valI));
 				}
-				
 			}
 		} catch (SQLException e){
 			e.printStackTrace();
@@ -82,25 +71,24 @@ public class ListeBillets {
 	 * Ajoute un billet dans la liste
 	 * @param billet
 	 */
-	public void ajoutBillet(Billet billet) {
-		listeBillets.add(billet);
+	public void ajoutBillet(int id, Billet billet) {
+		listeBillets.put(id, billet);
 	}
 	
-	/*
-	 * Retourne le billet correspondant a l id 
-	 * @param id du billet
-	 * @return le billet
+	/**
+	 * 
+	 * @param id
+	 * @return null si pas de billet
 	 */
-	public Billet chercheBillet(int id) {
-		//TODO
-		return null;
+	public Billet getBillet(int id) {
+		if (listeBillets.containsKey(id)){
+			return listeBillets.get(id);
+		} else {
+			return null;
+		}
 	}
 	
-	
-	
-	/********** Methodes de base ************/
 	public String toString () {
 		return listeBillets.toString();
 	}
-	
 }

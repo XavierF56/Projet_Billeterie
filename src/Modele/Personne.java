@@ -57,7 +57,7 @@ public class Personne {
 	
 	/**
 	 * Methode a utiliser apres la creation d une nouvelle personne
-	 * Elle attribuera cette personne un nouvel id unique
+	 * Elle attribuera a cette personne un nouvel id unique
 	 * Elle l ajoutera a la bdd et dans listPersonnes
 	 */
 	public void ajoutBillet() {
@@ -67,7 +67,6 @@ public class Personne {
 	}
 
 	
-	/********** Methodes de base ************/
 	public static int getProchainId() {return prochainId;}
 	public static void setProchainId(int prochainId) {Personne.prochainId = prochainId;}
 	public int getId() {return (Integer) map.get("id");}
