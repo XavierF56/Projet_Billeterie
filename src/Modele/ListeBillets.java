@@ -79,12 +79,13 @@ public class ListeBillets {
 	 * 
 	 * @param id
 	 * @return null si pas de billet
+	 * @throws Exception 
 	 */
-	public Billet getBillet(int id) {
+	public Billet getBillet(int id) throws Exception {
 		if (listeBillets.containsKey(id)){
 			return listeBillets.get(id);
 		} else {
-			return null;
+			throw new Exception("Billet non existant");
 		}
 	}
 	

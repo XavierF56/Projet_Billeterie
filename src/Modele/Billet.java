@@ -67,7 +67,22 @@ public class Billet {
 		this.ajoutBDD();
 		bill.getListeBillets().ajoutBillet(this.getId(), this);
 	}
-
+	
+	public int getNbPlace() {
+		return (Integer) map.get("nb_total"); //NOM BDD
+	}
+	
+	public int getPrixRed() {
+		return (Integer) map.get("price_sub"); //NOM BDD
+	}
+	
+	public int getPrixNor() {
+		return (Integer) map.get("price"); //NOM BDD
+	}
+	
+	public int getNbPlacePerso() {
+		return (Integer) map.get("nb_per_person"); //NOM BDD
+	}
 	
 	public static int getProchainId() {return prochainId;}
 	public static void setProchainId(int prochainId) {Billet.prochainId = prochainId;}

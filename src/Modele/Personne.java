@@ -10,7 +10,7 @@ public class Personne {
 	private Map<String,Object> map = new HashMap<String,Object>(); // le champ id n'est pas present dans cette map
 	private Billeterie bill;
 	
-	private List<Map<String,Object>> achats; //INIT ?
+	private ListeAchats achats; //INIT ?
 	// Booleen permettant de savoir si il faut recuperrer/maj les achats depuis la bdd
 	private boolean achatEnMem;
 
@@ -26,6 +26,7 @@ public class Personne {
 		this.map = map;
 		this.bill = bill;
 		this.achatEnMem = false;
+		this.achats = new ListeAchats(this);
 	}
 	
 	/**
@@ -72,21 +73,30 @@ public class Personne {
 	}
 	
 	/**
-	 * Met en memoire les achats de la personne courante en memoire dans achats
-	 */
-	private void metEnMemAchats () {
-		//purger la precedente liste
-	}
-	
-	/**
 	 * Realise un achat si cela est possible
 	 * @param billet
 	 * @param quantite
 	 * @param paye
 	 * @return vrai si l operation a reussie
+	 * @throws AchatException 
 	 */
-	public boolean faireAchat(Billet billet, int quantite, boolean paye) {//autres para ?
-		return true;
+	public void faireAchat(Billet billet, int qtRed, int qtNor, boolean paye, boolean donne,boolean forcer) throws AchatException {
+		if (!achatEnMem) {
+			achats.metEnMemoire();
+		}
+		
+		//A REFAIRE :
+		if ((qtRed == 0) || forcer || prixReduit(billet, qtRed)) {
+			if (billet.getNbPlace() >= qtRed + qtNor) {
+				
+			} else {
+				throw new AchatException(1);
+			}
+		} else {
+			throw new AchatException(0);
+		}
+		
+		achatEnMem = false;
 		//Doit balancer des exceptions => afficher des messages d erreurs
 	}
 	
@@ -94,18 +104,15 @@ public class Personne {
 	 * Verifie si cette personne peut profiter d un prix reduit
 	 * @return
 	 */
-	public boolean prixReduit() {
+	public boolean prixReduit(Billet bill, int qt) {
 		return true;
 	}
-	
-	public int nbAchete(Billet billet) {
-		return 0;
-	}
+
 	
 	
 	
 
-	
+	public Billeterie getBilleterie() { return this.bill;}
 	public static int getProchainId() {return prochainId;}
 	public static void setProchainId(int prochainId) {Personne.prochainId = prochainId;}
 	public int getId() {return (Integer) map.get("id");}
