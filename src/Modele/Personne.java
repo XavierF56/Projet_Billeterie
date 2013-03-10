@@ -9,9 +9,9 @@ public class Personne {
 	/********** Attributs ************/
 	private Map<String,Object> map = new HashMap<String,Object>(); // le champ id n'est pas present dans cette map
 	private Billeterie bill;
-	
 	private ListeAchats achats;
-	// Booleen permettant de savoir si il faut recuperrer/maj les achats depuis la bdd
+	
+	// Booleen permettant de savoir si les acahts sont en memoire
 	private boolean achatEnMem;
 
 	// id utilise par le prochain billet cree
@@ -83,40 +83,23 @@ public class Personne {
 		}
 	}
 	
+	
+	
 	/**
-	 * Realise un achat si cela est possible
-	 * @param billet
-	 * @param quantite
-	 * @param paye
-	 * @return vrai si l operation a reussie
-	 * @throws AchatException 
+	 * Retourne le nombre de billet deja achete pour un Billet
 	 */
-	public void faireAchat(Billet billet, int qtRed, int qtNor, boolean paye, boolean donne,boolean forcer) throws AchatException {
-		if (!achatEnMem) {
-			achats.metEnMemoire();
-		}
-		
-		//A REFAIRE :
-		if ((qtRed == 0) || forcer || prixReduit(billet, qtRed)) {
-			if (billet.getNbPlace() >= qtRed + qtNor) {
-				
-			} else {
-				throw new AchatException(1);
-			}
-		} else {
-			throw new AchatException(0);
-		}
-		
-		achatEnMem = false;
-		//Doit balancer des exceptions => afficher des messages d erreurs
+	public int nbBilletsAchete(Billet billet) {
+		//TODO
+		return 0;
 	}
 	
 	/**
-	 * Verifie si cette personne peut profiter d un prix reduit
-	 * @return
+	 * Retourne ce qui reste a payer (lorsqu'un billet n'est pas directement paye)
+	 * @return le prix
 	 */
-	public boolean prixReduit(Billet bill, int qt) {
-		return true;
+	public float restantAPayer() {
+		//TODO
+		return 0;
 	}
 
 	
