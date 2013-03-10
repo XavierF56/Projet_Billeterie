@@ -4,14 +4,9 @@ import java.util.Map;
 
 public class Commande {
 	private Personne personne;
-	int nbArticle;
-	int prixTotal;
+	private int nbArticle;
+	private int prixTotal;
 	
-	/* Un achat peut soit avoir un prix reduit soit non et pas les deux !
-	 * lors d'une commande, on peut ajouter un billet a la commande(ajoutCommande()), 
-	 * si la personne a depasse son quota de billet, on balance une exception
-	 * il faut alors valider (valide()) ou annuler si on ne veut pas valider
-	 */
 	
 	public Commande(Personne personne) {
 		this.personne = personne;
@@ -27,10 +22,27 @@ public class Commande {
 	 * @return vrai si l operation a reussie
 	 * @throws AchatException 
 	 */
-	public void faireAchat(Billet billet, Map<String,Object> map, boolean forcer) throws AchatException {
+	public void ajoutCommande(Billet billet, Map<String,Object> map) throws AchatException {
 		
 	}
 	
+	/**
+	 * Si le message d'erreur quota depasse est lance par la commande ajoutCommande. 
+	 * Une boite de dialogue est affichee pour valider cette action normalement non autorisee
+	 * Cette methode valide la derniere commande
+	 */
+	public void valider() {
+		
+	}
+	
+	/**
+	 * Si le message d'erreur quota depasse est lance par la commande ajoutCommande. 
+	 * Une boite de dialogue est affichee pour valider cette action normalement non autorisee
+	 * Cette methode annule la derniere commande en l'enlevant de la liste
+	 */
+	public void annuler() {
+		
+	}
 	
 	/**
 	 * Cloture la commande en ajoutant dans listeAchats de la Persone et dans la bdd les achats realises 
@@ -40,11 +52,5 @@ public class Commande {
 	}
 	
 	
-	/**
-	 * Verifie si cette personne peut profiter d un prix reduit
-	 * @return
-	 */
-	public boolean prixReduit(Billet bill, int qt) {
-		return true;
-	}
+	
 }

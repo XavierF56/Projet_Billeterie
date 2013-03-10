@@ -101,6 +101,14 @@ public class Personne {
 		//TODO
 		return 0;
 	}
+	
+	/**
+	 * Verifie si cette personne peut profiter d un prix reduit
+	 * @return
+	 */
+	public boolean prixReduit(Billet bill, int qt) {
+		return true;
+	}
 
 	
 	
@@ -112,4 +120,8 @@ public class Personne {
 	public int getId() {return (Integer) map.get("id");}
 	public boolean equal(Personne pers) {return this.getId() == pers.getId();}
 	public String toString () {return map +"\n";}
+
+	public ListeAchats getAchats() {
+		return this.achats;
+	}
 }
