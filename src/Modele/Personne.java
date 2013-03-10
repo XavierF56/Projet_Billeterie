@@ -10,17 +10,20 @@ public class Personne {
 	private Map<String,Object> map = new HashMap<String,Object>(); // le champ id n'est pas present dans cette map
 	private Billeterie bill;
 	
-	private ListeAchats achats; //INIT ?
+	private ListeAchats achats;
 	// Booleen permettant de savoir si il faut recuperrer/maj les achats depuis la bdd
 	private boolean achatEnMem;
 
 	// id utilise par le prochain billet cree
 	private static int prochainId; 
 	
-	/********** Methodes ************/
+	/********** Constructeurs ************/
+	
 	/**
-	 * A partir de la Map, ce constructeur renseigne le champ id(contenu dans la map) et map
-	 * @param map2
+	 * Constructeur d'une personne deja presente dans la bdd, 
+	 * La map contient l'ensemble des attributs de l'objet ainsi que son id
+	 * @param map
+	 * @param bill
 	 */
 	public Personne (Map<String, Object> map, Billeterie bill){
 		this.map = map;
@@ -30,46 +33,54 @@ public class Personne {
 	}
 	
 	/**
-	 *  Cette methode enregistre un billet en memoire grace a une requete update
+	 * Constructeur d'une personne qui n'est pas present dans la bdd. La personne a ete creee par l'utilisateur
+	 * La map contient l'ensemble des attributs de l'objet mais pas son Id. Cet Id sera ajouté par le constructeur
+	 * @param map
+	 * @param bill
+	 * @param useless ce param sert juste a diffrencier les deux constructeurs
 	 */
-	private void enregistre() {
-		try {
-			bill.getBdd().enregistreBDD("people", map); //NOM BDD
-		} catch (SQLException e) {
-			e.printStackTrace();
+	public Personne(Map<String,Object> map, Billeterie bill, int useless) {
+		this.map = map;
+		this.bill = bill;
+		this.achatEnMem = false;
+		this.achats = new ListeAchats(this);
+		
+		// Attribue un Id a ce nouveau billet
+		if (!map.containsKey("id")) {
+			map.put("id", prochainId);
+			prochainId++;
 		}
-	}
-	
-	/**
-	 *  Cette methode enregistre un billet en memoire grace a une requete insert
-	 */
-	private void ajoutBDD(){
+		
+		// Enregistre le nouveau billet dans la bdd
 		try {
 			bill.getBdd().ajoutBDD("people", map); //NOM BDD
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	/**
-	 * Attribue un id au billet
-	 */
-	private void setId() {
-		if (map.containsKey("id")) {
-			map.put("id", prochainId);
-			prochainId++;
-		}
-	}
-	
-	/**
-	 * Methode a utiliser apres la creation d une nouvelle personne
-	 * Elle attribuera a cette personne un nouvel id unique
-	 * Elle l ajoutera a la bdd et dans listPersonnes
-	 */
-	public void ajoutBillet() {
-		this.setId();
-		this.ajoutBDD();
+		
+		// Ajoute le billet a la listeBillets
 		bill.getListePersonnes().ajoutPersonne(this.getId(), this);
+	}
+	
+	/**
+	 *  Cette methode modifie un billet et l'enregistre dans la bdd
+	 *  @param map
+	 */
+	@SuppressWarnings("unused")
+	private void modifie(Map<String,Object> nouvelleMap) {
+		try {
+			// Remplace l'ancienne map par la nouvelle en ajoutant l'id si celui-ci n'est pas present dans la nouvelle
+			int ancId = this.getId();
+			this.map = nouvelleMap;
+			if (!map.containsKey("id")) {
+				map.put("id", ancId);
+			}
+			
+			// Sauvegarde les modifs dans la bdd
+			bill.getBdd().enregistreBDD("people", map); //NOM BDD
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
