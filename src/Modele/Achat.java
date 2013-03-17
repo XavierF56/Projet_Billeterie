@@ -26,6 +26,7 @@ public class Achat {
 	/**
 	 * Lorsqu'une commande a ete validee, cette methode permet d'enregistrer chaque achat 
 	 * dans la liste des achats d'une personne ainsi que dans la bdd.
+	 * Elle repercute les modifs sur le billet
 	 */
 	public void ajoute() {
 		// Enregistre l'achat dans la bdd
@@ -37,6 +38,7 @@ public class Achat {
 		
 		// Ajoute l'achat à la liste d'achats de la personne
 		personne.getAchats().ajoutAchat(this);
+		this.repercuter();
 	}
 	
 	/**
@@ -50,6 +52,14 @@ public class Achat {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	
+	/**
+	 * Cette fonction modifie le billet en diminuant sa quantite
+	 */
+	public void repecuter() {
+		
 	}
 	
 	

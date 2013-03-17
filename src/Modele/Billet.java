@@ -81,6 +81,10 @@ public class Billet {
 		}
 	}
 	
+	public void diminueQt(int qt, boolean subventionne) {
+		//TODO
+	}
+	
 	
 	public int getNbPlace() {
 		return (Integer) map.get("nb_total"); //NOM BDD

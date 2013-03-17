@@ -1,7 +1,9 @@
 package Modele;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /*
@@ -14,7 +16,7 @@ public class Billeterie {
 	private ListePersonnes listePersonnes;
 	private ListeBillets listeBillets;
 	private SQLInterface bdd;
-	
+		
 	/* TODO ajouter une map<String, type> pour avoir les attributs de chaque objet (sans les id)
 	 * La methode doit pouvoir marcher meme si la bdd est vide
 	 * Elle enverra des exception si certains para necessaire ne sont pas presents (para de base)
