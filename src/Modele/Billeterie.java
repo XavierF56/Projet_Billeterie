@@ -66,9 +66,19 @@ public class Billeterie {
 		Billeterie bill = new Billeterie("database.sqlite");
 		System.out.println(bill.getListePersonnes() + "\n\n\n"); 
 		System.out.println(bill.getListeBillets() + "\n\n\n"); 
+		Map<Integer, Billet> listeBill= bill.getListeBillets().recherche("cin");
+		Map<Integer, Personne> listePerso= bill.getListePersonnes().recherche("Stark");
 		
-		System.out.println(bill.getListeBillets().recherche("cin")); 
-		System.out.println(bill.getListePersonnes().recherche("bon"));
+		Commande commande = new Commande(bill.getListePersonnes().getPersonne(12));
+		try {
+			commande.ajoutCommande(bill.getListeBillets().getBillet(100), 10, true, true, true);
+		} catch (AchatException e) {
+			e.printStackTrace();
+			commande.valider();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
 		
 		long duree = System.nanoTime() - start;
 		System.out.println(duree);

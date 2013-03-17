@@ -103,14 +103,15 @@ public class Billet {
 	public int getNbPlaceSub() {
 		return (Integer) map.get("nb_sub"); //NOM BDD
 	}
-	public int getPrixRed() {
-		return (Integer) map.get("prix_sub"); //NOM BDD
+	public double getPrixRed() {
+		System.out.println(map.get("prix_sub"));
+		return (Double) map.get("prix_sub"); //NOM BDD
 	}
-	public int getPrixNor() {
-		return (Integer) map.get("prix"); //NOM BDD
+	public double getPrixNor() {
+		return (Double) map.get("prix"); //NOM BDD
 	}
 	public int getNbPlacePerso() {
-		return (Integer) map.get("nb_par_personne"); //NOM BDD
+		return (Integer) map.get("nb_sub_par_personne"); //NOM BDD
 	}
 	public static int getProchainId() {
 		return prochainId;
