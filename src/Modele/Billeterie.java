@@ -18,7 +18,7 @@ public class Billeterie {
 	/* TODO ajouter une map<String, type> pour avoir les attributs de chaque objet (sans les id)
 	 * La methode doit pouvoir marcher meme si la bdd est vide
 	 * Elle enverra des exception si certains para necessaire ne sont pas presents (para de base)
-	*/
+	 */
 	
 	public Billeterie (String nomBdd) {
 		try{

@@ -58,7 +58,7 @@ public class Personne {
 			e.printStackTrace();
 		}
 		
-		// Ajoute le billet a la listeBillets
+		// Ajoute le billet a la listePersonne
 		bill.getListePersonnes().ajoutPersonne(this.getId(), this);
 	}
 	
@@ -114,7 +114,7 @@ public class Personne {
 	
 	
 
-	public Billeterie getBilleterie() { return this.bill;}
+	public Billeterie getBilleterie() {return this.bill;}
 	public static int getProchainId() {return prochainId;}
 	public static void setProchainId(int prochainId) {Personne.prochainId = prochainId;}
 	public int getId() {return (Integer) map.get("id");}

@@ -6,6 +6,7 @@ public class Commande {
 	private Personne personne;
 	private int nbArticle;
 	private int prixTotal;
+	private ListeAchats liste;
 	
 	
 	public Commande(Personne personne) {
@@ -14,7 +15,13 @@ public class Commande {
 		this.prixTotal = 0;
 	}
 	
-	
+	/**
+	 * Multi commande :
+	 * achat billet x qt :10 // reste 8
+	 * puis achat billet x qt :10 
+	 * bugggggggggggggg!
+	 * => solution enrgistrer en temps reel
+	 */
 	
 	/**
 	 * Realise un achat si cela est possible
@@ -23,7 +30,10 @@ public class Commande {
 	 * @throws AchatException 
 	 */
 	public void ajoutCommande(Billet billet, Map<String,Object> map) throws AchatException {
+		// map useless -> Achat ne doit pas etre modifie
 		
+		// ajout dans la commande
+		// ajout dans la listeAchats de la personne => (ajout bdd, repercute sur le billet(qt))
 	}
 	
 	/**
