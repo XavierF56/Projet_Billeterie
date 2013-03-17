@@ -123,8 +123,8 @@ public class Achat {
 	public int getPrixUnitaire() {
 		return (Integer) map.get("prix_unitaire");
 	}
-	public int getPrixTotal() {
-		return (Integer) map.get("prix_total");
+	public double getPrixTotal() {
+		return (Double) map.get("prix_total");
 	}
 	public Personne getPersonne() {
 		return personne;

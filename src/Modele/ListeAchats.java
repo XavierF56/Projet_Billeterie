@@ -8,6 +8,7 @@ import java.util.Map;
 public class ListeAchats {
 	private List<Achat> listeAchats = new ArrayList<Achat>();
 	private Personne personne;
+	private int nbAchats;
 	
 	
 	/********** Constructeur ************/
@@ -26,6 +27,7 @@ public class ListeAchats {
 			List<Map<String, Object>> list = personne.getBilleterie().getBdd().query(query); 
 			for (int i = 0; i < list.size(); i++){
 				listeAchats.add(new Achat(list.get(i), personne));
+				nbAchats++;
 			}
 			personne.setAchatEnMem(true);
 		} catch (SQLException e){
@@ -42,6 +44,7 @@ public class ListeAchats {
 			metEnMemoire();
 		}
 		listeAchats.add(achat);
+		nbAchats++;
 	}
 	
 	
@@ -51,6 +54,9 @@ public class ListeAchats {
 			metEnMemoire();
 		}
 		return listeAchats;
+	}
+	public int getNbAchats() {
+		return nbAchats;
 	}
 	public String toString() {
 		return listeAchats.toString();

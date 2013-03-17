@@ -47,6 +47,7 @@ public class Commande {
 	 */
 	public void ajoutCommande(Billet billet, int qt, boolean paye, boolean donne, boolean subventionne) throws AchatException {
 		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", billet.getId() + "Z" + personne.getId() + "Z" + personne.getAchats().getNbAchats());
 		map.put("id_billet", billet.getId());
 		map.put("id_personne", personne.getId());
 		map.put("quantite", qt);
@@ -76,8 +77,8 @@ public class Commande {
 	public void valider() {
 		listeValidee.add(achatEnCours);
 		achatEnCours.ajoute();
-		achatEnCours = null;
 		prixTotal += achatEnCours.getPrixTotal();
+		achatEnCours = null;
 		nbArticle++;
 	}
 	

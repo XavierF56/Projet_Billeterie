@@ -64,8 +64,8 @@ public class Billeterie {
 		start = System.nanoTime();
 		
 		Billeterie bill = new Billeterie("database.sqlite");
-		System.out.println(bill.getListePersonnes() + "\n\n\n"); 
-		System.out.println(bill.getListeBillets() + "\n\n\n"); 
+		//System.out.println(bill.getListePersonnes() + "\n\n\n"); 
+		//System.out.println(bill.getListeBillets() + "\n\n\n"); 
 		Map<Integer, Billet> listeBill= bill.getListeBillets().recherche("cin");
 		Map<Integer, Personne> listePerso= bill.getListePersonnes().recherche("Stark");
 		
