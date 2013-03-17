@@ -31,7 +31,7 @@ public class ListeBillets {
 	 */
 	public void metEnMemoire() {
 		try {
-			List<Map<String, Object>> list = billeterie.getBdd().query("SELECT * from tickets"); //NOM BDD
+			List<Map<String, Object>> list = billeterie.getBdd().query("SELECT * from billet"); //NOM BDD
 			for (int i = 0; i < list.size(); i++){
 				listeBillets.put((Integer)list.get(i).get("id"),new Billet(list.get(i), billeterie));
 			}
@@ -51,7 +51,7 @@ public class ListeBillets {
 		Map<Integer, Billet> resul= new HashMap<Integer, Billet>();
 		
 		try {
-			String query = "SELECT id FROM tickets WHERE name_cat LIKE '" + chaine +"%'"; //NOM BDD
+			String query = "SELECT id FROM billet WHERE name_cat LIKE '" + chaine +"%'"; //NOM BDD
 			List<Map<String, Object>> list = billeterie.getBdd().query(query);
 			for (int i = 0; i < list.size(); i++) {
 				int valI = (Integer)list.get(i).get("id");

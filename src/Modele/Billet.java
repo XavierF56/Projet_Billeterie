@@ -40,14 +40,14 @@ public class Billet {
 		this.bill = bill;
 		
 		// Attribue un Id a ce nouveau billet
-		if (!map.containsKey("id")) {
+		if (!map.containsKey("id")) { //NOM BDD
 			map.put("id", prochainId);
 			prochainId++;
 		}
 		
 		// Enregistre le nouveau billet dans la bdd
 		try {
-			bill.getBdd().ajoutBDD("tickets", map); //NOM BDD
+			bill.getBdd().ajoutBDD("billet", map); //NOM BDD
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -33,7 +33,7 @@ public class Achat {
 	public void enregistre() {
 		// Enregistre l'achat dans la bdd
 		try {
-			personne.getBilleterie().getBdd().ajoutBDD("purchase", map); //NOM BDD
+			personne.getBilleterie().getBdd().ajoutBDD("achat", map); //NOM BDD
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

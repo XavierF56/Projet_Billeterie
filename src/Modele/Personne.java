@@ -53,7 +53,7 @@ public class Personne {
 		
 		// Enregistre la nouvelle personne dans la bdd
 		try {
-			bill.getBdd().ajoutBDD("people", map); //NOM BDD
+			bill.getBdd().ajoutBDD("personne", map); //NOM BDD
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -77,7 +77,7 @@ public class Personne {
 			}
 			
 			// Sauvegarde les modifs dans la bdd
-			bill.getBdd().enregistreBDD("people", map); //NOM BDD
+			bill.getBdd().enregistreBDD("personne", map); //NOM BDD
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
