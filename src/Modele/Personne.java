@@ -14,7 +14,7 @@ public class Personne {
 	// Booleen permettant de savoir si les acahts sont en memoire
 	private boolean achatEnMem;
 
-	// id utilise par le prochain billet cree
+	// id utilise par la prochaine personne creee
 	private static int prochainId; 
 	
 	/********** Constructeurs ************/
@@ -39,19 +39,19 @@ public class Personne {
 	 * @param bill
 	 * @param useless ce param sert juste a diffrencier les deux constructeurs
 	 */
-	public Personne(Map<String,Object> map, Billeterie bill, int useless) {
+	public Personne (Map<String,Object> map, Billeterie bill, int useless){
 		this.map = map;
 		this.bill = bill;
 		this.achatEnMem = false;
 		this.achats = new ListeAchats(this);
 		
-		// Attribue un Id a ce nouveau billet
+		// Attribue un Id a cette nouvelle personne
 		if (!map.containsKey("id")) {
 			map.put("id", prochainId);
 			prochainId++;
 		}
 		
-		// Enregistre le nouveau billet dans la bdd
+		// Enregistre la nouvelle personne dans la bdd
 		try {
 			bill.getBdd().ajoutBDD("people", map); //NOM BDD
 		} catch (SQLException e) {

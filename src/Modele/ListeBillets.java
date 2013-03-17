@@ -23,7 +23,7 @@ public class ListeBillets {
 	 */
 	public ListeBillets(Billeterie billeterie) {
 		this.billeterie = billeterie;
-		this.metEnMemoire();
+		this.metEnMemoire(); 
 	}
 	
 	/**
