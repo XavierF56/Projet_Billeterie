@@ -15,7 +15,7 @@ public class ListeAchats {
 	
 	public void metEnMemoire() {
 		try {
-			String query = "SELECT * from purchase WHERE id=" + personne.getId(); //NOM BDD
+			String query = "SELECT * from achat WHERE id=" + personne.getId(); //NOM BDD
 			List<Map<String, Object>> list = personne.getBilleterie().getBdd().query(query); 
 			for (int i = 0; i < list.size(); i++){
 				listeAchats.add(new Achat(list.get(i), personne));

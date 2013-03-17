@@ -75,7 +75,7 @@ public class Billet {
 			}
 			
 			// Sauvegarde les modifs dans la bdd
-			bill.getBdd().enregistreBDD("tickets", map); //NOM BDD
+			bill.getBdd().enregistreBDD("billet", map); //NOM BDD
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -87,15 +87,15 @@ public class Billet {
 	}
 	
 	public int getPrixRed() {
-		return (Integer) map.get("price_sub"); //NOM BDD
+		return (Integer) map.get("prix_sub"); //NOM BDD
 	}
 	
 	public int getPrixNor() {
-		return (Integer) map.get("price"); //NOM BDD
+		return (Integer) map.get("prix"); //NOM BDD
 	}
 	
 	public int getNbPlacePerso() {
-		return (Integer) map.get("nb_per_person"); //NOM BDD
+		return (Integer) map.get("nb_par_personne"); //NOM BDD
 	}
 	
 	
