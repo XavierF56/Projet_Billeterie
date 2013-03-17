@@ -38,6 +38,8 @@ public class Achat {
 		
 		// Ajoute l'achat à la liste d'achats de la personne
 		personne.getAchats().ajoutAchat(this);
+		
+		// Repercute l'achat sur la liste des billets
 		this.repercuter();
 	}
 	
@@ -58,8 +60,12 @@ public class Achat {
 	/**
 	 * Cette fonction modifie le billet en diminuant sa quantite
 	 */
-	public void repecuter() {
-		
+	private void repercuter() {
+		try {
+			personne.getBilleterie().getListeBillets().getBillet((Integer) map.get("id")).modifieQt((Integer) map.get("quantite"), (Boolean) map.get("subventionne"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
@@ -122,5 +128,8 @@ public class Achat {
 	}
 	public Personne getPersonne() {
 		return personne;
+	}
+	public String toString () {
+		return map +"\n";
 	}
 }

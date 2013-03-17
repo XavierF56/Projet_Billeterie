@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 public class Personne {
-	/********** Attributs ************/
 	private Map<String,Object> map = new HashMap<String,Object>(); // le champ id n'est pas present dans cette map
 	private Billeterie bill;
 	private ListeAchats achats;
@@ -17,8 +16,8 @@ public class Personne {
 	// id utilise par la prochaine personne creee
 	private static int prochainId; 
 	
-	/********** Constructeurs ************/
 	
+	/********** Constructeurs ************/
 	/**
 	 * Constructeur d'une personne deja presente dans la bdd, 
 	 * La map contient l'ensemble des attributs de l'objet ainsi que son id
@@ -62,6 +61,8 @@ public class Personne {
 		bill.getListePersonnes().ajoutPersonne(this.getId(), this);
 	}
 	
+	
+	/********** Methodes ************/
 	/**
 	 *  Cette methode modifie un billet et l'enregistre dans la bdd
 	 *  @param map
@@ -83,14 +84,26 @@ public class Personne {
 		}
 	}
 	
-	
-	
 	/**
 	 * Retourne le nombre de billet deja achete pour un Billet
+	 * @param billet
+	 * @return le nb de billets achetes
 	 */
 	public int nbBilletsAchete(Billet billet) {
-		//TODO
-		return 0;
+		//Met en memoire la liste des achats
+		if (!achatEnMem) {
+			achats.metEnMemoire();
+		}
+		List<Achat> liste = this.achats.getListeAchats();
+		int id = billet.getId();
+		int resul = 0;
+		
+		for (int i = 0; i < liste.size(); i++) {
+			if (id == liste.get(i).getBillet().getId()) {
+				resul += liste.get(i).getQt();
+			}
+		}
+		return resul;
 	}
 	
 	/**
@@ -98,30 +111,52 @@ public class Personne {
 	 * @return le prix
 	 */
 	public float restantAPayer() {
-		//TODO
-		return 0;
+		//Met en memoire la liste des achats
+		if (!achatEnMem) {
+			achats.metEnMemoire();
+		}
+		List<Achat> liste = this.achats.getListeAchats();
+		float resul = 0;
+		
+		for (int i = 0; i < liste.size(); i++) {
+			if (! (boolean)liste.get(i).getPaye()) {
+				resul += liste.get(i).getPrixTotal();
+			}
+		}
+		return resul;
 	}
-	
-	/**
-	 * Verifie si cette personne peut profiter d un prix reduit
-	 * @return
-	 */
-	public boolean prixReduit(Billet bill, int qt) {
-		return true;
+
+		
+	/********** Getters & Setters************/
+	public static void setProchainId(int prochainId) {
+		Personne.prochainId = prochainId;
 	}
-
-	
-	
-	
-
-	public Billeterie getBilleterie() {return this.bill;}
-	public static int getProchainId() {return prochainId;}
-	public static void setProchainId(int prochainId) {Personne.prochainId = prochainId;}
-	public int getId() {return (Integer) map.get("id");}
-	public boolean equal(Personne pers) {return this.getId() == pers.getId();}
-	public String toString () {return map +"\n";}
-
+	public Billeterie getBilleterie() {
+		return this.bill;
+	}
+	public static int getProchainId() {
+		return prochainId;
+	}
+	public int getId() {
+		return (Integer) map.get("id");
+	}
 	public ListeAchats getAchats() {
 		return this.achats;
 	}
+	public boolean isAchatEnMem() {
+		return achatEnMem;
+	}
+	public void setAchatEnMem(boolean achatEnMem) {
+		this.achatEnMem = achatEnMem;
+	}
+	
+	/********** Methodes de base ************/
+	public boolean equal(Personne pers) {
+		return this.getId() == pers.getId();
+	}
+	public String toString () {
+		return map +"\n";
+	}
+
+	
 }

@@ -16,7 +16,7 @@ public class ListeBillets {
 	private Map<Integer, Billet> listeBillets = new HashMap<Integer, Billet>();
 	
 	
-	/********** Methodes ************/
+	/********** Constructeur ************/
 	/**
 	 * Crée l'objet en mettant en mémoire l ensemble des billets de la bdd
 	 * @param billeterie 
@@ -26,6 +26,8 @@ public class ListeBillets {
 		this.metEnMemoire(); 
 	}
 	
+	
+	/********** Methodes ************/
 	/**
 	 * Met en memoire l'ensemble des billets.
 	 */
@@ -51,7 +53,7 @@ public class ListeBillets {
 		Map<Integer, Billet> resul= new HashMap<Integer, Billet>();
 		
 		try {
-			String query = "SELECT id FROM billet WHERE name_cat LIKE '" + chaine +"%'"; //NOM BDD
+			String query = "SELECT id FROM billet WHERE categorie LIKE '" + chaine +"%'"; //NOM BDD
 			List<Map<String, Object>> list = billeterie.getBdd().query(query);
 			for (int i = 0; i < list.size(); i++) {
 				int valI = (Integer)list.get(i).get("id");
@@ -66,7 +68,6 @@ public class ListeBillets {
 		return resul;
 	}
 	
-	
 	/**
 	 * Ajoute un billet dans la liste
 	 * @param billet
@@ -74,13 +75,9 @@ public class ListeBillets {
 	public void ajoutBillet(int id, Billet billet) {
 		listeBillets.put(id, billet);
 	}
+
 	
-	/**
-	 * 
-	 * @param id
-	 * @return null si pas de billet
-	 * @throws Exception 
-	 */
+	/********** Methodes de base ************/
 	public Billet getBillet(int id) throws Exception {
 		if (listeBillets.containsKey(id)){
 			return listeBillets.get(id);
@@ -88,7 +85,6 @@ public class ListeBillets {
 			throw new Exception("Billet non existant");
 		}
 	}
-	
 	public String toString () {
 		return listeBillets.toString();
 	}

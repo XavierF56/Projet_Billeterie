@@ -8,12 +8,11 @@ import java.util.List;
 import java.util.Map;
 
 public class ListePersonnes {
-	/********** Attributs ************/
 	private Billeterie billeterie;	
 	private Map<Integer, Personne> listePersonnes = new HashMap<Integer, Personne>();
 	
 	
-	/********** Methodes ************/
+	/********** Constructeur ************/
 	/**
 	 * Crée l'objet en mettant en mémoire l ensemble des billets de la bdd
 	 * @param billeterie 
@@ -23,6 +22,8 @@ public class ListePersonnes {
 		this.metEnMemoire();
 	}
 	
+	
+	/********** Methodes ************/
 	/**
 	 * Met en memoire l'ensemble des billets.
 	 */
@@ -48,7 +49,7 @@ public class ListePersonnes {
 		Map<Integer, Personne> resul= new HashMap<Integer, Personne>();
 		
 		try {
-			String query = "SELECT id FROM personne WHERE name LIKE '" + chaine +"%'"; //NOM BDD
+			String query = "SELECT id FROM personne WHERE nom LIKE '" + chaine +"%'"; //NOM BDD
 			List<Map<String, Object>> list = billeterie.getBdd().query(query);
 			for (int i = 0; i < list.size(); i++) {
 				int valI = (Integer)list.get(i).get("id");
@@ -63,7 +64,6 @@ public class ListePersonnes {
 		return resul;
 	}
 	
-	
 	/**
 	 * Ajoute une personne dans la liste
 	 * @param billet
@@ -72,11 +72,8 @@ public class ListePersonnes {
 		listePersonnes.put(id, pers);
 	}
 	
-	/**
-	 * 
-	 * @param id
-	 * @return null si pas de billet
-	 */
+	
+	/********** Methodes de base************/
 	public Personne getPersonne(int id) {
 		if (listePersonnes.containsKey(id)){
 			return listePersonnes.get(id);
@@ -84,7 +81,6 @@ public class ListePersonnes {
 			return null;
 		}
 	}
-	
 	public String toString () {
 		return listePersonnes.toString();
 	}

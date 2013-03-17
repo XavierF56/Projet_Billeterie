@@ -6,8 +6,6 @@ import java.util.Map;
 
 
 public class Billet {
-	
-	/********** Attributs ************/
 	private Map<String,Object> map = new HashMap<String,Object>(); // le champ id n'est pas present dans cette map
 	private Billeterie bill;
 
@@ -59,12 +57,10 @@ public class Billet {
 	
 	
 	/********** Methodes ************/
-	
 	/**
 	 *  Cette methode enregistre un billet en memoire grace a une requete update
 	 *  @param map
 	 */
-	@SuppressWarnings("unused")
 	private void modifie(Map<String,Object> nouvelleMap) {
 		try {
 			// Remplace l'ancienne map par la nouvelle en ajoutant l'id si celui-ci n'est pas present dans la nouvelle
@@ -81,28 +77,41 @@ public class Billet {
 		}
 	}
 	
-	public void diminueQt(int qt, boolean subventionne) {
-		//TODO
+	
+	/**
+	 * Augmente ou diminue le nombre de billet restant, 
+	 * subventionne permet de savoir si les billets à enlever sont des billets subventionnes
+	 * @param qt
+	 * @param subventionne
+	 */
+	public void modifieQt(int qt, boolean subventionne) {
+		if(subventionne) {
+			map.put("nb_sub", getNbPlaceSub()-qt);
+			map.put("nb_total", getNbPlace()-qt);
+		} else {
+			map.put("nb_total", getNbPlace()-qt);
+		}		
+		modifie(this.map);
 	}
 	
 	
+	
+	/********** Getters ************/
 	public int getNbPlace() {
 		return (Integer) map.get("nb_total"); //NOM BDD
 	}
-	
+	public int getNbPlaceSub() {
+		return (Integer) map.get("nb_sub"); //NOM BDD
+	}
 	public int getPrixRed() {
 		return (Integer) map.get("prix_sub"); //NOM BDD
 	}
-	
 	public int getPrixNor() {
 		return (Integer) map.get("prix"); //NOM BDD
 	}
-	
 	public int getNbPlacePerso() {
 		return (Integer) map.get("nb_par_personne"); //NOM BDD
 	}
-	
-	
 	public static int getProchainId() {
 		return prochainId;
 	}
