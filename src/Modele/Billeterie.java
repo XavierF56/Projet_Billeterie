@@ -29,8 +29,8 @@ public class Billeterie {
 		listePersonnes = new ListePersonnes(this);
 		listeBillets = new ListeBillets(this);
 		
-		listeBillets.metEnMemoire();
-		listePersonnes.metEnMemoire();
+		listeBillets.metEnMemoire();	// La mise en memoire n'est pas presente 2 fois ? (dans  
+		listePersonnes.metEnMemoire();	// les constructeurs des Liste)
 	}
 	
 	/********** Methodes ************/

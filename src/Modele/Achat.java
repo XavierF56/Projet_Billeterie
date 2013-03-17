@@ -7,7 +7,8 @@ import java.util.Map;
 public class Achat {
 	private Map<String,Object> map = new HashMap<String,Object>();
 	private Personne personne;
-	
+	private boolean paye;
+	private boolean donne;
 
 	
 	/********** Constructeurs ************/
@@ -21,6 +22,8 @@ public class Achat {
 	public Achat(Map<String,Object> map, Personne perso) {
 		this.map = map;
 		this.personne = perso;
+		this.paye = false;
+		this.donne = false;
 	}
 	
 	/**
@@ -45,7 +48,7 @@ public class Achat {
 	 * Cela signifie que les billets ont ete payes
 	 */
 	public void payer() {
-		// TODO
+		this.paye = true;
 	}
 	
 	/**
@@ -53,17 +56,15 @@ public class Achat {
 	 * Cela signifie que les billets ont ete donnes a la personne
 	 */
 	public void donner() {
-		// TODO
+		this.donne = true;
 	}
 	
 	// GETTERS sur les attributs importants
 	public boolean getPaye() {
-		//TODO
-		return true;
+		return this.paye;
 	}
 	public boolean getDonne() {
-		//TODO
-		return true;
+		return this.donne;
 	}
 	public boolean getPrixReduit() {
 		//TODO
