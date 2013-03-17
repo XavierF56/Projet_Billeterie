@@ -74,7 +74,7 @@ public class Billeterie {
 			commande.ajoutCommande(bill.getListeBillets().getBillet(100), 10, true, true, true);
 		} catch (AchatException e) {
 			e.printStackTrace();
-			commande.valider();
+			commande.annuler();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

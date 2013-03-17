@@ -104,7 +104,6 @@ public class Billet {
 		return (Integer) map.get("nb_sub"); //NOM BDD
 	}
 	public double getPrixRed() {
-		System.out.println(map.get("prix_sub"));
 		return (Double) map.get("prix_sub"); //NOM BDD
 	}
 	public double getPrixNor() {

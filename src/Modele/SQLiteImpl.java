@@ -187,7 +187,7 @@ public class SQLiteImpl implements SQLInterface{
 	 * @param map
 	 */
 	public void ajoutBDD (String table, Map<String, Object> map) throws SQLException {
-		if (map.containsKey("id")) {
+		if (map.containsKey("id") || map.containsKey("id_personne")) {
 			String query = "INSERT INTO " + table + " (";
 			String fin = ") VALUES (";
 			boolean first = true;
@@ -207,7 +207,6 @@ public class SQLiteImpl implements SQLInterface{
 			
 			query = query.concat(fin);
 			query = query.concat(")");
-			System.out.println(query);
 			try {
 				this.update(query);
 			} catch (SQLException e) {

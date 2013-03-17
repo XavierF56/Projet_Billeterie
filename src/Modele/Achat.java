@@ -62,7 +62,7 @@ public class Achat {
 	 */
 	private void repercuter() {
 		try {
-			personne.getBilleterie().getListeBillets().getBillet((Integer) map.get("id")).modifieQt((Integer) map.get("quantite"), (Boolean) map.get("subventionne"));
+			personne.getBilleterie().getListeBillets().getBillet((Integer) map.get("id_billet")).modifieQt((Integer) map.get("quantite"), (Boolean) map.get("subventionne"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
