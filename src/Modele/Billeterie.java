@@ -12,7 +12,6 @@ import java.util.Map;
  */
 
 public class Billeterie {
-	/********** Attributs ************/
 	private ListePersonnes listePersonnes;
 	private ListeBillets listeBillets;
 	private SQLInterface bdd;
@@ -22,6 +21,8 @@ public class Billeterie {
 	 * Elle enverra des exception si certains para necessaire ne sont pas presents (para de base)
 	 */
 	
+	
+	/********** Constructeur ************/
 	public Billeterie (String nomBdd) {
 		try{
 			bdd = new SQLiteImpl(nomBdd);
@@ -74,7 +75,7 @@ public class Billeterie {
 			commande.ajoutCommande(bill.getListeBillets().getBillet(100), 10, true, true, true);
 		} catch (AchatException e) {
 			e.printStackTrace();
-			commande.annuler();
+			commande.valider();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

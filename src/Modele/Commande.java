@@ -32,6 +32,9 @@ public class Commande {
 		this.personne = personne;
 		this.nbArticle = 0;
 		this.prixTotal = 0;
+		if(!personne.isAchatEnMem()){
+			personne.getAchats().metEnMemoire();
+		}
 	}
 	
 	/********** Methodes ************/
@@ -61,7 +64,6 @@ public class Commande {
 			map.put("prix_unitaire", billet.getPrixNor());
 			map.put("prix_total", billet.getPrixNor() * qt);
 		}
-		//TODO Date
 		achatEnCours = new Achat(map, personne);
 		
 		if (this.achatPossible(billet, qt, subventionne)) {
@@ -92,7 +94,7 @@ public class Commande {
 	}
 	
 	/**
-	 * Vide la listeValidee
+	 * Vide la listeValidee :  clorture une commande
 	 */
 	public void cloturer() {
 		listeValidee.clear();
