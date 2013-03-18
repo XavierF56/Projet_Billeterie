@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Personne {
-	private Map<String,Object> map = new HashMap<String,Object>(); // le champ id n'est pas present dans cette map
+	public Map<String,Object> map = new HashMap<String,Object>(); // le champ id n'est pas present dans cette map
 	private Billeterie bill;
 	private ListeAchats achats;
 	
@@ -68,7 +68,7 @@ public class Personne {
 	 *  @param map
 	 */
 	@SuppressWarnings("unused")
-	private void modifie(Map<String,Object> nouvelleMap) {
+	public void modifie(Map<String,Object> nouvelleMap) {
 		try {
 			// Remplace l'ancienne map par la nouvelle en ajoutant l'id si celui-ci n'est pas present dans la nouvelle
 			int ancId = this.getId();
@@ -154,9 +154,7 @@ public class Personne {
 	public boolean equal(Personne pers) {
 		return this.getId() == pers.getId();
 	}
-	public String toString () {
-		return map +"\n";
+	public String toString () { //NOM BDD
+		return map.get("prenom") + " " + map.get("nom");
 	}
-
-	
 }

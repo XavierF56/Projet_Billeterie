@@ -90,7 +90,13 @@ public class Billet {
 			map.put("nb_total", getNbPlace()-qt);
 		} else {
 			map.put("nb_total", getNbPlace()-qt);
-		}		
+		}	
+		if((Integer) map.get("nb_sub") < 0) {
+			map.put("nb_sub", 0);
+		}
+		if((Integer) map.get("nb_total") < 0) {
+			map.put("nb_total", 0);
+		}
 		modifie(this.map);
 	}
 	
@@ -124,7 +130,7 @@ public class Billet {
 	public boolean equal(Billet bill) {
 		return this.getId() == bill.getId();
 	}
-	public String toString () {
-		return map +"\n";
+	public String toString () { //NOM BDD
+		return map.get("categorie") + " : " + map.get("sous_categorie");
 	}
 }

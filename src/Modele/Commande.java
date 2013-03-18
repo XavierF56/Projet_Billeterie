@@ -22,8 +22,8 @@ import java.util.Map;
 
 public class Commande {
 	private Personne personne;
-	private float nbArticle;
-	private int prixTotal;
+	private int nbArticle;
+	private float prixTotal;
 	private List<Achat> listeValidee = new ArrayList<Achat>();
 	private Achat achatEnCours;
 	
@@ -130,17 +130,17 @@ public class Commande {
 	
 	
 	/********** Getters ************/
-	public float getNbArticle() {
+	public int getNbArticle() {
 		return nbArticle;
 	}
-	public int getPrixTotal() {
+	public float getPrixTotal() {
 		return prixTotal;
 	}
 
 	
 	/********** Methodes de base ************/
 	public String toString() {
-		return "Commande en cours :\nnb articles : " + nbArticle + "\nprix total : " + prixTotal + "\n" + listeValidee;
+		return "Mon panier : " + nbArticle + " articles | " + prixTotal + "€";
 	}
 
 	

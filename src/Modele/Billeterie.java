@@ -70,20 +70,22 @@ public class Billeterie {
 		Map<Integer, Billet> listeBill= bill.getListeBillets().recherche("cin");
 		Map<Integer, Personne> listePerso= bill.getListePersonnes().recherche("Stark");
 		
-		Commande commande = new Commande(bill.getListePersonnes().getPersonne(13));
-		/*try {
-			commande.ajoutCommande(bill.getListeBillets().getBillet(100), 10, true, true, false);
-			commande.ajoutCommande(bill.getListeBillets().getBillet(101), 10, false, true, true);
-			commande.ajoutCommande(bill.getListeBillets().getBillet(102), 10, false, true, true);
-			commande.ajoutCommande(bill.getListeBillets().getBillet(103), 10, false, true, true);
+		Commande commande = new Commande(bill.getListePersonnes().getPersonne(5));
+		try {
+			commande.ajoutCommande(bill.getListeBillets().getBillet(101), 10, true, true, true);
+			System.out.println(commande);
+			commande.ajoutCommande(bill.getListeBillets().getBillet(107), 10, true, true, true);
+			System.out.println(commande);
+			commande.ajoutCommande(bill.getListeBillets().getBillet(109), 10, true, true, true);
+			System.out.println(commande);
+			commande.ajoutCommande(bill.getListeBillets().getBillet(103), 10, true, true, true);
+			System.out.println(commande);
 		} catch (AchatException e) {
 			e.printStackTrace();
-			commande.annuler();
+			commande.valider();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}*/
-		System.out.println(bill.getListePersonnes().getPersonne(13).restantAPayer());
-	
+		}
 		
 		long duree = System.nanoTime() - start;
 		System.out.println(duree);
