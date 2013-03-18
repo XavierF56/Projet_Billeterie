@@ -207,7 +207,6 @@ public class SQLiteImpl implements SQLInterface{
 			
 			query = query.concat(fin);
 			query = query.concat(")");
-			System.out.println(query);
 			try {
 				this.update(query);
 			} catch (SQLException e) {

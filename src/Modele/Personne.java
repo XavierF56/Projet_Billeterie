@@ -119,7 +119,7 @@ public class Personne {
 		float resul = 0;
 		
 		for (int i = 0; i < liste.size(); i++) {
-			if (! (boolean)liste.get(i).getPaye()) {
+			if (! liste.get(i).getPaye()) {
 				resul += liste.get(i).getPrixTotal();
 			}
 		}

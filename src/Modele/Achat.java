@@ -101,13 +101,13 @@ public class Achat {
 	
 	/********** Getters ************/
 	public boolean getPaye() {
-		return (Boolean) map.get("paye");
+		return (Boolean) Boolean.valueOf(map.get("paye").toString());
 	}
 	public boolean getDonne() {
-		return (Boolean) map.get("donne");
+		return (Boolean) Boolean.valueOf(map.get("donne").toString());
 	}
 	public boolean getSubventionne() {
-		return (Boolean) map.get("subventionne");
+		return (Boolean) Boolean.valueOf(map.get("subventionne").toString());
 	}
 	public Billet getBillet() {
 		try {
