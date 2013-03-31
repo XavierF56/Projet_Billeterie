@@ -37,7 +37,7 @@ public class ListeBillets {
 			for (int i = 0; i < list.size(); i++){
 				listeBillets.put((Integer)list.get(i).get("id"),new Billet(list.get(i), billeterie));
 			}
-			Billet.setProchainId((Integer)list.get(listeBillets.size() - 1).get("id"));
+			Billet.setProchainId((Integer)list.get(listeBillets.size() - 1).get("id")+1);
 		} catch (SQLException e){
 			e.printStackTrace();
 		}

@@ -81,15 +81,17 @@ public class Billet {
 	/**
 	 * Augmente ou diminue le nombre de billet restant, 
 	 * subventionne permet de savoir si les billets à enlever sont des billets subventionnes
+	 * Si qt > 0, cela ajoute des billets
+	 * Quand on ajoute des billets sub, on ajoute aussi la meme quantite de billet non sub
 	 * @param qt
 	 * @param subventionne
 	 */
 	public void modifieQt(int qt, boolean subventionne) {
 		if(subventionne) {
-			map.put("nb_sub", getNbPlaceSub()-qt);
-			map.put("nb_total", getNbPlace()-qt);
+			map.put("nb_sub", getNbPlaceSub()+qt);
+			map.put("nb_total", getNbPlace()+qt);
 		} else {
-			map.put("nb_total", getNbPlace()-qt);
+			map.put("nb_total", getNbPlace()+qt);
 		}	
 		if((Integer) map.get("nb_sub") < 0) {
 			map.put("nb_sub", 0);
@@ -97,6 +99,9 @@ public class Billet {
 		if((Integer) map.get("nb_total") < 0) {
 			map.put("nb_total", 0);
 		}
+		if((Integer) map.get("nb_total") < (Integer) map.get("nb_sub")) {
+			map.put("nb_sub", (Integer) map.get("nb_total"));
+ 		}
 		modifie(this.map);
 	}
 	
