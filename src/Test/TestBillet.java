@@ -64,7 +64,6 @@ public class TestBillet {
 	public void testBillet() {
 		setUp();
 		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("id", Billet.getProchainId());
 		map.put("categorie", "Musique");
 		map.put("prix", 5.0);
 		map.put("prix_sub", 4.0);
@@ -89,5 +88,28 @@ public class TestBillet {
 		setUp();
 		assertTrue(billet.equals(billet1));
 		assertFalse(billet.equals(billet2));
+	}
+	
+	@Test
+	public void testModifie() {
+		setUp();
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("categorie", "Musique");
+		map.put("prix", 5.0);
+		map.put("prix_sub", 4.0);
+		map.put("sous_categorie", "jeune");
+		map.put("nb_sub_par_personne", 5);
+		map.put("nb_total", 500);
+		map.put("nb_sub", 200);
+		
+		try {
+			Billet modif = bill.getListeBillets().getBillet(109);
+			modif.modifie(map);
+			assertEquals(200, billet.getNbPlaceSub());
+	 		assertEquals(700, billet.getNbPlace());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

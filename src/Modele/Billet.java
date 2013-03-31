@@ -61,7 +61,7 @@ public class Billet {
 	 *  Cette methode enregistre un billet en memoire grace a une requete update
 	 *  @param map
 	 */
-	private void modifie(Map<String,Object> nouvelleMap) {
+	public void modifie(Map<String,Object> nouvelleMap) {
 		try {
 			// Remplace l'ancienne map par la nouvelle en ajoutant l'id si celui-ci n'est pas present dans la nouvelle
 			int ancId = this.getId();
