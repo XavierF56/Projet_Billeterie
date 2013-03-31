@@ -28,7 +28,7 @@ public class Billet {
 	
 	/**
 	 * Constructeur d'un billet qui n'est pas present dans la bdd. Le billet a ete cree par l'utilisateur
-	 * La map contient l'ensemble des attributs de l'objet mais pas son Id. Cet Id sera ajouté par le constructeur
+	 * La map doit contenir l'ensemble des attributs de l'objet MAIS PAS SON ID. Cet Id sera ajouté par le constructeur
 	 * @param map
 	 * @param bill
 	 * @param useless ce param sert juste a diffrencier les deux constructeurs
