@@ -9,8 +9,6 @@ import org.junit.Test;
 
 import Modele.Billet;
 import Modele.Billeterie;
-import Modele.Commande;
-import Modele.Personne;
 
 public class TestBillet {
 	Billeterie bill;
@@ -71,9 +69,17 @@ public class TestBillet {
 		map.put("nb_sub_par_personne", 5);
 		map.put("nb_total", 500);
 		map.put("nb_sub", 200);
+		@SuppressWarnings("unused")
 		Billet newBill = new Billet(map, bill, 0);
- 		assertEquals(200, billet.getNbPlaceSub());
- 		assertEquals(700, billet.getNbPlace());
+		try {
+			Billet modif = bill.getListeBillets().getBillet(Billet.getProchainId()-1);
+			assertEquals(200, modif.getNbPlaceSub());
+	 		assertEquals(500, modif.getNbPlace());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+ 		
 	}
 
 

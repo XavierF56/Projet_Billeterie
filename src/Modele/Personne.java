@@ -16,6 +16,8 @@ public class Personne {
 	// id utilise par la prochaine personne creee
 	private static int prochainId; 
 	
+	// TODO fonction supprimer
+	
 	
 	/********** Constructeurs ************/
 	/**
@@ -139,6 +141,12 @@ public class Personne {
 	}
 	public int getId() {
 		return (Integer) map.get("id");
+	}
+	public String getNom() {
+		return (String) map.get("nom");
+	}
+	public String getPrenom() {
+		return (String) map.get("prenom");
 	}
 	public ListeAchats getAchats() {
 		return this.achats;

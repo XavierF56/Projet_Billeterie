@@ -12,6 +12,8 @@ public class Billet {
 	// id utilise par le prochain billet cree
 	private static int prochainId; 
 	
+	// TODO fonction supprimer
+
 	
 	/********** Constructeurs ************/
 	

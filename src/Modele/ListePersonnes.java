@@ -33,7 +33,7 @@ public class ListePersonnes {
 			for (int i = 0; i < list.size(); i++){
 				listePersonnes.put((Integer)list.get(i).get("id"),new Personne(list.get(i), billeterie));
 			}
-			Billet.setProchainId((Integer)list.get(listePersonnes.size() - 1).get("id"));
+			Personne.setProchainId((Integer)list.get(listePersonnes.size() - 1).get("id") + 1);
 		} catch (SQLException e){
 			e.printStackTrace();
 		}
@@ -74,11 +74,11 @@ public class ListePersonnes {
 	
 	
 	/********** Methodes de base************/
-	public Personne getPersonne(int id) {
+	public Personne getPersonne(int id) throws Exception {
 		if (listePersonnes.containsKey(id)){
 			return listePersonnes.get(id);
 		} else {
-			return null;
+			throw new Exception("Personne non existante");
 		}
 	}
 	public String toString () {
