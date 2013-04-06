@@ -6,6 +6,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.AbstractAction;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.GroupLayout;
@@ -27,6 +28,7 @@ public class FenetrePrincipale extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private boolean opt;
+	private TablePersonnes modelePersonnes;
 	/**
 	 * Launch the application.
 	 */
@@ -59,13 +61,16 @@ public class FenetrePrincipale extends JFrame {
 		
 		/* Onglet Personnes */
 		JPanel OngletPersonne = new JPanel();
-		JTable tableau = new JTable(new TablePersonnes(billeterie));
+		modelePersonnes = new TablePersonnes(billeterie);
+		JTable tableau = new JTable(modelePersonnes);
 		tableau.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		OngletPersonne.setLayout(new BorderLayout(0, 0));
-		OngletPersonne.add(new BarreOutilsPersonnes(), "North");
+		OngletPersonne.add(new BarreOutilsPersonnes(this), "North");
 		OngletPersonne.add(new JScrollPane(tableau), "Center");
 		
 		Onglets.addTab("Personnes", null, OngletPersonne, null);
+		
+		
 		
 		/* Onglet Billets */
 		JPanel OngletBillets = new JPanel();
@@ -85,4 +90,11 @@ public class FenetrePrincipale extends JFrame {
 		OngletOptions.add(chckbxVerrouillerLaSuppression, "North");
 		Onglets.addTab("Options", null, OngletOptions, null);
 	}
+
+	public TablePersonnes getModelePersonnes() {
+		return modelePersonnes;
+	}
+
+	
+	
 }

@@ -62,6 +62,14 @@ public class TablePersonnes extends AbstractTableModel {
     }
     
     public void ajouter() {
-    	billeterie
+    	Map<String,Object> map = new HashMap<String,Object>();
+		map.put("nom", "Marty");
+		map.put("prenom", "Burno");
+		
+		Personne newPerso = new Personne(map, billeterie, 0);
+		donnees = billeterie.getListePersonnes().getListe();
+		listId = getListId();
+		
+		fireTableRowsInserted(getRowCount() -1, getRowCount() -1);
     }
 }
