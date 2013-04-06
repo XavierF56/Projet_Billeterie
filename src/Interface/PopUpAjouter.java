@@ -48,6 +48,7 @@ public class PopUpAjouter extends JFrame {
 		String nom = "Attribut 1"; //recuperer le nom de l'attribut
 		
 		switch(type){
+
 		case Constantes.ENTIER:
 			break;
 		case Constantes.DECIMAL:
