@@ -59,7 +59,7 @@ public class FenetrePrincipale extends JFrame {
 		
 		/* Onglet Personnes */
 		JPanel OngletPersonne = new JPanel();
-		JTable tableau = new JTable(new TableModel(billeterie));
+		JTable tableau = new JTable(new TablePersonnes(billeterie));
 		tableau.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		OngletPersonne.setLayout(new BorderLayout(0, 0));
 		OngletPersonne.add(new BarreOutilsPersonnes(), "North");
