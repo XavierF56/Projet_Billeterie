@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
@@ -15,8 +16,10 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
 
-public class FenetrePrincipale extends JFrame {
+import Modele.Billeterie;
 
+public class FenetrePrincipale extends JFrame {
+	private Billeterie billeterie;
 	/**
 	 * Premiere version de la fenetre principale
 	 */
@@ -29,7 +32,7 @@ public class FenetrePrincipale extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FenetrePrincipale frame = new FenetrePrincipale();
+					FenetrePrincipale frame = new FenetrePrincipale(new Billeterie("database.sqlite"));
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +44,8 @@ public class FenetrePrincipale extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public FenetrePrincipale() {
+	public FenetrePrincipale(Billeterie billeterie) {
+		this.billeterie = billeterie;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 700);
 		contentPane = new JPanel();
@@ -54,8 +58,10 @@ public class FenetrePrincipale extends JFrame {
 		
 		/* Onglet Personnes */
 		JPanel OngletPersonne = new JPanel();
+		JTable tableau = new JTable(new TablePersonnes(billeterie));
 		OngletPersonne.setLayout(new BorderLayout(0, 0));
 		OngletPersonne.add(new BarreOutilsPersonnes(), "North");
+		OngletPersonne.add(tableau, "Center");
 		
 		Onglets.addTab("Personnes", null, OngletPersonne, null);
 		

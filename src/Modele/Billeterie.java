@@ -57,7 +57,7 @@ public class Billeterie {
 		this.bdd = bdd;
 	}
 
-	public static void main (String[] args){
+	public static void maintt (String[] args){
 		long start; 
 		start = System.nanoTime();
 		
