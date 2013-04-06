@@ -6,7 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
@@ -59,9 +61,10 @@ public class FenetrePrincipale extends JFrame {
 		/* Onglet Personnes */
 		JPanel OngletPersonne = new JPanel();
 		JTable tableau = new JTable(new TablePersonnes(billeterie));
+		tableau.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		OngletPersonne.setLayout(new BorderLayout(0, 0));
 		OngletPersonne.add(new BarreOutilsPersonnes(), "North");
-		OngletPersonne.add(tableau, "Center");
+		OngletPersonne.add(new JScrollPane(tableau), "Center");
 		
 		Onglets.addTab("Personnes", null, OngletPersonne, null);
 		
