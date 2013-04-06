@@ -62,6 +62,6 @@ public class TablePersonnes extends AbstractTableModel {
     }
     
     public void ajouter() {
-    	billeterie
+    	//billeterie
     }
 }
