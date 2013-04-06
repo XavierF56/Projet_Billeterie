@@ -9,6 +9,11 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
+import java.awt.GridLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JRadioButton;
+import javax.swing.JCheckBox;
 
 public class FenetrePrincipale extends JFrame {
 
@@ -63,9 +68,25 @@ public class FenetrePrincipale extends JFrame {
 		
 		/* Onglet Options */
 		JPanel OngletOptions = new JPanel();
-		OngletOptions.setLayout(new BorderLayout(0, 0));
 		
 		Onglets.addTab("Options", null, OngletOptions, null);
+		
+		JCheckBox chckbxVerrouillerLaSuppression = new JCheckBox("Verrouiller la suppression");
+		GroupLayout gl_OngletOptions = new GroupLayout(OngletOptions);
+		gl_OngletOptions.setHorizontalGroup(
+			gl_OngletOptions.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_OngletOptions.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(chckbxVerrouillerLaSuppression)
+					.addContainerGap(546, Short.MAX_VALUE))
+		);
+		gl_OngletOptions.setVerticalGroup(
+			gl_OngletOptions.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_OngletOptions.createSequentialGroup()
+					.addGap(43)
+					.addComponent(chckbxVerrouillerLaSuppression)
+					.addContainerGap(567, Short.MAX_VALUE))
+		);
+		OngletOptions.setLayout(gl_OngletOptions);
 	}
-
 }
