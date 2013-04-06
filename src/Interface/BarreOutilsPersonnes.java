@@ -11,6 +11,7 @@ public class BarreOutilsPersonnes extends BarreOutils {
 		super();
 		this.add(txtRechercher);
 		this.add(btnRechercher);
+		this.add(btnAjouter);
 		this.add(btnModifier);
 		this.add(btnSupprimer);
 	}

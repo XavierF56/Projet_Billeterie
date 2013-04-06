@@ -10,6 +10,7 @@ public class BarreOutils extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	protected JButton btnRechercher;
+	protected JButton btnAjouter;
 	protected JButton btnModifier;
 	protected JButton btnSupprimer;
 	protected JTextField txtRechercher;
@@ -18,6 +19,7 @@ public class BarreOutils extends JPanel {
 		super();
 		
 		btnRechercher = new JButton("Rechercher");
+		btnAjouter = new JButton("Ajouter");
 		btnModifier = new JButton("Modifier");
 		btnSupprimer = new JButton("Supprimer");
 		txtRechercher = new JTextField();		

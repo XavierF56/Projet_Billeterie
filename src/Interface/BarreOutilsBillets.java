@@ -15,6 +15,7 @@ public class BarreOutilsBillets extends BarreOutils {
 		btnAjouterQte = new JButton("Ajouter Qte");
 		this.add(txtRechercher);
 		this.add(btnRechercher);
+		this.add(btnAjouter);
 		this.add(btnAjouterQte);
 		this.add(btnModifier);
 		this.add(btnSupprimer);
