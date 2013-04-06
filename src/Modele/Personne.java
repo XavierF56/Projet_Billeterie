@@ -1,12 +1,16 @@
 package Modele;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
+import javax.swing.text.html.HTMLDocument.Iterator;
 
 public class Personne {
-	public Map<String,Object> map = new HashMap<String,Object>(); // le champ id n'est pas present dans cette map
+	public Map<String,Object> map = new HashMap<String,Object>();
 	private Billeterie bill;
 	private ListeAchats achats;
 	
@@ -157,6 +161,22 @@ public class Personne {
 	public void setAchatEnMem(boolean achatEnMem) {
 		this.achatEnMem = achatEnMem;
 	}
+	
+
+	public List<String> getNomColonne() {
+		List<String> res = new ArrayList<String>();
+		Set set = map.keySet();
+		java.util.Iterator it = set.iterator();
+		while (it.hasNext()) {
+			res.add((String) it.next());
+		}
+		return res;
+	}
+	
+	public Map<String, Object> getHashMap() {
+		return map;
+	}
+
 	
 	/********** Methodes de base ************/
 	public boolean equal(Personne pers) {

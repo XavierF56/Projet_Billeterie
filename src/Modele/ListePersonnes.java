@@ -84,4 +84,8 @@ public class ListePersonnes {
 	public String toString () {
 		return listePersonnes.toString();
 	}
+	
+	public Map<Integer, Personne> getListe() {
+		return listePersonnes;		
+	}
 }
