@@ -9,7 +9,10 @@ public class BarreOutilsPersonnes extends BarreOutils {
 
 	public BarreOutilsPersonnes() {
 		super();
-		// TODO Auto-generated constructor stub
+		this.add(txtRechercher);
+		this.add(btnRechercher);
+		this.add(btnModifier);
+		this.add(btnSupprimer);
 	}
 	
 }

@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
 
@@ -46,10 +47,25 @@ public class FenetrePrincipale extends JFrame {
 		JTabbedPane Onglets = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(Onglets);
 		
+		/* Onglet Personnes */
 		JPanel OngletPersonne = new JPanel();
-		Onglets.addTab("Personnes", null, OngletPersonne, null);
 		OngletPersonne.setLayout(new BorderLayout(0, 0));
 		OngletPersonne.add(new BarreOutilsPersonnes(), "North");
+		
+		Onglets.addTab("Personnes", null, OngletPersonne, null);
+		
+		/* Onglet Billets */
+		JPanel OngletBillets = new JPanel();
+		OngletBillets.setLayout(new BorderLayout(0, 0));
+		OngletBillets.add(new BarreOutilsBillets(), "North");
+		
+		Onglets.addTab("Billets", null, OngletBillets, null);
+		
+		/* Onglet Options */
+		JPanel OngletOptions = new JPanel();
+		OngletOptions.setLayout(new BorderLayout(0, 0));
+		
+		Onglets.addTab("Options", null, OngletOptions, null);
 	}
 
 }
