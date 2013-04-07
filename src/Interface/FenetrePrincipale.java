@@ -74,7 +74,7 @@ public class FenetrePrincipale extends JFrame {
 		sorter.setSortsOnUpdates(true);
 		
 		OngletPersonne.setLayout(new BorderLayout(0, 0));
-		OngletPersonne.add(new BarreOutilsPersonnes(this), "North");
+		OngletPersonne.add(new BarreOutilsPersonnes(billeterie), "North");
 		OngletPersonne.add(new JScrollPane(tableau), "Center");
 		
 		Onglets.addTab("Personnes", null, OngletPersonne, null);

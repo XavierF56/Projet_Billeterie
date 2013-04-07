@@ -81,11 +81,31 @@ public class ListePersonnes extends AbstractTableModel {
 	public void ajoutPersonne(int id, Personne pers) {
 		reinitialise();
 		listePersonnes.add(pers);
+		fireTableRowsInserted(getRowCount() -1, getRowCount() -1);
+		sauvegarde();
 	}
 	
+	/**
+	 * Supprimer une personne de la liste
+	 * @param personne
+	 */
 	public void supprimer(Personne personne) {
 		reinitialise();
+		int rowIndex = this.getId(personne);
 		listePersonnes.remove(personne);
+		fireTableRowsDeleted(rowIndex, rowIndex);
+		sauvegarde();
+	}
+	
+	public int getId(Personne personne) {
+		int res = -1;
+		for (int i = 0; i < listePersonnes.size(); i++) {
+			if (listePersonnes.get(i).equals(personne)) {
+				res = i;
+				i = listePersonnes.size();
+			}
+		}
+		return res;
 	}
 	
 	/**
