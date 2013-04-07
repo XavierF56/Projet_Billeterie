@@ -53,22 +53,26 @@ public class ListePersonnes extends AbstractTableModel {
 	 */
 	public void recherche(String chaine) {
 		//A develloper ! 
+		reinitialise();
 		List<Personne> resul= new ArrayList<Personne>();
 		
 		try {
 			String query = "SELECT id FROM personne WHERE nom LIKE '" + chaine +"%'"; //NOM BDD
 			List<Map<String, Object>> liste = billeterie.getBdd().query(query);
-			for (int i = 0; i < listePersonnes.size(); i++) {
-				int Id = listePersonnes.get(i).getId();
-				boolean stop = false;
-				for (int j = 0; j < liste.size() && !stop; j++) { //OPTIMIZE
-					if (Id == (Integer)liste.get(i).get("id")) {
-						resul.add(listePersonnes.get(i));
-						stop = true;
+			if(!liste.isEmpty()){
+				for (int i = 0; i < listePersonnes.size(); i++) {
+					int Id = listePersonnes.get(i).getId();
+					boolean stop = false;
+					for (int j = 0; j < liste.size() && !stop; j++) { //OPTIMIZE
+						if (Id == (Integer)liste.get(j).get("id")) {
+							resul.add(listePersonnes.get(i));
+							stop = true;
+						}
 					}
 				}
+				listePersonnes = resul;
 			}
-			listePersonnes = resul;
+			fireTableDataChanged();
 		} catch (SQLException e){
 			e.printStackTrace();
 		}
@@ -81,7 +85,8 @@ public class ListePersonnes extends AbstractTableModel {
 	public void ajoutPersonne(int id, Personne pers) {
 		reinitialise();
 		listePersonnes.add(pers);
-		fireTableRowsInserted(getRowCount() -1, getRowCount() -1);
+		fireTableDataChanged();
+		//fireTableRowsInserted(getRowCount() -1, getRowCount() -1);
 		sauvegarde();
 	}
 	
@@ -90,11 +95,19 @@ public class ListePersonnes extends AbstractTableModel {
 	 * @param personne
 	 */
 	public void supprimer(Personne personne) {
-		reinitialise();
+		//reinitialise();
 		int rowIndex = this.getId(personne);
 		listePersonnes.remove(personne);
-		fireTableRowsDeleted(rowIndex, rowIndex);
-		sauvegarde();
+		listePersonnesSauvegarde.remove(personne);
+		fireTableDataChanged();
+		//sauvegarde();
+	}
+	
+	/**
+	 * 
+	 */
+	public void modifier() {
+		fireTableDataChanged();
 	}
 	
 	public int getId(Personne personne) {

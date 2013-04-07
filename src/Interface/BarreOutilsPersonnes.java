@@ -36,7 +36,7 @@ public class BarreOutilsPersonnes extends JPanel {
 		
 		this.billeterie = billeterie;
 		this.add(txtRechercher);
-		this.add(btnRechercher);
+		this.add(new JButton(new RechercheAction()));
 		this.add(new JButton(new AjouterAction()));
 		this.add(btnModifier);
 		this.add(new JButton(new SupprimerAction()));
@@ -64,6 +64,16 @@ public class BarreOutilsPersonnes extends JPanel {
             int selection = billeterie.getFenetre().getTableau().getSelectedRow();
             int selectionCorrige = billeterie.getFenetre().getTableau().getRowSorter().convertRowIndexToModel(selection);
             billeterie.getListePersonnes().getPersonneIndex(selectionCorrige).supprimer();
+        }
+    }
+	
+	class RechercheAction extends AbstractAction {
+        private RechercheAction() {
+            super("Rechercher");
+        }
+ 
+        public void actionPerformed(ActionEvent e) {
+            billeterie.getListePersonnes().recherche(txtRechercher.getText());
         }
     }
 }
