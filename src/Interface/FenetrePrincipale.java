@@ -6,6 +6,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableRowSorter;
 import javax.swing.AbstractAction;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -19,6 +21,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import Modele.Billeterie;
+import Modele.ListePersonnes;
 
 public class FenetrePrincipale extends JFrame {
 	private Billeterie billeterie;
@@ -63,14 +66,17 @@ public class FenetrePrincipale extends JFrame {
 		JPanel OngletPersonne = new JPanel();
 		JTable tableau = new JTable(billeterie.getListePersonnes());
 		tableau.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
 		tableau.setAutoCreateRowSorter(true);
+		TableRowSorter<ListePersonnes> sorter = new TableRowSorter<ListePersonnes>((ListePersonnes) tableau.getModel());   
+		tableau.setRowSorter(sorter);
+		sorter.setSortsOnUpdates(true);
+		
 		OngletPersonne.setLayout(new BorderLayout(0, 0));
 		OngletPersonne.add(new BarreOutilsPersonnes(this), "North");
 		OngletPersonne.add(new JScrollPane(tableau), "Center");
 		
 		Onglets.addTab("Personnes", null, OngletPersonne, null);
-		
-		
 		
 		/* Onglet Billets */
 		JPanel OngletBillets = new JPanel();
