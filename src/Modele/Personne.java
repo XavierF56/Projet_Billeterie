@@ -73,7 +73,6 @@ public class Personne {
 	 *  Cette methode modifie un billet et l'enregistre dans la bdd
 	 *  @param map
 	 */
-	@SuppressWarnings("unused")
 	public void modifie(Map<String,Object> nouvelleMap) {
 		try {
 			// Remplace l'ancienne map par la nouvelle en ajoutant l'id si celui-ci n'est pas present dans la nouvelle
@@ -88,6 +87,10 @@ public class Personne {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void supprimer() {
+		bill.getListePersonnes().supprimer(this);
 	}
 	
 	/**

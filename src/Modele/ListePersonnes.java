@@ -36,9 +36,7 @@ public class ListePersonnes extends AbstractTableModel {
 	public void metEnMemoire() {
 		try {
 			List<Map<String, Object>> list = billeterie.getBdd().query("SELECT * from personne"); //NOM BDD
-			System.out.println(list.size());
 			for (int i = 0; i < list.size(); i++){
-				System.out.println(i + ""+list.get(i));
 				listePersonnes.add(new Personne(list.get(i), billeterie));
 			}
 			Personne.setProchainId((Integer)list.get(listePersonnes.size() - 1).get("id") + 1);
@@ -85,6 +83,11 @@ public class ListePersonnes extends AbstractTableModel {
 		listePersonnes.add(pers);
 	}
 	
+	public void supprimer(Personne personne) {
+		reinitialise();
+		listePersonnes.remove(personne);
+	}
+	
 	/**
 	 * Cette methode permet de sauvegarder la liste des personnes
 	 * Par exemple lorsque l'on fait une recherche, listePersonnes sera remplace 
@@ -105,6 +108,7 @@ public class ListePersonnes extends AbstractTableModel {
 		listePersonnes = listePersonnesSauvegarde;
 		sauvegarde();
 	}
+	
 	
 	/********** Methodes de base************/
 	public Personne getPersonne(int id) throws Exception {
@@ -143,4 +147,7 @@ public class ListePersonnes extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
     	return listePersonnes.get(rowIndex).getHashMap().get(getColumnName(columnIndex));    	
     }
+
+
+	
 }

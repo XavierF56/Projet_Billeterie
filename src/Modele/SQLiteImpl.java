@@ -222,29 +222,12 @@ public class SQLiteImpl implements SQLInterface{
 	
 
 	
-	public static void mainTest (String[] args) throws SQLException{
-		long start; 
-		start = System.nanoTime();
-		
-		Billeterie bill = new Billeterie("database.sqlite");
-		
-		HashMap<String, Object> personne = new HashMap<String, Object>();
-		personne.put("id", 4);
-		personne.put("name", "Le Gaulois");
-		personne.put("first_name", "Guy");
-
-		List<Map<String, Object>> list = bill.getBdd().query("SELECT * FROM people");
-		for(int i = 0; i < list.size(); i++){
-			System.out.println(list.get(i));
-		}
-		
-		bill.getBdd().ajoutBDD("people",personne);
-		bill.getBdd().enregistreBDD("people", list.get(0));
-		
-		long duree = System.nanoTime() - start;
-		System.out.println(duree);
-	}
 	
+	/**
+	 * Cette methode permet d'obtenir le nom et type des colonnes d'une table
+	 * @param table
+	 * @return
+	 */
 	public Map<String, Integer> getColonnes (String table) {
 		Map<String, Integer> resul = new HashMap<String, Integer>();
 		try {
@@ -271,5 +254,53 @@ public class SQLiteImpl implements SQLInterface{
 			e.printStackTrace();
 		}
 		return resul;
+	}
+	
+	/**
+	 * Cette methode permet de supprimer un objet defini par son id dans la table
+	 * @param table
+	 * @param id
+	 */
+	public void supprimer (String table, int id){
+		try {
+			Connection conn = connect();
+			// Creation statement
+			Statement stmt = conn.createStatement();
+				
+			// Execute query
+			String query = "Delete From " + table + " Where id='" + id + "'";
+			stmt.setQueryTimeout(iTimeout);
+			stmt.executeUpdate(query);
+				
+			stmt.close();
+		 	conn.close();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main (String[] args) throws SQLException{
+		long start; 
+		start = System.nanoTime();
+		
+		Billeterie bill = new Billeterie("database.sqlite");
+		
+		/*HashMap<String, Object> personne = new HashMap<String, Object>();
+		personne.put("id", 4);
+		personne.put("name", "Le Gaulois");
+		personne.put("first_name", "Guy");
+
+		List<Map<String, Object>> list = bill.getBdd().query("SELECT * FROM people");
+		for(int i = 0; i < list.size(); i++){
+			System.out.println(list.get(i));
+		}
+		
+		bill.getBdd().ajoutBDD("people",personne);
+		bill.getBdd().enregistreBDD("people", list.get(0));*/
+		
+		bill.getBdd().supprimer("personne", 162);
+		
+		long duree = System.nanoTime() - start;
+		System.out.println(duree);
 	}
 }

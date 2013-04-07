@@ -78,7 +78,7 @@ public class Billeterie {
 		return colonnesPersonnes;
 	}
 
-	public static void main (String[] args){
+	public static void maintt (String[] args){
 		long start; 
 		start = System.nanoTime();
 		

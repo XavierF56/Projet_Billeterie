@@ -38,5 +38,7 @@ public interface SQLInterface {
 	public void enregistreBDD (String table, Map<String, Object> map) throws SQLException;
 	
 	public void ajoutBDD (String table, Map<String, Object> map) throws SQLException;
+	
+	public void supprimer (String table, int id);
 
 }
