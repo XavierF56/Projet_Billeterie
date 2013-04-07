@@ -57,7 +57,7 @@ public class ListePersonnes extends AbstractTableModel {
 		List<Personne> resul= new ArrayList<Personne>();
 		
 		try {
-			String query = "SELECT id FROM personne WHERE nom LIKE '" + chaine +"%' OR prenom Like '" + chaine + "%'"; //NOM BDD
+			String query = "SELECT id FROM personne WHERE nom LIKE '" + chaine + "%' OR prenom Like '" + chaine + "%'"; //NOM BDD
 			List<Map<String, Object>> liste = billeterie.getBdd().query(query);
 			if(!liste.isEmpty()){
 				for (int i = 0; i < listePersonnes.size(); i++) {

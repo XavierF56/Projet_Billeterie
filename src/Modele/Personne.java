@@ -87,6 +87,7 @@ public class Personne {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		bill.getListePersonnes().modifier();
 	}
 	
 	public void supprimer() {

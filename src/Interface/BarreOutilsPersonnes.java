@@ -43,11 +43,7 @@ public class BarreOutilsPersonnes extends JPanel {
         }
  
         public void actionPerformed(ActionEvent e) {
-        	Map<String,Object> map = new HashMap<String,Object>();
-    		map.put("nom", "Marty");
-    		map.put("prenom", "Burno");
-    		
-    		Personne newPerso = new Personne(map, billeterie, 0);
+        	new FenetreNouvellePersonne(billeterie);
         }
     }
 	
@@ -57,9 +53,13 @@ public class BarreOutilsPersonnes extends JPanel {
         }
  
         public void actionPerformed(ActionEvent e) {
-            int selection = billeterie.getFenetre().getTableau().getSelectedRow();
+            try {
+        	int selection = billeterie.getFenetre().getTableau().getSelectedRow();
             int selectionCorrige = billeterie.getFenetre().getTableau().getRowSorter().convertRowIndexToModel(selection);
             billeterie.getListePersonnes().getPersonneIndex(selectionCorrige).supprimer();
+            } catch (Exception e1) {
+            	
+            }
         }
     }
 	
