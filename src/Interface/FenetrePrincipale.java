@@ -58,6 +58,7 @@ public class FenetrePrincipale extends JFrame {
 		tableau.setAutoCreateRowSorter(true);// Gestion des tableaux triables
 		TableRowSorter<ListePersonnes> sorter = new TableRowSorter<ListePersonnes>((ListePersonnes) tableau.getModel());   
 		tableau.setRowSorter(sorter);
+		//sorter.set
 		sorter.setSortsOnUpdates(true);
 		
 		OngletPersonne.setLayout(new BorderLayout(0, 0));

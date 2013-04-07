@@ -1,12 +1,15 @@
 package Interface;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import Modele.Billeterie;
@@ -35,7 +38,7 @@ public class BarreOutilsPersonnes extends JPanel {
 		txtRechercher.setText("Rechercher...");
 		
 		this.billeterie = billeterie;
-		this.add(txtRechercher);
+		this.add(new Ton_textArea());
 		this.add(new JButton(new RechercheAction()));
 		this.add(new JButton(new AjouterAction()));
 		this.add(btnModifier);
@@ -76,4 +79,21 @@ public class BarreOutilsPersonnes extends JPanel {
             billeterie.getListePersonnes().recherche(txtRechercher.getText());
         }
     }
+	
+	class Ton_textArea extends JTextField  implements KeyListener {
+
+	    public Ton_textArea() {
+	    	super("Recherche...");
+	        addKeyListener(this);
+	    }
+	    public void keyTyped(KeyEvent e) {
+	    }
+	    public void keyPressed(KeyEvent e) {
+	        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+	        	billeterie.getListePersonnes().recherche(this.getText());
+	        }
+	    }
+	    public void keyReleased(KeyEvent e) {
+	    }
+	}
 }
