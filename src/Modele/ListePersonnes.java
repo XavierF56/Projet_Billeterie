@@ -146,6 +146,10 @@ public class ListePersonnes extends AbstractTableModel {
 		return personne;
 	}
 	
+	public Personne getPersonneIndex(int i){
+		return listePersonnes.get(i);
+	}
+	
 	public String toString () {
 		return listePersonnes.toString();
 	}

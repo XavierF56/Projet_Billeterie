@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import Interface.FenetrePrincipale;
+
 
 /*
  * This is the main class where you can launch the application
@@ -21,6 +23,7 @@ public class Billeterie {
 	private Map<String, Integer> colonnesTypeBillets;
 	private List<String> colonnesPersonnes;
 	private List<String> colonnesBillets;
+	private FenetrePrincipale fenetre;
 		
 	/* TODO ajouter une map<String, type> pour avoir les attributs de chaque objet (sans les id)
 	 * La methode doit pouvoir marcher meme si la bdd est vide
@@ -76,6 +79,12 @@ public class Billeterie {
 	}
 	public List<String> getColonnesPersonnes() {
 		return colonnesPersonnes;
+	}
+	public FenetrePrincipale getFenetre() {
+		return fenetre;
+	}
+	public void setFenetre(FenetrePrincipale fenetre) {
+		this.fenetre = fenetre;
 	}
 
 	public static void maintt (String[] args){

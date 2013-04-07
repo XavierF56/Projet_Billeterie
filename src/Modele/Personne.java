@@ -90,6 +90,7 @@ public class Personne {
 	}
 	
 	public void supprimer() {
+		bill.getBdd().supprimer("Personne", this.getId());
 		bill.getListePersonnes().supprimer(this);
 	}
 	

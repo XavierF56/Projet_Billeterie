@@ -39,7 +39,7 @@ public class BarreOutilsPersonnes extends JPanel {
 		this.add(btnRechercher);
 		this.add(new JButton(new AjouterAction()));
 		this.add(btnModifier);
-		this.add(btnSupprimer);
+		this.add(new JButton(new SupprimerAction()));
 	}
 	class AjouterAction extends AbstractAction {
         private AjouterAction() {
@@ -52,6 +52,18 @@ public class BarreOutilsPersonnes extends JPanel {
     		map.put("prenom", "Burno");
     		
     		Personne newPerso = new Personne(map, billeterie, 0);
+        }
+    }
+	
+	class SupprimerAction extends AbstractAction {
+        private SupprimerAction() {
+            super("Supprimer");
+        }
+ 
+        public void actionPerformed(ActionEvent e) {
+            int selection = billeterie.getFenetre().getTableau().getSelectedRow();
+            int selectionCorrige = billeterie.getFenetre().getTableau().getRowSorter().convertRowIndexToModel(selection);
+            billeterie.getListePersonnes().getPersonneIndex(selectionCorrige).supprimer();
         }
     }
 }

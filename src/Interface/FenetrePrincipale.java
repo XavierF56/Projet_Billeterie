@@ -31,28 +31,16 @@ public class FenetrePrincipale extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private boolean opt;
-	private TablePersonnes modelePersonnes;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FenetrePrincipale frame = new FenetrePrincipale(new Billeterie("database.sqlite"));
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private JTable tableau;
+	
+	
 
 	/**
 	 * Create the frame.
 	 */
 	public FenetrePrincipale(Billeterie billeterie) {
 		this.billeterie = billeterie;
+		billeterie.setFenetre(this);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 700);
 		contentPane = new JPanel();
@@ -64,11 +52,10 @@ public class FenetrePrincipale extends JFrame {
 		
 		/* Onglet Personnes */
 		JPanel OngletPersonne = new JPanel();
-		JTable tableau = new JTable(billeterie.getListePersonnes());
+		tableau = new JTable(billeterie.getListePersonnes());
 		tableau.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
-		// Gestion des tableaux triables
-		tableau.setAutoCreateRowSorter(true);
+		tableau.setAutoCreateRowSorter(true);// Gestion des tableaux triables
 		TableRowSorter<ListePersonnes> sorter = new TableRowSorter<ListePersonnes>((ListePersonnes) tableau.getModel());   
 		tableau.setRowSorter(sorter);
 		sorter.setSortsOnUpdates(true);
@@ -98,10 +85,23 @@ public class FenetrePrincipale extends JFrame {
 		Onglets.addTab("Options", null, OngletOptions, null);
 	}
 
-	public TablePersonnes getModelePersonnes() {
-		return modelePersonnes;
+	public JTable getTableau() {
+		return tableau;
 	}
 
-	
-	
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					FenetrePrincipale frame = new FenetrePrincipale(new Billeterie("database.sqlite"));
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 }
