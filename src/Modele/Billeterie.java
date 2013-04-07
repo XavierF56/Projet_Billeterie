@@ -2,8 +2,10 @@ package Modele;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 
 /*
@@ -15,8 +17,10 @@ public class Billeterie {
 	private ListePersonnes listePersonnes;
 	private ListeBillets listeBillets;
 	private SQLInterface bdd;
-	private Map<String, Integer> colonnesPersonnes;
-	private Map<String, Integer> colonnesBillets;
+	private Map<String, Integer> colonnesTypePersonnes;
+	private Map<String, Integer> colonnesTypeBillets;
+	private List<String> colonnesPersonnes;
+	private List<String> colonnesBillets;
 		
 	/* TODO ajouter une map<String, type> pour avoir les attributs de chaque objet (sans les id)
 	 * La methode doit pouvoir marcher meme si la bdd est vide
@@ -33,15 +37,25 @@ public class Billeterie {
 		}
 		listePersonnes = new ListePersonnes(this);
 		listeBillets = new ListeBillets(this);
-		colonnesPersonnes = ((SQLiteImpl) bdd).getColonnes("Personne");
-		colonnesBillets = ((SQLiteImpl) bdd).getColonnes("Billet");
+		colonnesTypePersonnes = ((SQLiteImpl) bdd).getColonnes("Personne");
+		colonnesTypeBillets = ((SQLiteImpl) bdd).getColonnes("Billet");
+		colonnesPersonnes = mapVersList(colonnesTypePersonnes);
+		colonnesBillets = mapVersList(colonnesTypeBillets);
 	}
 	
 	/********** Methodes ************/
+	public List<String> mapVersList (Map<String, Integer> map) {
+		List<String> resul = new ArrayList<String>(); 
+		Set set = map.keySet();
+		Iterator it = set.iterator();
+		while (it.hasNext()) {
+			resul.add((String) it.next());
+		}
+		return resul;
+	}
 	
 	
-	
-	/********** Methodes de base ************/
+	/********** Getters ************/
 	public ListePersonnes getListePersonnes() {
 		return listePersonnes;
 	}
@@ -51,10 +65,16 @@ public class Billeterie {
 	public SQLInterface getBdd() {
 		return bdd;
 	}
-	public Map<String, Integer> getColonnesBillets() {
+	public Map<String, Integer> getColonnesTypeBillets() {
+		return colonnesTypeBillets;
+	}
+	public Map<String, Integer> getColonnesTypePersonnes() {
+		return colonnesTypePersonnes;
+	}
+	public List<String> getColonnesBillets() {
 		return colonnesBillets;
 	}
-	public Map<String, Integer> getColonnesPersonnes() {
+	public List<String> getColonnesPersonnes() {
 		return colonnesPersonnes;
 	}
 

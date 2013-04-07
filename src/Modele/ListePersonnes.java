@@ -4,12 +4,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
-public class ListePersonnes {
+import javax.swing.table.AbstractTableModel;
+
+public class ListePersonnes extends AbstractTableModel {
 	private Billeterie billeterie;	
 	private Map<Integer, Personne> listePersonnes = new HashMap<Integer, Personne>();
+	private List<Integer> listId;
 	
 	
 	/********** Constructeur ************/
@@ -20,6 +25,7 @@ public class ListePersonnes {
 	public ListePersonnes(Billeterie billeterie) {
 		this.billeterie = billeterie;
 		this.metEnMemoire();
+		listId = getListId();
 	}
 	
 	
@@ -70,6 +76,7 @@ public class ListePersonnes {
 	 */
 	public void ajoutPersonne(int id, Personne pers) {
 		listePersonnes.put(id, pers);
+		listId = getListId();
 	}
 	
 	
@@ -85,7 +92,30 @@ public class ListePersonnes {
 		return listePersonnes.toString();
 	}
 	
-	public Map<Integer, Personne> getListe() {
-		return listePersonnes;		
+	/********** Methodes pour la gestion de l'affichage ************/
+	public List<Integer> getListId() {
+		List<Integer> res = new ArrayList<Integer>();
+		Set set = listePersonnes.keySet();
+		Iterator it = set.iterator();
+		while (it.hasNext()) {
+			res.add((Integer) it.next());
+		}
+		return res;
 	}
+	
+	public int getRowCount() {
+    	return listePersonnes.size();
+    }
+ 
+    public int getColumnCount() {
+    	return billeterie.getColonnesPersonnes().size();
+    }
+ 
+    public String getColumnName(int columnIndex) {
+    	return billeterie.getColonnesPersonnes().get(columnIndex);
+    }
+ 
+    public Object getValueAt(int rowIndex, int columnIndex) {
+    	return listePersonnes.get(listId.get(rowIndex)).getHashMap().get(getColumnName(columnIndex));    	
+    }
 }
