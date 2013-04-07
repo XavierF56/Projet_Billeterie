@@ -1,8 +1,16 @@
 package Interface;
 
 import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-public class BarreOutilsBillets extends BarreOutils {
+public class BarreOutilsBillets extends JPanel {
+	protected JButton btnRechercher;
+	protected JButton btnAjouter;
+	protected JButton btnModifier;
+	protected JButton btnSupprimer;
+	protected JTextField txtRechercher;
+	
 	/**
 	 * Premiere version de la barre d'outils d'onglet Billets
 	 */
@@ -12,6 +20,14 @@ public class BarreOutilsBillets extends BarreOutils {
 	
 	public BarreOutilsBillets() {
 		super();
+		
+		btnRechercher = new JButton("Rechercher");
+		btnAjouter = new JButton("Ajouter");
+		btnModifier = new JButton("Modifier");
+		btnSupprimer = new JButton("Supprimer");
+		txtRechercher = new JTextField();		
+		
+		txtRechercher.setText("Rechercher...");
 		btnAjouterQte = new JButton("Ajouter Qte");
 		this.add(txtRechercher);
 		this.add(btnRechercher);

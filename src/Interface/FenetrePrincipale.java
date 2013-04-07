@@ -67,6 +67,7 @@ public class FenetrePrincipale extends JFrame {
 		JTable tableau = new JTable(billeterie.getListePersonnes());
 		tableau.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
+		// Gestion des tableaux triables
 		tableau.setAutoCreateRowSorter(true);
 		TableRowSorter<ListePersonnes> sorter = new TableRowSorter<ListePersonnes>((ListePersonnes) tableau.getModel());   
 		tableau.setRowSorter(sorter);
