@@ -13,8 +13,8 @@ import javax.swing.table.AbstractTableModel;
 
 public class ListePersonnes extends AbstractTableModel {
 	private Billeterie billeterie;	
-	private Map<Integer, Personne> listePersonnes = new HashMap<Integer, Personne>();
-	private List<Integer> listId;
+	private List<Personne> listePersonnes;
+	private List<Personne> listePersonnesSauvegarde;
 	
 	
 	/********** Constructeur ************/
@@ -24,8 +24,8 @@ public class ListePersonnes extends AbstractTableModel {
 	 */
 	public ListePersonnes(Billeterie billeterie) {
 		this.billeterie = billeterie;
+		listePersonnes = new ArrayList<Personne>();
 		this.metEnMemoire();
-		listId = getListId();
 	}
 	
 	
@@ -36,10 +36,13 @@ public class ListePersonnes extends AbstractTableModel {
 	public void metEnMemoire() {
 		try {
 			List<Map<String, Object>> list = billeterie.getBdd().query("SELECT * from personne"); //NOM BDD
+			System.out.println(list.size());
 			for (int i = 0; i < list.size(); i++){
-				listePersonnes.put((Integer)list.get(i).get("id"),new Personne(list.get(i), billeterie));
+				System.out.println(i + ""+list.get(i));
+				listePersonnes.add(new Personne(list.get(i), billeterie));
 			}
 			Personne.setProchainId((Integer)list.get(listePersonnes.size() - 1).get("id") + 1);
+			this.sauvegarde();
 		} catch (SQLException e){
 			e.printStackTrace();
 		}
@@ -50,24 +53,27 @@ public class ListePersonnes extends AbstractTableModel {
 	 * @param chaine la chaine a trouver dans le billet
 	 * @return la liste des billets
 	 */
-	public Map<Integer, Personne> recherche(String chaine) {
+	public void recherche(String chaine) {
 		//A develloper ! 
-		Map<Integer, Personne> resul= new HashMap<Integer, Personne>();
+		List<Personne> resul= new ArrayList<Personne>();
 		
 		try {
 			String query = "SELECT id FROM personne WHERE nom LIKE '" + chaine +"%'"; //NOM BDD
-			List<Map<String, Object>> list = billeterie.getBdd().query(query);
-			for (int i = 0; i < list.size(); i++) {
-				int valI = (Integer)list.get(i).get("id");
-				if (listePersonnes.containsKey(valI)) {
-					resul.put(valI, listePersonnes.get(valI));
+			List<Map<String, Object>> liste = billeterie.getBdd().query(query);
+			for (int i = 0; i < listePersonnes.size(); i++) {
+				int Id = listePersonnes.get(i).getId();
+				boolean stop = false;
+				for (int j = 0; j < liste.size() && !stop; j++) { //OPTIMIZE
+					if (Id == (Integer)liste.get(i).get("id")) {
+						resul.add(listePersonnes.get(i));
+						stop = true;
+					}
 				}
 			}
+			listePersonnes = resul;
 		} catch (SQLException e){
 			e.printStackTrace();
 		}
-		
-		return resul;
 	}
 	
 	/**
@@ -75,34 +81,53 @@ public class ListePersonnes extends AbstractTableModel {
 	 * @param billet
 	 */
 	public void ajoutPersonne(int id, Personne pers) {
-		listePersonnes.put(id, pers);
-		listId = getListId();
+		reinitialise();
+		listePersonnes.add(pers);
 	}
 	
+	/**
+	 * Cette methode permet de sauvegarder la liste des personnes
+	 * Par exemple lorsque l'on fait une recherche, listePersonnes sera remplace 
+	 * par une liste de personnes trouves.
+	 */
+	public void sauvegarde() {
+		List<Personne> liste = new ArrayList<Personne>();
+		for (int i = 0; i < listePersonnes.size(); i++) {
+			liste.add(listePersonnes.get(i));
+		}
+		listePersonnesSauvegarde = liste;
+	}
+	
+	/**
+	 * Permet de remplacer la liste de personnes par la liste de personnes d'origine
+	 */
+	public void reinitialise() {
+		listePersonnes = listePersonnesSauvegarde;
+		sauvegarde();
+	}
 	
 	/********** Methodes de base************/
 	public Personne getPersonne(int id) throws Exception {
-		if (listePersonnes.containsKey(id)){
-			return listePersonnes.get(id);
-		} else {
+		Personne personne = null;
+		boolean stop = false;
+		for (int i = 0; i < listePersonnes.size() && !stop; i++) {
+			if (id == listePersonnes.get(i).getId()) {
+				personne = listePersonnes.get(i);
+				stop = true;
+			}
+		}
+		if (personne == null){
 			throw new Exception("Personne non existante");
 		}
+		return personne;
 	}
+	
 	public String toString () {
 		return listePersonnes.toString();
 	}
 	
-	/********** Methodes pour la gestion de l'affichage ************/
-	public List<Integer> getListId() {
-		List<Integer> res = new ArrayList<Integer>();
-		Set set = listePersonnes.keySet();
-		Iterator it = set.iterator();
-		while (it.hasNext()) {
-			res.add((Integer) it.next());
-		}
-		return res;
-	}
 	
+	/********** Methodes pour la gestion de l'affichage ************/
 	public int getRowCount() {
     	return listePersonnes.size();
     }
@@ -116,6 +141,6 @@ public class ListePersonnes extends AbstractTableModel {
     }
  
     public Object getValueAt(int rowIndex, int columnIndex) {
-    	return listePersonnes.get(listId.get(rowIndex)).getHashMap().get(getColumnName(columnIndex));    	
+    	return listePersonnes.get(rowIndex).getHashMap().get(getColumnName(columnIndex));    	
     }
 }
