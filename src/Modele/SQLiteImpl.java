@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import General.Constantes;
+
 public class SQLiteImpl implements SQLInterface{
 	// register the driver 
 	String sDriverName = "org.sqlite.JDBC";
@@ -241,5 +243,33 @@ public class SQLiteImpl implements SQLInterface{
 		
 		long duree = System.nanoTime() - start;
 		System.out.println(duree);
+	}
+	
+	public Map<String, Integer> getColonnes (String table) {
+		Map<String, Integer> resul = new HashMap<String, Integer>();
+		try {
+			// Creation statement
+			Connection conn = connect();
+			ResultSet res = null; 
+			Statement stmt = conn.createStatement();
+			
+			// Execute query
+			stmt.setQueryTimeout(iTimeout);
+			res = stmt.executeQuery("Select * from " + table);
+			ResultSetMetaData metadata = res.getMetaData();
+			for(int i = 0; i < metadata.getColumnCount(); i++){
+				String nomColonne = metadata.getColumnName(i+1);
+			    if(!nomColonne.equals("id")) {
+			    	resul.put(nomColonne, Constantes.stringToInt(metadata.getColumnTypeName(i+1)));
+			    }
+			}
+			// Fermeture des statements ...
+			res.close(); 
+		    stmt.close();
+		    conn.close();
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		return resul;
 	}
 }
