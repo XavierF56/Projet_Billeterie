@@ -17,11 +17,8 @@ import Modele.Personne;
 
 public class BarreOutilsPersonnes extends JPanel {
 	Billeterie billeterie;
-	protected JButton btnRechercher;
-	protected JButton btnAjouter;
 	protected JButton btnModifier;
-	protected JButton btnSupprimer;
-	protected JTextField txtRechercher;
+	private TextRecherche textRecherche;
 	/**
 	 * Premiere version de la barre d'outils d'onglet Personnes
 	 */
@@ -29,21 +26,17 @@ public class BarreOutilsPersonnes extends JPanel {
 
 	public BarreOutilsPersonnes(Billeterie billeterie) {
 		super();
-		
-		btnRechercher = new JButton("Rechercher");
-		btnAjouter = new JButton("Ajouter");
+		textRecherche = new TextRecherche();
 		btnModifier = new JButton("Modifier");
-		btnSupprimer = new JButton("Supprimer");
-		txtRechercher = new JTextField();	
-		txtRechercher.setText("Rechercher...");
 		
 		this.billeterie = billeterie;
-		this.add(new Ton_textArea());
+		this.add(textRecherche);
 		this.add(new JButton(new RechercheAction()));
 		this.add(new JButton(new AjouterAction()));
 		this.add(btnModifier);
 		this.add(new JButton(new SupprimerAction()));
 	}
+	
 	class AjouterAction extends AbstractAction {
         private AjouterAction() {
             super("Ajouter");
@@ -76,14 +69,14 @@ public class BarreOutilsPersonnes extends JPanel {
         }
  
         public void actionPerformed(ActionEvent e) {
-            billeterie.getListePersonnes().recherche(txtRechercher.getText());
+            billeterie.getListePersonnes().recherche(textRecherche.getText());
         }
     }
 	
-	class Ton_textArea extends JTextField  implements KeyListener {
-
-	    public Ton_textArea() {
-	    	super("Recherche...");
+	class TextRecherche extends JTextField  implements KeyListener {
+	    public TextRecherche() {
+	    	super();
+	    	this.setColumns(20);
 	        addKeyListener(this);
 	    }
 	    public void keyTyped(KeyEvent e) {
