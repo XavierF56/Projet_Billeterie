@@ -104,7 +104,7 @@ public class ListePersonnes extends AbstractTableModel {
 	}
 	
 	/**
-	 * 
+	 * Lors de la modification d'une personne, il faut mettre a jour le modele de donnees
 	 */
 	public void modifier() {
 		fireTableDataChanged();
