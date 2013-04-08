@@ -28,7 +28,6 @@ public class FenetreNouvellePersonne extends JFrame {
 		champNom.setColumns(20);
 		champs.add(champPrenom);
 		champs.add(champNom);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		this.add(champs, "Center");
 		this.add(new JButton(new ValiderAction(this)), "South");
