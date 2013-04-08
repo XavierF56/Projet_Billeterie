@@ -1,5 +1,7 @@
 package Interface;
 
+import general.Constantes;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -8,8 +10,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import General.Constantes;
-import Modele.Billeterie;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
@@ -20,6 +20,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import modele.Billeterie;
 
 public class Champs extends JPanel{
 	private static final long serialVersionUID = 1L;
