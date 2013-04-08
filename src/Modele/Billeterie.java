@@ -1,7 +1,6 @@
 package Modele;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -49,8 +48,8 @@ public class Billeterie {
 	/********** Methodes ************/
 	public List<String> mapVersList (Map<String, Integer> map) {
 		List<String> resul = new ArrayList<String>(); 
-		Set set = map.keySet();
-		Iterator it = set.iterator();
+		Set<String> set = map.keySet();
+		Iterator<String> it = set.iterator();
 		while (it.hasNext()) {
 			resul.add((String) it.next());
 		}

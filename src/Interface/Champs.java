@@ -1,6 +1,5 @@
 package Interface;
 
-import java.awt.BorderLayout;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -16,14 +15,15 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Champs extends JPanel{
+	private static final long serialVersionUID = 1L;
 	Map<String, JPanel> listeChamps = new HashMap<String, JPanel>();
 	Map<String, Integer> listeAttributs;
 	
 	public Champs(Map<String, Integer> listeAttributs) {
 		this.listeAttributs = listeAttributs;
-		Set set = listeAttributs.keySet();
-		Iterator it = set.iterator();
-		while (((Iterator) it).hasNext()) {
+		Set<String> set = listeAttributs.keySet();
+		Iterator<String> it = set.iterator();
+		while (it.hasNext()) {
 			String nom = (String) it.next();
 			System.out.println(nom + "//" + listeAttributs.get(nom));
 			Champ champ = new Champ(nom, listeAttributs.get(nom));
@@ -36,16 +36,17 @@ public class Champs extends JPanel{
 	
 	public Map<String, Object> getDonnees() {
 		Map<String, Object> resultat = new HashMap<String, Object>();
-		Set set = listeChamps.keySet();
-		Iterator it = set.iterator();
-		while (((Iterator) it).hasNext()) {
-			String nom = (String) it.next();
+		Set<String> set = listeChamps.keySet();
+		Iterator<String> it = set.iterator();
+		while (it.hasNext()) {
+			String nom = it.next();
 			resultat.put(nom, listeChamps.get(nom));
 		}
 		return resultat;
 	}
 	
 	class Champ extends JPanel{
+		private static final long serialVersionUID = 1L;
 		JComponent champ;
 		
 		public Champ(String nom, int type) {

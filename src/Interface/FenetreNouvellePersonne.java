@@ -1,7 +1,5 @@
 package Interface;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,12 +9,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 
 import Modele.Billeterie;
 import Modele.Personne;
 
 public class FenetreNouvellePersonne extends JFrame {
+	private static final long serialVersionUID = 1L;
 	Billeterie billeterie;
 	JTextField champPrenom;
 	JTextField champNom;
@@ -38,6 +36,7 @@ public class FenetreNouvellePersonne extends JFrame {
 	}
 	
 	class ValiderAction extends AbstractAction {
+		private static final long serialVersionUID = 1L;
 		FenetreNouvellePersonne fenetre;
         private ValiderAction(FenetreNouvellePersonne fenetre) {
             super("Valider");
@@ -48,7 +47,8 @@ public class FenetreNouvellePersonne extends JFrame {
         	Map<String,Object> map = new HashMap<String,Object>();
     		map.put("nom", champPrenom.getText());
     		map.put("prenom", champNom.getText());
-    		Personne newPerso = new Personne(map, billeterie, 0);
+    		@SuppressWarnings("unused")
+			Personne newPerso = new Personne(map, billeterie, 0);
         	fenetre.setVisible(false);
         }
     }
@@ -56,5 +56,4 @@ public class FenetreNouvellePersonne extends JFrame {
 	public static void main(String[] args) {
 		new FenetreNouvellePersonne(new Billeterie("database.sqlite"));
 	}
-	
 }

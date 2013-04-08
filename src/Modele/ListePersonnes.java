@@ -1,17 +1,14 @@
 package Modele;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.swing.table.AbstractTableModel;
 
 public class ListePersonnes extends AbstractTableModel {
+	private static final long serialVersionUID = 1L;
 	private Billeterie billeterie;	
 	private List<Personne> listePersonnes;
 	private List<Personne> listePersonnesSauvegarde;
@@ -96,7 +93,6 @@ public class ListePersonnes extends AbstractTableModel {
 	 */
 	public void supprimer(Personne personne) {
 		//reinitialise();
-		int rowIndex = this.getId(personne);
 		listePersonnes.remove(personne);
 		listePersonnesSauvegarde.remove(personne);
 		fireTableDataChanged();

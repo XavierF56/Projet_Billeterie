@@ -3,17 +3,13 @@ package Interface;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import Modele.Billeterie;
-import Modele.Personne;
 
 public class BarreOutilsPersonnes extends JPanel {
 	Billeterie billeterie;
@@ -38,7 +34,9 @@ public class BarreOutilsPersonnes extends JPanel {
 	}
 	
 	class AjouterAction extends AbstractAction {
-        private AjouterAction() {
+		private static final long serialVersionUID = 1L;
+
+		private AjouterAction() {
             super("Ajouter");
         }
  
@@ -48,7 +46,9 @@ public class BarreOutilsPersonnes extends JPanel {
     }
 	
 	class SupprimerAction extends AbstractAction {
-        private SupprimerAction() {
+		private static final long serialVersionUID = 1L;
+
+		private SupprimerAction() {
             super("Supprimer");
         }
  
@@ -64,7 +64,9 @@ public class BarreOutilsPersonnes extends JPanel {
     }
 	
 	class RechercheAction extends AbstractAction {
-        private RechercheAction() {
+		private static final long serialVersionUID = 1L;
+
+		private RechercheAction() {
             super("Rechercher");
         }
  
@@ -74,7 +76,8 @@ public class BarreOutilsPersonnes extends JPanel {
     }
 	
 	class TextRecherche extends JTextField  implements KeyListener {
-	    public TextRecherche() {
+		private static final long serialVersionUID = 1L;
+		public TextRecherche() {
 	    	super();
 	    	this.setColumns(20);
 	        addKeyListener(this);

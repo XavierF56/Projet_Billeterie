@@ -158,8 +158,8 @@ public class SQLiteImpl implements SQLInterface{
 		if (map.containsKey("id")) {
 			String query = "UPDATE " + table + " SET ";
 			boolean first = true;
-			Set set = map.keySet();
-			Iterator it = set.iterator();
+			Set<String> set = map.keySet();
+			Iterator<String> it = set.iterator();
 			while (it.hasNext()) {
 				if (first) {
 					first = false;
@@ -193,8 +193,8 @@ public class SQLiteImpl implements SQLInterface{
 			String query = "INSERT INTO " + table + " (";
 			String fin = ") VALUES (";
 			boolean first = true;
-			Set set = map.keySet();
-			Iterator it = set.iterator();
+			Set<String> set = map.keySet();
+			Iterator<String> it = set.iterator();
 			while (it.hasNext()) {
 				if (first) {
 					first = false;

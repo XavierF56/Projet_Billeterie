@@ -3,11 +3,11 @@ package Modele;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.swing.text.html.HTMLDocument.Iterator;
 
 public class Personne {
 	public Map<String,Object> map = new HashMap<String,Object>();
@@ -170,8 +170,8 @@ public class Personne {
 
 	public List<String> getNomColonne() {
 		List<String> res = new ArrayList<String>();
-		Set set = map.keySet();
-		java.util.Iterator it = set.iterator();
+		Set<String> set = map.keySet();
+		Iterator<String> it = set.iterator();
 		while (it.hasNext()) {
 			res.add((String) it.next());
 		}

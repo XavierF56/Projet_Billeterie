@@ -6,13 +6,9 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableRowSorter;
-import javax.swing.AbstractAction;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JCheckBox;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -24,6 +20,7 @@ import Modele.Billeterie;
 import Modele.ListePersonnes;
 
 public class FenetrePrincipale extends JFrame {
+	@SuppressWarnings("unused")
 	private Billeterie billeterie;
 	/**
 	 * Premiere version de la fenetre principale
