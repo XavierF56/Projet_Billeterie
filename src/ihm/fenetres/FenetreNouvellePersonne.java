@@ -56,8 +56,7 @@ public class FenetreNouvellePersonne extends Fenetre {
 				Personne newPerso = new Personne(map, billeterie, 0);
 	        	fenetre.setVisible(false);
 			} catch (Exception e1) {
-				e1.printStackTrace();
-				//TODO Doit afficher une popup d'erreur
+				new PopUpErreur("Erreur lors de l'ajout", "Tous les champs n'ont pas ete renseignes");
 			}
         }
     }

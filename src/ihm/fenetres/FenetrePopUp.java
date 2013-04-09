@@ -37,5 +37,4 @@ public class FenetrePopUp extends Fenetre {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 	}
-
 }
