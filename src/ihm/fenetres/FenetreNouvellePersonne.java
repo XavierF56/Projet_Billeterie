@@ -1,7 +1,5 @@
 package ihm.fenetres;
 
-import ihm.barresOutils.Champs;
-
 import java.awt.event.ActionEvent;
 import java.util.HashMap;
 import java.util.Map;

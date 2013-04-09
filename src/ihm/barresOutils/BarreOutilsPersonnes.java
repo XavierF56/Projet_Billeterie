@@ -1,6 +1,5 @@
 package ihm.barresOutils;
 
-import ihm.fenetres.FenetreModifiePersonne;
 import ihm.fenetres.FenetreNouvellePersonne;
 
 import java.awt.event.ActionEvent;
@@ -77,7 +76,7 @@ public class BarreOutilsPersonnes extends JPanel {
             try {
             	int selection = billeterie.getFenetre().getTableau().getSelectedRow();
             	int selectionCorrige = billeterie.getFenetre().getTableau().getRowSorter().convertRowIndexToModel(selection);
-            	new FenetreModifiePersonne(billeterie, billeterie.getListePersonnes().getPersonneIndex(selectionCorrige));
+            	//new FenetreModifiePersonne(billeterie, billeterie.getListePersonnes().getPersonneIndex(selectionCorrige));
             } catch (Exception e1) {
             	
             }
