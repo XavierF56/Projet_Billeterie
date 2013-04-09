@@ -38,5 +38,4 @@ public class FenetrePopUp extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 	}
-
 }

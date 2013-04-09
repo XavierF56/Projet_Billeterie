@@ -49,7 +49,7 @@ public class FenetreModifiePersonne extends JFrame {
 		return personne;
 	}
 	
-	class ValiderAction extends AbstractAction {
+	private class ValiderAction extends AbstractAction {
 		private static final long serialVersionUID = 1L;
 		FenetreModifiePersonne fenetre;
         private ValiderAction(FenetreModifiePersonne fenetreModifiePersonne) {
@@ -63,8 +63,7 @@ public class FenetreModifiePersonne extends JFrame {
 				fenetre.getPersonne().modifie(map);
 	        	fenetre.setVisible(false);
 			} catch (Exception e1) {
-				e1.printStackTrace();
-				//TODO Doit afficher une popup d'erreur
+				new PopUpErreur("Erreur lors de la modification", "Tous les champs n'ont pas ete renseignes");
 			}
         }
     }
