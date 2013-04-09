@@ -1,5 +1,7 @@
 package ihm.fenetres;
 
+import ihm.barresOutils.Champs;
+
 import java.awt.event.ActionEvent;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,27 +14,33 @@ import javax.swing.JTextField;
 
 import modele.Billeterie;
 import modele.Personne;
+@SuppressWarnings("unused")
 
 
 public class FenetreNouvellePersonne extends JFrame {
 	private static final long serialVersionUID = 1L;
 	Billeterie billeterie;
-	JTextField champPrenom;
-	JTextField champNom;
+	Champs champs;
 	
+	/**
+	 * Constructeur
+	 * @param billeterie
+	 */
 	public FenetreNouvellePersonne(Billeterie billeterie) {
 		this.billeterie = billeterie;
-		JPanel champs = new JPanel();
-		champPrenom = new JTextField();
-		champPrenom.setColumns(20);
-		champNom = new JTextField();
-		champNom.setColumns(20);
-		champs.add(champPrenom);
-		champs.add(champNom);
+		champs = new Champs(billeterie.getColonnesTypePersonnes());
 		setBounds(100, 100, 450, 300);
 		this.add(champs, "Center");
 		this.add(new JButton(new ValiderAction(this)), "South");
+		this.setTitle("Ajouter une nouvelle personne");
 		this.setVisible(true);
+	}
+	
+	/**
+	 * @return les Champs de données
+	 */
+	public Champs getChamps() {
+		return champs;
 	}
 	
 	class ValiderAction extends AbstractAction {
@@ -44,12 +52,14 @@ public class FenetreNouvellePersonne extends JFrame {
         }
  
         public void actionPerformed(ActionEvent e) {
-        	Map<String,Object> map = new HashMap<String,Object>();
-    		map.put("nom", champPrenom.getText());
-    		map.put("prenom", champNom.getText());
-    		@SuppressWarnings("unused")
-			Personne newPerso = new Personne(map, billeterie, 0);
-        	fenetre.setVisible(false);
+			try {
+				Map<String, Object>  map = fenetre.getChamps().getDonnees();
+				Personne newPerso = new Personne(map, billeterie, 0);
+	        	fenetre.setVisible(false);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+				//TODO Doit afficher une popup d'erreur
+			}
         }
     }
 	
