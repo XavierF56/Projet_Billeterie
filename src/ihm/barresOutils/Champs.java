@@ -1,4 +1,4 @@
-package Interface;
+package ihm.barresOutils;
 
 import general.Constantes;
 

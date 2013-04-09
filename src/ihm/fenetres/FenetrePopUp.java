@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 public class FenetrePopUp extends JFrame {
-
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	/**
