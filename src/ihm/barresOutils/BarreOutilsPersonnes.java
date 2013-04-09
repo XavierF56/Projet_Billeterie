@@ -1,5 +1,6 @@
 package ihm.barresOutils;
 
+import ihm.fenetres.FenetreModifiePersonne;
 import ihm.fenetres.FenetreNouvellePersonne;
 
 import java.awt.event.ActionEvent;
@@ -26,13 +27,12 @@ public class BarreOutilsPersonnes extends JPanel {
 	public BarreOutilsPersonnes(Billeterie billeterie) {
 		super();
 		textRecherche = new TextRecherche();
-		btnModifier = new JButton("Modifier");
 		
 		this.billeterie = billeterie;
 		this.add(textRecherche);
 		this.add(new JButton(new RechercheAction()));
 		this.add(new JButton(new AjouterAction()));
-		this.add(btnModifier);
+		this.add(new JButton(new ModifierAction()));
 		this.add(new JButton(new SupprimerAction()));
 	}
 	
@@ -57,9 +57,27 @@ public class BarreOutilsPersonnes extends JPanel {
  
         public void actionPerformed(ActionEvent e) {
             try {
-        	int selection = billeterie.getFenetre().getTableau().getSelectedRow();
-            int selectionCorrige = billeterie.getFenetre().getTableau().getRowSorter().convertRowIndexToModel(selection);
-            billeterie.getListePersonnes().getPersonneIndex(selectionCorrige).supprimer();
+            	int selection = billeterie.getFenetre().getTableau().getSelectedRow();
+            	int selectionCorrige = billeterie.getFenetre().getTableau().getRowSorter().convertRowIndexToModel(selection);
+            	billeterie.getListePersonnes().getPersonneIndex(selectionCorrige).supprimer();
+            } catch (Exception e1) {
+            	
+            }
+        }
+    }
+	
+	class ModifierAction extends AbstractAction {
+		private static final long serialVersionUID = 1L;
+
+		private ModifierAction() {
+            super("Modifier");
+        }
+ 
+        public void actionPerformed(ActionEvent e) {
+            try {
+            	int selection = billeterie.getFenetre().getTableau().getSelectedRow();
+            	int selectionCorrige = billeterie.getFenetre().getTableau().getRowSorter().convertRowIndexToModel(selection);
+            	new FenetreModifiePersonne(billeterie, billeterie.getListePersonnes().getPersonneIndex(selectionCorrige));
             } catch (Exception e1) {
             	
             }

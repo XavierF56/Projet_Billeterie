@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+//TODO Verifier que les champs de text ne contiennent pas de caracteres etranges, "'" par ex
 public class Champs extends JPanel{
 	private static final long serialVersionUID = 1L;
 	Map<String, JComponent> listeChamps = new HashMap<String, JComponent>();

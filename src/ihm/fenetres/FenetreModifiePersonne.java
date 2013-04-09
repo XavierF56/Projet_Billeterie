@@ -17,17 +17,19 @@ import modele.Personne;
 @SuppressWarnings("unused")
 
 
-public class FenetreNouvellePersonne extends JFrame {
+public class FenetreModifiePersonne extends JFrame {
 	private static final long serialVersionUID = 1L;
 	Billeterie billeterie;
+	Personne personne;
 	Champs champs;
 	
 	/**
 	 * Constructeur
 	 * @param billeterie
 	 */
-	public FenetreNouvellePersonne(Billeterie billeterie) {
+	public FenetreModifiePersonne(Billeterie billeterie, Personne personne) {
 		this.billeterie = billeterie;
+		this.personne = personne;
 		champs = new Champs(billeterie.getColonnesTypePersonnes());
 		setBounds(100, 100, 450, 300);
 		this.add(champs, "Center");
@@ -43,18 +45,22 @@ public class FenetreNouvellePersonne extends JFrame {
 		return champs;
 	}
 	
-	private class ValiderAction extends AbstractAction {
+	public Personne getPersonne() {
+		return personne;
+	}
+	
+	class ValiderAction extends AbstractAction {
 		private static final long serialVersionUID = 1L;
-		FenetreNouvellePersonne fenetre;
-        private ValiderAction(FenetreNouvellePersonne fenetre) {
+		FenetreModifiePersonne fenetre;
+        private ValiderAction(FenetreModifiePersonne fenetreModifiePersonne) {
             super("Valider");
-            this.fenetre = fenetre;
+            this.fenetre = fenetreModifiePersonne;
         }
  
         public void actionPerformed(ActionEvent e) {
 			try {
 				Map<String, Object>  map = fenetre.getChamps().getDonnees();
-				Personne newPerso = new Personne(map, billeterie, 0);
+				fenetre.getPersonne().modifie(map);
 	        	fenetre.setVisible(false);
 			} catch (Exception e1) {
 				e1.printStackTrace();
@@ -62,4 +68,8 @@ public class FenetreNouvellePersonne extends JFrame {
 			}
         }
     }
+	
+	public static void main(String[] args) {
+		new FenetreNouvellePersonne(new Billeterie("database.sqlite"));
+	}
 }
