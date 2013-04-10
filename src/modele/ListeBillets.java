@@ -1,6 +1,7 @@
 package modele;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,8 +11,8 @@ import java.util.Map;
 public class ListeBillets {
 	/********** Attributs ************/
 	private Billeterie billeterie;	
-	private Map<Integer, Billet> listeBillets = new HashMap<Integer, Billet>();
-	
+	private List<Billet> listeBillets;
+	private List<Billet> listeBilletsSauvegarde;
 	
 	/********** Constructeur ************/
 	/**
@@ -20,6 +21,7 @@ public class ListeBillets {
 	 */
 	public ListeBillets(Billeterie billeterie) {
 		this.billeterie = billeterie;
+		listeBillets = new ArrayList<Billet>();
 		this.metEnMemoire(); 
 	}
 	
@@ -32,7 +34,7 @@ public class ListeBillets {
 		try {
 			List<Map<String, Object>> list = billeterie.getBdd().query("SELECT * from billet"); //NOM BDD
 			for (int i = 0; i < list.size(); i++){
-				listeBillets.put((Integer)list.get(i).get("id"),new Billet(list.get(i), billeterie));
+				listeBillets.add(new Billet(list.get(i), billeterie));
 			}
 			Billet.setProchainId((Integer)list.get(listeBillets.size() - 1).get("id")+1);
 		} catch (SQLException e){

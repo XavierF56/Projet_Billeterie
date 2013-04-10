@@ -7,6 +7,8 @@ import java.util.Map;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import modele.Billeterie;
 import modele.Personne;
@@ -53,7 +55,9 @@ public class FenetreNouvellePersonne extends Fenetre {
 				Personne newPerso = new Personne(map, billeterie, 0);
 	        	fenetre.setVisible(false);
 			} catch (Exception e1) {
-				new PopUpErreur("Erreur lors de l'ajout", "Tous les champs n'ont pas ete renseignes");
+				String message = "\"Erreur lors de l'ajout\"\n"
+			            + "Tous les champs n'ont pas ete renseignes\n";
+				JOptionPane.showMessageDialog(new JFrame(), message, "Dialog", JOptionPane.ERROR_MESSAGE);
 			}
         }
     }

@@ -83,7 +83,6 @@ public class ListePersonnes extends AbstractTableModel {
 		reinitialise();
 		listePersonnes.add(pers);
 		fireTableDataChanged();
-		//fireTableRowsInserted(getRowCount() -1, getRowCount() -1);
 		sauvegarde();
 	}
 	
