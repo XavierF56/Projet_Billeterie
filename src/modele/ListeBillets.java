@@ -2,13 +2,14 @@ package modele;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.table.AbstractTableModel;
 
 
-public class ListeBillets {
+
+public class ListeBillets extends AbstractTableModel{
 	/********** Attributs ************/
 	private Billeterie billeterie;	
 	private List<Billet> listeBillets;
@@ -47,7 +48,7 @@ public class ListeBillets {
 	 * @param chaine la chaine a trouver dans le billet
 	 * @return la liste des billets
 	 */
-	public List<Billet> recherche(String chaine) {
+	public void recherche(String chaine) {
 		//A develloper ! 
 		reinitialise();
 		List<Billet> resul= new ArrayList<Billet>();
@@ -55,17 +56,23 @@ public class ListeBillets {
 		try {
 			String query = "SELECT id FROM billet WHERE categorie LIKE '" + chaine +"%'"; //NOM BDD
 			List<Map<String, Object>> list = billeterie.getBdd().query(query);
-			for (int i = 0; i < list.size(); i++) {
-				int valI = (Integer)list.get(i).get("id");
-				if (listeBillets.containsKey(valI)) {
-					resul.put(valI, listeBillets.get(valI));
+			if(!list.isEmpty()) {
+				for (int i = 0; i< listeBillets.size(); i++) {
+					int Id = listeBillets.get(i).getId();
+					boolean stop = false;
+					for (int j = 0; j < list.size() && !stop; j++) {
+						if (Id == (Integer)list.get(j).get("id")) {
+							resul.add(listeBillets.get(i));
+							stop = true;
+						}
+					}
 				}
 			}
+			listeBillets = resul;
+			fireTableDataChanged();
 		} catch (SQLException e){
 			e.printStackTrace();
 		}
-		
-		return resul;
 	}
 	
 	/**
@@ -87,5 +94,24 @@ public class ListeBillets {
 	}
 	public String toString () {
 		return listeBillets.toString();
+	}
+
+	
+	/********** Methodes pour la gestion de l'affichage ************/
+	public int getRowCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getColumnCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	public String getColumnName(int columnIndex) {return "v";}
+
+	public Object getValueAt(int rowIndex, int columnIndex) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
