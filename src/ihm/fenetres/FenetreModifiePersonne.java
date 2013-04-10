@@ -22,6 +22,7 @@ public class FenetreModifiePersonne extends JFrame {
 	Billeterie billeterie;
 	Personne personne;
 	Champs champs;
+	// TODO : les champs doivent êter prérempli avec les données
 	
 	/**
 	 * Constructeur
