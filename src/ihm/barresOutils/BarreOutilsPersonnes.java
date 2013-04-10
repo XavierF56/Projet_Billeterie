@@ -1,5 +1,6 @@
 package ihm.barresOutils;
 
+import ihm.fenetres.FenetreModifiePersonne;
 import ihm.fenetres.FenetreNouvellePersonne;
 import ihm.fenetres.FenetrePopUp;
 
@@ -14,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import modele.Billeterie;
+import modele.Personne;
 
 
 public class BarreOutilsPersonnes extends JPanel {
@@ -78,8 +80,10 @@ public class BarreOutilsPersonnes extends JPanel {
         	EventQueue.invokeLater(new Runnable() {
     			public void run() {
     				try {
-    					FenetrePopUp frame = new FenetrePopUp("Modifier personne");
-    					frame.setVisible(true);
+    					int selection = billeterie.getFenetre().getTableau().getSelectedRow();
+    	            	int selectionCorrige = billeterie.getFenetre().getTableau().getRowSorter().convertRowIndexToModel(selection);
+    	            	Personne perso = billeterie.getListePersonnes().getPersonneIndex(selectionCorrige);
+    					new FenetreModifiePersonne(billeterie, perso);
     				} catch (Exception e) {
     					e.printStackTrace();
     				}

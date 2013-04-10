@@ -1,14 +1,12 @@
 package ihm.fenetres;
 
+import ihm.barresOutils.Champs;
+
 import java.awt.event.ActionEvent;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 import modele.Billeterie;
 import modele.Personne;
@@ -51,6 +49,7 @@ public class FenetreNouvellePersonne extends Fenetre {
         public void actionPerformed(ActionEvent e) {
 			try {
 				Map<String, Object>  map = fenetre.getChamps().getDonnees();
+				@SuppressWarnings("unused")
 				Personne newPerso = new Personne(map, billeterie, 0);
 	        	fenetre.setVisible(false);
 			} catch (Exception e1) {

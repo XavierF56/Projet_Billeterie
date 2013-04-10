@@ -36,7 +36,7 @@ public class FenetreModifiePersonne extends JFrame {
 		setBounds(100, 100, 450, 300);
 		this.add(champs, "Center");
 		this.add(new JButton(new ValiderAction(this)), "South");
-		this.setTitle("Ajouter une nouvelle personne");
+		this.setTitle("Modifier une nouvelle personne");
 		this.setVisible(true);
 	}
 	
