@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -64,7 +65,9 @@ public class FenetreModifiePersonne extends JFrame {
 				fenetre.getPersonne().modifie(map);
 	        	fenetre.setVisible(false);
 			} catch (Exception e1) {
-				new PopUpErreur("Erreur lors de la modification", "Tous les champs n'ont pas ete renseignes");
+				String message = "\"Erreur lors de la modification\"\n"
+				            + "Tous les champs n'ont pas ete renseignes\n";
+				JOptionPane.showMessageDialog(new JFrame(), message, "Dialog", JOptionPane.ERROR_MESSAGE);
 			}
         }
     }

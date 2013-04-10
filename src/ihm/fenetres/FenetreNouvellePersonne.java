@@ -1,7 +1,5 @@
 package ihm.fenetres;
 
-import ihm.barresOutils.Champs;
-
 import java.awt.event.ActionEvent;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,11 +12,10 @@ import javax.swing.JTextField;
 
 import modele.Billeterie;
 import modele.Personne;
-@SuppressWarnings("unused")
 
+@SuppressWarnings("serial")
+public class FenetreNouvellePersonne extends Fenetre {
 
-public class FenetreNouvellePersonne extends JFrame {
-	private static final long serialVersionUID = 1L;
 	Billeterie billeterie;
 	Champs champs;
 	

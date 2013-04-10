@@ -23,7 +23,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
-public class FenetrePrincipale extends JFrame {
+public class FenetrePrincipale extends Fenetre {
 	@SuppressWarnings("unused")
 	private Billeterie billeterie;
 	/**
