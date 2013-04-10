@@ -47,9 +47,10 @@ public class ListeBillets {
 	 * @param chaine la chaine a trouver dans le billet
 	 * @return la liste des billets
 	 */
-	public Map<Integer, Billet> recherche(String chaine) {
+	public List<Billet> recherche(String chaine) {
 		//A develloper ! 
-		Map<Integer, Billet> resul= new HashMap<Integer, Billet>();
+		reinitialise();
+		List<Billet> resul= new ArrayList<Billet>();
 		
 		try {
 			String query = "SELECT id FROM billet WHERE categorie LIKE '" + chaine +"%'"; //NOM BDD
