@@ -3,7 +3,7 @@ package ihm.fenetres;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
@@ -11,7 +11,7 @@ import javax.swing.border.EmptyBorder;
 import general.Constantes;
 import ihm.barresOutils.BarreOutilsValiderAnnuler;
 
-public class FenetrePopUp extends Fenetre {
+public class FenetrePopUp extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 

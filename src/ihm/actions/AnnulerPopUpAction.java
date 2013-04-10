@@ -1,14 +1,13 @@
 package ihm.actions;
 
-import ihm.fenetres.Fenetre;
-
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
+import javax.swing.JDialog;
 
 @SuppressWarnings("serial")
 public class AnnulerPopUpAction extends AbstractAction {
-	private Fenetre fenetre;
-    public AnnulerPopUpAction(Fenetre fenetre) {
+	private JDialog fenetre;
+    public AnnulerPopUpAction(JDialog fenetre) {
         super("Annuler");
         this.fenetre = fenetre;
     }

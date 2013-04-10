@@ -1,7 +1,9 @@
 package ihm.barresOutils;
 
 import ihm.fenetres.FenetreNouvellePersonne;
+import ihm.fenetres.FenetrePopUp;
 
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -73,13 +75,16 @@ public class BarreOutilsPersonnes extends JPanel {
         }
  
         public void actionPerformed(ActionEvent e) {
-            try {
-            	int selection = billeterie.getFenetre().getTableau().getSelectedRow();
-            	int selectionCorrige = billeterie.getFenetre().getTableau().getRowSorter().convertRowIndexToModel(selection);
-            	//new FenetreModifiePersonne(billeterie, billeterie.getListePersonnes().getPersonneIndex(selectionCorrige));
-            } catch (Exception e1) {
-            	
-            }
+        	EventQueue.invokeLater(new Runnable() {
+    			public void run() {
+    				try {
+    					FenetrePopUp frame = new FenetrePopUp("Modifier personne");
+    					frame.setVisible(true);
+    				} catch (Exception e) {
+    					e.printStackTrace();
+    				}
+    			}
+    		});
         }
     }
 	

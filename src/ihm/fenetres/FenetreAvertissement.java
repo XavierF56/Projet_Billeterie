@@ -2,6 +2,7 @@ package ihm.fenetres;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -12,7 +13,7 @@ import ihm.barresOutils.BarreOutilsValiderAnnuler;
 import java.awt.Color;
 
 @SuppressWarnings("serial")
-public class FenetreAvertissement extends JFrame {
+public class FenetreAvertissement extends JDialog {
 	private JPanel contentPane;
 
 	public FenetreAvertissement(String nom, String texte) {
@@ -22,7 +23,7 @@ public class FenetreAvertissement extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		BarreOutilsValiderAnnuler barreOutilsValiderAnnuler = new BarreOutilsValiderAnnuler();
+		BarreOutilsValiderAnnuler barreOutilsValiderAnnuler = new BarreOutilsValiderAnnuler(this);
 		barreOutilsValiderAnnuler.setBackground(Color.WHITE);
 		contentPane.add(barreOutilsValiderAnnuler, BorderLayout.CENTER);
 		
