@@ -80,18 +80,84 @@ public class ListeBillets extends AbstractTableModel{
 	 * @param billet
 	 */
 	public void ajoutBillet(int id, Billet billet) {
-		listeBillets.put(id, billet);
+		reinitialise();
+		listeBillets.add(billet);
+		fireTableDataChanged();
+		sauvegarde();
+	}
+	
+	/**
+	 * Supprime un billet dans la liste
+	 * @param billet
+	 */
+	public void supprimer(Personne personne) {
+		//reinitialise();
+		listeBillets.remove(personne);
+		listeBilletsSauvegarde.remove(personne);
+		fireTableDataChanged();
+		//sauvegarde();
+	}
+	
+	/**
+	 * Lors de la modification d'une personne, il faut mettre a jour le modele de donnees
+	 */
+	public void modifier() {
+		fireTableDataChanged();
+	}
+	
+	public int getId(Personne personne) {
+		int res = -1;
+		for (int i = 0; i < listeBillets.size(); i++) {
+			if (listeBillets.get(i).equals(personne)) {
+				res = i;
+				i = listeBillets.size();
+			}
+		}
+		return res;
+	}
+	
+	/**
+	 * Cette methode permet de sauvegarder la liste des billets
+	 * Par exemple lorsque l'on fait une recherche, listeBillets sera remplacee
+	 * par une liste de billets trouves.
+	 */
+	public void sauvegarde() {
+		List<Billet> list = new ArrayList<Billet>();
+		for (int i = 0; i < listeBillets.size(); i++) {
+			list.add(listeBillets.get(i));
+		}
+		listeBilletsSauvegarde = list;
+	}
+	
+	/**
+	 * Permet de remplacer la liste de billets par la liste de billets d'origine
+	 */
+	public void reinitialise() {
+		listeBillets = listeBilletsSauvegarde;
+		sauvegarde();
 	}
 
 	
 	/********** Methodes de base ************/
 	public Billet getBillet(int id) throws Exception {
-		if (listeBillets.containsKey(id)){
-			return listeBillets.get(id);
-		} else {
-			throw new Exception("Billet non existant");
+		Billet billet = null;
+		boolean stop = false;
+		for (int i = 0; i < listeBillets.size() && !stop; i++) {
+			if (id == listeBillets.get(i).getId()) {
+				billet = listeBillets.get(i);
+				stop = true;
+			}
 		}
+		if (billet == null){
+			throw new Exception("Personne non existante");
+		}
+		return billet;
 	}
+	
+	public Billet getBilletIndex(int i){
+		return listeBillets.get(i);
+	}
+	
 	public String toString () {
 		return listeBillets.toString();
 	}
@@ -99,19 +165,18 @@ public class ListeBillets extends AbstractTableModel{
 	
 	/********** Methodes pour la gestion de l'affichage ************/
 	public int getRowCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return listeBillets.size();
 	}
 
 	public int getColumnCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return billeterie.getColonnesBillets().size();
 	}
 	
-	public String getColumnName(int columnIndex) {return "v";}
+	public String getColumnName(int columnIndex) {
+		return billeterie.getColonnesBillets().get(columnIndex);
+	}
 
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		// TODO Auto-generated method stub
-		return null;
+		return listeBillets.get(rowIndex).getHashMap().get(getColumnName(columnIndex));    
 	}
 }

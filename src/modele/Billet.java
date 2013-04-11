@@ -140,4 +140,8 @@ public class Billet {
 	public String toString () { //NOM BDD
 		return map.get("categorie") + " : " + map.get("sous_categorie");
 	}
+	
+	public Map<String, Object> getHashMap() {
+		return map;
+	}
 }
