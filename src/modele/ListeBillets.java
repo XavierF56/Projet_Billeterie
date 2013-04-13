@@ -2,7 +2,6 @@ package modele;
 
 import general.Constantes;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -34,18 +33,14 @@ public class ListeBillets extends AbstractTableModel{
 	 * Met en memoire l'ensemble des billets.
 	 */
 	public void metEnMemoire() {
-		try {
-			List<Map<String, Object>> list = billeterie.getBdd().query("SELECT * from billet"); //NOM BDD
-			for (int i = 0; i < list.size(); i++){
-				listeBillets.add(new Billet(list.get(i), billeterie));
-			}
-			Billet.setProchainId((Integer)list.get(listeBillets.size() - 1).get("id")+1);
-		} catch (SQLException e){
-			e.printStackTrace();
+		List<Map<String, Object>> list = billeterie.getBdd().getObjets("SELECT * from billet"); //NOM BDD
+		for (int i = 0; i < list.size(); i++){
+			listeBillets.add(new Billet(list.get(i), billeterie));
 		}
+		Billet.setProchainId((Integer)list.get(listeBillets.size() - 1).get("id")+1);
 	}
 	
-	/**
+	/**SQLInterface
 	 * Methode creant une requete pour la recherche
 	 */
 	public String requete (String chaine) {
@@ -77,26 +72,22 @@ public class ListeBillets extends AbstractTableModel{
 		reinitialise();
 		List<Billet> resul= new ArrayList<Billet>();
 		
-		try {
-			String query = requete(chaine);
-			List<Map<String, Object>> list = billeterie.getBdd().query(query);
-			if(!list.isEmpty()) {
-				for (int i = 0; i< listeBillets.size(); i++) {
-					int Id = listeBillets.get(i).getId();
-					boolean stop = false;
-					for (int j = 0; j < list.size() && !stop; j++) {
-						if (Id == (Integer)list.get(j).get("id")) {
-							resul.add(listeBillets.get(i));
-							stop = true;
-						}
+		String query = requete(chaine);
+		List<Map<String, Object>> list = billeterie.getBdd().getObjets(query);
+		if(!list.isEmpty()) {
+			for (int i = 0; i< listeBillets.size(); i++) {
+				int Id = listeBillets.get(i).getId();
+				boolean stop = false;
+				for (int j = 0; j < list.size() && !stop; j++) {
+					if (Id == (Integer)list.get(j).get("id")) {
+						resul.add(listeBillets.get(i));
+						stop = true;
 					}
 				}
 			}
-			listeBillets = resul;
-			fireTableDataChanged();
-		} catch (SQLException e){
-			e.printStackTrace();
 		}
+		listeBillets = resul;
+		fireTableDataChanged();
 	}
 	
 	/**

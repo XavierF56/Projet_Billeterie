@@ -32,11 +32,11 @@ public interface SQLInterface {
 	 * @param query
 	 */
 	public void update(String query) throws SQLException;
-		
-	public void enregistreBDD (String table, Map<String, Object> map) throws SQLException;
 	
-	public void ajoutBDD (String table, Map<String, Object> map) throws SQLException;
-	
-	public void supprimer (String table, int id);
+	/**
+	 * @param table
+	 * @return la liste des attributs (nom et type) d'une table
+	 */
+	public Map<String, Integer> getAttributs (String table);
 
 }

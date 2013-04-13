@@ -2,7 +2,6 @@ package modele;
 
 import general.Constantes;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -35,16 +34,12 @@ public class ListePersonnes extends AbstractTableModel {
 	 * Met en memoire l'ensemble des billets.
 	 */
 	public void metEnMemoire() {
-		try {
-			List<Map<String, Object>> list = billeterie.getBdd().query("SELECT * from personne"); //NOM BDD
-			for (int i = 0; i < list.size(); i++){
-				listePersonnes.add(new Personne(list.get(i), billeterie));
-			}
-			Personne.setProchainId((Integer)list.get(listePersonnes.size() - 1).get("id") + 1);
-			this.sauvegarde();
-		} catch (SQLException e){
-			e.printStackTrace();
+		List<Map<String, Object>> list = billeterie.getBdd().getObjets("SELECT * from personne"); //NOM BDD
+		for (int i = 0; i < list.size(); i++){
+			listePersonnes.add(new Personne(list.get(i), billeterie));
 		}
+		Personne.setProchainId((Integer)list.get(listePersonnes.size() - 1).get("id") + 1);
+		this.sauvegarde();
 	}
 	
 	/**
@@ -80,26 +75,22 @@ public class ListePersonnes extends AbstractTableModel {
 		reinitialise();
 		List<Personne> resul= new ArrayList<Personne>();
 		
-		try {
-			String query = requete(chaine);
-			List<Map<String, Object>> liste = billeterie.getBdd().query(query);
-			if(!liste.isEmpty()){
-				for (int i = 0; i < listePersonnes.size(); i++) {
-					int Id = listePersonnes.get(i).getId();
-					boolean stop = false;
-					for (int j = 0; j < liste.size() && !stop; j++) { //OPTIMIZE
-						if (Id == (Integer)liste.get(j).get("id")) {
-							resul.add(listePersonnes.get(i));
-							stop = true;
-						}
+		String query = requete(chaine);
+		List<Map<String, Object>> liste = billeterie.getBdd().getObjets(query);
+		if(!liste.isEmpty()){
+			for (int i = 0; i < listePersonnes.size(); i++) {
+				int Id = listePersonnes.get(i).getId();
+				boolean stop = false;
+				for (int j = 0; j < liste.size() && !stop; j++) { //OPTIMIZE
+					if (Id == (Integer)liste.get(j).get("id")) {
+						resul.add(listePersonnes.get(i));
+						stop = true;
 					}
 				}
-				listePersonnes = resul;
 			}
-			fireTableDataChanged();
-		} catch (SQLException e){
-			e.printStackTrace();
+			listePersonnes = resul;
 		}
+		fireTableDataChanged();
 	}
 	
 	/**

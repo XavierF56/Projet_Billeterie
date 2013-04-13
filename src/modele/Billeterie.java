@@ -18,7 +18,7 @@ import java.util.Set;
 public class Billeterie {
 	private ListePersonnes listePersonnes;
 	private ListeBillets listeBillets;
-	private SQLInterface bdd;
+	private DataBase bdd;
 	private Map<String, Integer> colonnesTypePersonnes;
 	private Map<String, Integer> colonnesTypeBillets;
 	private List<String> colonnesPersonnes;
@@ -34,14 +34,14 @@ public class Billeterie {
 	/********** Constructeur ************/
 	public Billeterie (String nomBdd) {
 		try{
-			bdd = new SQLiteImpl(nomBdd);
+			bdd = new DataBase(nomBdd);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		listePersonnes = new ListePersonnes(this);
 		listeBillets = new ListeBillets(this);
-		colonnesTypePersonnes = ((SQLiteImpl) bdd).getColonnes("Personne");
-		colonnesTypeBillets = ((SQLiteImpl) bdd).getColonnes("Billet");
+		colonnesTypePersonnes = bdd.getAttributs("Personne");
+		colonnesTypeBillets = bdd.getAttributs("Billet");
 		colonnesPersonnes = mapVersList(colonnesTypePersonnes);
 		colonnesBillets = mapVersList(colonnesTypeBillets);
 	}
@@ -65,7 +65,7 @@ public class Billeterie {
 	public ListeBillets getListeBillets() {
 		return listeBillets;
 	}
-	public SQLInterface getBdd() {
+	public DataBase getBdd() {
 		return bdd;
 	}
 	public Map<String, Integer> getColonnesTypeBillets() {
