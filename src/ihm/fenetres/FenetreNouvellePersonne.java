@@ -10,22 +10,21 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import modele.Billeterie;
-import modele.Personne;
+import modele.ListeObjet;
 
 @SuppressWarnings("serial")
 public class FenetreNouvellePersonne extends Fenetre {
 
-	Billeterie billeterie;
-	Champs champs;
+	private ListeObjet listeObjet;
+	private Champs champs;
 	
 	/**
 	 * Constructeur
 	 * @param billeterie
 	 */
-	public FenetreNouvellePersonne(Billeterie billeterie) {
-		this.billeterie = billeterie;
-		champs = new Champs(billeterie.getColonnesTypePersonnes());
+	public FenetreNouvellePersonne(ListeObjet listeObjet) {
+		this.listeObjet = listeObjet;
+		champs = new Champs(listeObjet.getAttributsType());
 		setBounds(100, 100, 450, 300);
 		this.add(champs, "Center");
 		this.add(new JButton(new ValiderAction(this)), "South");
@@ -51,8 +50,7 @@ public class FenetreNouvellePersonne extends Fenetre {
         public void actionPerformed(ActionEvent e) {
 			try {
 				Map<String, Object>  map = fenetre.getChamps().getDonnees();
-				@SuppressWarnings("unused")
-				Personne newPerso = new Personne(map, billeterie, 0);
+				listeObjet.ajouter(map);
 	        	fenetre.setVisible(false);
 			} catch (Exception e1) {
 				String message = "\"Erreur lors de l'ajout\"\n"

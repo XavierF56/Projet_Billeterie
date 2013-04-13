@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 
-public class Personne {
+public class Personne extends ObjetB{
 	public Map<String,Object> map = new HashMap<String,Object>();
 	private Billeterie bill;
 	private ListeAchats achats;
@@ -31,6 +31,7 @@ public class Personne {
 	 * @param bill
 	 */
 	public Personne (Map<String, Object> map, Billeterie bill){
+		super();
 		this.map = map;
 		this.bill = bill;
 		this.achatEnMem = false;
@@ -45,6 +46,7 @@ public class Personne {
 	 * @param useless ce param sert juste a diffrencier les deux constructeurs
 	 */
 	public Personne (Map<String,Object> map, Billeterie bill, int useless){
+		super();
 		this.map = map;
 		this.bill = bill;
 		this.achatEnMem = false;
@@ -62,9 +64,6 @@ public class Personne {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		// Ajoute le billet a la listePersonne
-		bill.getListePersonnes().ajoutPersonne(this.getId(), this);
 	}
 	
 	

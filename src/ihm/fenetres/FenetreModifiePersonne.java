@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import modele.Billeterie;
+import modele.ListeObjet;
+import modele.ObjetB;
 import modele.Personne;
 @SuppressWarnings("unused")
 
@@ -21,18 +23,20 @@ import modele.Personne;
 public class FenetreModifiePersonne extends JFrame {
 	private static final long serialVersionUID = 1L;
 	Billeterie billeterie;
-	Personne personne;
+	ObjetB personne;
 	Champs champs;
+	ListeObjet listeObjet;
 	// TODO : les champs doivent êter prérempli avec les données
 	
 	/**
 	 * Constructeur
 	 * @param billeterie
 	 */
-	public FenetreModifiePersonne(Billeterie billeterie, Personne personne) {
+	public FenetreModifiePersonne(Billeterie billeterie, ObjetB personne, ListeObjet listeObjet) {
 		this.billeterie = billeterie;
 		this.personne = personne;
-		champs = new Champs(billeterie.getColonnesTypePersonnes());
+		this.listeObjet = listeObjet;
+		champs = new Champs(listeObjet.getAttributsType());
 		setBounds(100, 100, 450, 300);
 		this.add(champs, "Center");
 		this.add(new JButton(new ValiderAction(this)), "South");
@@ -47,7 +51,7 @@ public class FenetreModifiePersonne extends JFrame {
 		return champs;
 	}
 	
-	public Personne getPersonne() {
+	public ObjetB getObjet() {
 		return personne;
 	}
 	
@@ -62,7 +66,7 @@ public class FenetreModifiePersonne extends JFrame {
         public void actionPerformed(ActionEvent e) {
 			try {
 				Map<String, Object>  map = fenetre.getChamps().getDonnees();
-				fenetre.getPersonne().modifie(map);
+				fenetre.getObjet().modifie(map);
 	        	fenetre.setVisible(false);
 			} catch (Exception e1) {
 				String message = "\"Erreur lors de la modification\"\n"
@@ -71,8 +75,4 @@ public class FenetreModifiePersonne extends JFrame {
 			}
         }
     }
-	
-	public static void main(String[] args) {
-		new FenetreNouvellePersonne(new Billeterie("database.sqlite"));
-	}
 }

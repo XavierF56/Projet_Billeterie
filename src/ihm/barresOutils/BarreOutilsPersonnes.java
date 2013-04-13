@@ -2,7 +2,6 @@ package ihm.barresOutils;
 
 import ihm.fenetres.FenetreModifiePersonne;
 import ihm.fenetres.FenetreNouvellePersonne;
-import ihm.fenetres.FenetrePopUp;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -15,8 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import modele.Billeterie;
-import modele.Personne;
-
+import modele.ListeObjet;
+import modele.ObjetB;
 
 public class BarreOutilsPersonnes extends JPanel {
 	Billeterie billeterie;
@@ -29,40 +28,44 @@ public class BarreOutilsPersonnes extends JPanel {
 
 	public BarreOutilsPersonnes(Billeterie billeterie) {
 		super();
-		textRecherche = new TextRecherche();
+		textRecherche = new TextRecherche(billeterie.getListePersonnes());
 		
 		this.billeterie = billeterie;
 		this.add(textRecherche);
-		this.add(new JButton(new RechercheAction()));
-		this.add(new JButton(new AjouterAction()));
-		this.add(new JButton(new ModifierAction()));
-		this.add(new JButton(new SupprimerAction()));
+		this.add(new JButton(new RechercheAction(billeterie.getListePersonnes())));
+		this.add(new JButton(new AjouterAction(billeterie.getListePersonnes())));
+		this.add(new JButton(new ModifierAction(billeterie.getListePersonnes())));
+		this.add(new JButton(new SupprimerAction(billeterie.getListePersonnes())));
 	}
 	
 	class AjouterAction extends AbstractAction {
 		private static final long serialVersionUID = 1L;
-
-		private AjouterAction() {
+		private ListeObjet listeObjet;
+		
+		private AjouterAction(ListeObjet listeObjet) {
             super("Ajouter");
+	    	this.listeObjet = listeObjet;
         }
  
         public void actionPerformed(ActionEvent e) {
-        	new FenetreNouvellePersonne(billeterie);
+        	new FenetreNouvellePersonne(listeObjet);
         }
     }
 	
 	class SupprimerAction extends AbstractAction {
 		private static final long serialVersionUID = 1L;
-
-		private SupprimerAction() {
+		private ListeObjet listeObjet;
+		
+		private SupprimerAction(ListeObjet listeObjet) {
             super("Supprimer");
+	    	this.listeObjet = listeObjet;
         }
  
         public void actionPerformed(ActionEvent e) {
             try {
-            	int selection = billeterie.getFenetre().getTableau().getSelectedRow();
-            	int selectionCorrige = billeterie.getFenetre().getTableau().getRowSorter().convertRowIndexToModel(selection);
-            	billeterie.getListePersonnes().getPersonneIndex(selectionCorrige).supprimer();
+            	int selection = listeObjet.getTableau().getSelectedRow();
+            	int selectionCorrige = listeObjet.getTableau().getRowSorter().convertRowIndexToModel(selection);
+            	listeObjet.getObjetByIndex(selectionCorrige).supprimer();
             } catch (Exception e1) {
             	
             }
@@ -71,19 +74,21 @@ public class BarreOutilsPersonnes extends JPanel {
 	
 	class ModifierAction extends AbstractAction {
 		private static final long serialVersionUID = 1L;
-
-		private ModifierAction() {
+		private ListeObjet listeObjet;
+		
+		private ModifierAction(ListeObjet listeObjet) {
             super("Modifier");
+	    	this.listeObjet = listeObjet;
         }
  
         public void actionPerformed(ActionEvent e) {
         	EventQueue.invokeLater(new Runnable() {
     			public void run() {
     				try {
-    					int selection = billeterie.getFenetre().getTableau().getSelectedRow();
-    	            	int selectionCorrige = billeterie.getFenetre().getTableau().getRowSorter().convertRowIndexToModel(selection);
-    	            	Personne perso = billeterie.getListePersonnes().getPersonneIndex(selectionCorrige);
-    					new FenetreModifiePersonne(billeterie, perso);
+    					int selection = listeObjet.getTableau().getSelectedRow();
+    	            	int selectionCorrige = listeObjet.getTableau().getRowSorter().convertRowIndexToModel(selection);
+    	            	ObjetB objet = listeObjet.getObjetByIndex(selectionCorrige);
+    					new FenetreModifiePersonne(billeterie, objet, listeObjet);
     				} catch (Exception e) {
     					e.printStackTrace();
     				}
@@ -93,29 +98,33 @@ public class BarreOutilsPersonnes extends JPanel {
     }
 	
 	class RechercheAction extends AbstractAction {
+		private ListeObjet listeObjet;
 		private static final long serialVersionUID = 1L;
 
-		private RechercheAction() {
+		private RechercheAction(ListeObjet listeObjet) {
             super("Rechercher");
+	    	this.listeObjet = listeObjet;
         }
  
         public void actionPerformed(ActionEvent e) {
-            billeterie.getListePersonnes().recherche(textRecherche.getText());
+            listeObjet.recherche(textRecherche.getText());
         }
     }
 	
 	class TextRecherche extends JTextField  implements KeyListener {
 		private static final long serialVersionUID = 1L;
-		public TextRecherche() {
+		private ListeObjet listeObjet;
+		public TextRecherche(ListeObjet listeObjet) {
 	    	super();
 	    	this.setColumns(20);
+	    	this.listeObjet = listeObjet;
 	        addKeyListener(this);
 	    }
 	    public void keyTyped(KeyEvent e) {
 	    }
 	    public void keyPressed(KeyEvent e) {
 	        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-	        	billeterie.getListePersonnes().recherche(this.getText());
+	        	listeObjet.recherche(this.getText());
 	        }
 	    }
 	    public void keyReleased(KeyEvent e) {

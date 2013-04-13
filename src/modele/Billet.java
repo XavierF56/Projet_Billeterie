@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class Billet {
+public class Billet extends ObjetB {
 	private Map<String,Object> map = new HashMap<String,Object>(); // le champ id n'est pas present dans cette map
 	private Billeterie bill;
 
@@ -24,6 +24,7 @@ public class Billet {
 	 * @param bill
 	 */
 	public Billet(Map<String,Object> map, Billeterie bill) {
+		super();
 		this.map = map;
 		this.bill = bill;
 	}
@@ -36,6 +37,7 @@ public class Billet {
 	 * @param useless ce param sert juste a diffrencier les deux constructeurs
 	 */
 	public Billet(Map<String,Object> map, Billeterie bill, int useless) {
+		super();
 		this.map = map;
 		this.bill = bill;
 		
@@ -51,9 +53,6 @@ public class Billet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		// Ajoute le billet a la listeBillets
-		bill.getListeBillets().ajoutBillet(this.getId(), this);
 	}
 	
 	

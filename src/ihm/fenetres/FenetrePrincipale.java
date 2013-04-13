@@ -56,12 +56,12 @@ public class FenetrePrincipale extends Fenetre {
 		/* Onglet Personnes */
 		JPanel OngletPersonne = new JPanel();
 		tableauPersonnes = new JTable(billeterie.getListePersonnes());
+		billeterie.getListePersonnes().setTableau(tableauPersonnes);
 		tableauPersonnes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		tableauPersonnes.setAutoCreateRowSorter(true);// Gestion des tableaux triables
 		TableRowSorter<ListePersonnes> sorter = new TableRowSorter<ListePersonnes>((ListePersonnes) tableauPersonnes.getModel());   
 		tableauPersonnes.setRowSorter(sorter);
-		//sorter.set
 		sorter.setSortsOnUpdates(true);
 		
 		OngletPersonne.setLayout(new BorderLayout(0, 0));
@@ -74,6 +74,7 @@ public class FenetrePrincipale extends Fenetre {
 		JPanel OngletBillets = new JPanel();
 		tableauBillets = new JTable(billeterie.getListeBillets());
 		tableauBillets.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		billeterie.getListeBillets().setTableau(tableauBillets);
 		
 		tableauBillets.setAutoCreateRowSorter(true);// Gestion des tableaux triables
 		TableRowSorter<ListeBillets> sorter2 = new TableRowSorter<ListeBillets>((ListeBillets) tableauBillets.getModel());   
