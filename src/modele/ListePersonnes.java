@@ -1,9 +1,13 @@
 package modele;
 
+import general.Constantes;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.swing.table.AbstractTableModel;
 
@@ -44,6 +48,29 @@ public class ListePersonnes extends AbstractTableModel {
 	}
 	
 	/**
+	 * Methode creant une requete pour la recherche
+	 */
+	public String requete (String chaine) {
+		String retour = "SELECT id FROM personne WHERE ";
+		boolean premier = true;
+		Map<String, Integer> attributs = billeterie.getColonnesTypePersonnes();
+		Set<String> set = attributs.keySet();
+		Iterator<String> it = set.iterator();
+		while (it.hasNext()) {
+			String attribut = it.next();
+			if(attributs.get(attribut) == Constantes.STRING) {
+				String aAjouter = attribut + " Like '"+chaine+"%' ";
+				if(!premier) {
+					retour = retour.concat(" OR ");
+				}
+				retour = retour.concat(aAjouter);
+				premier = false;
+			}
+		}
+		return retour;
+	}
+	
+	/**
 	 * Renvoie l'ensemble des billets lies a la recherche
 	 * @param chaine la chaine a trouver dans le billet
 	 * @return la liste des billets
@@ -54,7 +81,7 @@ public class ListePersonnes extends AbstractTableModel {
 		List<Personne> resul= new ArrayList<Personne>();
 		
 		try {
-			String query = "SELECT id FROM personne WHERE nom LIKE '" + chaine + "%' OR prenom Like '" + chaine + "%'"; //NOM BDD
+			String query = requete(chaine);
 			List<Map<String, Object>> liste = billeterie.getBdd().query(query);
 			if(!liste.isEmpty()){
 				for (int i = 0; i < listePersonnes.size(); i++) {

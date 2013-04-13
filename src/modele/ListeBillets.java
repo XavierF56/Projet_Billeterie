@@ -1,16 +1,18 @@
 package modele;
 
+import general.Constantes;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.swing.table.AbstractTableModel;
 
-
-
 public class ListeBillets extends AbstractTableModel{
-	/********** Attributs ************/
+	private static final long serialVersionUID = 1L;
 	private Billeterie billeterie;	
 	private List<Billet> listeBillets;
 	private List<Billet> listeBilletsSauvegarde;
@@ -44,17 +46,39 @@ public class ListeBillets extends AbstractTableModel{
 	}
 	
 	/**
+	 * Methode creant une requete pour la recherche
+	 */
+	public String requete (String chaine) {
+		String retour = "SELECT id FROM billet WHERE ";//NOM BDD
+		boolean premier = true;
+		Map<String, Integer> attributs = billeterie.getColonnesTypeBillets();
+		Set<String> set = attributs.keySet();
+		Iterator<String> it = set.iterator();
+		while (it.hasNext()) {
+			String attribut = it.next();
+			if(attributs.get(attribut) == Constantes.STRING) {
+				String aAjouter = attribut + " Like '"+chaine+"%' ";
+				if(!premier) {
+					retour = retour.concat(" OR ");
+				}
+				retour = retour.concat(aAjouter);
+				premier = false;
+			}
+		}
+		return retour;
+	}
+	
+	/**
 	 * Renvoie l'ensemble des billets lies a la recherche
 	 * @param chaine la chaine a trouver dans le billet
 	 * @return la liste des billets
 	 */
 	public void recherche(String chaine) {
-		//A develloper ! 
 		reinitialise();
 		List<Billet> resul= new ArrayList<Billet>();
 		
 		try {
-			String query = "SELECT id FROM billet WHERE categorie LIKE '" + chaine +"%'"; //NOM BDD
+			String query = requete(chaine);
 			List<Map<String, Object>> list = billeterie.getBdd().query(query);
 			if(!list.isEmpty()) {
 				for (int i = 0; i< listeBillets.size(); i++) {
@@ -91,11 +115,9 @@ public class ListeBillets extends AbstractTableModel{
 	 * @param billet
 	 */
 	public void supprimer(Personne personne) {
-		//reinitialise();
 		listeBillets.remove(personne);
 		listeBilletsSauvegarde.remove(personne);
 		fireTableDataChanged();
-		//sauvegarde();
 	}
 	
 	/**

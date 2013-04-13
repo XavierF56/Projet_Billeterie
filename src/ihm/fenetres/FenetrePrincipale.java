@@ -17,6 +17,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
 import modele.Billeterie;
+import modele.ListeBillets;
 import modele.ListePersonnes;
 
 import java.awt.event.ActionListener;
@@ -32,7 +33,8 @@ public class FenetrePrincipale extends Fenetre {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private boolean opt;
-	private JTable tableau;
+	private JTable tableauPersonnes;
+	private JTable tableauBillets;
 	
 	
 	
@@ -53,25 +55,34 @@ public class FenetrePrincipale extends Fenetre {
 		
 		/* Onglet Personnes */
 		JPanel OngletPersonne = new JPanel();
-		tableau = new JTable(billeterie.getListePersonnes());
-		tableau.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		tableauPersonnes = new JTable(billeterie.getListePersonnes());
+		tableauPersonnes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
-		tableau.setAutoCreateRowSorter(true);// Gestion des tableaux triables
-		TableRowSorter<ListePersonnes> sorter = new TableRowSorter<ListePersonnes>((ListePersonnes) tableau.getModel());   
-		tableau.setRowSorter(sorter);
+		tableauPersonnes.setAutoCreateRowSorter(true);// Gestion des tableaux triables
+		TableRowSorter<ListePersonnes> sorter = new TableRowSorter<ListePersonnes>((ListePersonnes) tableauPersonnes.getModel());   
+		tableauPersonnes.setRowSorter(sorter);
 		//sorter.set
 		sorter.setSortsOnUpdates(true);
 		
 		OngletPersonne.setLayout(new BorderLayout(0, 0));
 		OngletPersonne.add(new BarreOutilsPersonnes(billeterie), "North");
-		OngletPersonne.add(new JScrollPane(tableau), "Center");
+		OngletPersonne.add(new JScrollPane(tableauPersonnes), "Center");
 		
 		Onglets.addTab("Personnes", null, OngletPersonne, null);
 		
 		/* Onglet Billets */
 		JPanel OngletBillets = new JPanel();
+		tableauBillets = new JTable(billeterie.getListeBillets());
+		tableauBillets.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		tableauBillets.setAutoCreateRowSorter(true);// Gestion des tableaux triables
+		TableRowSorter<ListeBillets> sorter2 = new TableRowSorter<ListeBillets>((ListeBillets) tableauBillets.getModel());   
+		tableauBillets.setRowSorter(sorter2);
+		sorter2.setSortsOnUpdates(true);
+		
 		OngletBillets.setLayout(new BorderLayout(0, 0));
 		OngletBillets.add(new BarreOutilsBillets(), "North");
+		OngletBillets.add(new JScrollPane(tableauBillets), "Center");
 		
 		Onglets.addTab("Billets", null, OngletBillets, null);
 		
@@ -88,7 +99,7 @@ public class FenetrePrincipale extends Fenetre {
 	}
 
 	public JTable getTableau() {
-		return tableau;
+		return tableauPersonnes;
 	}
 
 	/**
