@@ -11,11 +11,11 @@ import javax.swing.table.AbstractTableModel;
 public class ListeObjet extends AbstractTableModel{
 	private static final long serialVersionUID = 1L;
 	protected Billeterie billeterie;	
-	protected List<ObjetB> listeObjet;
-	protected List<ObjetB> listeObjetSauvegarde;
+	protected List<ObjetB> listeObjet = new ArrayList<ObjetB>();
+	protected List<ObjetB> listeObjetSauvegarde = new ArrayList<ObjetB>();
 	protected JTable tableau;
 	protected Map<String, Integer> attributsType;
-	protected List<String> attributs;
+	protected List<String> attributs = new ArrayList<String>();
 
 
 	

@@ -82,7 +82,7 @@ public class FenetrePrincipale extends Fenetre {
 		sorter2.setSortsOnUpdates(true);
 		
 		OngletBillets.setLayout(new BorderLayout(0, 0));
-		OngletBillets.add(new BarreOutilsBillets(), "North");
+		OngletBillets.add(new BarreOutilsBillets(billeterie), "North");
 		OngletBillets.add(new JScrollPane(tableauBillets), "Center");
 		
 		Onglets.addTab("Billets", null, OngletBillets, null);

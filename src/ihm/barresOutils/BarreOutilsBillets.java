@@ -1,8 +1,16 @@
 package ihm.barresOutils;
 
+import ihm.actions.AjouterAction;
+import ihm.actions.ModifierAction;
+import ihm.actions.RechercheAction;
+import ihm.actions.SupprimerAction;
+import ihm.actions.TextRecherche;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import modele.Billeterie;
 
 public class BarreOutilsBillets extends JPanel {
 	protected JButton btnRechercher;
@@ -15,26 +23,19 @@ public class BarreOutilsBillets extends JPanel {
 	 * Premiere version de la barre d'outils d'onglet Billets
 	 */
 	private static final long serialVersionUID = 1L;
+	Billeterie billeterie;
+	private TextRecherche textRecherche;
 	
-	private JButton btnAjouterQte;
-	
-	public BarreOutilsBillets() {
-		super();
+	public BarreOutilsBillets(Billeterie billeterie) {
+		this.billeterie = billeterie;
+		textRecherche = new TextRecherche(billeterie.getListeBillets());
 		
-		btnRechercher = new JButton("Rechercher");
-		btnAjouter = new JButton("Ajouter");
-		btnModifier = new JButton("Modifier");
-		btnSupprimer = new JButton("Supprimer");
-		txtRechercher = new JTextField();		
-		
-		txtRechercher.setText("Rechercher...");
-		btnAjouterQte = new JButton("Ajouter Qte");
-		this.add(txtRechercher);
-		this.add(btnRechercher);
-		this.add(btnAjouter);
-		this.add(btnAjouterQte);
-		this.add(btnModifier);
-		this.add(btnSupprimer);
+		this.add(textRecherche);
+		this.add(new JButton(new RechercheAction(billeterie.getListeBillets(), textRecherche)));
+		this.add(new JButton(new AjouterAction(billeterie.getListeBillets())));
+		this.add(new JButton(new ModifierAction(billeterie.getListeBillets())));
+		this.add(new JButton(new SupprimerAction(billeterie.getListeBillets())));
+		this.add(new JButton("Modifier Qt"));
 	}
 
 }

@@ -22,7 +22,6 @@ import modele.Personne;
 
 public class FenetreModifiePersonne extends JFrame {
 	private static final long serialVersionUID = 1L;
-	Billeterie billeterie;
 	ObjetB personne;
 	Champs champs;
 	ListeObjet listeObjet;
@@ -32,8 +31,7 @@ public class FenetreModifiePersonne extends JFrame {
 	 * Constructeur
 	 * @param billeterie
 	 */
-	public FenetreModifiePersonne(Billeterie billeterie, ObjetB personne, ListeObjet listeObjet) {
-		this.billeterie = billeterie;
+	public FenetreModifiePersonne(ObjetB personne, ListeObjet listeObjet) {
 		this.personne = personne;
 		this.listeObjet = listeObjet;
 		champs = new Champs(listeObjet.getAttributsType());
