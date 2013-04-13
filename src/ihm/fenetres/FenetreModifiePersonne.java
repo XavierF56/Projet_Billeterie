@@ -35,6 +35,7 @@ public class FenetreModifiePersonne extends JFrame {
 		this.personne = personne;
 		this.listeObjet = listeObjet;
 		champs = new Champs(listeObjet.getAttributsType());
+		champs.setValeurs(personne.getHashMap());
 		setBounds(100, 100, 450, 300);
 		this.add(champs, "Center");
 		this.add(new JButton(new ValiderAction(this)), "South");

@@ -60,6 +60,20 @@ public class Champs extends JPanel{
 		gridBagConstraints.anchor = GridBagConstraints.CENTER;
 	}
 	
+	public void setValeurs(Map<String, Object> map) {
+		Set<String> set = map.keySet();
+		Iterator<String> it = set.iterator();
+		while(it.hasNext()) {
+			String nom = it.next();
+			JComponent compo = listeChamps.get(nom);
+			if(compo instanceof JFormattedTextField) {
+				((JFormattedTextField) compo).setValue(map.get(nom));
+			} else if (compo instanceof JCheckBox) {
+				((JCheckBox)compo).setSelected((Boolean) map.get(nom));
+			}
+		}
+	}
+	
 	/**
 	 * @return les donnees saisi dans les champs
 	 * @throws Exception 
