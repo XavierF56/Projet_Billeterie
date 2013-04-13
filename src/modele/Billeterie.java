@@ -36,7 +36,7 @@ public class Billeterie {
 		try{
 			bdd = new SQLiteImpl(nomBdd);
 		} catch (Exception e) {
-			//TODO
+			e.printStackTrace();
 		}
 		listePersonnes = new ListePersonnes(this);
 		listeBillets = new ListeBillets(this);
