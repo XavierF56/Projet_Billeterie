@@ -48,7 +48,6 @@ public class Achat {
 	 *  @param map
 	 */
 	private void enregistre() {
-		// Enregistre l'achat dans la bdd
 		try {
 			personne.getBilleterie().getBdd().enregistreBDD("achat", map); //NOM BDD
 		} catch (SQLException e) {

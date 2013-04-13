@@ -12,8 +12,6 @@ import java.util.Set;
 public class ListePersonnes extends ListeObjet {
 	private static final long serialVersionUID = 1L;
 	
-
-	
 	
 	/********** Constructeur ************/
 	/**
@@ -70,7 +68,7 @@ public class ListePersonnes extends ListeObjet {
 	 */
 	public void recherche(String chaine) {
 		reinitialise();
-		List<ObjetB> resul= new ArrayList<ObjetB>();
+		List<Objet> resul= new ArrayList<Objet>();
 		
 		String query = requete(chaine);
 		List<Map<String, Object>> list = billeterie.getBdd().getObjets(query);
@@ -107,19 +105,13 @@ public class ListePersonnes extends ListeObjet {
 	public int getRowCount() {
     	return listeObjet.size();
     }
- 
     public int getColumnCount() {
     	return getAttributs().size();
     }
- 
     public String getColumnName(int columnIndex) {
     	return getAttributs().get(columnIndex);
     }
- 
     public Object getValueAt(int rowIndex, int columnIndex) {
     	return listeObjet.get(rowIndex).getHashMap().get(getColumnName(columnIndex));    	
     }
-
-
-	
 }

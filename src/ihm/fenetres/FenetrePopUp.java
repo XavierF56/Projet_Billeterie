@@ -51,6 +51,7 @@ public class FenetrePopUp extends JDialog {
 		
 		// for each
 		int type = -1; //recuperer le type
+		@SuppressWarnings("unused")
 		String nom = "Attribut 1"; //recuperer le nom de l'attribut
 		
 		switch(type){

@@ -9,6 +9,7 @@ import modele.Billeterie;
 @SuppressWarnings("serial")
 public class ValiderAction extends AbstractAction {
 	
+	@SuppressWarnings("unused")
 	private Billeterie billeterie;
 	private Fenetre fenetre;
 	

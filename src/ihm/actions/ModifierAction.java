@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 
 import modele.ListeObjet;
-import modele.ObjetB;
+import modele.Objet;
 
 import ihm.fenetres.FenetreModifiePersonne;
 
@@ -26,7 +26,7 @@ public class ModifierAction extends AbstractAction {
 				try {
 					int selection = listeObjet.getTableau().getSelectedRow();
 	            	int selectionCorrige = listeObjet.getTableau().getRowSorter().convertRowIndexToModel(selection);
-	            	ObjetB objet = listeObjet.getObjetByIndex(selectionCorrige);
+	            	Objet objet = listeObjet.getObjetByIndex(selectionCorrige);
 					new FenetreModifiePersonne(objet, listeObjet);
 				} catch (Exception e) {
 					e.printStackTrace();

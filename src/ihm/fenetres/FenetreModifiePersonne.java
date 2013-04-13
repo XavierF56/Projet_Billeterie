@@ -15,14 +15,14 @@ import javax.swing.JTextField;
 
 import modele.Billeterie;
 import modele.ListeObjet;
-import modele.ObjetB;
+import modele.Objet;
 import modele.Personne;
 @SuppressWarnings("unused")
 
 
 public class FenetreModifiePersonne extends JFrame {
 	private static final long serialVersionUID = 1L;
-	ObjetB personne;
+	Objet personne;
 	Champs champs;
 	ListeObjet listeObjet;
 	// TODO : les champs doivent êter prérempli avec les données
@@ -31,7 +31,7 @@ public class FenetreModifiePersonne extends JFrame {
 	 * Constructeur
 	 * @param billeterie
 	 */
-	public FenetreModifiePersonne(ObjetB personne, ListeObjet listeObjet) {
+	public FenetreModifiePersonne(Objet personne, ListeObjet listeObjet) {
 		this.personne = personne;
 		this.listeObjet = listeObjet;
 		champs = new Champs(listeObjet.getAttributsType());
@@ -50,7 +50,7 @@ public class FenetreModifiePersonne extends JFrame {
 		return champs;
 	}
 	
-	public ObjetB getObjet() {
+	public Objet getObjet() {
 		return personne;
 	}
 	

@@ -1,27 +1,15 @@
 package modele;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 
-public class Personne extends ObjetB{
-	public Map<String,Object> map = new HashMap<String,Object>();
-	private Billeterie bill;
+public class Personne extends Objet{
 	private ListeAchats achats;
-	
-	// Booleen permettant de savoir si les acahts sont en memoire
-	private boolean achatEnMem;
+	private boolean achatEnMem;	// Booleen permettant de savoir si les acahts sont en memoire
+	private static int prochainId; 	// id utilise par la prochaine personne creee
 
-	// id utilise par la prochaine personne creee
-	private static int prochainId; 
-	
-	// TODO fonction supprimer
-	
 	
 	/********** Constructeurs ************/
 	/**
@@ -33,7 +21,7 @@ public class Personne extends ObjetB{
 	public Personne (Map<String, Object> map, Billeterie bill){
 		super();
 		this.map = map;
-		this.bill = bill;
+		this.billeterie = bill;
 		this.achatEnMem = false;
 		this.achats = new ListeAchats(this);
 	}
@@ -48,7 +36,7 @@ public class Personne extends ObjetB{
 	public Personne (Map<String,Object> map, Billeterie bill, int useless){
 		super();
 		this.map = map;
-		this.bill = bill;
+		this.billeterie = bill;
 		this.achatEnMem = false;
 		this.achats = new ListeAchats(this);
 		
@@ -82,16 +70,19 @@ public class Personne extends ObjetB{
 			}
 			
 			// Sauvegarde les modifs dans la bdd
-			bill.getBdd().enregistreBDD("personne", map); //NOM BDD
+			billeterie.getBdd().enregistreBDD("personne", map); //NOM BDD
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		bill.getListePersonnes().modifier();
+		billeterie.getListePersonnes().modifier();
 	}
 	
+	/**
+	 * Cette methode supprimer une personne de la memoire ainsi que dans la ListePersonnes
+	 */
 	public void supprimer() {
-		bill.getBdd().supprimer("Personne", this.getId());
-		bill.getListePersonnes().supprimer(this);
+		billeterie.getBdd().supprimer("Personne", this.getId());
+		billeterie.getListePersonnes().supprimer(this);
 	}
 	
 	/**
@@ -137,12 +128,12 @@ public class Personne extends ObjetB{
 	}
 
 		
-	/********** Getters & Setters************/
+	/********** Getters & Setters ************/
 	public static void setProchainId(int prochainId) {
 		Personne.prochainId = prochainId;
 	}
 	public Billeterie getBilleterie() {
-		return this.bill;
+		return this.billeterie;
 	}
 	public static int getProchainId() {
 		return prochainId;
@@ -165,18 +156,6 @@ public class Personne extends ObjetB{
 	public void setAchatEnMem(boolean achatEnMem) {
 		this.achatEnMem = achatEnMem;
 	}
-	
-
-	public List<String> getNomColonne() {
-		List<String> res = new ArrayList<String>();
-		Set<String> set = map.keySet();
-		Iterator<String> it = set.iterator();
-		while (it.hasNext()) {
-			res.add((String) it.next());
-		}
-		return res;
-	}
-	
 	public Map<String, Object> getHashMap() {
 		return map;
 	}

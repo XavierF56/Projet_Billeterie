@@ -9,45 +9,56 @@ import java.util.Map;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 
-public class ListeObjet extends AbstractTableModel{
+public abstract class ListeObjet extends AbstractTableModel{
 	private static final long serialVersionUID = 1L;
 	protected Billeterie billeterie;	
-	protected List<ObjetB> listeObjet = new ArrayList<ObjetB>();
-	protected List<ObjetB> listeObjetSauvegarde = new ArrayList<ObjetB>();
+	protected List<Objet> listeObjet = new ArrayList<Objet>();
+	protected List<Objet> listeObjetSauvegarde = new ArrayList<Objet>();
 	protected JTable tableau;
 	protected Map<String, Integer> attributsType = new HashMap<String, Integer>();
 	protected List<String> attributs = new ArrayList<String>();
 
 
-	
+	/**
+	 * Constructeur
+	 * @param billeterie
+	 */
 	public ListeObjet(Billeterie billeterie) {
 		this.billeterie = billeterie;
-		listeObjet = new ArrayList<ObjetB>();
+		listeObjet = new ArrayList<Objet>();
 		this.metEnMemoire(); 
 	}
 	
-	public void metEnMemoire() {
-	}
+	/**
+	 * Cette methode permet de mettre en memoire les objets a partir de la bdd
+	 */
+	public abstract void metEnMemoire();
 	
 	/**
 	 * Ajoute un billet dans la liste
 	 * @param billet
 	 */
-	public void ajouter(Map<String, Object> map) {
-	}
+	public abstract void ajouter(Map<String, Object> map);
 	
 	/**
-	 * Supprime un billet dans la liste
+	 * Renvoie l'ensemble des billets lies a la recherche
+	 * @param chaine la chaine a trouver dans le billet
+	 * @return la liste des billets
+	 */
+	public abstract void recherche(String chaine);
+	
+	/**
+	 * Cette methode met a jour le modele de donnes lors de suppressions
 	 * @param objet
 	 */
-	public void supprimer(ObjetB objet) {
+	public void supprimer(Objet objet) {
 		listeObjet.remove(objet);
 		listeObjetSauvegarde.remove(objet);
 		fireTableDataChanged();
 	}
 	
 	/**
-	 * Lors de la modification d'une personne, il faut mettre a jour le modele de donnees
+	 * Cette methode met a jour le modele de donnes lors de modifications
 	 */
 	public void modifier() {
 		reinitialise();
@@ -61,7 +72,7 @@ public class ListeObjet extends AbstractTableModel{
 	 * par une liste de billets trouves.
 	 */
 	public void sauvegarde() {
-		List<ObjetB> list = new ArrayList<ObjetB>();
+		List<Objet> list = new ArrayList<Objet>();
 		for (int i = 0; i < listeObjet.size(); i++) {
 			list.add(listeObjet.get(i));
 		}
@@ -77,31 +88,28 @@ public class ListeObjet extends AbstractTableModel{
 	}
 	
 	
+	
 	/**
-	 * Renvoie l'ensemble des billets lies a la recherche
-	 * @param chaine la chaine a trouver dans le billet
-	 * @return la liste des billets
+	 * @param index
+	 * @return L'objet situe a l'index index
+	 * @throws Exception 
 	 */
-	public void recherche(String chaine) {
-	}
-	
-	public int getId(ObjetB objet) {
-		int res = -1;
-		for (int i = 0; i < listeObjet.size(); i++) {
-			if (listeObjet.get(i).equals(objet)) {
-				res = i;
-				i = listeObjet.size();
-			}
+	public Objet getObjetByIndex(int index) throws Exception{
+		Objet objet = null;
+		objet = listeObjet.get(index);
+		if (objet == null){
+			throw new Exception("Personne non existante");
 		}
-		return res;
+		return objet;
 	}
 	
-	public ObjetB getObjetByIndex(int i){
-		return listeObjet.get(i);
-	}
-	
-	public ObjetB getObjetById(int id) throws Exception {
-		ObjetB objet = null;
+	/**
+	 * @param id
+	 * @return l'objet d'id id
+	 * @throws Exception
+	 */
+	public Objet getObjetById(int id) throws Exception {
+		Objet objet = null;
 		boolean stop = false;
 		for (int i = 0; i < listeObjet.size() && !stop; i++) {
 			if (id == listeObjet.get(i).getId()) {
@@ -115,46 +123,30 @@ public class ListeObjet extends AbstractTableModel{
 		return objet;
 	}
 	
+	/********** Methodes de base ************/
 	public String toString () {
 		return listeObjet.toString();
 	}
-	
 	public Billeterie getBilleterie() {
 		return billeterie;
 	}
-	
 	public List<String> getAttributs() {
 		return attributs;
 	}
-	
 	public Map<String, Integer> getAttributsType() {
 		return attributsType;
 	}
-	
-	/********** Methodes pour la gestion de l'affichage ************/
-	@Override
-	public int getRowCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getColumnCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public Object getValueAt(int rowIndex, int columnIndex) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public JTable getTableau() {
 		return tableau;
 	}
-	
 	public void setTableau(JTable tableau) {
 		this.tableau = tableau;
 	}
+	
+	/********** Methodes pour la gestion de l'affichage ************/
+	public abstract int getRowCount();
+
+	public abstract int getColumnCount();
+
+	public abstract Object getValueAt(int rowIndex, int columnIndex);
 }

@@ -1,22 +1,14 @@
 package modele;
 
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.Map;
 
 
-public class Billet extends ObjetB {
-	private Map<String,Object> map = new HashMap<String,Object>(); // le champ id n'est pas present dans cette map
-	private Billeterie bill;
-
-	// id utilise par le prochain billet cree
-	private static int prochainId; 
-	
-	// TODO fonction supprimer
+public class Billet extends Objet {
+	private static int prochainId; 	// id utilise par le prochain billet cree
 
 	
 	/********** Constructeurs ************/
-	
 	/**
 	 * Constructeur d'un billet deja present dans la bdd, 
 	 * La map contient l'ensemble des attributs de l'objet ainsi que son id
@@ -26,7 +18,7 @@ public class Billet extends ObjetB {
 	public Billet(Map<String,Object> map, Billeterie bill) {
 		super();
 		this.map = map;
-		this.bill = bill;
+		this.billeterie = bill;
 	}
 	
 	/**
@@ -39,7 +31,7 @@ public class Billet extends ObjetB {
 	public Billet(Map<String,Object> map, Billeterie bill, int useless) {
 		super();
 		this.map = map;
-		this.bill = bill;
+		this.billeterie = bill;
 		
 		// Attribue un Id a ce nouveau billet
 		if (!map.containsKey("id")) { //NOM BDD
@@ -54,9 +46,6 @@ public class Billet extends ObjetB {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
 	
 	
 	/********** Methodes ************/
@@ -74,17 +63,19 @@ public class Billet extends ObjetB {
 			}
 			
 			// Sauvegarde les modifs dans la bdd
-			bill.getBdd().enregistreBDD("billet", map); //NOM BDD
+			billeterie.getBdd().enregistreBDD("billet", map); //NOM BDD
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		bill.getListeBillets().modifier();
+		billeterie.getListeBillets().modifier();
 	}
 	
-	
+	/**
+	 * Cette methode supprimer un billet de la memoire ainsi que dans la ListeBillets
+	 */
 	public void supprimer() {
-		bill.getBdd().supprimer("Billet", this.getId());
-		bill.getListeBillets().supprimer(this);
+		billeterie.getBdd().supprimer("Billet", this.getId());
+		billeterie.getListeBillets().supprimer(this);
 	}
 	
 	/**
@@ -115,8 +106,7 @@ public class Billet extends ObjetB {
 	}
 	
 	
-	
-	/********** Getters ************/
+	/********** Getters & Setters ************/
 	public int getNbPlace() {
 		return (Integer) map.get("nb_total"); //NOM BDD
 	}

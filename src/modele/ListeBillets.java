@@ -12,6 +12,7 @@ import java.util.Set;
 public class ListeBillets extends ListeObjet{
 	private static final long serialVersionUID = 1L;
 	
+	
 	/********** Constructeur ************/
 	/**
 	 * Crée l'objet en mettant en mémoire l ensemble des billets de la bdd
@@ -67,7 +68,7 @@ public class ListeBillets extends ListeObjet{
 	 */
 	public void recherche(String chaine) {
 		reinitialise();
-		List<ObjetB> resul= new ArrayList<ObjetB>();
+		List<Objet> resul= new ArrayList<Objet>();
 		
 		String query = requete(chaine);
 		List<Map<String, Object>> list = billeterie.getBdd().getObjets(query);
@@ -100,19 +101,17 @@ public class ListeBillets extends ListeObjet{
 		sauvegarde();
 	}
 	
+	
 	/********** Methodes pour la gestion de l'affichage ************/
 	public int getRowCount() {
 		return listeObjet.size();
 	}
-
 	public int getColumnCount() {
 		return getAttributs().size();
 	}
-	
 	public String getColumnName(int columnIndex) {
 		return getAttributs().get(columnIndex);
 	}
-
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		return listeObjet.get(rowIndex).getHashMap().get(getColumnName(columnIndex));    
 	}
