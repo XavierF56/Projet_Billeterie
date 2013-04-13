@@ -62,7 +62,7 @@ public class Achat {
 	 */
 	private void repercuter() {
 		try {
-			personne.getBilleterie().getListeBillets().getBillet((Integer) map.get("id_billet")).modifieQt((Integer) map.get("quantite"), (Boolean) map.get("subventionne"));
+			((Billet)personne.getBilleterie().getListeBillets().getObjetById((Integer) map.get("id_billet"))).modifieQt((Integer) map.get("quantite"), (Boolean) map.get("subventionne"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -111,7 +111,7 @@ public class Achat {
 	}
 	public Billet getBillet() {
 		try {
-			return personne.getBilleterie().getListeBillets().getBillet((Integer) map.get("id_billet"));
+			return (Billet) personne.getBilleterie().getListeBillets().getObjetById((Integer) map.get("id_billet"));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
