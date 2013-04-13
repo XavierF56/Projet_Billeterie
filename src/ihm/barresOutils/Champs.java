@@ -97,12 +97,12 @@ public class Champs extends JPanel{
 		int type = listeAttributs.get(nom);
 		try {
 		switch (type) {
-		case Constantes.INTEGER : System.out.println("Entier " + nom);res = Integer.parseInt(((JTextField)champ).getText()); break;
-		case Constantes.FLOAT : System.out.println("Float " + nom);res = strToFloat(((JTextField)champ).getText()); break;
-		case Constantes.STRING : System.out.println("String " + nom);res = ((JTextField)champ).getText(); break;
-		case Constantes.BOOLEAN : System.out.println("BOOl " + nom);res = ((JCheckBox)champ).isSelected(); break;
-		default : res = null;
-		}
+			case Constantes.INTEGER : System.out.println("Entier " + nom);res = Integer.parseInt(((JTextField)champ).getText()); break;
+			case Constantes.FLOAT : System.out.println("Float " + nom);res = strToFloat(((JTextField)champ).getText()); break;
+			case Constantes.STRING : System.out.println("String " + nom);res = ((JTextField)champ).getText(); break;
+			case Constantes.BOOLEAN : System.out.println("BOOl " + nom);res = ((JCheckBox)champ).isSelected(); break;
+			default : res = null;
+			}
 		} catch (Exception e) {
 			throw new Exception("Les champs ne sont pas remplis");
 		}

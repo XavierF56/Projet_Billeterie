@@ -2,6 +2,7 @@ package modele;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +15,7 @@ public class ListeObjet extends AbstractTableModel{
 	protected List<ObjetB> listeObjet = new ArrayList<ObjetB>();
 	protected List<ObjetB> listeObjetSauvegarde = new ArrayList<ObjetB>();
 	protected JTable tableau;
-	protected Map<String, Integer> attributsType;
+	protected Map<String, Integer> attributsType = new HashMap<String, Integer>();
 	protected List<String> attributs = new ArrayList<String>();
 
 

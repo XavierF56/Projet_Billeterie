@@ -76,6 +76,7 @@ public class Billet extends ObjetB {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		bill.getListeBillets().modifier();
 	}
 	
 	

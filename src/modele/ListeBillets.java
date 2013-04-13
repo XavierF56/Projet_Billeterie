@@ -34,6 +34,7 @@ public class ListeBillets extends ListeObjet{
 			listeObjet.add(new Billet(list.get(i), billeterie));
 		}
 		Billet.setProchainId((Integer)list.get(listeObjet.size() - 1).get("id")+1);
+		this.sauvegarde();
 	}
 	
 	/**
@@ -70,6 +71,7 @@ public class ListeBillets extends ListeObjet{
 		
 		String query = requete(chaine);
 		List<Map<String, Object>> list = billeterie.getBdd().getObjets(query);
+		
 		if(!list.isEmpty()) {
 			for (int i = 0; i< listeObjet.size(); i++) {
 				int Id = listeObjet.get(i).getId();
