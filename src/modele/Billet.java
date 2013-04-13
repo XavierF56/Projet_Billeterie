@@ -57,6 +57,8 @@ public class Billet extends ObjetB {
 	
 	
 	
+	
+	
 	/********** Methodes ************/
 	/**
 	 *  Cette methode enregistre un billet en memoire grace a une requete update
@@ -79,6 +81,11 @@ public class Billet extends ObjetB {
 		bill.getListeBillets().modifier();
 	}
 	
+	
+	public void supprimer() {
+		bill.getBdd().supprimer("Billet", this.getId());
+		bill.getListeBillets().supprimer(this);
+	}
 	
 	/**
 	 * Augmente ou diminue le nombre de billet restant, 
