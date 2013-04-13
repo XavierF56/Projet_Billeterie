@@ -5,7 +5,7 @@ import javax.swing.AbstractAction;
 
 import modele.ListeObjet;
 
-import ihm.fenetres.FenetreNouvellePersonne;
+import ihm.fenetres.FenetreNouvelleObjet;
 
 public class AjouterAction extends AbstractAction {
 	private static final long serialVersionUID = 1L;
@@ -17,6 +17,6 @@ public class AjouterAction extends AbstractAction {
     }
 
     public void actionPerformed(ActionEvent e) {
-    	new FenetreNouvellePersonne(listeObjet);
+    	new FenetreNouvelleObjet(listeObjet);
     }
 }

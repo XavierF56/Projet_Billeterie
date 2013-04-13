@@ -8,7 +8,7 @@ import javax.swing.AbstractAction;
 import modele.ListeObjet;
 import modele.Objet;
 
-import ihm.fenetres.FenetreModifiePersonne;
+import ihm.fenetres.FenetreModifieObjet;
 
 
 public class ModifierAction extends AbstractAction {
@@ -27,7 +27,7 @@ public class ModifierAction extends AbstractAction {
 					int selection = listeObjet.getTableau().getSelectedRow();
 	            	int selectionCorrige = listeObjet.getTableau().getRowSorter().convertRowIndexToModel(selection);
 	            	Objet objet = listeObjet.getObjetByIndex(selectionCorrige);
-					new FenetreModifiePersonne(objet, listeObjet);
+					new FenetreModifieObjet(objet, listeObjet);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

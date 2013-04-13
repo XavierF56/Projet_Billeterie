@@ -3,32 +3,43 @@ package ihm.fenetres;
 import ihm.barresOutils.Champs;
 
 import java.awt.event.ActionEvent;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
+import modele.Billeterie;
 import modele.ListeObjet;
+import modele.Objet;
+import modele.Personne;
+@SuppressWarnings("unused")
 
-@SuppressWarnings("serial")
-public class FenetreNouvellePersonne extends Fenetre {
 
-	private ListeObjet listeObjet;
-	private Champs champs;
+public class FenetreModifieObjet extends JFrame {
+	private static final long serialVersionUID = 1L;
+	Objet personne;
+	Champs champs;
+	ListeObjet listeObjet;
+	// TODO : les champs doivent êter prérempli avec les données
 	
 	/**
 	 * Constructeur
 	 * @param billeterie
 	 */
-	public FenetreNouvellePersonne(ListeObjet listeObjet) {
+	public FenetreModifieObjet(Objet personne, ListeObjet listeObjet) {
+		this.personne = personne;
 		this.listeObjet = listeObjet;
 		champs = new Champs(listeObjet.getAttributsType());
+		champs.setValeurs(personne.getHashMap());
 		setBounds(100, 100, 450, 300);
 		this.add(champs, "Center");
 		this.add(new JButton(new ValiderAction(this)), "South");
-		this.setTitle("Ajouter une nouvelle personne");
+		this.setTitle("Modifier une nouvelle personne");
 		this.setVisible(true);
 	}
 	
@@ -39,22 +50,26 @@ public class FenetreNouvellePersonne extends Fenetre {
 		return champs;
 	}
 	
+	public Objet getObjet() {
+		return personne;
+	}
+	
 	private class ValiderAction extends AbstractAction {
 		private static final long serialVersionUID = 1L;
-		FenetreNouvellePersonne fenetre;
-        private ValiderAction(FenetreNouvellePersonne fenetre) {
+		FenetreModifieObjet fenetre;
+        private ValiderAction(FenetreModifieObjet fenetreModifiePersonne) {
             super("Valider");
-            this.fenetre = fenetre;
+            this.fenetre = fenetreModifiePersonne;
         }
  
         public void actionPerformed(ActionEvent e) {
 			try {
 				Map<String, Object>  map = fenetre.getChamps().getDonnees();
-				listeObjet.ajouter(map);
+				fenetre.getObjet().modifie(map);
 	        	fenetre.setVisible(false);
 			} catch (Exception e1) {
-				String message = "\"Erreur lors de l'ajout\"\n"
-			            + "Tous les champs n'ont pas ete renseignes\n";
+				String message = "\"Erreur lors de la modification\"\n"
+				            + "Tous les champs n'ont pas ete renseignes\n";
 				JOptionPane.showMessageDialog(new JFrame(), message, "Dialog", JOptionPane.ERROR_MESSAGE);
 			}
         }
