@@ -83,8 +83,9 @@ public class ListePersonnes extends ListeObjet {
 					}
 				}
 			}
+			listeObjet = resul;
 		}
-		listeObjet = resul;
+		
 		fireTableDataChanged();
 	}
 	

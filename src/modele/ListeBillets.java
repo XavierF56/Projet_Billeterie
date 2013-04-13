@@ -84,8 +84,9 @@ public class ListeBillets extends ListeObjet{
 					}
 				}
 			}
+			listeObjet = resul;
 		}
-		listeObjet = resul;
+		
 		fireTableDataChanged();
 	}
 	

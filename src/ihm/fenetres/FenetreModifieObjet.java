@@ -3,21 +3,15 @@ package ihm.fenetres;
 import ihm.barresOutils.Champs;
 
 import java.awt.event.ActionEvent;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
-import modele.Billeterie;
 import modele.ListeObjet;
 import modele.Objet;
-import modele.Personne;
-@SuppressWarnings("unused")
 
 
 public class FenetreModifieObjet extends JFrame {
@@ -25,7 +19,6 @@ public class FenetreModifieObjet extends JFrame {
 	Objet personne;
 	Champs champs;
 	ListeObjet listeObjet;
-	// TODO : les champs doivent êter prérempli avec les données
 	
 	/**
 	 * Constructeur
