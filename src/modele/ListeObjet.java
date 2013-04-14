@@ -25,8 +25,6 @@ public abstract class ListeObjet extends AbstractTableModel{
 	 */
 	public ListeObjet(Billeterie billeterie) {
 		this.billeterie = billeterie;
-		listeObjet = new ArrayList<Objet>();
-		this.metEnMemoire(); 
 	}
 	
 	/**

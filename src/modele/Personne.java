@@ -1,12 +1,11 @@
 package modele;
 
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Map;
 
 
 public class Personne extends Objet{
-	private ListeAchats achats;
+	private ListeAchats achats = null;
 	private boolean achatEnMem;	// Booleen permettant de savoir si les acahts sont en memoire
 	private static int prochainId; 	// id utilise par la prochaine personne creee
 
@@ -38,7 +37,7 @@ public class Personne extends Objet{
 		this.map = map;
 		this.billeterie = bill;
 		this.achatEnMem = false;
-		this.achats = new ListeAchats(this);
+
 		
 		// Attribue un Id a cette nouvelle personne
 		if (!map.containsKey("id")) {
@@ -52,6 +51,7 @@ public class Personne extends Objet{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		this.achats = new ListeAchats(this);
 	}
 	
 	
@@ -91,28 +91,29 @@ public class Personne extends Objet{
 	 * @return le nb de billets achetes
 	 */
 	public int nbBilletsAchete(Billet billet) {
-		//Met en memoire la liste des achats
+		/*//Met en memoire la liste des achats
 		if (!achatEnMem) {
 			achats.metEnMemoire();
 		}
-		List<Achat> liste = this.achats.getListeAchats();
+		List<Objet> liste = this.achats.getListeAchats();
 		int id = billet.getId();
 		int resul = 0;
 		
 		for (int i = 0; i < liste.size(); i++) {
-			if (id == liste.get(i).getBillet().getId()) {
+			if (id == ((Achat)liste.get(i)).getBillet().getId()) {
 				resul += liste.get(i).getQt();
 			}
 		}
-		return resul;
+		return resul;*/
+		return 0;
 	}
-	
+
 	/**
 	 * Retourne ce qui reste a payer (lorsqu'un billet n'est pas directement paye)
 	 * @return le prix
 	 */
 	public float restantAPayer() {
-		//Met en memoire la liste des achats
+		/*//Met en memoire la liste des achats
 		if (!achatEnMem) {
 			achats.metEnMemoire();
 		}
@@ -124,7 +125,8 @@ public class Personne extends Objet{
 				resul += liste.get(i).getPrixTotal();
 			}
 		}
-		return resul;
+		return resul;*/
+		return 0;
 	}
 
 		

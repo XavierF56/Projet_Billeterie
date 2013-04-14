@@ -50,9 +50,6 @@ public class Commande {
 	 */
 	public void ajoutCommande(Billet billet, int qt, boolean paye, boolean donne, boolean subventionne) throws AchatException {
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("id", billet.getId() + "Z" + personne.getId() + "Z" + personne.getAchats().getNbAchats());
-		map.put("id_billet", billet.getId());
-		map.put("id_personne", personne.getId());
 		map.put("quantite", qt);
 		map.put("paye", paye);
 		map.put("donne", donne);

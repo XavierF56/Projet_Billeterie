@@ -137,11 +137,20 @@ public class SQLiteImpl implements SQLInterface{
 			stmt.setQueryTimeout(iTimeout);
 			res = stmt.executeQuery("Select * from " + table);
 			ResultSetMetaData metadata = res.getMetaData();
-			for(int i = 0; i < metadata.getColumnCount(); i++){
-				String nomColonne = metadata.getColumnName(i+1);
-			    if(!nomColonne.equals("id")) {
-			    	resul.put(nomColonne, Constantes.stringToInt(metadata.getColumnTypeName(i+1)));
-			    }
+			if(!table.equals("Achat")) {
+				for(int i = 0; i < metadata.getColumnCount(); i++){
+					String nomColonne = metadata.getColumnName(i+1);
+				    if(!nomColonne.equals("id")) {
+				    	resul.put(nomColonne, Constantes.stringToInt(metadata.getColumnTypeName(i+1)));
+				    }
+				}
+			} else {
+				for(int i = 0; i < metadata.getColumnCount(); i++){
+					String nomColonne = metadata.getColumnName(i+1);
+				    if(!(nomColonne.equals("id") || nomColonne.equals("id_billet") || nomColonne.equals("id_personne"))) {
+				    	resul.put(nomColonne, Constantes.stringToInt(metadata.getColumnTypeName(i+1)));
+				    }
+				}
 			}
 			// Fermeture des statements
 			res.close(); 

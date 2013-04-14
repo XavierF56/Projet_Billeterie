@@ -4,9 +4,11 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Achat {
+public class Achat extends Objet {
 	private Map<String,Object> map = new HashMap<String,Object>();
 	private Personne personne;
+	@SuppressWarnings("unused")
+	private Billet billet;
 
 	
 	/********** Constructeurs ************/
@@ -17,10 +19,26 @@ public class Achat {
 	 * @param personne
 	 */
 	public Achat(Map<String,Object> map, Personne perso) {
-		this.map = map;
+		super();
+		super.map = map;
+		super.billeterie = perso.getBilleterie();
 		this.personne = perso;
 	}
 	
+	public Achat (Map<String,Object> map, Personne perso, Billet billet){
+		super();
+		super.map = map;
+		super.billeterie = perso.getBilleterie();
+		this.personne = perso;
+		this.setBillet(billet);
+		
+		// Attribue un Id a cette nouvelle personne
+		if (!map.containsKey("id")) {
+			map.put("id", billet.getId() + "Z" + personne.getId() + "Z" + personne.getAchats().getNbAchats());
+			map.put("id_personne", personne.getId());
+			map.put("id_billet", billet.getId());
+		}
+	}
 	
 	/********** Methodes ************/
 	/**
@@ -37,7 +55,7 @@ public class Achat {
 		}
 		
 		// Ajoute l'achat à la liste d'achats de la personne
-		personne.getAchats().ajoutAchat(this);
+		personne.getAchats().ajouter(this);
 		
 		// Repercute l'achat sur la liste des billets
 		this.repercuter();
@@ -47,12 +65,13 @@ public class Achat {
 	 *  Cette methode modifie un Achat dans la bdd
 	 *  @param map
 	 */
-	private void enregistre() {
+	private void modifie() {
 		try {
 			personne.getBilleterie().getBdd().enregistreBDD("achat", map); //NOM BDD
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		personne.getAchats().modifier();
 	}
 	
 	
@@ -61,10 +80,23 @@ public class Achat {
 	 */
 	private void repercuter() {
 		try {
-			((Billet)personne.getBilleterie().getListeBillets().getObjetById((Integer) map.get("id_billet"))).modifieQt((Integer) map.get("quantite"), (Boolean) map.get("subventionne"));
+			((Billet)personne.getBilleterie().getListeBillets().getObjetById(
+					(Integer) map.get("id_billet"))).modifieQt((Integer) map.get("quantite"), 
+							(Boolean) map.get("subventionne"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void supprimer() {
+		billeterie.getBdd().supprimer("achat", this.getId());
+		personne.getAchats().supprimer(this);
+	}
+
+
+	@Override
+	public void modifie(Map<String, Object> map) {
+		// Not Implemented
 	}
 	
 	
@@ -75,7 +107,7 @@ public class Achat {
 	 */
 	public void setPayer(boolean bl) {
 		map.put("paye", bl);
-		this.enregistre();
+		this.modifie();
 	}
 	
 	/**
@@ -84,19 +116,8 @@ public class Achat {
 	 */
 	public void setDonner(boolean bl) {
 		map.put("donne", bl);
-		this.enregistre();
-	}
-	
-	/**
-	 * Modifie l'attribut "subventionne" de l'achat 
-	 * Cela signifie indique si un billet est subventionne
-	 */
-	public void setSubventionne(boolean bl) {
-		map.put("subventionne", bl);
-		this.enregistre();
-	}
-	
-	
+		this.modifie();
+	}	
 	
 	/********** Getters ************/
 	public boolean getPaye() {
@@ -130,5 +151,14 @@ public class Achat {
 	}
 	public String toString () {
 		return map +"\n";
+	}
+
+
+	public Map<String, Object> getHashMap() {
+		return map;
+	}
+
+	public void setBillet(Billet billet) {
+		this.billet = billet;
 	}
 }

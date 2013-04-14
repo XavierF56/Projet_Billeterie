@@ -22,6 +22,7 @@ public class ListePersonnes extends ListeObjet {
 		super(billeterie);
 		attributsType = billeterie.getBdd().getAttributs("Personne");
 		attributs = Constantes.mapVersList(attributsType);
+		this.metEnMemoire(); 
 	}
 	
 	
