@@ -4,6 +4,7 @@ import ihm.barresOutils.BarreOutilsBillets;
 import ihm.barresOutils.BarreOutilsPersonnes;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
@@ -79,7 +80,8 @@ public class FenetrePrincipale extends Fenetre {
 		sorter.setSortsOnUpdates(true);
 		
 		OngletPersonne.setLayout(new BorderLayout(0, 0));
-		OngletPersonne.add(new BarreOutilsPersonnes(billeterie), "North");
+		BarreOutilsPersonnes barre = new BarreOutilsPersonnes(billeterie);
+		OngletPersonne.add(barre, "North");
 		OngletPersonne.add(new JScrollPane(tableauPersonnes), "Center");
 		
 		Onglets.addTab("Personnes", null, OngletPersonne, null);

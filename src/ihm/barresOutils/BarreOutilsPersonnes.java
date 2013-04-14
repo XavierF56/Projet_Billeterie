@@ -27,7 +27,6 @@ public class BarreOutilsPersonnes extends JPanel {
 		this.billeterie = billeterie;
 
 		textRecherche = new TextRecherche(billeterie.getListePersonnes());
-		
 		this.add(textRecherche);
 		this.add(new JButton(new RechercheAction(billeterie.getListePersonnes(), textRecherche)));
 		this.add(new JButton(new AjouterAction(billeterie.getListePersonnes())));
