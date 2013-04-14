@@ -1,13 +1,13 @@
 package ihm.fenetres;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableRowSorter;
 
 import modele.ListeAchats;
-import modele.ListePersonnes;
 import modele.Personne;
 
 public class FenetreDetailsPersonne extends Fenetre {
@@ -31,6 +31,7 @@ public class FenetreDetailsPersonne extends Fenetre {
 		TableRowSorter<ListeAchats> sorter = new TableRowSorter<ListeAchats>((ListeAchats) tableau.getModel());   
 		tableau.setRowSorter(sorter);
 		sorter.setSortsOnUpdates(true);
+		add(new JScrollPane(tableau), "Center");
 		setVisible(true);
 	}
 	

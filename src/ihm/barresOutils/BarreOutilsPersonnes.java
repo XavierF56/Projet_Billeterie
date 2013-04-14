@@ -8,7 +8,6 @@ import ihm.actions.RechercheAction;
 import ihm.actions.SupprimerAction;
 import ihm.actions.TextRecherche;
 import ihm.fenetres.FenetreDetailsPersonne;
-import ihm.fenetres.FenetreNouvelleObjet;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;

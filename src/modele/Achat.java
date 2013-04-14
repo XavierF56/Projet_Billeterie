@@ -20,8 +20,8 @@ public class Achat extends Objet {
 	 */
 	public Achat(Map<String,Object> map, Personne perso) {
 		super();
-		super.map = map;
-		super.billeterie = perso.getBilleterie();
+		this.map = map;
+		this.billeterie = perso.getBilleterie();
 		this.personne = perso;
 	}
 	
