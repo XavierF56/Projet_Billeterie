@@ -7,17 +7,31 @@ import java.util.Map;
 
 /**
  * Fonctionnement des commandes
- * 1 Ecran Achat billet : 
- * 		1 Choix d'un billet à partir d'une liste (sera amélioré après !)
- * 		2 Choix de la quantite, subventionne, paye, donne
- * 		3 Deux boutons : Terminer la commande ou Continuer la commande
- * 2 Si "Continuer la commande" appuye
- * 		1 Verifie si l'achat est possible
- * 		2 Si c'est possible, on ajoute le billet à la listeValidee, listeAchats de la personne et on repercute sur le billet
- * 		3 Si ce n'est pas possible, une fenêtre de "forçage" est presente
- * 			1 Si on valide, on force le processus même si il y a des erreurs (pas suffisament de billet sub par ex)
- * 			2 Si on annule, la commande n'est pas prise en compte
- * 3 Terminer la commande
+ * Lorque l'on clique sur "Passer commande"
+ * 1 L'ecran Achat billet apparait, il permet de : 
+ * 		1 Choisir un billet à partir d'une liste ou d'un tableau ?
+ * 		2 Choisir la quantite
+ * 		3 Choisir subventionne (permet de savoir si le billet est subventionne)
+ * 		4 Choisir donne (permet de savoir si le billet a ete remis a la personne)
+ * 		5 Choisir paye (permet de savoir si le billet a ete paye par la personne)
+ * 		6 Deux boutons : Terminer la commande ou Continuer la commande
+ * 			-> Le bouton "Continuer la Commande" fait appel aux fonctions 
+ * 					1 ajoutCommande(param) (cf 2.)
+ * 					2 affiche un nouvel ecran Achat Billet
+ * 			-> Le bouton "Terminer la Commande" fait appel aux fonctions 
+ * 					1 ajoutCommande(param) (cf 2.)
+ * 					2 affiche la fenetre "Fin de la commande" (cf 3.)
+ *
+ * 2 Fonction ajoutCommande : La fonction verifie si l'achat est possible (pas suffisament de billet sub par ex)
+ * 		-> Si c'est possible, l'achat est automatiquement valide (ajout a la liste des achats de la personne)
+ * 		-> Si ce n'est pas possible, une erreur est lance par ajoutCommande
+ * 			=> une fenêtre de "forçage" doit être proposés
+ * 				1 Si on valide, cella appelle la focntion valider() : on force le processus même si il y a des erreurs 
+ * 				2 Si on annule, cella appelle la focntion annuler() : la commande n'est pas prise en compte
+ *
+ * 3 Si "Terminer la commande"
+ * 		2 Cette fenetre presente un recapitulatif des billets achetes ainsi que le montant à payer
+ * 		3 Un unique bouton qui affiche "Terminer"
  */
 
 public class Commande {
@@ -139,6 +153,4 @@ public class Commande {
 	public String toString() {
 		return "Mon panier : " + nbArticle + " articles | " + prixTotal + "€";
 	}
-
-	
 }
