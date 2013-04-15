@@ -22,13 +22,13 @@ public class FenetreNouvelleObjet extends Fenetre {
 	 * Constructeur
 	 * @param billeterie
 	 */
-	public FenetreNouvelleObjet(ListeObjet listeObjet) {
+	public FenetreNouvelleObjet(ListeObjet listeObjet, String titre) {
 		this.listeObjet = listeObjet;
 		champs = new Champs(listeObjet.getAttributsType());
 		setBounds(100, 100, 450, 300);
 		this.add(champs, "Center");
 		this.add(new JButton(new ValiderAction(this)), "South");
-		this.setTitle("Ajouter une nouvelle personne");
+		this.setTitle(titre);
 		this.setVisible(true);
 	}
 	

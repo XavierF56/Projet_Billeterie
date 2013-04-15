@@ -32,7 +32,7 @@ public class BarreOutilsBillets extends JPanel {
 		
 		this.add(textRecherche);
 		this.add(new JButton(new RechercheAction(billeterie.getListeBillets(), textRecherche)));
-		this.add(new JButton(new AjouterAction(billeterie.getListeBillets())));
+		this.add(new JButton(new AjouterAction(billeterie.getListeBillets(), "Ajouter un nouveau billet")));
 		this.add(new JButton(new ModifierAction(billeterie.getListeBillets())));
 		this.add(new JButton(new SupprimerAction(billeterie.getListeBillets())));
 		this.add(new JButton("Modifier Qt"));
