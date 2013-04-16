@@ -1,12 +1,15 @@
 package ihm.barresOutils;
 
 import general.Constantes;
+import modele.Attribut;
+
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -20,46 +23,48 @@ import javax.swing.JTextField;
 //TODO Verifier que les champs de text ne contiennent pas de caracteres etranges, "'" par ex
 public class Champs extends JPanel{
 	private static final long serialVersionUID = 1L;
-	Map<String, JComponent> listeChamps = new HashMap<String, JComponent>();
-	Map<String, Integer> listeAttributs;
-	GridBagConstraints gridBagConstraints;
-	public int nb = 0;
 	
+	private Map<String, JComponent> listeChamps = new HashMap<String, JComponent>();
+	private List<Attribut> listeAttributs;
+	private GridBagConstraints gridBagConstraints;
+	private int nb = 0;
+	
+	
+	/********** Constructeur ************/
 	/**
 	 * Constructeur d'un champs
 	 * @param listeAttributs
 	 */
-	public Champs(Map<String, Integer> listeAttributs) {
+	public Champs(List<Attribut> listeAttributs) {
 		this.listeAttributs = listeAttributs;
 		
 		this.setLayout(new GridBagLayout());
 		gridBagConstraints = new GridBagConstraints();
 		
-		Set<String> set = listeAttributs.keySet();
-		Iterator<String> it = set.iterator();
-		while (it.hasNext()) {
-			String nom = (String) it.next();
-			
+		for (int i = 0; i < listeAttributs.size(); i++) {
 			//Ajout de l'etiquette
 			gridBagConstraints.gridx = 0;
 			gridBagConstraints.gridy = nb;
-			gridBagConstraints.anchor = GridBagConstraints.CENTER;
-			JLabel etiquette = new JLabel(nom +" : ");
+			gridBagConstraints.anchor = GridBagConstraints.LINE_END;
+			JLabel etiquette = new JLabel(listeAttributs.get(i).getNomInterface() + " : ");
 			add(etiquette,gridBagConstraints);
 			
 			//Ajout du champ
 			gridBagConstraints.gridx = 1;
-			JComponent champ = nouveauChamp(listeAttributs.get(nom));
-			listeChamps.put(nom, champ);
+			JComponent champ = nouveauChamp(listeAttributs.get(i).getType());
+			listeChamps.put(listeAttributs.get(i).getNomBDD(), champ);
 			add(champ,gridBagConstraints);
 			
 			nb++;
 		}
-		gridBagConstraints.gridx = 0;
-		gridBagConstraints.gridy = nb;
-		gridBagConstraints.anchor = GridBagConstraints.CENTER;
 	}
 	
+	
+	/********** Methodes ************/
+	/**
+	 * Permet d'affecter des valeurs au champs à remplir
+	 * @param map
+	 */
 	public void setValeurs(Map<String, Object> map) {
 		Set<String> set = map.keySet();
 		Iterator<String> it = set.iterator();
@@ -80,11 +85,9 @@ public class Champs extends JPanel{
 	 */
 	public Map<String, Object> getDonnees() throws Exception {
 		Map<String, Object> resultat = new HashMap<String, Object>();
-		Set<String> set = listeChamps.keySet();
-		Iterator<String> it = set.iterator();
-		while (it.hasNext()) {
-			String nom = it.next();
-			resultat.put(nom, this.getValeur(nom));
+		for (int i = 0; i < listeAttributs.size(); i++) {
+			String nom = listeAttributs.get(i).getNomBDD();
+			resultat.put(nom, this.getValeur(i, nom));
 		}
 		return resultat;
 	}
@@ -105,10 +108,10 @@ public class Champs extends JPanel{
 		return champ;
 	}
 	
-	private Object getValeur(String nom) throws Exception {
+	private Object getValeur(int index, String nom) throws Exception {
 		Object res;
 		JComponent champ = listeChamps.get(nom);
-		int type = listeAttributs.get(nom);
+		int type = listeAttributs.get(index).getType();
 		try {
 		switch (type) {
 			case Constantes.INTEGER : res = Integer.parseInt(((JTextField)champ).getText()); break;

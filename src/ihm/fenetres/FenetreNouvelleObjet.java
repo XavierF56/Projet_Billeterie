@@ -24,7 +24,7 @@ public class FenetreNouvelleObjet extends Fenetre {
 	 */
 	public FenetreNouvelleObjet(ListeObjet listeObjet, String titre) {
 		this.listeObjet = listeObjet;
-		champs = new Champs(listeObjet.getAttributsType());
+		champs = new Champs(listeObjet.getAttributs());
 		setBounds(100, 100, 450, 300);
 		this.add(champs, "Center");
 		this.add(new JButton(new ValiderAction(this)), "South");

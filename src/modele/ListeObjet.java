@@ -2,7 +2,6 @@ package modele;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,8 +14,7 @@ public abstract class ListeObjet extends AbstractTableModel{
 	protected List<Objet> listeObjet = new ArrayList<Objet>();
 	protected List<Objet> listeObjetSauvegarde = new ArrayList<Objet>();
 	protected JTable tableau;
-	protected Map<String, Integer> attributsType = new HashMap<String, Integer>();
-	protected List<String> attributs = new ArrayList<String>();
+	protected List<Attribut> attributs = new ArrayList<Attribut>();
 
 
 	/**
@@ -128,11 +126,8 @@ public abstract class ListeObjet extends AbstractTableModel{
 	public Billeterie getBilleterie() {
 		return billeterie;
 	}
-	public List<String> getAttributs() {
+	public List<Attribut> getAttributs() {
 		return attributs;
-	}
-	public Map<String, Integer> getAttributsType() {
-		return attributsType;
 	}
 	public JTable getTableau() {
 		return tableau;
@@ -142,9 +137,16 @@ public abstract class ListeObjet extends AbstractTableModel{
 	}
 	
 	/********** Methodes pour la gestion de l'affichage ************/
-	public abstract int getRowCount();
-
-	public abstract int getColumnCount();
-
-	public abstract Object getValueAt(int rowIndex, int columnIndex);
+	public int getRowCount() {
+    	return listeObjet.size();
+    }
+    public int getColumnCount() {
+    	return getAttributs().size();
+    }
+    public String getColumnName(int columnIndex) {
+    	return attributs.get(columnIndex).getNomInterface();
+    }
+    public Object getValueAt(int rowIndex, int columnIndex) {
+    	return listeObjet.get(rowIndex).getHashMap().get(attributs.get(columnIndex).getNomBDD());    	
+    }
 }

@@ -19,9 +19,6 @@ public class BarreOutilsBillets extends JPanel {
 	protected JButton btnSupprimer;
 	protected JTextField txtRechercher;
 	
-	/**
-	 * Premiere version de la barre d'outils d'onglet Billets
-	 */
 	private static final long serialVersionUID = 1L;
 	Billeterie billeterie;
 	private TextRecherche textRecherche;

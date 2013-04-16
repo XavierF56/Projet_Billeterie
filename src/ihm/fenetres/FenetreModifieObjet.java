@@ -27,7 +27,7 @@ public class FenetreModifieObjet extends JFrame {
 	public FenetreModifieObjet(Objet personne, ListeObjet listeObjet) {
 		this.personne = personne;
 		this.listeObjet = listeObjet;
-		champs = new Champs(listeObjet.getAttributsType());
+		champs = new Champs(listeObjet.getAttributs());
 		champs.setValeurs(personne.getHashMap());
 		setBounds(100, 100, 450, 300);
 		this.add(champs, "Center");

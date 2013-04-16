@@ -1,9 +1,11 @@
 package modele;
 
-import general.Constantes;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class ListeAchats extends ListeObjet{
 	private static final long serialVersionUID = 1L;
@@ -15,8 +17,7 @@ public class ListeAchats extends ListeObjet{
 	public ListeAchats(Personne perso) {
 		super(perso.getBilleterie());
 		this.personne = perso;
-		attributsType = billeterie.getBdd().getAttributs("Achat");
-		attributs = Constantes.mapVersList(attributsType);
+		attributs();
 		metEnMemoire();
 	}
 	
@@ -34,6 +35,22 @@ public class ListeAchats extends ListeObjet{
 		}
 		personne.setAchatEnMem(true);
 		sauvegarde();
+	}
+	
+	/**
+	 * Cette methode permet de récuperer la liste des attributs pour l'objet Personne
+	 */
+	private void attributs() {
+		Map<String, Integer> map = billeterie.getBdd().getAttributs("Achat");
+		List<Attribut> resul = new ArrayList<Attribut>();
+		
+		Set<String> set = map.keySet();
+		Iterator<String> it = set.iterator();
+		while (it.hasNext()) {
+			String nom = it.next();
+			resul.add(new Attribut(nom, nom, map.get(nom)));
+		}
+		this.attributs = resul;
 	}
 	
 	/**
@@ -69,18 +86,4 @@ public class ListeAchats extends ListeObjet{
 	public String toString() {
 		return listeObjet.toString();
 	}
-
-	/********** Methodes pour la gestion de l'affichage ************/
-	public int getRowCount() {
-    	return listeObjet.size();
-    }
-    public int getColumnCount() {
-    	return getAttributs().size();
-    }
-    public String getColumnName(int columnIndex) {
-    	return getAttributs().get(columnIndex);
-    }
-    public Object getValueAt(int rowIndex, int columnIndex) {
-    	return listeObjet.get(rowIndex).getHashMap().get(getColumnName(columnIndex));    	
-    }
 }

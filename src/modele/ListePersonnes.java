@@ -20,8 +20,7 @@ public class ListePersonnes extends ListeObjet {
 	 */
 	public ListePersonnes(Billeterie billeterie) {
 		super(billeterie);
-		attributsType = billeterie.getBdd().getAttributs("Personne");
-		attributs = Constantes.mapVersList(attributsType);
+		attributs();
 		this.metEnMemoire(); 
 	}
 	
@@ -40,18 +39,39 @@ public class ListePersonnes extends ListeObjet {
 	}
 	
 	/**
+	 * Cette methode permet de récuperer la liste des attributs pour l'objet Personne
+	 */
+	private void attributs() {
+		Map<String, Integer> map = billeterie.getBdd().getAttributs("Personne");
+		List<Attribut> resul = new ArrayList<Attribut>();
+		
+		// Formatage a la main
+		resul.add(new Attribut("nom", "Nom", map.get("nom")));
+		map.remove("nom");
+		resul.add(new Attribut("prenom", "Prenom", map.get("prenom")));
+		map.remove("prenom");
+		
+		Set<String> set = map.keySet();
+		Iterator<String> it = set.iterator();
+		while (it.hasNext()) {
+			String nom = it.next();
+			resul.add(new Attribut(nom, nom, map.get(nom)));
+		}
+		
+		this.attributs = resul;
+	}
+	
+	/**
 	 * Methode creant une requete pour la recherche
 	 */
 	public String requete (String chaine) {
 		String retour = "SELECT id FROM personne WHERE ";
 		boolean premier = true;
-		Map<String, Integer> attributs = getAttributsType();
-		Set<String> set = attributs.keySet();
-		Iterator<String> it = set.iterator();
-		while (it.hasNext()) {
-			String attribut = it.next();
-			if(attributs.get(attribut) == Constantes.STRING) {
-				String aAjouter = attribut + " Like '"+chaine+"%' ";
+		List<Attribut> list = getAttributs();
+		
+		for (int i = 0; i < list.size() ; i++) {
+			if(list.get(i).getType() == Constantes.STRING) {
+				String aAjouter = list.get(i).getNomBDD() + " Like '"+chaine+"%' ";
 				if(!premier) {
 					retour = retour.concat(" OR ");
 				}
@@ -103,17 +123,5 @@ public class ListePersonnes extends ListeObjet {
 	}
 	
 	
-	/********** Methodes pour la gestion de l'affichage ************/
-	public int getRowCount() {
-    	return listeObjet.size();
-    }
-    public int getColumnCount() {
-    	return getAttributs().size();
-    }
-    public String getColumnName(int columnIndex) {
-    	return getAttributs().get(columnIndex);
-    }
-    public Object getValueAt(int rowIndex, int columnIndex) {
-    	return listeObjet.get(rowIndex).getHashMap().get(getColumnName(columnIndex));    	
-    }
+
 }
