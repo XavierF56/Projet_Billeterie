@@ -5,6 +5,8 @@ import ihm.barresOutils.BarreOutilsPersonnes;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.GridLayout;
+
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;

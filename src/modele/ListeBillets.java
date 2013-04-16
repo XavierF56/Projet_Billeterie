@@ -49,8 +49,6 @@ public class ListeBillets extends ListeObjet{
 		resul.add(new Attribut("nb_total", "Quantite", map.get("nb_total"))); map.remove("nb_total");
 		resul.add(new Attribut("nb_sub_par_personne", "Quantite Sub", map.get("nb_sub_par_personne"))); map.remove("nb_sub_par_personne");
 		resul.add(new Attribut("nb_sub", "Quantite Sub/Personne", map.get("nb_sub"))); map.remove("nb_sub");
-
-
 		
 		Set<String> set = map.keySet();
 		Iterator<String> it = set.iterator();
