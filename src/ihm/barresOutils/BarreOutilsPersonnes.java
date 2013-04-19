@@ -5,6 +5,8 @@ import ihm.actions.ModifierAction;
 import ihm.actions.RechercheAction;
 import ihm.actions.SupprimerAction;
 import ihm.actions.TextRecherche;
+import ihm.actions.VoirAction;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 

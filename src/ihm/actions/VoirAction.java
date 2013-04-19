@@ -5,6 +5,8 @@ import ihm.fenetres.FenetreDetailsPersonne;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import modele.ListeObjet;
 import modele.Personne;
@@ -19,13 +21,23 @@ public class VoirAction extends AbstractAction {
 	    }
 
 	    public void actionPerformed(ActionEvent e) {
+	    	boolean select = true;
+	    	int selectionCorrige = 0;
 	    	int selection = listeObjet.getTableau().getSelectedRow();
-        	int selectionCorrige = listeObjet.getTableau().getRowSorter().convertRowIndexToModel(selection);
-	    	try {
-				new FenetreDetailsPersonne((Personne) listeObjet.getObjetByIndex(selectionCorrige));
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+	    	try{
+        	selectionCorrige = listeObjet.getTableau().getRowSorter().convertRowIndexToModel(selection);
+		    } catch (Exception e1) {	
+				select = false;
+				JOptionPane.showMessageDialog(new JFrame(), 
+						"La selection est vide", "Attention", JOptionPane.INFORMATION_MESSAGE);
+		    }
+	    	if(select) {
+		    	try {
+					new FenetreDetailsPersonne((Personne) listeObjet.getObjetByIndex(selectionCorrige));
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+	    	}
 	    }
 	}
