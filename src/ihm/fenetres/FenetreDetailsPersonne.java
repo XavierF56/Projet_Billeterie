@@ -32,6 +32,7 @@ public class FenetreDetailsPersonne extends Fenetre {
 		tableau.setRowSorter(sorter);
 		sorter.setSortsOnUpdates(true);
 		add(new JScrollPane(tableau), "Center");
+		this.ajusterEtCentrer();
 		setVisible(true);
 	}
 	

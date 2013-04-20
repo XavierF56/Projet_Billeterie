@@ -14,7 +14,7 @@ import modele.ListeObjet;
 import modele.Objet;
 
 
-public class FenetreModifieObjet extends JFrame {
+public class FenetreModifieObjet extends Fenetre {
 	private static final long serialVersionUID = 1L;
 	Objet personne;
 	Champs champs;
@@ -33,6 +33,7 @@ public class FenetreModifieObjet extends JFrame {
 		this.add(champs, "Center");
 		this.add(new JButton(new ValiderAction(this)), "South");
 		this.setTitle("Modifier une nouvelle personne");
+		this.ajusterEtCentrer();
 		this.setVisible(true);
 	}
 	

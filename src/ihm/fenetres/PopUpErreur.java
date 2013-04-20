@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class PopUpErreur extends JFrame{
+public class PopUpErreur extends Fenetre{
 	private static final long serialVersionUID = 1L;
 	
 	public PopUpErreur(String titre, String message) {
@@ -17,7 +17,7 @@ public class PopUpErreur extends JFrame{
 
 		this.add(new JLabel(message), "North");
 		this.add(new JButton(new ValiderAction(this)), "South");
-		
+		this.ajusterEtCentrer();
 		setVisible(true);
 	}
 	

@@ -26,13 +26,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
+@SuppressWarnings("serial")
 public class FenetrePrincipale extends Fenetre {
 	@SuppressWarnings("unused")
 	private Billeterie billeterie;
-	/**
-	 * Premiere version de la fenetre principale
-	 */
-	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private boolean opt;
 	private JTable tableauPersonnes;
@@ -112,6 +109,7 @@ public class FenetrePrincipale extends Fenetre {
 		});
 		OngletOptions.add(chckbxVerrouillerLaSuppression, "North");
 		Onglets.addTab("Options", null, OngletOptions, null);
+		this.ajusterEtCentrer();
 	}
 
 	public JTable getTableau() {
