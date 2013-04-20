@@ -7,8 +7,8 @@ import modele.ListeObjet;
 
 import ihm.fenetres.FenetreNouvelleObjet;
 
+@SuppressWarnings("serial")
 public class AjouterAction extends AbstractAction {
-	private static final long serialVersionUID = 1L;
 	private ListeObjet listeObjet;
 	private String titre;
 	

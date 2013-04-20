@@ -13,8 +13,8 @@ import modele.Objet;
 import ihm.fenetres.FenetreModifieObjet;
 
 
+@SuppressWarnings("serial")
 public class ModifierAction extends AbstractAction {
-	private static final long serialVersionUID = 1L;
 	private ListeObjet listeObjet;
 	
 	public ModifierAction(ListeObjet listeObjet) {

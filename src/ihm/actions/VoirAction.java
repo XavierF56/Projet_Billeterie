@@ -1,6 +1,6 @@
 package ihm.actions;
 
-import ihm.fenetres.FenetreDetailsPersonne;
+import ihm.fenetres.FenetreDetails;
 
 import java.awt.event.ActionEvent;
 
@@ -33,9 +33,8 @@ public class VoirAction extends AbstractAction {
 		    }
 	    	if(select) {
 		    	try {
-					new FenetreDetailsPersonne((Personne) listeObjet.getObjetByIndex(selectionCorrige));
+					new FenetreDetails((Personne) listeObjet.getObjetByIndex(selectionCorrige));
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 	    	}

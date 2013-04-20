@@ -109,26 +109,11 @@ public class FenetrePrincipale extends Fenetre {
 		});
 		OngletOptions.add(chckbxVerrouillerLaSuppression, "North");
 		Onglets.addTab("Options", null, OngletOptions, null);
-		this.ajusterEtCentrer();
+		
+		this.afficher();
 	}
 
 	public JTable getTableau() {
 		return tableauPersonnes;
-	}
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FenetrePrincipale frame = new FenetrePrincipale(new Billeterie("database.sqlite"));
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
 	}
 }

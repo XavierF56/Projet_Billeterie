@@ -12,6 +12,11 @@ public class Constantes {
 	public final static int BOOLEAN = 3;
 	public final static int STRING = 4;
 	
+	/**
+	 * Conversion d'une chaine de caractere en un entier associe
+	 * @param st La chaine a convertir
+	 * @return La constance associe a la chaine de caractere si elle existe, 0 sinon
+	 */
 	public static int stringToInt (String st) {
 		int res = 0;
 		if (st.equals("integer")) res = INTEGER;
@@ -21,7 +26,12 @@ public class Constantes {
 		return res;
 	}
 	
-	public static List<String> mapVersList (Map<String, Integer> map) {
+	/**
+	 * 
+	 * @param map
+	 * @return
+	 */
+	public static List<String> mapToList (Map<String, Integer> map) {
 		List<String> resul = new ArrayList<String>(); 
 		Set<String> set = map.keySet();
 		Iterator<String> it = set.iterator();

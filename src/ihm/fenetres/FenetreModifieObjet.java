@@ -1,71 +1,42 @@
 package ihm.fenetres;
 
+import ihm.actions.ValiderAction2;
 import ihm.barresOutils.Champs;
 
-import java.awt.event.ActionEvent;
-import java.util.Map;
-
-import javax.swing.AbstractAction;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 import modele.ListeObjet;
 import modele.Objet;
 
 
+@SuppressWarnings("serial")
 public class FenetreModifieObjet extends Fenetre {
-	private static final long serialVersionUID = 1L;
-	Objet personne;
-	Champs champs;
-	ListeObjet listeObjet;
+	private Objet objetTraite;
+	private Champs champs;
+	private ListeObjet objets;
 	
-	/**
-	 * Constructeur
-	 * @param billeterie
-	 */
-	public FenetreModifieObjet(Objet personne, ListeObjet listeObjet) {
-		this.personne = personne;
-		this.listeObjet = listeObjet;
-		champs = new Champs(listeObjet.getAttributs());
-		champs.setValeurs(personne.getHashMap());
-		setBounds(100, 100, 450, 300);
+	public FenetreModifieObjet(Objet objetTraite, ListeObjet listeObjet) {
+		this.setTitle("Modifier");
+		this.objetTraite = objetTraite;
+		this.objets = listeObjet;
+		
+		champs = new Champs(objets.getAttributs());
+		champs.setValeurs(objetTraite.getHashMap());
 		this.add(champs, "Center");
-		this.add(new JButton(new ValiderAction(this)), "South");
-		this.setTitle("Modifier une nouvelle personne");
-		this.ajusterEtCentrer();
-		this.setVisible(true);
+		this.add(new JButton(new ValiderAction2(this)), "South");
+		
+		this.afficher();
 	}
 	
-	/**
-	 * @return les Champs de données
-	 */
 	public Champs getChamps() {
 		return champs;
 	}
 	
-	public Objet getObjet() {
-		return personne;
+	public Objet getObjetTraite() {
+		return objetTraite;
 	}
 	
-	private class ValiderAction extends AbstractAction {
-		private static final long serialVersionUID = 1L;
-		FenetreModifieObjet fenetre;
-        private ValiderAction(FenetreModifieObjet fenetreModifiePersonne) {
-            super("Valider");
-            this.fenetre = fenetreModifiePersonne;
-        }
- 
-        public void actionPerformed(ActionEvent e) {
-			try {
-				Map<String, Object>  map = fenetre.getChamps().getDonnees();
-				fenetre.getObjet().modifie(map);
-	        	fenetre.setVisible(false);
-			} catch (Exception e1) {
-				String message = "\"Erreur lors de la modification\"\n"
-				            + "Tous les champs n'ont pas ete renseignes\n";
-				JOptionPane.showMessageDialog(new JFrame(), message, "Dialog", JOptionPane.ERROR_MESSAGE);
-			}
-        }
-    }
+	public ListeObjet getObjets() {
+		return objets;
+	}
 }

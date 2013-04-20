@@ -7,9 +7,10 @@ import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
 public abstract class Fenetre extends JFrame{
-	void ajusterEtCentrer() {
+	protected void afficher() {
 		pack();
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-		this.setLocation((screen.width - this.getSize().width)/2,(screen.height - this.getSize().height)/2); 
+		this.setLocation((screen.width - this.getSize().width)/2,(screen.height - this.getSize().height)/2);
+		setVisible(true);
 	}
 }
