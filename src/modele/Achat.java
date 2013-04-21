@@ -1,13 +1,10 @@
 package modele;
 
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.Map;
 
 public class Achat extends Objet {
-	private Map<String,Object> map = new HashMap<String,Object>();
 	private Personne personne;
-	@SuppressWarnings("unused")
 	private Billet billet;
 
 	
@@ -23,6 +20,11 @@ public class Achat extends Objet {
 		this.map = map;
 		this.billeterie = perso.getBilleterie();
 		this.personne = perso;
+		try {
+			billet =  (Billet) personne.getBilleterie().getListeBillets().getObjetById((Integer) map.get("id_billet"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public Achat (Map<String,Object> map, Personne perso, Billet billet){
@@ -130,12 +132,7 @@ public class Achat extends Objet {
 		return (Boolean) Boolean.valueOf(map.get("subventionne").toString());
 	}
 	public Billet getBillet() {
-		try {
-			return (Billet) personne.getBilleterie().getListeBillets().getObjetById((Integer) map.get("id_billet"));
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
+		return billet;
 	}
 	public int getQt() {
 		return (Integer) map.get("quantite");

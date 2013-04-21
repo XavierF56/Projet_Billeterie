@@ -18,7 +18,7 @@ public class ListeAchats extends ListeObjet{
 		super(perso.getBilleterie());
 		this.personne = perso;
 		attributs();
-		metEnMemoire();
+		//metEnMemoire();
 	}
 	
 	

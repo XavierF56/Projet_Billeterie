@@ -75,7 +75,7 @@ public class Commande {
 			map.put("prix_unitaire", billet.getPrixNor());
 			map.put("prix_total", billet.getPrixNor() * qt);
 		}
-		achatEnCours = new Achat(map, personne);
+		achatEnCours = new Achat(map, personne, billet);
 		
 		if (this.achatPossible(billet, qt, subventionne)) {
 			valider();
