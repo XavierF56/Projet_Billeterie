@@ -1,14 +1,11 @@
 package test;
 
-import static org.junit.Assert.*;
-
 import modele.AchatException;
 import modele.Billet;
 import modele.Billeterie;
 import modele.Commande;
 import modele.Personne;
 
-import org.junit.Test;
 
 
 public class TestCommande {

@@ -1,6 +1,7 @@
 package modele;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 
@@ -91,7 +92,7 @@ public class Personne extends Objet{
 	 * @return le nb de billets achetes
 	 */
 	public int nbBilletsAchete(Billet billet) {
-		/*//Met en memoire la liste des achats
+		//Met en memoire la liste des achats
 		if (!achatEnMem) {
 			achats.metEnMemoire();
 		}
@@ -101,11 +102,10 @@ public class Personne extends Objet{
 		
 		for (int i = 0; i < liste.size(); i++) {
 			if (id == ((Achat)liste.get(i)).getBillet().getId()) {
-				resul += liste.get(i).getQt();
+				resul += ((Achat) liste.get(i)).getQt();
 			}
 		}
-		return resul;*/
-		return 0;
+		return resul;
 	}
 
 	/**
@@ -113,20 +113,19 @@ public class Personne extends Objet{
 	 * @return le prix
 	 */
 	public float restantAPayer() {
-		/*//Met en memoire la liste des achats
+		//Met en memoire la liste des achats
 		if (!achatEnMem) {
 			achats.metEnMemoire();
 		}
-		List<Achat> liste = this.achats.getListeAchats();
+		List<Objet> liste = this.achats.getListeAchats();
 		float resul = 0;
 		
 		for (int i = 0; i < liste.size(); i++) {
-			if (! liste.get(i).getPaye()) {
-				resul += liste.get(i).getPrixTotal();
+			if (! ((Achat) liste.get(i)).getPaye()) {
+				resul += ((Achat) liste.get(i)).getPrixTotal();
 			}
 		}
-		return resul;*/
-		return 0;
+		return resul;
 	}
 
 		
