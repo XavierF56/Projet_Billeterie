@@ -16,7 +16,7 @@ public abstract class ListeObjet extends AbstractTableModel{
 	protected JTable tableau;
 	protected List<Attribut> attributs = new ArrayList<Attribut>();
 
-
+	
 	/**
 	 * Constructeur
 	 * @param billeterie
@@ -29,12 +29,6 @@ public abstract class ListeObjet extends AbstractTableModel{
 	 * Cette methode permet de mettre en memoire les objets a partir de la bdd
 	 */
 	public abstract void metEnMemoire();
-	
-	/**
-	 * Ajoute un billet dans la liste
-	 * @param billet
-	 */
-	public abstract void ajouter(Map<String, Object> map);
 	
 	/**
 	 * Renvoie l'ensemble des billets lies a la recherche
@@ -63,27 +57,10 @@ public abstract class ListeObjet extends AbstractTableModel{
 	}
 	
 	/**
-	 * Cette methode permet de sauvegarder la liste des billets
-	 * Par exemple lorsque l'on fait une recherche, listeBillets sera remplacee
-	 * par une liste de billets trouves.
+	 * Ajoute un objet dans la liste
+	 * @param objet
 	 */
-	public void sauvegarde() {
-		List<Objet> list = new ArrayList<Objet>();
-		for (int i = 0; i < listeObjet.size(); i++) {
-			list.add(listeObjet.get(i));
-		}
-		listeObjetSauvegarde = list;
-	}
-	
-	/**
-	 * Permet de remplacer la liste de billets par la liste de billets d'origine
-	 */
-	public void reinitialise() {
-		listeObjet = listeObjetSauvegarde;
-		sauvegarde();
-	}
-	
-	
+	public abstract void ajouter(Map<String, Object> map);
 	
 	/**
 	 * @param index
@@ -94,7 +71,7 @@ public abstract class ListeObjet extends AbstractTableModel{
 		Objet objet = null;
 		objet = listeObjet.get(index);
 		if (objet == null){
-			throw new Exception("Personne non existante");
+			throw new Exception("Objet d'index " + index + " non existante");
 		}
 		return objet;
 	}
@@ -114,27 +91,34 @@ public abstract class ListeObjet extends AbstractTableModel{
 			}
 		}
 		if (objet == null){
-			throw new Exception("Personne non existante");
+			throw new Exception("Objet d'id " + id + " non existante");
 		}
 		return objet;
 	}
 	
-	/********** Methodes de base ************/
-	public String toString () {
-		return listeObjet.toString();
+	
+	/********** Methodes privees ************/
+	/**
+	 * Cette methode permet de sauvegarder la liste des billets
+	 * Par exemple lorsque l'on fait une recherche, listeBillets sera remplacee
+	 * par une liste de billets trouves.
+	 */
+	protected void sauvegarde() {
+		List<Objet> list = new ArrayList<Objet>();
+		for (int i = 0; i < listeObjet.size(); i++) {
+			list.add(listeObjet.get(i));
+		}
+		listeObjetSauvegarde = list;
 	}
-	public Billeterie getBilleterie() {
-		return billeterie;
+	
+	/**
+	 * Permet de remplacer la liste de billets par la liste de billets d'origine
+	 */
+	protected void reinitialise() {
+		listeObjet = listeObjetSauvegarde;
+		sauvegarde();
 	}
-	public List<Attribut> getAttributs() {
-		return attributs;
-	}
-	public JTable getTableau() {
-		return tableau;
-	}
-	public void setTableau(JTable tableau) {
-		this.tableau = tableau;
-	}
+	
 	
 	/********** Methodes pour la gestion de l'affichage ************/
 	public int getRowCount() {
@@ -149,4 +133,22 @@ public abstract class ListeObjet extends AbstractTableModel{
     public Object getValueAt(int rowIndex, int columnIndex) {
     	return listeObjet.get(rowIndex).getHashMap().get(attributs.get(columnIndex).getNomBDD());    	
     }
+    
+    
+	/********** getters & Setters ************/
+	public Billeterie getBilleterie() {
+		return billeterie;
+	}
+	public List<Attribut> getAttributs() {
+		return attributs;
+	}
+	public JTable getTableau() {
+		return tableau;
+	}
+	public void setTableau(JTable tableau) {
+		this.tableau = tableau;
+	}
+	public String toString () {
+		return listeObjet.toString();
+	}
 }

@@ -38,6 +38,9 @@ public class ListeBillets extends ListeObjet{
 		this.sauvegarde();
 	}
 	
+	/**
+	 * Cette methode permet de récuperer la liste des attributs pour l'objet Billet
+	 */
 	private void attributs() {
 		Map<String, Integer> map = billeterie.getBdd().getAttributs("Billet");
 		List<Attribut> resul = new ArrayList<Attribut>();
@@ -60,29 +63,8 @@ public class ListeBillets extends ListeObjet{
 	}
 	
 	/**
-	 * Methode creant une requete pour la recherche
-	 */
-	public String requete (String chaine) {
-		String retour = "SELECT id FROM billet WHERE ";//NOM BDD
-		boolean premier = true;
-		List<Attribut> list = getAttributs();
-		
-		for (int i = 0; i < list.size() ; i++) {
-			if(list.get(i).getType() == Constantes.STRING) {
-				String aAjouter = list.get(i).getNomBDD() + " Like '"+chaine+"%' ";
-				if(!premier) {
-					retour = retour.concat(" OR ");
-				}
-				retour = retour.concat(aAjouter);
-				premier = false;
-			}
-		}
-		return retour;
-	}
-	
-	/**
 	 * Renvoie l'ensemble des billets lies a la recherche
-	 * @param chaine la chaine a trouver dans le billet
+	 * @param chaine a trouver dans le billet
 	 * @return la liste des billets
 	 */
 	public void recherche(String chaine) {
@@ -110,8 +92,8 @@ public class ListeBillets extends ListeObjet{
 	}
 	
 	/**
-	 * Ajoute un billet dans la liste
-	 * @param billet
+	 * Cette methode permet d'ajouter un Billet dans la liste
+	 * @param la liste des attributs sous forme d'une map
 	 */
 	public void ajouter(Map<String, Object> map) {
 		reinitialise();
@@ -119,5 +101,26 @@ public class ListeBillets extends ListeObjet{
 		listeObjet.add(billet);
 		fireTableDataChanged();
 		sauvegarde();
+	}
+	
+	/**
+	 * Methode creant une requete pour la recherche
+	 */
+	public String requete (String chaine) {
+		String retour = "SELECT id FROM billet WHERE ";//NOM BDD
+		boolean premier = true;
+		List<Attribut> list = getAttributs();
+		
+		for (int i = 0; i < list.size() ; i++) {
+			if(list.get(i).getType() == Constantes.STRING) {
+				String aAjouter = list.get(i).getNomBDD() + " Like '"+chaine+"%' ";
+				if(!premier) {
+					retour = retour.concat(" OR ");
+				}
+				retour = retour.concat(aAjouter);
+				premier = false;
+			}
+		}
+		return retour;
 	}
 }

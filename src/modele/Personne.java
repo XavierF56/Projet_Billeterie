@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Personne extends Objet{
 	private ListeAchats achats = null;
-	private boolean achatEnMem;	// Booleen permettant de savoir si les acahts sont en memoire
+	private boolean achatEnMem;	// Booleen permettant de savoir si les achats sont en memoire
 	private static int prochainId; 	// id utilise par la prochaine personne creee
 
 	
@@ -39,7 +39,6 @@ public class Personne extends Objet{
 		this.billeterie = bill;
 		this.achatEnMem = false;
 
-		
 		// Attribue un Id a cette nouvelle personne
 		if (!map.containsKey("id")) {
 			map.put("id", prochainId);
@@ -52,6 +51,7 @@ public class Personne extends Objet{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		this.achats = new ListeAchats(this);
 	}
 	
@@ -92,7 +92,6 @@ public class Personne extends Objet{
 	 * @return le nb de billets achetes
 	 */
 	public int nbBilletsAchete(Billet billet) {
-		//Met en memoire la liste des achats
 		if (!achatEnMem) {
 			achats.metEnMemoire();
 		}
@@ -113,7 +112,6 @@ public class Personne extends Objet{
 	 * @return le prix
 	 */
 	public float restantAPayer() {
-		//Met en memoire la liste des achats
 		if (!achatEnMem) {
 			achats.metEnMemoire();
 		}
@@ -128,25 +126,20 @@ public class Personne extends Objet{
 		return resul;
 	}
 
-		
-	/********** Getters & Setters ************/
-	public static void setProchainId(int prochainId) {
-		Personne.prochainId = prochainId;
-	}
-	public Billeterie getBilleterie() {
-		return this.billeterie;
-	}
-	public static int getProchainId() {
-		return prochainId;
-	}
-	public int getId() {
-		return (Integer) map.get("id");
-	}
+	/********** Getters sur les attributs de la BDD ************/
 	public String getNom() {
 		return (String) map.get("nom");
 	}
 	public String getPrenom() {
 		return (String) map.get("prenom");
+	}
+
+	/********** Methodes de base ************/
+	public static void setProchainId(int prochainId) {
+		Personne.prochainId = prochainId;
+	}
+	public static int getProchainId() {
+		return prochainId;
 	}
 	public ListeAchats getAchats() {
 		return this.achats;
@@ -157,16 +150,10 @@ public class Personne extends Objet{
 	public void setAchatEnMem(boolean achatEnMem) {
 		this.achatEnMem = achatEnMem;
 	}
-	public Map<String, Object> getHashMap() {
-		return map;
-	}
-
-	
-	/********** Methodes de base ************/
 	public boolean equal(Personne pers) {
 		return this.getId() == pers.getId();
 	}
-	public String toString () { //NOM BDD
+	public String toString () {
 		return map.get("prenom") + " " + map.get("nom");
 	}
 }

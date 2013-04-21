@@ -20,7 +20,6 @@ public class ListeAchats extends ListeObjet{
 		super(perso.getBilleterie());
 		this.personne = perso;
 		attributs();
-		//metEnMemoire();
 	}
 	
 	
@@ -68,13 +67,9 @@ public class ListeAchats extends ListeObjet{
 		nbAchats++;
 	}
 	
-	public void ajouter(Map<String, Object> map) {
-		// Not Implemented
-	}
-
-	public void recherche(String chaine) {
-		// Not Implemented
-	}
+	/** Methodes non implementees */
+	public void ajouter(Map<String, Object> map) {}
+	public void recherche(String chaine) {}
 	
 	/********** Methodes de base ************/
 	public List<Objet> getListeAchats() {

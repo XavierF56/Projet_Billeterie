@@ -39,7 +39,7 @@ public class Achat extends Objet {
 		super.map = map;
 		super.billeterie = perso.getBilleterie();
 		this.personne = perso;
-		this.setBillet(billet);
+		this.billet= billet;
 		
 		// Attribue un Id a cette nouvelle personne
 		if (!map.containsKey("id")) {
@@ -106,8 +106,6 @@ public class Achat extends Objet {
 		personne.getAchats().supprimer(this);
 	}
 
-
-	@Override
 	public void modifie(Map<String, Object> map) {
 		// Not Implemented
 	}
@@ -159,14 +157,5 @@ public class Achat extends Objet {
 	}
 	public String toString () {
 		return map +"\n";
-	}
-
-
-	public Map<String, Object> getHashMap() {
-		return map;
-	}
-
-	public void setBillet(Billet billet) {
-		this.billet = billet;
 	}
 }

@@ -106,7 +106,7 @@ public class Billet extends Objet {
 	}
 	
 	
-	/********** Getters & Setters ************/
+	/********** Getters sur les attributs de la BDD ************/
 	public int getNbPlace() {
 		return (Integer) map.get("nb_total"); //NOM BDD
 	}
@@ -122,22 +122,18 @@ public class Billet extends Objet {
 	public int getNbPlacePerso() {
 		return (Integer) map.get("nb_sub_par_personne"); //NOM BDD
 	}
+	
+	/********** Methodes de bases ************/
 	public static int getProchainId() {
 		return prochainId;
 	}
 	public static void setProchainId(int prochainId) {
 		Billet.prochainId = prochainId;
 	}
-	public int getId() {
-		return (Integer) map.get("id");
-	}
 	public boolean equal(Billet bill) {
 		return this.getId() == bill.getId();
 	}
 	public String toString () { //NOM BDD
 		return map.get("categorie") + " : " + map.get("sous_categorie");
-	}
-	public Map<String, Object> getHashMap() {
-		return map;
 	}
 }

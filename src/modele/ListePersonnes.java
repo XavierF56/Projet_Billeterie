@@ -12,7 +12,6 @@ import java.util.Set;
 public class ListePersonnes extends ListeObjet {
 	private static final long serialVersionUID = 1L;
 	
-	
 	/********** Constructeur ************/
 	/**
 	 * Crée l'objet en mettant en mémoire l ensemble des billets de la bdd
@@ -23,7 +22,6 @@ public class ListePersonnes extends ListeObjet {
 		attributs();
 		this.metEnMemoire(); 
 	}
-	
 	
 	/********** Methodes ************/
 	/**
@@ -62,29 +60,8 @@ public class ListePersonnes extends ListeObjet {
 	}
 	
 	/**
-	 * Methode creant une requete pour la recherche
-	 */
-	public String requete (String chaine) {
-		String retour = "SELECT id FROM personne WHERE ";
-		boolean premier = true;
-		List<Attribut> list = getAttributs();
-		
-		for (int i = 0; i < list.size() ; i++) {
-			if(list.get(i).getType() == Constantes.STRING) {
-				String aAjouter = list.get(i).getNomBDD() + " Like '"+chaine+"%' ";
-				if(!premier) {
-					retour = retour.concat(" OR ");
-				}
-				retour = retour.concat(aAjouter);
-				premier = false;
-			}
-		}
-		return retour;
-	}
-	
-	/**
-	 * Renvoie l'ensemble des billets lies a la recherche
-	 * @param chaine la chaine a trouver dans le billet
+	 * Renvoie l'ensemble des personnes lies a la recherche
+	 * @param chaine a trouver dans les attributs de l'objet
 	 * @return la liste des billets
 	 */
 	public void recherche(String chaine) {
@@ -106,13 +83,12 @@ public class ListePersonnes extends ListeObjet {
 			}
 			listeObjet = resul;
 		}
-		
 		fireTableDataChanged();
 	}
 	
 	/**
-	 * Ajoute un billet dans la liste
-	 * @param billet
+	 * Cette methode permet d'ajouter une Personne dans la liste
+	 * @param la liste des attributs sous forme d'une map
 	 */
 	public void ajouter(Map<String, Object> map) {
 		reinitialise();
@@ -122,6 +98,24 @@ public class ListePersonnes extends ListeObjet {
 		sauvegarde();
 	}
 	
-	
-
+	/**
+	 * Methode creant une requete pour la recherche
+	 */
+	private String requete (String chaine) {
+		String retour = "SELECT id FROM personne WHERE ";
+		boolean premier = true;
+		List<Attribut> list = getAttributs();
+		
+		for (int i = 0; i < list.size() ; i++) {
+			if(list.get(i).getType() == Constantes.STRING) {
+				String aAjouter = list.get(i).getNomBDD() + " Like '"+chaine+"%' ";
+				if(!premier) {
+					retour = retour.concat(" OR ");
+				}
+				retour = retour.concat(aAjouter);
+				premier = false;
+			}
+		}
+		return retour;
+	}
 }
