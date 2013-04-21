@@ -25,8 +25,15 @@ public class Achat extends Objet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		map.put("Description", billet.toString());
 	}
 	
+	/**
+	 * Cration d'un nouveau billet, non présent dans la bdd
+	 * @param map
+	 * @param perso
+	 * @param billet
+	 */
 	public Achat (Map<String,Object> map, Personne perso, Billet billet){
 		super();
 		super.map = map;
@@ -58,6 +65,7 @@ public class Achat extends Objet {
 		
 		// Ajoute l'achat à la liste d'achats de la personne
 		personne.getAchats().ajouter(this);
+		map.put("Description", billet.toString());
 		
 		// Repercute l'achat sur la liste des billets
 		this.repercuter();
@@ -69,7 +77,10 @@ public class Achat extends Objet {
 	 */
 	private void modifie() {
 		try {
+			String nom = (String) map.get("Description");
+			map.remove("Description");
 			personne.getBilleterie().getBdd().enregistreBDD("achat", map); //NOM BDD
+			map.put("Description", nom);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

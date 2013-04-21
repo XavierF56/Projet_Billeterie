@@ -1,6 +1,8 @@
 package modele;
 
 
+import general.Constantes;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -43,6 +45,7 @@ public class ListeAchats extends ListeObjet{
 	private void attributs() {
 		Map<String, Integer> map = billeterie.getBdd().getAttributs("Achat");
 		List<Attribut> resul = new ArrayList<Attribut>();
+		resul.add(new Attribut("Description", "Description", Constantes.STRING));
 		
 		Set<String> set = map.keySet();
 		Iterator<String> it = set.iterator();
