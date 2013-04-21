@@ -1,12 +1,11 @@
 package test;
 
 
-import static org.junit.Assert.*;
-
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Test;
+import junit.framework.TestCase;
+
 
 import modele.Billet;
 import modele.Billeterie;
@@ -14,22 +13,21 @@ import modele.Billeterie;
 
 
 
-public class TestBillet {
+public class TestBillet extends TestCase {
 	Billeterie bill;
 	Billet billet, billet1, billet2;
 	protected void setUp() {
 		bill = new Billeterie("database.sqlite");
 
 		try {
-			billet = bill.getListeBillets().getBillet(100);
-			billet1 = bill.getListeBillets().getBillet(100);
-			billet2 = bill.getListeBillets().getBillet(101);
+			billet = (Billet) bill.getListeBillets().getObjetById(100);
+			billet1 = (Billet) bill.getListeBillets().getObjetById(100);
+			billet2 = (Billet) bill.getListeBillets().getObjetById(101);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
 	}
 	
- 	@Test
 	public void testModifieQt() {
  		setUp();
  		int sub = billet.getNbPlaceSub();
@@ -50,19 +48,16 @@ public class TestBillet {
  		assertEquals(700, billet.getNbPlace());
 	}
 
-	@Test
 	public void testGetPrixRed() {
 		setUp();
 		assertEquals(4, billet.getPrixRed(), 0);
 	}
 
-	@Test
 	public void testGetPrixNor() {
 		setUp();
 		assertEquals(5, billet.getPrixNor(), 0);
 	}
 
-	@Test
 	public void testBillet() {
 		setUp();
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -73,10 +68,9 @@ public class TestBillet {
 		map.put("nb_sub_par_personne", 5);
 		map.put("nb_total", 500);
 		map.put("nb_sub", 200);
-		@SuppressWarnings("unused")
-		Billet newBill = new Billet(map, bill, 0);
+		bill.getListeBillets().ajouter(map);
 		try {
-			Billet modif = bill.getListeBillets().getBillet(Billet.getProchainId()-1);
+			Billet modif = (Billet) bill.getListeBillets().getObjetById(Billet.getProchainId()-1);
 			assertEquals(200, modif.getNbPlaceSub());
 	 		assertEquals(500, modif.getNbPlace());
 		} catch (Exception e) {
@@ -87,20 +81,17 @@ public class TestBillet {
 	}
 
 
-	@Test
 	public void testGetId() {
 		setUp();
 		assertEquals(100, billet.getId());
 	}
 
-	@Test
 	public void testEqual() {
 		setUp();
 		assertTrue(billet.equals(billet1));
 		assertFalse(billet.equals(billet2));
 	}
 	
-	@Test
 	public void testModifie() {
 		setUp();
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -113,7 +104,7 @@ public class TestBillet {
 		map.put("nb_sub", 200);
 		
 		try {
-			Billet modif = bill.getListeBillets().getBillet(109);
+			Billet modif = (Billet) bill.getListeBillets().getObjetById(109);
 			modif.modifie(map);
 			assertEquals(200, billet.getNbPlaceSub());
 	 		assertEquals(700, billet.getNbPlace());
