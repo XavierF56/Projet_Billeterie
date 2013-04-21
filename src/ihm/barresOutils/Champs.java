@@ -53,6 +53,7 @@ public class Champs extends JPanel{
 			gridBagConstraints.gridx = 1;
 			JComponent champ = nouveauChamp(listeAttributs.get(i).getType());
 			listeChamps.put(listeAttributs.get(i).getNomBDD(), champ);
+			//System.out.println(listeAttributs);
 			add(champ,gridBagConstraints);
 			
 			nb++;

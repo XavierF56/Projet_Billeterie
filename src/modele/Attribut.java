@@ -20,5 +20,10 @@ public class Attribut {
 	public int getType() {
 		return type;
 	}
+	@Override
+	public String toString() {
+		return "Attribut [nomBDD=" + nomBDD + ", nomInterface=" + nomInterface
+				+ ", type=" + type + "]";
+	}
 	
 }
