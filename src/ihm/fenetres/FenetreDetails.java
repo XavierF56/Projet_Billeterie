@@ -1,5 +1,7 @@
 package ihm.fenetres;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -17,6 +19,8 @@ public class FenetreDetails extends Fenetre {
 	Personne personne;
 	
 	public FenetreDetails(Personne personne) {
+		this.setBounds(100, 100, 900, 700);
+
 		this.setTitle("Informations sur les achat de " + personne);
 		this.personne = personne;
 		contentPane = new JPanel();
@@ -30,9 +34,11 @@ public class FenetreDetails extends Fenetre {
 		TableRowSorter<ListeAchats> sorter = new TableRowSorter<ListeAchats>((ListeAchats) tableau.getModel());   
 		tableau.setRowSorter(sorter);
 		sorter.setSortsOnUpdates(true);
-		add(new JScrollPane(tableau), "Center");
-		add(new JLabel("Restant à payer : " + personne.restantAPayer() + "€"), "North");
 		
-		this.afficher();
+		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.add(new JScrollPane(tableau), "Center");
+		contentPane.add(new JLabel("Restant à payer : " + personne.restantAPayer() + "€"), "North");
+		
+		this.setVisible(true);
 	}
 }
