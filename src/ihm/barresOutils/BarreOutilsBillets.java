@@ -1,6 +1,7 @@
 package ihm.barresOutils;
 
 import ihm.actions.AjouterAction;
+import ihm.actions.CommandeBilletAction;
 import ihm.actions.ModifierAction;
 import ihm.actions.RechercheAction;
 import ihm.actions.SupprimerAction;
@@ -26,9 +27,10 @@ public class BarreOutilsBillets extends JPanel {
 	public BarreOutilsBillets(Billeterie billeterie) {
 		this.billeterie = billeterie;
 		textRecherche = new TextRecherche(billeterie.getListeBillets());
-		
+
 		this.add(textRecherche);
 		this.add(new JButton(new RechercheAction(billeterie.getListeBillets(), textRecherche)));
+		this.add(new JButton(new CommandeBilletAction(billeterie.getListeBillets(), billeterie)));
 		this.add(new JButton(new AjouterAction(billeterie.getListeBillets(), "Ajouter un nouveau billet")));
 		this.add(new JButton(new ModifierAction(billeterie.getListeBillets())));
 		this.add(new JButton(new SupprimerAction(billeterie.getListeBillets())));

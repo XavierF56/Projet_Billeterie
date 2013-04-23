@@ -12,11 +12,10 @@ import javax.swing.JPanel;
 
 import modele.Billeterie;
 
+@SuppressWarnings("serial")
 public class BarreOutilsPersonnes extends JPanel {
 	Billeterie billeterie;
 	private TextRecherche textRecherche;
-
-	private static final long serialVersionUID = 1L;
 
 	public BarreOutilsPersonnes(Billeterie billeterie) {
 		this.billeterie = billeterie;

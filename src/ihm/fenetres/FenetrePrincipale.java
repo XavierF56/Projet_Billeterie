@@ -27,6 +27,7 @@ import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class FenetrePrincipale extends Fenetre {
+	
 	@SuppressWarnings("unused")
 	private Billeterie billeterie;
 	private JPanel contentPane;

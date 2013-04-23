@@ -8,7 +8,6 @@ import javax.swing.JButton;
 import modele.ListeObjet;
 import modele.Objet;
 
-
 @SuppressWarnings("serial")
 public class FenetreModifieObjet extends Fenetre {
 	private Objet objetTraite;

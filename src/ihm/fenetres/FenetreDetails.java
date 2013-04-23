@@ -19,8 +19,6 @@ public class FenetreDetails extends Fenetre {
 	Personne personne;
 	
 	public FenetreDetails(Personne personne) {
-		this.setBounds(100, 100, 900, 700);
-
 		this.setTitle("Informations sur les achat de " + personne);
 		this.personne = personne;
 		contentPane = new JPanel();
@@ -39,6 +37,6 @@ public class FenetreDetails extends Fenetre {
 		contentPane.add(new JScrollPane(tableau), "Center");
 		contentPane.add(new JLabel("Restant à payer : " + personne.restantAPayer() + "€"), "North");
 		
-		this.setVisible(true);
+		this.afficher();
 	}
 }

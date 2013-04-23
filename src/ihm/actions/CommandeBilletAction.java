@@ -1,5 +1,7 @@
 package ihm.actions;
 
+import ihm.fenetres.FenetreCommande;
+
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 
@@ -7,22 +9,23 @@ import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import modele.Billeterie;
 import modele.ListeObjet;
 import modele.Objet;
 
-import ihm.fenetres.FenetreModifieObjet;
-
 @SuppressWarnings("serial")
-public class ModifierAction extends AbstractAction {
+public class CommandeBilletAction extends AbstractAction {
 	private ListeObjet listeObjet;
-	
-	public ModifierAction(ListeObjet listeObjet) {
-        super("Modifier");
-    	this.listeObjet = listeObjet;
-    }
+	private Billeterie billeterie;
 
-    public void actionPerformed(ActionEvent e) {
-    	EventQueue.invokeLater(new Runnable() {
+	public CommandeBilletAction(ListeObjet listeObjet, Billeterie billeterie) {
+		super("Commander Billets");
+		this.listeObjet = listeObjet;
+		this.billeterie = billeterie;
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					boolean select = true;
@@ -33,16 +36,16 @@ public class ModifierAction extends AbstractAction {
 					} catch (Exception e) {	
 						select = false;
 						JOptionPane.showMessageDialog(new JFrame(), 
-								"Vous n'avez pas de selection a modifier", "Attention", JOptionPane.INFORMATION_MESSAGE);
+								"Vous n'avez pas de selectione de billet", "Attention", JOptionPane.INFORMATION_MESSAGE);
 	            	}
 					if(select) {
 						Objet objet = listeObjet.getObjetByIndex(selectionCorrige);
-						new FenetreModifieObjet(objet, listeObjet);
+						new FenetreCommande(billeterie);
 					}
 				} catch (Exception e) {		
 					e.printStackTrace();
 				}
 			}
 		});
-    }
+	}
 }
