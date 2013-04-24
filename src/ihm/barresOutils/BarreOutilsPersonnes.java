@@ -15,13 +15,10 @@ import modele.Billeterie;
 
 @SuppressWarnings("serial")
 public class BarreOutilsPersonnes extends JPanel {
-	Billeterie billeterie;
-	private TextRecherche textRecherche;
 
 	public BarreOutilsPersonnes(Billeterie billeterie) {
-		this.billeterie = billeterie;
 
-		textRecherche = new TextRecherche(billeterie.getListePersonnes());
+		TextRecherche textRecherche = new TextRecherche(billeterie.getListePersonnes());
 		this.add(textRecherche);
 		this.add(new JButton(new RechercheAction(billeterie.getListePersonnes(), textRecherche)));
 		this.add(new JButton(new CommandeBilletAction(billeterie.getListePersonnes(), billeterie)));
