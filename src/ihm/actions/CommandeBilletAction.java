@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import modele.Billeterie;
 import modele.ListeObjet;
 import modele.Objet;
+import modele.Personne;
 
 @SuppressWarnings("serial")
 public class CommandeBilletAction extends AbstractAction {
@@ -19,7 +20,7 @@ public class CommandeBilletAction extends AbstractAction {
 	private Billeterie billeterie;
 
 	public CommandeBilletAction(ListeObjet listeObjet, Billeterie billeterie) {
-		super("Commander Billets");
+		super("Commander Billet");
 		this.listeObjet = listeObjet;
 		this.billeterie = billeterie;
 	}
@@ -36,11 +37,11 @@ public class CommandeBilletAction extends AbstractAction {
 					} catch (Exception e) {	
 						select = false;
 						JOptionPane.showMessageDialog(new JFrame(), 
-								"Vous n'avez pas de selectione de billet", "Attention", JOptionPane.INFORMATION_MESSAGE);
+								"Vous n'avez pas de personne selectionne", "Attention", JOptionPane.INFORMATION_MESSAGE);
 	            	}
 					if(select) {
 						Objet objet = listeObjet.getObjetByIndex(selectionCorrige);
-						new FenetreCommande(billeterie);
+						new FenetreCommande((Personne) objet, billeterie);
 					}
 				} catch (Exception e) {		
 					e.printStackTrace();

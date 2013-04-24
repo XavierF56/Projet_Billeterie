@@ -16,11 +16,9 @@ import modele.Personne;
 public class FenetreDetails extends Fenetre {
 	private JPanel contentPane;
 	private JTable tableau;
-	Personne personne;
 	
 	public FenetreDetails(Personne personne) {
 		this.setTitle("Informations sur les achat de " + personne);
-		this.personne = personne;
 		contentPane = new JPanel();
 		setContentPane(contentPane);
 		

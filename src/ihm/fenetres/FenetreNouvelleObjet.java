@@ -1,6 +1,6 @@
 package ihm.fenetres;
 
-import ihm.actions.ValiderAction3;
+import ihm.actions.ValiderAjoutAction;
 import ihm.barresOutils.Champs;
 
 import javax.swing.JButton;
@@ -15,7 +15,7 @@ public class FenetreNouvelleObjet extends Fenetre {
 		champs = new Champs(listeObjet.getAttributs());
 		//setBounds(100, 100, 450, 300);
 		this.add(champs, "Center");
-		this.add(new JButton(new ValiderAction3(this, listeObjet)), "South");
+		this.add(new JButton(new ValiderAjoutAction(this, listeObjet)), "South");
 		this.setTitle(titre);
 		
 		this.afficher();

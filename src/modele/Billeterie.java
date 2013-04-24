@@ -1,6 +1,6 @@
 package modele;
 
-import ihm.fenetres.FenetrePrincipale;
+import ihm.fenetres.Fenetre;
 
 /*
  * This is the main class where you can launch the application
@@ -11,7 +11,7 @@ public class Billeterie {
 	private ListePersonnes listePersonnes;
 	private ListeBillets listeBillets;
 	private DataBase bdd;
-	private FenetrePrincipale fenetre;
+	private Fenetre fenetre;
 	
 	/********** Constructeur ************/
 	public Billeterie (String nomBdd) {
@@ -38,10 +38,10 @@ public class Billeterie {
 	public DataBase getBdd() {
 		return bdd;
 	}
-	public FenetrePrincipale getFenetre() {
+	public Fenetre getFenetre() {
 		return fenetre;
 	}
-	public void setFenetre(FenetrePrincipale fenetre) {
+	public void setFenetre(Fenetre fenetre) {
 		this.fenetre = fenetre;
 	}
 

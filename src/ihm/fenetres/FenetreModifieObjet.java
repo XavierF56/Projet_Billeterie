@@ -1,6 +1,6 @@
 package ihm.fenetres;
 
-import ihm.actions.ValiderAction2;
+import ihm.actions.ValiderModificationAction;
 import ihm.barresOutils.Champs;
 
 import javax.swing.JButton;
@@ -22,7 +22,7 @@ public class FenetreModifieObjet extends Fenetre {
 		champs = new Champs(objets.getAttributs());
 		champs.setValeurs(objetTraite.getHashMap());
 		this.add(champs, "Center");
-		this.add(new JButton(new ValiderAction2(this)), "South");
+		this.add(new JButton(new ValiderModificationAction(this)), "South");
 		
 		this.afficher();
 	}
