@@ -9,7 +9,7 @@ import java.util.Map;
  * Fonctionnement des commandes
  * Lorque l'on clique sur "Passer commande"
  * 1 L'ecran Achat billet apparait, il permet de : 
- * 		1 Choisir un billet à partir d'une liste ou d'un tableau ?
+ * 		1 Choisir un billet à partir d'un tableau -> fait
  * 		2 Choisir la quantite
  * 		3 Choisir subventionne (permet de savoir si le billet est subventionne)
  * 		4 Choisir donne (permet de savoir si le billet a ete remis a la personne)

@@ -37,7 +37,7 @@ public class CommandeBilletAction extends AbstractAction {
 					} catch (Exception e) {	
 						select = false;
 						JOptionPane.showMessageDialog(new JFrame(), 
-								"Vous n'avez pas de personne selectionne", "Attention", JOptionPane.INFORMATION_MESSAGE);
+								"Vous n'avez sélectionnée personne", "Attention", JOptionPane.INFORMATION_MESSAGE);
 	            	}
 					if(select) {
 						Objet objet = listeObjet.getObjetByIndex(selectionCorrige);

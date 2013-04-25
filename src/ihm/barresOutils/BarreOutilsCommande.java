@@ -9,18 +9,16 @@ import javax.swing.JPanel;
 
 import modele.Billeterie;
 
+@SuppressWarnings("serial")
 public class BarreOutilsCommande extends JPanel {
-	
-	private static final long serialVersionUID = 1L;
-	Billeterie billeterie;
+
 	private TextRecherche textRecherche;
 	
 	public BarreOutilsCommande(Billeterie billeterie) {
-		this.billeterie = billeterie;
 		textRecherche = new TextRecherche(billeterie.getListeBillets());
 
 		this.add(textRecherche);
 		this.add(new JButton(new RechercheAction(billeterie.getListeBillets(), textRecherche)));
-		this.add(new JButton(new AjouterAuPanierAction()));
+		this.add(new JButton(new AjouterAuPanierAction(billeterie.getListeBillets())));
 	}
 }
