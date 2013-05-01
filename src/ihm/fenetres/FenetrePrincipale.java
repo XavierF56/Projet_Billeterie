@@ -4,6 +4,7 @@ import ihm.barresOutils.BarreOutilsBillets;
 import ihm.barresOutils.BarreOutilsPersonnes;
 
 import java.awt.BorderLayout;
+
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,7 +16,6 @@ import javax.swing.JCheckBox;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
 
 import modele.Billeterie;
 import modele.ListeBillets;
@@ -36,7 +36,6 @@ public class FenetrePrincipale extends Fenetre {
 	private JTable tableauBillets;
 	
 	
-	
 	/**
 	 * Create the frame.
 	 */
@@ -45,15 +44,8 @@ public class FenetrePrincipale extends Fenetre {
 		billeterie.setFenetre(this);
 		
 		try {
-		    /*for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-		        if ("SystemLookAndFeel".equals(info.getName())) {
-		            UIManager.setLookAndFeel(info.getClassName());
-		            break;
-		        }
-		    }*/
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception e) {
-		    // If Nimbus is not available, you can set the GUI to another look and feel.
 		}
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

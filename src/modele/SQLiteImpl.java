@@ -1,4 +1,9 @@
-package modele;
+package modele;		    /*for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+if ("SystemLookAndFeel".equals(info.getName())) {
+UIManager.setLookAndFeel(info.getClassName());
+break;
+}
+}*/
 
 import general.Constantes;
 
@@ -111,6 +116,17 @@ public class SQLiteImpl implements SQLInterface{
 			// Execute query
 			stmt.setQueryTimeout(iTimeout);
 			stmt.executeUpdate(query);
+			
+			/*for (int w = 1000; w < 2000; w++){
+				String sql = "INSERT INTO personne \nSELECT " + w + ", 'pierre', 'Durand'";
+
+				for (int y = w + 1 ; y < w + 500; y++){
+					sql = sql.concat(" \n UNION \n SELECT " + y + ", 'pierre', 'durand'");
+				}
+				w += 500;
+				System.out.println(sql);
+				stmt.executeUpdate(sql);
+			}*/
 				
 			// Fermeture des statements	
 			stmt.close();
@@ -161,7 +177,7 @@ public class SQLiteImpl implements SQLInterface{
 		}
 		return resul;
 	}
-}
+
 
 //CREATION MULTIBLE D ENTREES POUR METHODE UPDATE
 /*for (int w = 21000; w < 32000; w++){
@@ -175,3 +191,13 @@ public class SQLiteImpl implements SQLInterface{
 	stmt.executeUpdate(sql);
 }*/
 
+	public static void main(String[] args) {
+		try {
+			SQLiteImpl bdd = new SQLiteImpl("database.sqlite");
+			bdd.update("");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
