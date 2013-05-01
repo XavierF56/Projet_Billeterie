@@ -25,6 +25,7 @@ import modele.ListePersonnes;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.Set;
 
 
 @SuppressWarnings("serial")
@@ -36,7 +37,6 @@ public class FenetrePrincipale extends Fenetre {
 	private boolean opt;
 	private JTable tableauPersonnes;
 	private JTable tableauBillets;
-	
 	
 	/**
 	 * Create the frame.
@@ -51,6 +51,13 @@ public class FenetrePrincipale extends Fenetre {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception e) {
 		}
+		Set<Object> keys = UIManager.getDefaults().keySet();
+		for (Object key : keys) {
+		     if (key instanceof String && ((String) key).contains("font")) {
+		          System.out.println(key + "=" + UIManager.getDefaults().get(key));
+		     }
+		}
+		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 700);

@@ -18,19 +18,19 @@ public class FenetreNouvelleObjet extends Fenetre {
 	public FenetreNouvelleObjet(ListeObjet listeObjet, String titre) {
 		//Fenetre
 		this.setTitle(titre);
-		JPanel fenetre = new JPanel(new BorderLayout());
-		fenetre.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
-		this.add(fenetre);
+		JPanel contentPane = new JPanel(new BorderLayout());
+		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
+		this.add(contentPane);
 		
 		//Champs
 		champs = new Champs(listeObjet.getAttributs());
-		fenetre.add(champs, "Center");
+		contentPane.add(champs, "Center");
 		
 		//Bouton Valider
 		JButton button = new JButton(new ValiderAjoutAction(this, listeObjet));
 		JPanel panelSouth = new JPanel();
 		panelSouth.add(button);
-		fenetre.add(panelSouth, "South");
+		contentPane.add(panelSouth, "South");
 		
 		this.afficher();
 	}

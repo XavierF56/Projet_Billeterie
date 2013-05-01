@@ -5,6 +5,7 @@ import ihm.barresOutils.BarreOutilsCommande;
 
 import java.awt.BorderLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -36,9 +37,8 @@ public class FenetreCommande extends Fenetre {
 		this.contentPane = new JPanel();
 		this.southPane = new JPanel();
 		this.commande = new Commande(personne);
-		setContentPane(contentPane);
-		
-		
+		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
+		this.add(contentPane);
 		
 		//Initialisation du tableau de billets
 		tableauBillets = new JTable(billeterie.getListeBillets());
