@@ -1,15 +1,19 @@
 package ihm.fenetres;
 
+import ihm.actions.MenuContextuelBillet;
+import ihm.actions.MenuContextuelPersonne;
 import ihm.barresOutils.BarreOutilsBillets;
 import ihm.barresOutils.BarreOutilsPersonnes;
 
 import java.awt.BorderLayout;
+import java.awt.PopupMenu;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableRowSorter;
+import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JCheckBox;
@@ -42,6 +46,8 @@ public class FenetrePrincipale extends Fenetre {
 	public FenetrePrincipale(Billeterie billeterie) {
 		this.billeterie = billeterie;
 		billeterie.setFenetre(this);
+		this.setTitle("Billeterie INSA");
+		
 		
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -71,6 +77,7 @@ public class FenetrePrincipale extends Fenetre {
 		OngletPersonne.setLayout(new BorderLayout(0, 0));
 		BarreOutilsPersonnes barre = new BarreOutilsPersonnes(billeterie);
 		OngletPersonne.add(barre, "North");
+		tableauPersonnes.setComponentPopupMenu(new MenuContextuelPersonne(billeterie.getListePersonnes()));
 		OngletPersonne.add(new JScrollPane(tableauPersonnes), "Center");
 		
 		Onglets.addTab("Personnes", null, OngletPersonne, null);
@@ -88,6 +95,7 @@ public class FenetrePrincipale extends Fenetre {
 		
 		OngletBillets.setLayout(new BorderLayout(0, 0));
 		OngletBillets.add(new BarreOutilsBillets(billeterie), "North");
+		tableauBillets.setComponentPopupMenu(new MenuContextuelBillet(billeterie.getListeBillets()));
 		OngletBillets.add(new JScrollPane(tableauBillets), "Center");
 		
 		Onglets.addTab("Billets", null, OngletBillets, null);
