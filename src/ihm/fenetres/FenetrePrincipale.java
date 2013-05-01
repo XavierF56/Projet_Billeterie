@@ -45,12 +45,13 @@ public class FenetrePrincipale extends Fenetre {
 		billeterie.setFenetre(this);
 		
 		try {
-		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-		        if ("Nimbus".equals(info.getName())) {
+		    /*for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+		        if ("SystemLookAndFeel".equals(info.getName())) {
 		            UIManager.setLookAndFeel(info.getClassName());
 		            break;
 		        }
-		    }
+		    }*/
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception e) {
 		    // If Nimbus is not available, you can set the GUI to another look and feel.
 		}
