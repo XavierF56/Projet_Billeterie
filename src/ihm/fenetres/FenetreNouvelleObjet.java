@@ -1,9 +1,13 @@
 package ihm.fenetres;
 
+import java.awt.BorderLayout;
+
 import ihm.actions.ValiderAjoutAction;
 import ihm.barresOutils.Champs;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
 import modele.ListeObjet;
 
@@ -12,11 +16,21 @@ public class FenetreNouvelleObjet extends Fenetre {
 	private Champs champs;
 	
 	public FenetreNouvelleObjet(ListeObjet listeObjet, String titre) {
-		champs = new Champs(listeObjet.getAttributs());
-		//setBounds(100, 100, 450, 300);
-		this.add(champs, "Center");
-		this.add(new JButton(new ValiderAjoutAction(this, listeObjet)), "South");
+		//Fenetre
 		this.setTitle(titre);
+		JPanel fenetre = new JPanel(new BorderLayout());
+		fenetre.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
+		this.add(fenetre);
+		
+		//Champs
+		champs = new Champs(listeObjet.getAttributs());
+		fenetre.add(champs, "Center");
+		
+		//Bouton Valider
+		JButton button = new JButton(new ValiderAjoutAction(this, listeObjet));
+		JPanel panelSouth = new JPanel();
+		panelSouth.add(button);
+		fenetre.add(panelSouth, "South");
 		
 		this.afficher();
 	}

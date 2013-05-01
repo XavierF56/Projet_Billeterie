@@ -19,7 +19,7 @@ public class ValiderAjoutAction extends AbstractAction {
     public ValiderAjoutAction(FenetreNouvelleObjet fenetre, ListeObjet listeObjet) {
         super("Valider");
         this.fenetre = fenetre;
-        //this.listeObjet = listeObjet;
+        this.listeObjet = listeObjet;
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -28,6 +28,7 @@ public class ValiderAjoutAction extends AbstractAction {
 			listeObjet.ajouter(map);
         	fenetre.setVisible(false);
 		} catch (Exception e1) {
+			System.out.println(e1);
 			String message = "\"Erreur lors de l'ajout\"\n"
 		            + "Tous les champs n'ont pas ete renseignes\n";
 			JOptionPane.showMessageDialog(new JFrame(), message, "Dialog", JOptionPane.ERROR_MESSAGE);

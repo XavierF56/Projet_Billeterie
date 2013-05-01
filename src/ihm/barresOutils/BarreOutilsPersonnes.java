@@ -1,5 +1,7 @@
 package ihm.barresOutils;
 
+import java.awt.FlowLayout;
+
 import ihm.actions.AjouterAction;
 import ihm.actions.CommandeBilletAction;
 import ihm.actions.ModifierAction;
@@ -16,8 +18,10 @@ import modele.Billeterie;
 @SuppressWarnings("serial")
 public class BarreOutilsPersonnes extends JPanel {
 
-	public BarreOutilsPersonnes(Billeterie billeterie) {
 
+	public BarreOutilsPersonnes(Billeterie billeterie) {
+		setLayout(new FlowLayout(FlowLayout.LEFT));
+		
 		TextRecherche textRecherche = new TextRecherche(billeterie.getListePersonnes());
 		this.add(textRecherche);
 		this.add(new JButton(new RechercheAction(billeterie.getListePersonnes(), textRecherche)));

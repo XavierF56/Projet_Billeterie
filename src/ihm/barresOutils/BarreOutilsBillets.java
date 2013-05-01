@@ -1,5 +1,7 @@
 package ihm.barresOutils;
 
+import java.awt.FlowLayout;
+
 import ihm.actions.AjouterAction;
 import ihm.actions.ModifierAction;
 import ihm.actions.RechercheAction;
@@ -20,7 +22,7 @@ public class BarreOutilsBillets extends JPanel {
 	public BarreOutilsBillets(Billeterie billeterie) {
 		this.billeterie = billeterie;
 		textRecherche = new TextRecherche(billeterie.getListeBillets());
-
+		setLayout(new FlowLayout(FlowLayout.LEFT));
 		this.add(textRecherche);
 		this.add(new JButton(new RechercheAction(billeterie.getListeBillets(), textRecherche)));
 		this.add(new JButton(new AjouterAction(billeterie.getListeBillets(), "Ajouter un nouveau billet")));
