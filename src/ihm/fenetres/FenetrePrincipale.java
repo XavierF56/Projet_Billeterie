@@ -1,19 +1,17 @@
 package ihm.fenetres;
 
-import ihm.actions.MenuContextuelBillet;
-import ihm.actions.MenuContextuelPersonne;
 import ihm.barresOutils.BarreOutilsBillets;
 import ihm.barresOutils.BarreOutilsPersonnes;
+import ihm.barresOutils.MenuContextuelBillet;
+import ihm.barresOutils.MenuContextuelPersonne;
 
 import java.awt.BorderLayout;
-import java.awt.PopupMenu;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableRowSorter;
-import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JCheckBox;
@@ -64,7 +62,7 @@ public class FenetrePrincipale extends Fenetre {
 		contentPane.add(Onglets);
 		
 		/* Onglet Personnes */
-		JPanel OngletPersonne = new JPanel();
+		JPanel ongletPersonne = new JPanel();
 		tableauPersonnes = new JTable(billeterie.getListePersonnes());
 		billeterie.getListePersonnes().setTableau(tableauPersonnes);
 		tableauPersonnes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -74,16 +72,17 @@ public class FenetrePrincipale extends Fenetre {
 		tableauPersonnes.setRowSorter(sorter);
 		sorter.setSortsOnUpdates(true);
 		
-		OngletPersonne.setLayout(new BorderLayout(0, 0));
+		ongletPersonne.setLayout(new BorderLayout(0, 0));
 		BarreOutilsPersonnes barre = new BarreOutilsPersonnes(billeterie);
-		OngletPersonne.add(barre, "North");
+		ongletPersonne.add(barre, "North");
 		tableauPersonnes.setComponentPopupMenu(new MenuContextuelPersonne(billeterie.getListePersonnes()));
-		OngletPersonne.add(new JScrollPane(tableauPersonnes), "Center");
+		ongletPersonne.add(new JScrollPane(tableauPersonnes), "Center");
 		
-		Onglets.addTab("Personnes", null, OngletPersonne, null);
+		Onglets.addTab("Personnes", null, ongletPersonne, null);
+		
 		
 		/* Onglet Billets */
-		JPanel OngletBillets = new JPanel();
+		JPanel ongletBillet = new JPanel();
 		tableauBillets = new JTable(billeterie.getListeBillets());
 		tableauBillets.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		billeterie.getListeBillets().setTableau(tableauBillets);
@@ -93,12 +92,12 @@ public class FenetrePrincipale extends Fenetre {
 		tableauBillets.setRowSorter(sorter2);
 		sorter2.setSortsOnUpdates(true);
 		
-		OngletBillets.setLayout(new BorderLayout(0, 0));
-		OngletBillets.add(new BarreOutilsBillets(billeterie), "North");
+		ongletBillet.setLayout(new BorderLayout(0, 0));
+		ongletBillet.add(new BarreOutilsBillets(billeterie), "North");
 		tableauBillets.setComponentPopupMenu(new MenuContextuelBillet(billeterie.getListeBillets()));
-		OngletBillets.add(new JScrollPane(tableauBillets), "Center");
+		ongletBillet.add(new JScrollPane(tableauBillets), "Center");
 		
-		Onglets.addTab("Billets", null, OngletBillets, null);
+		Onglets.addTab("Billets", null, ongletBillet, null);
 		
 		/* Onglet Options */
 		JPanel OngletOptions = new JPanel();
