@@ -2,13 +2,13 @@ package ihm.barresOutils;
 
 import java.awt.FlowLayout;
 
-import ihm.actions.AjouterAction;
+import ihm.actions.FenetreAjouterAction;
 import ihm.actions.CommandeBilletAction;
-import ihm.actions.ModifierAction;
+import ihm.actions.FenetreModifierAction;
 import ihm.actions.RechercheAction;
 import ihm.actions.SupprimerAction;
 import ihm.actions.TextRecherche;
-import ihm.actions.VoirAction;
+import ihm.actions.FenetreDetailsAction;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -26,9 +26,9 @@ public class BarreOutilsPersonnes extends JPanel {
 		this.add(textRecherche);
 		this.add(new JButton(new RechercheAction(billeterie.getListePersonnes(), textRecherche)));
 		this.add(new JButton(new CommandeBilletAction(billeterie.getListePersonnes(), billeterie)));
-		this.add(new JButton(new AjouterAction(billeterie.getListePersonnes(), "Ajouter une nouvelle personne")));
-		this.add(new JButton(new ModifierAction(billeterie.getListePersonnes())));
+		this.add(new JButton(new FenetreAjouterAction(billeterie.getListePersonnes(), "Ajouter une nouvelle personne")));
+		this.add(new JButton(new FenetreModifierAction(billeterie.getListePersonnes())));
 		this.add(new JButton(new SupprimerAction(billeterie.getListePersonnes())));
-		this.add(new JButton(new VoirAction(billeterie.getListePersonnes())));
+		this.add(new JButton(new FenetreDetailsAction(billeterie.getListePersonnes())));
 	}
 }

@@ -25,7 +25,6 @@ import modele.ListePersonnes;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.util.Set;
 
 
 @SuppressWarnings("serial")
@@ -44,23 +43,23 @@ public class FenetrePrincipale extends Fenetre {
 	public FenetrePrincipale(Billeterie billeterie) {
 		this.billeterie = billeterie;
 		billeterie.setFenetre(this);
-		this.setTitle("Billeterie INSA");
 		
 		
+		/* Theme */
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			/*for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+				if ("Nimbus".equals(info.getName())) {
+				UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+				break;
+				}
+			} */
 		} catch (Exception e) {
 		}
-		Set<Object> keys = UIManager.getDefaults().keySet();
-		for (Object key : keys) {
-		     if (key instanceof String && ((String) key).contains("font")) {
-		          System.out.println(key + "=" + UIManager.getDefaults().get(key));
-		     }
-		}
 		
-		
+		/* Fenetre */
+		this.setTitle("Billeterie INSA");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 900, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -106,6 +105,7 @@ public class FenetrePrincipale extends Fenetre {
 		
 		Onglets.addTab("Billets", null, ongletBillet, null);
 		
+		
 		/* Onglet Options */
 		JPanel OngletOptions = new JPanel();
 		JCheckBox chckbxVerrouillerLaSuppression = new JCheckBox("Verrouiller la suppression");
@@ -116,6 +116,7 @@ public class FenetrePrincipale extends Fenetre {
 		});
 		OngletOptions.add(chckbxVerrouillerLaSuppression, "North");
 		Onglets.addTab("Options", null, OngletOptions, null);
+		
 		
 		this.afficher();
 	}

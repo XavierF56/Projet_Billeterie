@@ -2,8 +2,8 @@ package ihm.barresOutils;
 
 import java.awt.FlowLayout;
 
-import ihm.actions.AjouterAction;
-import ihm.actions.ModifierAction;
+import ihm.actions.FenetreAjouterAction;
+import ihm.actions.FenetreModifierAction;
 import ihm.actions.RechercheAction;
 import ihm.actions.SupprimerAction;
 import ihm.actions.TextRecherche;
@@ -25,8 +25,8 @@ public class BarreOutilsBillets extends JPanel {
 		setLayout(new FlowLayout(FlowLayout.LEFT));
 		this.add(textRecherche);
 		this.add(new JButton(new RechercheAction(billeterie.getListeBillets(), textRecherche)));
-		this.add(new JButton(new AjouterAction(billeterie.getListeBillets(), "Ajouter un nouveau billet")));
-		this.add(new JButton(new ModifierAction(billeterie.getListeBillets())));
+		this.add(new JButton(new FenetreAjouterAction(billeterie.getListeBillets(), "Ajouter un nouveau billet")));
+		this.add(new JButton(new FenetreModifierAction(billeterie.getListeBillets())));
 		this.add(new JButton(new SupprimerAction(billeterie.getListeBillets())));
 		this.add(new JButton("Modifier Qt"));
 	}

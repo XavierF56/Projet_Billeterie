@@ -1,7 +1,7 @@
 package ihm.barresOutils;
 
-import ihm.actions.AjouterAction;
-import ihm.actions.ModifierAction;
+import ihm.actions.FenetreAjouterAction;
+import ihm.actions.FenetreModifierAction;
 import ihm.actions.SupprimerAction;
 
 import javax.swing.JPopupMenu;
@@ -14,8 +14,8 @@ public class MenuContextuelBillet extends JPopupMenu {
 	
 	public MenuContextuelBillet (ListeObjet listeObjet) {
 		this.listeObjet = listeObjet;
-		this.add(new AjouterAction(listeObjet, "Ajouter une nouvelle personne"));
-		this.add(new ModifierAction(listeObjet));
+		this.add(new FenetreAjouterAction(listeObjet, "Ajouter une nouvelle personne"));
+		this.add(new FenetreModifierAction(listeObjet));
 		this.add(new SupprimerAction(listeObjet));
 	}
 	
