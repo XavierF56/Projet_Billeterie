@@ -7,22 +7,25 @@ import ihm.actions.CommandeBilletAction;
 import ihm.actions.FenetreModifierAction;
 import ihm.actions.RechercheAction;
 import ihm.actions.SupprimerAction;
-import ihm.actions.TextRecherche;
 import ihm.actions.FenetreDetailsAction;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import modele.Billeterie;
 
 @SuppressWarnings("serial")
 public class BarreOutilsPersonnes extends JPanel {
-
+	JTextField textRecherche;
 
 	public BarreOutilsPersonnes(Billeterie billeterie) {
 		setLayout(new FlowLayout(FlowLayout.LEFT));
 		
-		TextRecherche textRecherche = new TextRecherche(billeterie.getListePersonnes());
+		textRecherche = new JTextField();
+		textRecherche.setColumns(20);
+		textRecherche.addKeyListener(new RechercheAction(billeterie.getListePersonnes(), textRecherche));
+		
 		this.add(textRecherche);
 		this.add(new JButton(new RechercheAction(billeterie.getListePersonnes(), textRecherche)));
 		this.add(new JButton(new CommandeBilletAction(billeterie.getListePersonnes(), billeterie)));

@@ -6,10 +6,10 @@ import ihm.actions.FenetreAjouterAction;
 import ihm.actions.FenetreModifierAction;
 import ihm.actions.RechercheAction;
 import ihm.actions.SupprimerAction;
-import ihm.actions.TextRecherche;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import modele.Billeterie;
 
@@ -17,11 +17,14 @@ public class BarreOutilsBillets extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 	Billeterie billeterie;
-	private TextRecherche textRecherche;
+	private JTextField textRecherche;
 	
 	public BarreOutilsBillets(Billeterie billeterie) {
 		this.billeterie = billeterie;
-		textRecherche = new TextRecherche(billeterie.getListeBillets());
+		textRecherche = new JTextField();
+		textRecherche.setColumns(20);
+		textRecherche.addKeyListener(new RechercheAction(billeterie.getListeBillets(), textRecherche));
+		
 		setLayout(new FlowLayout(FlowLayout.LEFT));
 		this.add(textRecherche);
 		this.add(new JButton(new RechercheAction(billeterie.getListeBillets(), textRecherche)));
