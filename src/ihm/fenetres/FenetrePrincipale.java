@@ -81,7 +81,7 @@ public class FenetrePrincipale extends Fenetre {
 		ongletPersonne.setLayout(new BorderLayout(0, 0));
 		BarreOutilsPersonnes barre = new BarreOutilsPersonnes(billeterie);
 		ongletPersonne.add(barre, "North");
-		tableauPersonnes.setComponentPopupMenu(new MenuContextuelPersonne(billeterie.getListePersonnes()));
+		tableauPersonnes.setComponentPopupMenu(new MenuContextuelPersonne(billeterie.getListePersonnes(), tableauPersonnes.getMousePosition(), tableauPersonnes));
 		ongletPersonne.add(new JScrollPane(tableauPersonnes), "Center");
 		
 		Onglets.addTab("Personnes", null, ongletPersonne, null);
