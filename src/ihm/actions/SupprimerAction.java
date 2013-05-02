@@ -1,5 +1,7 @@
 package ihm.actions;
 
+import ihm.fenetres.Fenetre;
+
 import java.awt.event.ActionEvent;
 import java.util.Arrays;
 
@@ -13,19 +15,16 @@ import modele.ListeObjet;
 public class SupprimerAction extends AbstractAction {
 	private static final long serialVersionUID = 1L;
 	private ListeObjet listeObjet;
+	Fenetre fenetre;
 	
-	public SupprimerAction(ListeObjet listeObjet) {
-        super("Supprimer");
+	public SupprimerAction(ListeObjet listeObjet, Fenetre fenetre) {
+        super("Valider");
     	this.listeObjet = listeObjet;
+    	this.fenetre = fenetre;
     }
 
     public void actionPerformed(ActionEvent e) {
         try {
-        	
-        	
-     
-            
-        	
         	boolean select = true;
         	int[] selection = listeObjet.getTableau().getSelectedRows();
             int[] modelIndexes = new int[selection.length];
@@ -48,6 +47,7 @@ public class SupprimerAction extends AbstractAction {
 	            }
 				
 			}
+			fenetre.setVisible(false);
         } catch (Exception e1) {
         	e1.printStackTrace();
         }
