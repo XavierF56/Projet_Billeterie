@@ -25,6 +25,7 @@ public class FenetreNouvelleObjet extends Fenetre {
 		//Champs
 		champs = new Champs(listeObjet.getAttributs());
 		contentPane.add(champs, "Center");
+		champs.ajouterListener(new ValiderAjoutAction(this, listeObjet));
 		
 		//Bouton Valider
 		JButton button = new JButton(new ValiderAjoutAction(this, listeObjet));

@@ -33,6 +33,7 @@ public class FenetreModifieObjet extends Fenetre {
 		champs = new Champs(objets.getAttributs());
 		champs.setValeurs(objetTraite.getHashMap());
 		fenetre.add(champs, "Center");
+		champs.ajouterListener(new ValiderModificationAction(this));
 		
 		//Bouton Valider
 		JButton button = new JButton(new ValiderModificationAction(this));

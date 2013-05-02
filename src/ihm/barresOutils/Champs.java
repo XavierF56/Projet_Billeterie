@@ -3,9 +3,9 @@ package ihm.barresOutils;
 import general.Constantes;
 import modele.Attribut;
 
-
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.KeyListener;
 import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -134,4 +134,17 @@ public class Champs extends JPanel{
      	s = s.replace(',', '.');
      	return Float.parseFloat(s);
     }
+
+
+	public void ajouterListener(KeyListener keyAjoutAction) {
+		Set<String> set = listeChamps.keySet();
+		Iterator<String> it = set.iterator();
+		while(it.hasNext()) {
+			String nom = it.next();
+			JComponent compo = listeChamps.get(nom);
+			if(compo instanceof JFormattedTextField) {
+				((JFormattedTextField) compo).addKeyListener(keyAjoutAction);
+			}
+		}		
+	}
 }
