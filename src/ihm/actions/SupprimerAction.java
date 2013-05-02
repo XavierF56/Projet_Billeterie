@@ -1,6 +1,7 @@
 package ihm.actions;
 
 import java.awt.event.ActionEvent;
+import java.util.Arrays;
 
 import javax.swing.AbstractAction;
 import javax.swing.JFrame;
@@ -20,18 +21,32 @@ public class SupprimerAction extends AbstractAction {
 
     public void actionPerformed(ActionEvent e) {
         try {
+        	
+        	
+     
+            
+        	
         	boolean select = true;
-        	int selectionCorrige = 0;
-        	int selection = listeObjet.getTableau().getSelectedRow();
+        	int[] selection = listeObjet.getTableau().getSelectedRows();
+            int[] modelIndexes = new int[selection.length];
+     
+            
         	try{
-        	selectionCorrige = listeObjet.getTableau().getRowSorter().convertRowIndexToModel(selection);
+        		for(int i = 0; i < selection.length; i++){
+                    modelIndexes[i] = listeObjet.getTableau().getRowSorter().convertRowIndexToModel(selection[i]);
+                }        	
         	} catch (Exception e1) {	
 				select = false;
 				JOptionPane.showMessageDialog(new JFrame(), 
 						"Vous n'avez pas de selection a supprimer", "Attention", JOptionPane.INFORMATION_MESSAGE);
         	}
 			if(select) {
-				listeObjet.getObjetByIndex(selectionCorrige).supprimer();
+				Arrays.sort(modelIndexes);
+			     
+	            for(int i = modelIndexes.length - 1; i >= 0; i--){
+	            	listeObjet.getObjetByIndex(modelIndexes[i]).supprimer();
+	            }
+				
 			}
         } catch (Exception e1) {
         	e1.printStackTrace();
