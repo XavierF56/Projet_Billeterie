@@ -1,5 +1,6 @@
 package ihm.barresOutils;
 
+import java.awt.Component;
 import java.awt.Point;
 
 import ihm.actions.FenetreAjouterAction;
@@ -17,17 +18,11 @@ import modele.ListeObjet;
 public class MenuContextuelPersonne extends JPopupMenu {
 	private static final long serialVersionUID = 1L;
 	ListeObjet listeObjet;
+	JTable table;
 	
-	public MenuContextuelPersonne (ListeObjet listeObjet, Point p, JTable table) {
+	public MenuContextuelPersonne (ListeObjet listeObjet, JTable table) {
 		this.listeObjet = listeObjet;
-		
-		//Clique droit
-		System.out.println(p);
-		if(p != null) {
-			int rowNumber = table.rowAtPoint(p);
-			ListSelectionModel model = table.getSelectionModel();
-			model.setSelectionInterval(rowNumber, rowNumber);
-		}
+		this.table = table;
 		
 		this.add(new FenetreAjouterAction(listeObjet, "Ajouter une nouvelle personne"));
 		this.add(new FenetreModifierAction(listeObjet));
@@ -35,4 +30,17 @@ public class MenuContextuelPersonne extends JPopupMenu {
 		this.add(new FenetreDetailsAction(listeObjet));
 		this.add(new CommandeBilletAction(listeObjet, listeObjet.getBilleterie()));
 	}
+	public void show(Component invoker, int x, int y) {
+		Point p = table.getMousePosition();
+
+        if(p != null) {
+        	int rowNumber = table.rowAtPoint(p);
+        	ListSelectionModel model = table.getSelectionModel();
+        	model.setSelectionInterval(rowNumber, rowNumber);
+       	}
+
+		super.show(invoker, x, y);
+    }
+	
+        
 }

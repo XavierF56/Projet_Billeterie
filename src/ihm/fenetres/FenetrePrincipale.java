@@ -81,7 +81,7 @@ public class FenetrePrincipale extends Fenetre {
 		ongletPersonne.setLayout(new BorderLayout(0, 0));
 		BarreOutilsPersonnes barre = new BarreOutilsPersonnes(billeterie);
 		ongletPersonne.add(barre, "North");
-		tableauPersonnes.setComponentPopupMenu(new MenuContextuelPersonne(billeterie.getListePersonnes(), tableauPersonnes.getMousePosition(), tableauPersonnes));
+		tableauPersonnes.setComponentPopupMenu(new MenuContextuelPersonne(billeterie.getListePersonnes(), tableauPersonnes));
 		ongletPersonne.add(new JScrollPane(tableauPersonnes), "Center");
 		
 		Onglets.addTab("Personnes", null, ongletPersonne, null);
@@ -100,7 +100,7 @@ public class FenetrePrincipale extends Fenetre {
 		
 		ongletBillet.setLayout(new BorderLayout(0, 0));
 		ongletBillet.add(new BarreOutilsBillets(billeterie), "North");
-		tableauBillets.setComponentPopupMenu(new MenuContextuelBillet(billeterie.getListeBillets()));
+		tableauBillets.setComponentPopupMenu(new MenuContextuelBillet(billeterie.getListeBillets(), tableauBillets));
 		ongletBillet.add(new JScrollPane(tableauBillets), "Center");
 		
 		Onglets.addTab("Billets", null, ongletBillet, null);
