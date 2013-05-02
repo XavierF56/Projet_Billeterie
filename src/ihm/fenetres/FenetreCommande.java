@@ -29,11 +29,9 @@ public class FenetreCommande extends Fenetre {
 	private JPanel southPane;
 	
 	public FenetreCommande(Personne personne, Billeterie billets) {
-		
 		//Initialisation des attributs de la classe
 		this.setTitle("Commande de billet pour "+ personne);
 		this.billeterie = billets;
-		this.billeterie.setFenetre(this);
 		this.contentPane = new JPanel();
 		this.southPane = new JPanel();
 		this.commande = new Commande(personne);

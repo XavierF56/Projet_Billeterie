@@ -1,5 +1,6 @@
 package ihm.fenetres;
 
+import ihm.actions.OptionListener;
 import ihm.barresOutils.BarreOutilsBillets;
 import ihm.barresOutils.BarreOutilsPersonnes;
 import ihm.barresOutils.MenuContextuelBillet;
@@ -23,8 +24,6 @@ import modele.Billeterie;
 import modele.ListeBillets;
 import modele.ListePersonnes;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 
 @SuppressWarnings("serial")
@@ -33,9 +32,9 @@ public class FenetrePrincipale extends Fenetre {
 	@SuppressWarnings("unused")
 	private Billeterie billeterie;
 	private JPanel contentPane;
-	private boolean opt;
 	private JTable tableauPersonnes;
 	private JTable tableauBillets;
+	
 	
 	/**
 	 * Create the frame.
@@ -108,20 +107,19 @@ public class FenetrePrincipale extends Fenetre {
 		
 		/* Onglet Options */
 		JPanel OngletOptions = new JPanel();
-		JCheckBox chckbxVerrouillerLaSuppression = new JCheckBox("Verrouiller la suppression");
-		chckbxVerrouillerLaSuppression.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println(opt);
-			}
-		});
-		OngletOptions.add(chckbxVerrouillerLaSuppression, "North");
+		JCheckBox chckbxSuppressionMultiple = new JCheckBox("Autoriser la suppression multiple");
+		chckbxSuppressionMultiple.addActionListener(new OptionListener(chckbxSuppressionMultiple, billeterie));
+		OngletOptions.add(chckbxSuppressionMultiple, "North");
 		Onglets.addTab("Options", null, OngletOptions, null);
 		
 		
 		this.afficher();
 	}
 
-	public JTable getTableau() {
+	public JTable getTableauPersonnes() {
 		return tableauPersonnes;
+	}
+	public JTable getTableauBillets() {
+		return tableauBillets;
 	}
 }
