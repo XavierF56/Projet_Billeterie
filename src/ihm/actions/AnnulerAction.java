@@ -16,9 +16,7 @@ public class AnnulerAction extends AbstractAction {
         this.fenetre = fenetre;
     }
 
-
-	@Override
 	public void actionPerformed(ActionEvent e) {
-		fenetre.setVisible(false);
+		fenetre.dispose();
 	}
 }

@@ -47,7 +47,7 @@ public class SupprimerAction extends AbstractAction {
 	            }
 				
 			}
-			fenetre.setVisible(false);
+			fenetre.dispose();
         } catch (Exception e1) {
         	e1.printStackTrace();
         }

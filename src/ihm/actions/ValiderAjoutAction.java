@@ -36,7 +36,7 @@ public class ValiderAjoutAction extends AbstractAction implements KeyListener {
     	try {
 			Map<String, Object>  map = fenetre.getChamps().getDonnees();
 			listeObjet.ajouter(map);
-        	fenetre.setVisible(false);
+        	fenetre.dispose();
 		} catch (Exception e1) {
 			System.out.println(e1);
 			String message = "\"Erreur lors de l'ajout\"\n"

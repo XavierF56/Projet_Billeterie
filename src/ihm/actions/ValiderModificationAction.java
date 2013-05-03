@@ -31,7 +31,7 @@ public class ValiderModificationAction extends AbstractAction implements KeyList
 		try {
 			Map<String, Object>  map = fenetre.getChamps().getDonnees();
 			fenetre.getObjetTraite().modifie(map);
-	    	fenetre.setVisible(false);
+	    	fenetre.dispose();
 		} catch (Exception e1) {
 			String message = "\"Erreur lors de la modification\"\n"
 			            + "Tous les champs n'ont pas ete renseignes\n";
