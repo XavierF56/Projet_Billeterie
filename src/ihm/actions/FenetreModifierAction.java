@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 import modele.ListeObjet;
 import modele.Objet;
 
-import ihm.fenetres.FenetreModifieObjet;
+import ihm.fenetres.FenetreModifier;
 
 @SuppressWarnings("serial")
 public class FenetreModifierAction extends AbstractAction {
@@ -37,7 +37,7 @@ public class FenetreModifierAction extends AbstractAction {
 	            	}
 					if(select) {
 						Objet objet = listeObjet.getObjetByIndex(selectionCorrige);
-						new FenetreModifieObjet(objet, listeObjet);
+						new FenetreModifier(objet, listeObjet);
 					}
 				} catch (Exception e) {		
 					e.printStackTrace();

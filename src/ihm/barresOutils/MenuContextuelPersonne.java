@@ -4,9 +4,9 @@ import java.awt.Component;
 import java.awt.Point;
 
 import ihm.actions.FenetreAjouterAction;
-import ihm.actions.CommandeBilletAction;
+import ihm.actions.FenetreCommanderAction;
 import ihm.actions.FenetreModifierAction;
-import ihm.actions.FenetreSuppressionAction;
+import ihm.actions.FenetreSupprimerAction;
 import ihm.actions.FenetreDetailsAction;
 
 import javax.swing.JPopupMenu;
@@ -26,9 +26,9 @@ public class MenuContextuelPersonne extends JPopupMenu {
 		
 		this.add(new FenetreAjouterAction(listeObjet, "Ajouter une nouvelle personne"));
 		this.add(new FenetreModifierAction(listeObjet));
-		this.add(new FenetreSuppressionAction(listeObjet));
+		this.add(new FenetreSupprimerAction(listeObjet));
 		this.add(new FenetreDetailsAction(listeObjet));
-		this.add(new CommandeBilletAction(listeObjet, listeObjet.getBilleterie()));
+		this.add(new FenetreCommanderAction(listeObjet, listeObjet.getBilleterie()));
 	}
 	public void show(Component invoker, int x, int y) {
 		Point p = table.getMousePosition();

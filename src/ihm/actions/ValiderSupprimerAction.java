@@ -12,12 +12,12 @@ import javax.swing.JOptionPane;
 import modele.ListeObjet;
 
 
-public class SupprimerAction extends AbstractAction {
+public class ValiderSupprimerAction extends AbstractAction {
 	private static final long serialVersionUID = 1L;
 	private ListeObjet listeObjet;
 	Fenetre fenetre;
 	
-	public SupprimerAction(ListeObjet listeObjet, Fenetre fenetre) {
+	public ValiderSupprimerAction(ListeObjet listeObjet, Fenetre fenetre) {
         super("Valider");
     	this.listeObjet = listeObjet;
     	this.fenetre = fenetre;

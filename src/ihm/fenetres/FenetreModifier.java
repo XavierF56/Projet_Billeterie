@@ -3,7 +3,7 @@ package ihm.fenetres;
 
 import java.awt.BorderLayout;
 
-import ihm.actions.ValiderModificationAction;
+import ihm.actions.ValiderModifierAction;
 import ihm.barresOutils.Champs;
 
 import javax.swing.BorderFactory;
@@ -14,12 +14,12 @@ import modele.ListeObjet;
 import modele.Objet;
 
 @SuppressWarnings("serial")
-public class FenetreModifieObjet extends Fenetre {
+public class FenetreModifier extends Fenetre {
 	private Objet objetTraite;
 	private Champs champs;
 	private ListeObjet objets;
 	
-	public FenetreModifieObjet(Objet objetTraite, ListeObjet listeObjet) {
+	public FenetreModifier(Objet objetTraite, ListeObjet listeObjet) {
 		this.objetTraite = objetTraite;
 		this.objets = listeObjet;
 		
@@ -33,10 +33,10 @@ public class FenetreModifieObjet extends Fenetre {
 		champs = new Champs(objets.getAttributs());
 		champs.setValeurs(objetTraite.getHashMap());
 		fenetre.add(champs, "Center");
-		champs.ajouterListener(new ValiderModificationAction(this));
+		champs.ajouterListener(new ValiderModifierAction(this));
 		
 		//Bouton Valider
-		JButton button = new JButton(new ValiderModificationAction(this));
+		JButton button = new JButton(new ValiderModifierAction(this));
 		JPanel panelSouth = new JPanel();
 		panelSouth.add(button);
 		fenetre.add(panelSouth, "South");

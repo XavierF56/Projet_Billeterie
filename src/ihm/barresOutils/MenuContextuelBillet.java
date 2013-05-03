@@ -5,7 +5,7 @@ import java.awt.Point;
 
 import ihm.actions.FenetreAjouterAction;
 import ihm.actions.FenetreModifierAction;
-import ihm.actions.FenetreSuppressionAction;
+import ihm.actions.FenetreSupprimerAction;
 
 import javax.swing.JPopupMenu;
 import javax.swing.JTable;
@@ -23,7 +23,7 @@ public class MenuContextuelBillet extends JPopupMenu {
 		this.table = table;
 		this.add(new FenetreAjouterAction(listeObjet, "Ajouter une nouvelle personne"));
 		this.add(new FenetreModifierAction(listeObjet));
-		this.add(new FenetreSuppressionAction(listeObjet));
+		this.add(new FenetreSupprimerAction(listeObjet));
 	}
 	
 	public void show(Component invoker, int x, int y) {

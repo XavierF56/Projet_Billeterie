@@ -1,6 +1,6 @@
 package ihm.actions;
 
-import ihm.fenetres.FenetreCommande;
+import ihm.fenetres.FenetreCommander;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -15,11 +15,11 @@ import modele.Objet;
 import modele.Personne;
 
 @SuppressWarnings("serial")
-public class CommandeBilletAction extends AbstractAction {
+public class FenetreCommanderAction extends AbstractAction {
 	private ListeObjet listeObjet;
 	private Billeterie billeterie;
 
-	public CommandeBilletAction(ListeObjet listeObjet, Billeterie billeterie) {
+	public FenetreCommanderAction(ListeObjet listeObjet, Billeterie billeterie) {
 		super("Commander Billet");
 		this.listeObjet = listeObjet;
 		this.billeterie = billeterie;
@@ -41,7 +41,7 @@ public class CommandeBilletAction extends AbstractAction {
 	            	}
 					if(select) {
 						Objet objet = listeObjet.getObjetByIndex(selectionCorrige);
-						new FenetreCommande((Personne) objet, billeterie);
+						new FenetreCommander((Personne) objet, billeterie);
 					}
 				} catch (Exception e) {		
 					e.printStackTrace();

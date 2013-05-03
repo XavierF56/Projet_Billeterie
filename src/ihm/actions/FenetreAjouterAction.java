@@ -5,7 +5,7 @@ import javax.swing.AbstractAction;
 
 import modele.ListeObjet;
 
-import ihm.fenetres.FenetreNouvelleObjet;
+import ihm.fenetres.FenetreAjouter;
 
 @SuppressWarnings("serial")
 public class FenetreAjouterAction extends AbstractAction {
@@ -19,6 +19,6 @@ public class FenetreAjouterAction extends AbstractAction {
     }
 
     public void actionPerformed(ActionEvent e) {
-    	new FenetreNouvelleObjet(listeObjet, titre);
+    	new FenetreAjouter(listeObjet, titre);
     }
 }

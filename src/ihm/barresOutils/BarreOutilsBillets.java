@@ -4,7 +4,7 @@ import java.awt.FlowLayout;
 
 import ihm.actions.FenetreAjouterAction;
 import ihm.actions.FenetreModifierAction;
-import ihm.actions.FenetreSuppressionAction;
+import ihm.actions.FenetreSupprimerAction;
 import ihm.actions.RechercheAction;
 
 import javax.swing.JButton;
@@ -30,7 +30,7 @@ public class BarreOutilsBillets extends JPanel {
 		this.add(new JButton(new RechercheAction(billeterie.getListeBillets(), textRecherche)));
 		this.add(new JButton(new FenetreAjouterAction(billeterie.getListeBillets(), "Ajouter un nouveau billet")));
 		this.add(new JButton(new FenetreModifierAction(billeterie.getListeBillets())));
-		this.add(new JButton(new FenetreSuppressionAction(billeterie.getListeBillets())));
+		this.add(new JButton(new FenetreSupprimerAction(billeterie.getListeBillets())));
 		this.add(new JButton("Modifier Qt"));
 	}
 

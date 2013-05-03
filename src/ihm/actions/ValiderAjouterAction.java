@@ -1,6 +1,6 @@
 package ihm.actions;
 
-import ihm.fenetres.FenetreModifieObjet;
+import ihm.fenetres.FenetreAjouter;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -11,30 +11,36 @@ import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class ValiderModificationAction extends AbstractAction implements KeyListener {
+import modele.ListeObjet;
+
+public class ValiderAjouterAction extends AbstractAction implements KeyListener {
 	private static final long serialVersionUID = 1L;
-	FenetreModifieObjet fenetre;
+	private FenetreAjouter fenetre;
+	private ListeObjet listeObjet;
 	
 	/**
 	 * Constructeur
-	 * @param fenetreModifiePersonne
+	 * @param fenetre
+	 * @param listeObjet
 	 */
-	public ValiderModificationAction(FenetreModifieObjet fenetreModifiePersonne) {
-	    super("Valider");
-	    this.fenetre = fenetreModifiePersonne;
-	}
-	
+    public ValiderAjouterAction(FenetreAjouter fenetre, ListeObjet listeObjet) {
+        super("Valider");
+        this.fenetre = fenetre;
+        this.listeObjet = listeObjet;
+    }
+    
     /**
      * Cette fonction valider l'action
      */
     public void valider() {
-		try {
+    	try {
 			Map<String, Object>  map = fenetre.getChamps().getDonnees();
-			fenetre.getObjetTraite().modifie(map);
-	    	fenetre.dispose();
+			listeObjet.ajouter(map);
+        	fenetre.dispose();
 		} catch (Exception e1) {
-			String message = "\"Erreur lors de la modification\"\n"
-			            + "Tous les champs n'ont pas ete renseignes\n";
+			System.out.println(e1);
+			String message = "\"Erreur lors de l'ajout\"\n"
+		            + "Tous les champs n'ont pas ete renseignes\n";
 			JOptionPane.showMessageDialog(new JFrame(), message, "Dialog", JOptionPane.ERROR_MESSAGE);
 		}
     }

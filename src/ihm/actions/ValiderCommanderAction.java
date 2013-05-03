@@ -11,11 +11,11 @@ import javax.swing.JOptionPane;
 import modele.Commande;
 
 @SuppressWarnings("serial")
-public class ValiderCommandeAction extends AbstractAction {
+public class ValiderCommanderAction extends AbstractAction {
 	private Fenetre fenetre;
 	private Commande commande;
 	
-	public ValiderCommandeAction(Fenetre fenetre, Commande commande) {
+	public ValiderCommanderAction(Fenetre fenetre, Commande commande) {
 	    super("Valider");
 	    this.fenetre = fenetre;
 	    this.commande = commande;

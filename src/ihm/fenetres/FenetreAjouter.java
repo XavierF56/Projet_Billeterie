@@ -2,7 +2,7 @@ package ihm.fenetres;
 
 import java.awt.BorderLayout;
 
-import ihm.actions.ValiderAjoutAction;
+import ihm.actions.ValiderAjouterAction;
 import ihm.barresOutils.Champs;
 
 import javax.swing.BorderFactory;
@@ -12,10 +12,10 @@ import javax.swing.JPanel;
 import modele.ListeObjet;
 
 @SuppressWarnings("serial")
-public class FenetreNouvelleObjet extends Fenetre {
+public class FenetreAjouter extends Fenetre {
 	private Champs champs;
 	
-	public FenetreNouvelleObjet(ListeObjet listeObjet, String titre) {
+	public FenetreAjouter(ListeObjet listeObjet, String titre) {
 		//Fenetre
 		this.setTitle(titre);
 		JPanel contentPane = new JPanel(new BorderLayout());
@@ -25,10 +25,10 @@ public class FenetreNouvelleObjet extends Fenetre {
 		//Champs
 		champs = new Champs(listeObjet.getAttributs());
 		contentPane.add(champs, "Center");
-		champs.ajouterListener(new ValiderAjoutAction(this, listeObjet));
+		champs.ajouterListener(new ValiderAjouterAction(this, listeObjet));
 		
 		//Bouton Valider
-		JButton button = new JButton(new ValiderAjoutAction(this, listeObjet));
+		JButton button = new JButton(new ValiderAjouterAction(this, listeObjet));
 		JPanel panelSouth = new JPanel();
 		panelSouth.add(button);
 		contentPane.add(panelSouth, "South");

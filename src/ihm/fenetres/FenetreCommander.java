@@ -1,6 +1,6 @@
 package ihm.fenetres;
 
-import ihm.actions.ValiderCommandeAction;
+import ihm.actions.ValiderCommanderAction;
 import ihm.barresOutils.BarreOutilsCommande;
 
 import java.awt.BorderLayout;
@@ -20,7 +20,7 @@ import modele.ListeBillets;
 import modele.Personne;
 
 @SuppressWarnings("serial")
-public class FenetreCommande extends Fenetre {
+public class FenetreCommander extends Fenetre {
 	private JPanel contentPane;
 	private Billeterie billeterie;
 	private JTable tableauBillets;
@@ -28,7 +28,7 @@ public class FenetreCommande extends Fenetre {
 	private JTextPane txtPane;
 	private JPanel southPane;
 	
-	public FenetreCommande(Personne personne, Billeterie billets) {
+	public FenetreCommander(Personne personne, Billeterie billets) {
 		//Initialisation des attributs de la classe
 		this.setTitle("Commande de billet pour "+ personne);
 		this.billeterie = billets;
@@ -55,7 +55,7 @@ public class FenetreCommande extends Fenetre {
 		txtPane.setText(commande.toString());
 		
 		southPane.add(txtPane);
-		southPane.add(new JButton(new ValiderCommandeAction(this, commande)));	
+		southPane.add(new JButton(new ValiderCommanderAction(this, commande)));	
 		contentPane.add(southPane, "South");
 		
 		//Affichage de la fenetre
