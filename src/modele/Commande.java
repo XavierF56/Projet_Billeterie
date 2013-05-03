@@ -151,6 +151,6 @@ public class Commande {
 	
 	/********** Methodes de base ************/
 	public String toString() {
-		return "Mon panier : " + nbArticle + " articles | " + prixTotal + "€";
+		return "Mon panier : " + nbArticle + " articles | " + prixTotal + " euros";
 	}
 }
