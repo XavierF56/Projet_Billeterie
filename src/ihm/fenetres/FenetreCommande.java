@@ -41,7 +41,6 @@ public class FenetreCommande extends Fenetre {
 		//Initialisation du tableau de billets
 		tableauBillets = new JTable(billeterie.getListeBillets());
 		tableauBillets.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		billeterie.getListeBillets().setTableau(tableauBillets);
 		tableauBillets.setAutoCreateRowSorter(true);
 		TableRowSorter<ListeBillets> sorter2 = new TableRowSorter<ListeBillets>((ListeBillets) tableauBillets.getModel());   
 		tableauBillets.setRowSorter(sorter2);
