@@ -22,18 +22,18 @@ public class AjouterAuPanierAction extends AbstractAction {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-    	EventQueue.invokeLater(new Runnable() {
+		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					boolean select = true;
 					int selectionCorrige = 0;
 					int selection = listeBillets.getTableau().getSelectedRow();
 					try {
-	            	selectionCorrige = listeBillets.getTableau().getRowSorter().convertRowIndexToModel(selection);
+						selectionCorrige = listeBillets.getTableau().getRowSorter().convertRowIndexToModel(selection);
 					} catch (Exception e) {	
 						select = false;
 						JOptionPane.showMessageDialog(new JFrame(), 
-								"Vous n'avez pas de selectionné de billet", "Attention", JOptionPane.INFORMATION_MESSAGE);
+								"Vous n'avez pas de selectionne de billet", "Attention", JOptionPane.INFORMATION_MESSAGE);
 	            	}
 					if(select) {
 						Billet billet = (Billet) listeBillets.getObjetByIndex(selectionCorrige);

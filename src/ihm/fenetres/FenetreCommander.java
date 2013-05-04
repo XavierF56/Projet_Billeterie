@@ -22,16 +22,14 @@ import modele.Personne;
 @SuppressWarnings("serial")
 public class FenetreCommander extends Fenetre {
 	private JPanel contentPane;
-	private Billeterie billeterie;
 	private JTable tableauBillets;
 	private Commande commande;
 	private JTextPane txtPane;
 	private JPanel southPane;
 	
-	public FenetreCommander(Personne personne, Billeterie billets) {
+	public FenetreCommander(Personne personne, Billeterie billeterie) {
 		//Initialisation des attributs de la classe
 		this.setTitle("Commande de billet pour "+ personne);
-		this.billeterie = billets;
 		this.contentPane = new JPanel();
 		this.southPane = new JPanel();
 		this.commande = new Commande(personne);

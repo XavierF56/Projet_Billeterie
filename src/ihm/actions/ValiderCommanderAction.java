@@ -24,11 +24,11 @@ public class ValiderCommanderAction extends AbstractAction {
 	public void actionPerformed(ActionEvent e) {
 		try {
 			commande.valider();
-	    	fenetre.setVisible(false);
+			fenetre.dispose();
 		} catch (Exception e1) {
-			String message = "\"Erreur lors de la modification\"\n"
-			            + "Tous les champs n'ont pas ete renseignes\n";
+			String message = "Une erreur s'est produite lors de votre achat\n La commande a été annulée\n";
 			JOptionPane.showMessageDialog(new JFrame(), message, "Dialog", JOptionPane.ERROR_MESSAGE);
+			fenetre.dispose();
 		}
 	}
 }
