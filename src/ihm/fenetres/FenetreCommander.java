@@ -4,9 +4,6 @@ import ihm.actions.ValiderCommanderAction;
 import ihm.barresOutils.BarreOutilsCommande;
 
 import java.awt.BorderLayout;
-import java.awt.Point;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
