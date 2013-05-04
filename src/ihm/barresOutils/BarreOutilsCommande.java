@@ -13,11 +13,9 @@ import modele.Billeterie;
 
 @SuppressWarnings("serial")
 public class BarreOutilsCommande extends JPanel {
-
-	private JTextField textRecherche;
 	
 	public BarreOutilsCommande(Billeterie billeterie) {
-		textRecherche = new JTextField();
+		JTextField textRecherche = new JTextField();
 		textRecherche.setColumns(20);
 		textRecherche.addKeyListener(new RechercheAction(billeterie.getListeBillets(), textRecherche));
 		
