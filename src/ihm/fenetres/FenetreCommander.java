@@ -41,7 +41,6 @@ public class FenetreCommander extends Fenetre {
 		
 		//Initialisation du tableau de billets
 		tableauBillets = new JTable(billeterie.getListeBillets());
-		tableauBillets.addMouseListener(new CliqueGauche(tableauBillets, billeterie.getListeBillets().getTableau().getSelectionModel()));
 		tableauBillets.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tableauBillets.setAutoCreateRowSorter(true);
 		TableRowSorter<ListeBillets> sorter2 = new TableRowSorter<ListeBillets>((ListeBillets) tableauBillets.getModel());   
@@ -52,7 +51,7 @@ public class FenetreCommander extends Fenetre {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		JScrollPane scrollPane = new JScrollPane(tableauBillets);
 		contentPane.add(scrollPane, "Center");
-		contentPane.add(new BarreOutilsCommande(billeterie), "North");
+		contentPane.add(new BarreOutilsCommande(billeterie, tableauBillets), "North");
 		txtPane = new JTextPane();
 		txtPane.setText(commande.toString());
 		
@@ -63,37 +62,4 @@ public class FenetreCommander extends Fenetre {
 		//Affichage de la fenetre
 		this.afficher();
 	}
-	
-	/**
-	 * La class CliqueGauche est utilise pour modifier la ligne selectionne lors d'un clique gauche.
-	 * En effet, a cause de l'utilisation a deux reprises du même modele dans deux tableaux diffrents, 
-	 * un bug avait lieu. Le tableau de fenetre commande utilisait la meme selection que celui present 
-	 * dans l'onglet Billets. Ainsi, si on avait selectionne le billet numero x dans l'onglet Billets, 
-	 * la fonction retournant la ligne selectionnee dans le tableau de FenetreCommande retournait x
-	 * sans s'occuper de la ligne selectionner dans FenetreCommande.
-	 */
-	private class CliqueGauche extends MouseAdapter {
-		JTable table;
-		ListSelectionModel model;
-        private CliqueGauche(JTable table, ListSelectionModel model) {
-            super();
-            this.table = table;
-            this.model = model;
-        }
- 
-        public void mousePressed (MouseEvent e) {
-            int buttonDown = e.getButton();
-         
-            if (buttonDown == MouseEvent.BUTTON1) {
-            	Point p = e.getPoint();
-            	System.out.println("Point :" + p);
-
-                if(p != null) {
-                	int rowNumber = table.rowAtPoint(p);
-                	System.out.println("ligne :" + rowNumber);
-                	model.setSelectionInterval(rowNumber, rowNumber);
-               	}
-            } 
-         }
-    }
 }
