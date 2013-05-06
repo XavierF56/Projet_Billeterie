@@ -30,7 +30,6 @@ public class AjouterAuPanierAction extends AbstractAction {
 				try {
 					boolean select = true;
 					int selectionCorrige = 0;
-					//int selection = listeBillets.getTableau().getSelectedRow(); remplace par :
 					int selection = tableau.getSelectedRow();
 					try {
 						selectionCorrige = listeBillets.getTableau().getRowSorter().convertRowIndexToModel(selection);

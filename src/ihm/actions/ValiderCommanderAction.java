@@ -26,8 +26,8 @@ public class ValiderCommanderAction extends AbstractAction {
 			commande.valider();
 			fenetre.dispose();
 		} catch (Exception e1) {
-			String message = "Une erreur s'est produite lors de votre achat\n La commande a été annulée\n";
-			JOptionPane.showMessageDialog(new JFrame(), message, "Dialog", JOptionPane.ERROR_MESSAGE);
+			String message = "Une erreur s'est produite lors de votre achat\nLa commande a été annulée";
+			JOptionPane.showMessageDialog(new JFrame(), message, "Erreur", JOptionPane.ERROR_MESSAGE);
 			fenetre.dispose();
 		}
 	}

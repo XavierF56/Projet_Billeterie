@@ -1,9 +1,9 @@
 package ihm.barresOutils;
 
-import java.awt.FlowLayout;
-
 import ihm.actions.AjouterAuPanierAction;
 import ihm.actions.RechercheAction;
+
+import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -15,7 +15,7 @@ import modele.Billeterie;
 @SuppressWarnings("serial")
 public class BarreOutilsCommande extends JPanel {
 	
-	public BarreOutilsCommande(Billeterie billeterie) {
+	public BarreOutilsCommande(Billeterie billeterie, JTable tableau) {
 		JTextField textRecherche = new JTextField();
 		textRecherche.setColumns(20);
 		textRecherche.addKeyListener(new RechercheAction(billeterie.getListeBillets(), textRecherche));
