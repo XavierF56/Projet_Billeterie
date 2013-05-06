@@ -59,7 +59,6 @@ public class Commande {
 	 * @param paye
 	 * @param donne
 	 * @param subventionne
-	 * @return vrai si l operation a reussie
 	 * @throws AchatException 
 	 */
 	public void ajoutCommande(Billet billet, int qt, boolean paye, boolean donne, boolean subventionne) throws AchatException {

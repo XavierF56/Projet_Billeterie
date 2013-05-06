@@ -15,6 +15,7 @@ import modele.ListeBillets;
 @SuppressWarnings("serial")
 public class FenetreQuantite extends Fenetre {
 	private JPanel contentPane;
+	private PanelChoixQuantite panelChoixQuantite;
 	
 	public FenetreQuantite(Billet billet, ListeBillets listeBillets, Commande commande) {
 		this.setTitle("Choix de la quantite de billets");
@@ -22,12 +23,27 @@ public class FenetreQuantite extends Fenetre {
 		contentPane = new JPanel();
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
-		PanelChoixQuantite panelChoixQuantite = new PanelChoixQuantite(new ValiderQuantiteAction(this));
+		panelChoixQuantite = new PanelChoixQuantite(new ValiderQuantiteAction(this, commande, billet));
 		
 		contentPane.add(panelChoixQuantite, "Center");
-		contentPane.add(new JButton(new ValiderQuantiteAction(this)), "South");
+		contentPane.add(new JButton(new ValiderQuantiteAction(this, commande, billet)), "South");
 		
 		this.afficher();
+	}
+
+	public boolean getSubventionne() {
+		return panelChoixQuantite.getSubventionne();
+	}
+	
+	public int getQuantite() {
+		return panelChoixQuantite.getQuantite();
+	}
+
+	public boolean getPaye() {
+		return panelChoixQuantite.getPaye();
+	}
+
+	public boolean getDonne() {
+		return panelChoixQuantite.getDonne();
 	}
 }
