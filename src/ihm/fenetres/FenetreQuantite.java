@@ -23,7 +23,9 @@ public class FenetreQuantite extends Fenetre {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		contentPane.add(new PanelChoixQuantite(), "Center");
+		PanelChoixQuantite panelChoixQuantite = new PanelChoixQuantite(new ValiderQuantiteAction(this));
+		
+		contentPane.add(panelChoixQuantite, "Center");
 		contentPane.add(new JButton(new ValiderQuantiteAction(this)), "South");
 		
 		this.afficher();
