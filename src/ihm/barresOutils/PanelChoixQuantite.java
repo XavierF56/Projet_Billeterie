@@ -66,7 +66,7 @@ public class PanelChoixQuantite extends JPanel implements ItemListener {
 	}
 	
 	public int getQuantite() {
-		quantite = -Integer.parseInt(textField.getText());
+		quantite = Integer.parseInt(textField.getText());
 		return quantite;
 	}
 

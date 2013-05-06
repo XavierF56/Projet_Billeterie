@@ -94,7 +94,7 @@ public class Achat extends Objet {
 	private void repercuter() {
 		try {
 			((Billet)personne.getBilleterie().getListeBillets().getObjetById(
-					(Integer) map.get("id_billet"))).modifieQt((Integer) map.get("quantite"), 
+					(Integer) map.get("id_billet"))).modifieQt(-(Integer) map.get("quantite"), 
 							(Boolean) map.get("subventionne"));
 		} catch (Exception e) {
 			e.printStackTrace();
