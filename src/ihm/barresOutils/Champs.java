@@ -21,8 +21,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 //TODO Verifier que les champs de text ne contiennent pas de caracteres etranges, "'" par ex
+@SuppressWarnings("serial")
 public class Champs extends JPanel{
-	private static final long serialVersionUID = 1L;
 	
 	private Map<String, JComponent> listeChamps = new HashMap<String, JComponent>();
 	private List<Attribut> listeAttributs;
@@ -109,6 +109,13 @@ public class Champs extends JPanel{
 		return champ;
 	}
 	
+	/**
+	 * 
+	 * @param index
+	 * @param nom
+	 * @return
+	 * @throws Exception
+	 */
 	private Object getValeur(int index, String nom) throws Exception {
 		Object res;
 		JComponent champ = listeChamps.get(nom);

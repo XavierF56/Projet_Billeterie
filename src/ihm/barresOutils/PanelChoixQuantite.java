@@ -10,18 +10,14 @@ import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
 @SuppressWarnings("serial")
-public class PanelChoixQuantite extends JPanel implements ItemListener{
-	private boolean subventionne;
-	private boolean paye;
-	private boolean donne;
+public class PanelChoixQuantite extends JPanel implements ItemListener {
+	private boolean subventionne, paye, donne;
 	private int quantite;
-	private JCheckBox chckSubventionne;
-	private JCheckBox chckPaye;
-	private JCheckBox chckDonne;
+	private JCheckBox chckSubventionne, chckPaye, chckDonne;
+	private JFormattedTextField textField;
 	
 	public PanelChoixQuantite (ValiderQuantiteAction keyValiderAction) {
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
@@ -33,9 +29,13 @@ public class PanelChoixQuantite extends JPanel implements ItemListener{
 		
 		JTextPane txtpn = new JTextPane();
 		txtpn.setText("Choisissez la quantité de billets à commander");
-		JTextField textField = new JFormattedTextField(NumberFormat.getIntegerInstance());
+		
+		// choix de la quantite de billets a commander
+		textField = new JFormattedTextField(NumberFormat.getIntegerInstance());
+		textField.setValue(1);
 		textField.setColumns(20);
 		textField.addKeyListener(keyValiderAction);
+		
 		chckSubventionne = new JCheckBox("Subventionne");
 		chckSubventionne.setSelected(false);
 		chckSubventionne.addItemListener(this);
@@ -66,6 +66,7 @@ public class PanelChoixQuantite extends JPanel implements ItemListener{
 	}
 	
 	public int getQuantite() {
+		quantite = -Integer.parseInt(textField.getText());
 		return quantite;
 	}
 
@@ -80,7 +81,5 @@ public class PanelChoixQuantite extends JPanel implements ItemListener{
         } else if (source == chckDonne) {
             donne = selectionne;
         }
-        System.out.println("Subv : " + subventionne + " - Paye : " + paye + " - Donne : " + donne);
     }
-
 }
