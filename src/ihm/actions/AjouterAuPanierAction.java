@@ -43,7 +43,7 @@ public class AjouterAuPanierAction extends AbstractAction {
 	            	}
 					if(select) {
 						Billet billet = (Billet) listeBillets.getObjetByIndex(selectionCorrige);
-						new FenetreQuantite(billet, listeBillets);
+						new FenetreQuantite(billet, listeBillets, commande);
 					}
 				} catch (Exception e) {		
 					e.printStackTrace();
