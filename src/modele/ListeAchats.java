@@ -28,6 +28,7 @@ public class ListeAchats extends ListeObjet{
 	 * Met en memoire liste)Achats a partir de la BDD
 	 */
 	public void metEnMemoire() {
+		personne.getBilleterie().getListeBillets().reinitialise();
 		String query = "SELECT * from achat WHERE id_personne=" + personne.getId(); //NOM BDD
 		List<Map<String, Object>> list = personne.getBilleterie().getBdd().getObjets(query); 
 		for (int i = 0; i < list.size(); i++){

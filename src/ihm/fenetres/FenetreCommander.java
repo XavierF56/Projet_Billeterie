@@ -49,7 +49,7 @@ public class FenetreCommander extends Fenetre {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		JScrollPane scrollPane = new JScrollPane(tableauBillets);
 		contentPane.add(scrollPane, "Center");
-		contentPane.add(new BarreOutilsCommande(billeterie), "North");
+		contentPane.add(new BarreOutilsCommande(billeterie, tableauBillets), "North");
 		txtPane = new JTextPane();
 		txtPane.setText(commande.toString());
 		

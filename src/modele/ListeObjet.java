@@ -114,7 +114,7 @@ public abstract class ListeObjet extends AbstractTableModel{
 	/**
 	 * Permet de remplacer la liste de billets par la liste de billets d'origine
 	 */
-	protected void reinitialise() {
+	public void reinitialise() {
 		listeObjet = listeObjetSauvegarde;
 		sauvegarde();
 	}
