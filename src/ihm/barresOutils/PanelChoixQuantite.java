@@ -36,21 +36,21 @@ public class PanelChoixQuantite extends JPanel implements ItemListener{
 		JTextField textField = new JFormattedTextField(NumberFormat.getIntegerInstance());
 		textField.setColumns(20);
 		textField.addKeyListener(keyValiderAction);
-		checkBoxInit(chckSubventionne, "Subventionne");
-		checkBoxInit(chckPaye, "Paye");
-		checkBoxInit(chckDonne, "Donne");
-				
+		chckSubventionne = new JCheckBox("Subventionne");
+		chckSubventionne.setSelected(false);
+		chckSubventionne.addItemListener(this);
+		chckPaye = new JCheckBox("Paye");
+		chckPaye.setSelected(false);
+		chckPaye.addItemListener(this);
+		chckDonne = new JCheckBox("Donne");
+		chckDonne.setSelected(false);
+		chckDonne.addItemListener(this);
+		
 		this.add(txtpn);
 		this.add(textField);
 		this.add(chckSubventionne);
 		this.add(chckPaye);
 		this.add(chckDonne);
-	}
-	
-	private void checkBoxInit (JCheckBox item, String nom) {
-		item = new JCheckBox(nom);
-		item.setSelected(false);
-		item.addItemListener(this);
 	}
 
 	public boolean getSubventionne() {
@@ -69,30 +69,18 @@ public class PanelChoixQuantite extends JPanel implements ItemListener{
 		return quantite;
 	}
 
-	@Override
 	public void itemStateChanged(ItemEvent e) {
         Object source = e.getItemSelectable();
-
+        boolean selectionne = (e.getStateChange() == ItemEvent.SELECTED);
+        
         if (source == chckSubventionne) {
-
-        } else if (source == glassesButton) {
-
-        } else if (source == hairButton) {
-
-        } else if (source == teethButton) {
-       
+        	subventionne = selectionne;
+        } else if (source == chckPaye) {
+        	paye = selectionne;
+        } else if (source == chckDonne) {
+            donne = selectionne;
         }
-
-        //Now that we know which button was pushed, find out
-        //whether it was selected or deselected.
-        if (e.getStateChange() == ItemEvent.DESELECTED) {
-            c = '-';
-        }
-
-        //Apply the change to the string.
-        choices.setCharAt(index, c);
-
-        updatePicture();
+        System.out.println("Subv : " + subventionne + " - Paye : " + paye + " - Donne : " + donne);
     }
 
 }
