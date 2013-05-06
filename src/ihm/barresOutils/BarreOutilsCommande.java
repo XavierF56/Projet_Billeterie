@@ -11,11 +11,12 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import modele.Billeterie;
+import modele.Commande;
 
 @SuppressWarnings("serial")
 public class BarreOutilsCommande extends JPanel {
 	
-	public BarreOutilsCommande(Billeterie billeterie, JTable tableau) {
+	public BarreOutilsCommande(Billeterie billeterie, JTable tableau, Commande commande) {
 		JTextField textRecherche = new JTextField();
 		textRecherche.setColumns(20);
 		textRecherche.addKeyListener(new RechercheAction(billeterie.getListeBillets(), textRecherche));
@@ -23,6 +24,6 @@ public class BarreOutilsCommande extends JPanel {
 		setLayout(new FlowLayout(FlowLayout.LEFT));
 		this.add(textRecherche);
 		this.add(new JButton(new RechercheAction(billeterie.getListeBillets(), textRecherche)));
-		this.add(new JButton(new AjouterAuPanierAction(billeterie.getListeBillets(), tableau)));
+		this.add(new JButton(new AjouterAuPanierAction(billeterie.getListeBillets(), tableau, commande)));
 	}
 }

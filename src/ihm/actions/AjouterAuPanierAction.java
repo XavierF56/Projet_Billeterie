@@ -11,17 +11,20 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 import modele.Billet;
+import modele.Commande;
 import modele.ListeBillets;
 
 @SuppressWarnings("serial")
 public class AjouterAuPanierAction extends AbstractAction {
 	private ListeBillets listeBillets;
-	JTable tableau;
+	private JTable tableau;
+	private Commande commande;
 	
-	public AjouterAuPanierAction(ListeBillets listeBillets, JTable tableau) {
+	public AjouterAuPanierAction(ListeBillets listeBillets, JTable tableau, Commande commande) {
 	    super("Ajouter au panier");
 	    this.listeBillets = listeBillets;
 	    this.tableau = tableau;
+	    this.commande = commande;
 	}
 	
 	public void actionPerformed(ActionEvent e) {
