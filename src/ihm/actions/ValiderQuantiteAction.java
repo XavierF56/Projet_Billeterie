@@ -10,6 +10,7 @@ import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import modele.AchatException;
 import modele.Billet;
 import modele.Commande;
 
@@ -35,6 +36,8 @@ public class ValiderQuantiteAction extends AbstractAction implements KeyListener
 				System.out.println("QT "+fenetre.getQuantite());
 				commande.ajoutCommande(billet, fenetre.getQuantite(), fenetre.getPaye(), fenetre.getDonne(), fenetre.getSubventionne());
 		    	fenetre.dispose();
+			} catch (AchatException ae) {
+				JOptionPane.showMessageDialog(new JFrame(), ae.toString(), "Erreur", JOptionPane.ERROR_MESSAGE);
 			} catch (Exception e1) {
 				String message = "Erreur dans le choix de la quantité\nCommande de ce billet annulée";
 				JOptionPane.showMessageDialog(new JFrame(), message, "Erreur", JOptionPane.ERROR_MESSAGE);

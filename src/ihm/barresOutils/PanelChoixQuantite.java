@@ -2,11 +2,11 @@ package ihm.barresOutils;
 
 import ihm.actions.ValiderQuantiteAction;
 
+import java.awt.GridLayout;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.text.NumberFormat;
 
-import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
@@ -23,14 +23,14 @@ public class PanelChoixQuantite extends JPanel implements ItemListener {
 	public PanelChoixQuantite (ValiderQuantiteAction keyValiderAction) {
 
 		// Initialisation du panel et des attributs de la classe
-		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		this.setLayout(new GridLayout(0, 1));
 		this.subventionne = false;
 		this.paye = false;
 		this.donne = false;
 		this.quantite = 0;
 		
 		// Label
-		JLabel label = new JLabel("Choisissez la quantité de billets à commander", JLabel.CENTER);
+		JLabel label = new JLabel("\nChoisissez la quantité de billets à commander :\n");
 		
 		// Choix de la quantite de billets a commander
 		textField = new JFormattedTextField(NumberFormat.getIntegerInstance());
