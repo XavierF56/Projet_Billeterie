@@ -23,7 +23,7 @@ public class ValiderCommanderAction extends AbstractAction {
 	
 	public void actionPerformed(ActionEvent e) {
 		try {
-			commande.valider();
+			//TODO faire marcher cette commande : commande.valider();
 			fenetre.dispose();
 		} catch (Exception e1) {
 			String message = "Une erreur s'est produite lors de votre achat\nLa commande a été annulée";
