@@ -7,7 +7,7 @@ import java.awt.EventQueue;
 import modele.Billeterie;
 
 /**
- * BUG
+ * TODO BUG
  * Lors de l'ajout d'une colonne depuis SQLITEManager, si aucune valeur par defaut affectee 
  * -> la racuperation du type pose probleme...
  */

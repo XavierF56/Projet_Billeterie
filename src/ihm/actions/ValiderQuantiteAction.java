@@ -33,7 +33,6 @@ public class ValiderQuantiteAction extends AbstractAction implements KeyListener
 		
 		private void validerQuantite(){
 			try {
-				System.out.println("QT "+fenetre.getQuantite());
 				commande.ajoutCommande(billet, fenetre.getQuantite(), fenetre.getPaye(), fenetre.getDonne(), fenetre.getSubventionne());
 		    	fenetre.dispose();
 			} catch (AchatException ae) {

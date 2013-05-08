@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 public class Constantes {
 	public final static int INTEGER = 1;
 	public final static int FLOAT = 2;
@@ -39,5 +42,13 @@ public class Constantes {
 			resul.add((String) it.next());
 		}
 		return resul;
+	}
+	
+	/** Permet l'affichage graphique sous forme d'une fenetre d'erreur d'une exception e
+	 * 
+	 * @param e l'exception a afficher
+	 */
+	public static void afficherException (Exception e) {
+		JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Erreur - Exception", JOptionPane.ERROR_MESSAGE);
 	}
 }
