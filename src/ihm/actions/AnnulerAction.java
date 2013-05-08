@@ -14,6 +14,7 @@ public class AnnulerAction extends AbstractAction {
 	/** Permet d'annuler une action en cours en fermant la fenetre en parametre
 	 * 
 	 * @param fenetre la fenetre a fermer
+	 * @see AbstractAction
 	 * @see Fenetre
 	 */
     public AnnulerAction(Fenetre fenetre) {
@@ -21,8 +22,10 @@ public class AnnulerAction extends AbstractAction {
         this.fenetre = fenetre;
     }
     
-    /** Methode requise par l'implementation de l'interface AbstractAction
-	 * 
+    /** Methode requise par l'heritage de la classe AbstractAction
+     * 
+     * @see AbstractAction
+     * @see Fenetre
 	 */
 	public void actionPerformed(ActionEvent e) {
 		fenetre.dispose();

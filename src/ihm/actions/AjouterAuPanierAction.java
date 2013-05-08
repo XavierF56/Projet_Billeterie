@@ -30,6 +30,8 @@ public class AjouterAuPanierAction extends AbstractAction {
 	 * @param commande la commande en cours
 	 * @see ListeBillets
 	 * @see Commande
+	 * @see FenetreQuantite
+	 * @see AbstractAction
 	 */
 	public AjouterAuPanierAction(ListeBillets listeBillets, JTable tableau, Commande commande) {
 	    super("Ajouter au panier");
@@ -38,7 +40,7 @@ public class AjouterAuPanierAction extends AbstractAction {
 	    this.commande = commande;
 	}
 	
-	/** Methode requise par l'implementation de l'interface AbstractAction
+	/** Methode requise par l'heritage de la classe AbstractAction
 	 * Lorsque l'action est appelee, cette methode est appelee.
 	 * Si aucun billet n'est selectionne, une fenetre d'avertissement apparait.
 	 * Si une erreur apparait lors de la recuperation des donnees du billets dans la base
