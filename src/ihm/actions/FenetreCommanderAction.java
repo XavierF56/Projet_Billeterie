@@ -2,7 +2,6 @@ package ihm.actions;
 
 import general.Constantes;
 import ihm.fenetres.FenetreCommander;
-import ihm.fenetres.FenetreQuantite;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -12,7 +11,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import modele.Billeterie;
-import modele.Commande;
 import modele.ListeBillets;
 import modele.Objet;
 import modele.Personne;

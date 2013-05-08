@@ -1,5 +1,6 @@
 package ihm.actions;
 
+import general.Constantes;
 import ihm.fenetres.FenetreDetails;
 
 import java.awt.event.ActionEvent;
@@ -11,21 +12,39 @@ import javax.swing.JOptionPane;
 import modele.ListeObjet;
 import modele.Personne;
 
+@SuppressWarnings("serial")
 public class FenetreDetailsAction extends AbstractAction {
-		private static final long serialVersionUID = 1L;
+
 		private ListeObjet listeObjet;
 		
+		/** L'action FenetreDetails permet l'appel de la fenetre Details
+		 * 
+		 * @param listeObjet la liste d'objets selectionnee
+		 * @see ListeObjet
+		 * @see FenetreDetails
+		 * @see AbstractAction
+		 */
 		public FenetreDetailsAction(ListeObjet listeObjet) {
 	        super("Details");
 	    	this.listeObjet = listeObjet;
 	    }
 
+		/** Methode requise par l'heritage de la classe AbstractAction
+		 * Lorsque l'action est appelee, cette methode est appelee.
+		 * Si aucun objet n'est selectionnee, une fenetre d'avertissement apparait.
+		 * Si une erreur apparait lors de la recuperation des donnees de l'objet dans la base
+		 * de donnees, les traces de l'exception sont affichees graphiquement.
+		 * Sinon la fenetre Details est appelee.
+		 * 
+		 * @see FenetreDetails
+		 * @see AbstractAction
+		 */
 	    public void actionPerformed(ActionEvent e) {
 	    	boolean select = true;
 	    	int selectionCorrige = 0;
 	    	int selection = listeObjet.getTableau().getSelectedRow();
 	    	try{
-        	selectionCorrige = listeObjet.getTableau().getRowSorter().convertRowIndexToModel(selection);
+	    		selectionCorrige = listeObjet.getTableau().getRowSorter().convertRowIndexToModel(selection);
 		    } catch (Exception e1) {	
 				select = false;
 				JOptionPane.showMessageDialog(new JFrame(), 
@@ -35,7 +54,7 @@ public class FenetreDetailsAction extends AbstractAction {
 		    	try {
 					new FenetreDetails((Personne) listeObjet.getObjetByIndex(selectionCorrige));
 				} catch (Exception e1) {
-					e1.printStackTrace();
+					Constantes.afficherException(e1);
 				}
 	    	}
 	    }

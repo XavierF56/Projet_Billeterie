@@ -1,5 +1,8 @@
 package ihm.actions;
 
+import general.Constantes;
+import ihm.fenetres.FenetreModifier;
+
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 
@@ -10,37 +13,53 @@ import javax.swing.JOptionPane;
 import modele.ListeObjet;
 import modele.Objet;
 
-import ihm.fenetres.FenetreModifier;
-
 @SuppressWarnings("serial")
 public class FenetreModifierAction extends AbstractAction {
+	
 	private ListeObjet listeObjet;
 	
+	/** L'action FenetreModifier permet l'appel de la fenetre Modifier
+	 * 
+	 * @param listeObjet la liste d'objets selectionnee
+	 * @see ListeObjet
+	 * @see FenetreModifier
+	 * @see AbstractAction
+	 */
 	public FenetreModifierAction(ListeObjet listeObjet) {
         super("Modifier");
     	this.listeObjet = listeObjet;
     }
 
+	/** Methode requise par l'heritage de la classe AbstractAction
+	 * Lorsque l'action est appelee, cette methode est appelee.
+	 * Si aucun objet n'est selectionnee, une fenetre d'avertissement apparait.
+	 * Si une erreur apparait lors de la recuperation des donnees de l'objet dans la base
+	 * de donnees, les traces de l'exception sont affichees graphiquement.
+	 * Sinon la fenetre Modifier est appelee.
+	 * 
+	 * @see FenetreModifier
+	 * @see AbstractAction
+	 */
     public void actionPerformed(ActionEvent e) {
     	EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				boolean select = true;
+				int selectionCorrige = 0;
+				int selection = listeObjet.getTableau().getSelectedRow();
 				try {
-					boolean select = true;
-					int selectionCorrige = 0;
-					int selection = listeObjet.getTableau().getSelectedRow();
+            	selectionCorrige = listeObjet.getTableau().getRowSorter().convertRowIndexToModel(selection);
+				} catch (Exception e) {	
+					select = false;
+					JOptionPane.showMessageDialog(new JFrame(), 
+							"Vous n'avez pas de selection a modifier", "Attention", JOptionPane.INFORMATION_MESSAGE);
+            	}
+				if(select) {
 					try {
-	            	selectionCorrige = listeObjet.getTableau().getRowSorter().convertRowIndexToModel(selection);
-					} catch (Exception e) {	
-						select = false;
-						JOptionPane.showMessageDialog(new JFrame(), 
-								"Vous n'avez pas de selection a modifier", "Attention", JOptionPane.INFORMATION_MESSAGE);
-	            	}
-					if(select) {
 						Objet objet = listeObjet.getObjetByIndex(selectionCorrige);
 						new FenetreModifier(objet, listeObjet);
+					} catch (Exception e1) {
+						Constantes.afficherException(e1);
 					}
-				} catch (Exception e) {		
-					e.printStackTrace();
 				}
 			}
 		});
