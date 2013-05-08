@@ -41,7 +41,6 @@ public class ValiderSupprimerAction extends AbstractAction {
         	}
 			if(select) {
 				Arrays.sort(modelIndexes);
-			     
 	            for(int i = modelIndexes.length - 1; i >= 0; i--){
 	            	listeObjet.getObjetByIndex(modelIndexes[i]).supprimer();
 	            }

@@ -8,8 +8,8 @@ import javax.swing.AbstractAction;
 
 import modele.ListeObjet;
 
+@SuppressWarnings("serial")
 public class FenetreSupprimerAction extends AbstractAction {
-	private static final long serialVersionUID = 1L;
 	private ListeObjet listeObjet;
 	
 	public FenetreSupprimerAction (ListeObjet listeObjet) {

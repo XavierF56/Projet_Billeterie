@@ -7,12 +7,13 @@ import java.awt.BorderLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import modele.ListeObjet;
 
+@SuppressWarnings("serial")
 public class FenetreSupprimer  extends Fenetre {
-	private static final long serialVersionUID = 1L;
 	private ListeObjet listeObjets;
 	
 	public FenetreSupprimer(ListeObjet listeObjet) {
@@ -24,14 +25,17 @@ public class FenetreSupprimer  extends Fenetre {
 		fenetre.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
 		this.add(fenetre);
 		
-		//Bouton Valider
+		//Boutons Valider et Annuler
 		JButton buttonAnnuler = new JButton(new AnnulerAction(this));
 		JButton buttonSupprimer = new JButton(new ValiderSupprimerAction(listeObjets, this));
 		JPanel panelSouth = new JPanel();
-		panelSouth.add(buttonAnnuler);
 		panelSouth.add(buttonSupprimer);
-
+		panelSouth.add(buttonAnnuler);
 		fenetre.add(panelSouth, "South");
+		
+		//Message
+		JLabel label = new JLabel("Voulez-vous vraiment supprimer ?");
+		fenetre.add(label, "Center");
 		
 		this.afficher();
 	}

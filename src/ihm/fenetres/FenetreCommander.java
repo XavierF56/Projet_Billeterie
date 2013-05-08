@@ -7,10 +7,10 @@ import java.awt.BorderLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableRowSorter;
 
@@ -24,7 +24,7 @@ public class FenetreCommander extends Fenetre {
 	private JPanel contentPane;
 	private JTable tableauBillets;
 	private Commande commande;
-	private JTextPane txtPane;
+	private JLabel label;
 	private JPanel southPane;
 	
 	public FenetreCommander(Personne personne, Billeterie billeterie) {
@@ -50,10 +50,9 @@ public class FenetreCommander extends Fenetre {
 		JScrollPane scrollPane = new JScrollPane(tableauBillets);
 		contentPane.add(scrollPane, "Center");
 		contentPane.add(new BarreOutilsCommande(billeterie, tableauBillets, commande), "North");
-		txtPane = new JTextPane();
-		txtPane.setText(commande.toString());
+		label = new JLabel(commande.toString());
 		
-		southPane.add(txtPane);
+		southPane.add(label);
 		southPane.add(new JButton(new ValiderCommanderAction(this, commande)));	
 		contentPane.add(southPane, "South");
 		
