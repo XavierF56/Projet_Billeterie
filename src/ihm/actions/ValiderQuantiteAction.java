@@ -16,6 +16,7 @@ import modele.Commande;
 
 @SuppressWarnings("serial")
 public class ValiderQuantiteAction extends AbstractAction implements KeyListener {
+	
 		private FenetreQuantite fenetre;
 		private Billet billet;
 		private Commande commande;

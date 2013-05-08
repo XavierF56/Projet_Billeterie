@@ -8,10 +8,11 @@ import javax.swing.ListSelectionModel;
 
 import modele.Billeterie;
 
+@SuppressWarnings("serial")
 public class OptionListener extends AbstractAction {
-	private static final long serialVersionUID = 1L;
-	JCheckBox box;
-	Billeterie billeterie;
+
+	private JCheckBox box;
+	private Billeterie billeterie;
 	
 	public OptionListener(JCheckBox box, Billeterie billeterie) {
 		this.box = box;

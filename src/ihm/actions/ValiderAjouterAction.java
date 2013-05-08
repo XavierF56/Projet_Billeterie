@@ -13,8 +13,9 @@ import javax.swing.JOptionPane;
 
 import modele.ListeObjet;
 
+@SuppressWarnings("serial")
 public class ValiderAjouterAction extends AbstractAction implements KeyListener {
-	private static final long serialVersionUID = 1L;
+
 	private FenetreAjouter fenetre;
 	private ListeObjet listeObjet;
 	

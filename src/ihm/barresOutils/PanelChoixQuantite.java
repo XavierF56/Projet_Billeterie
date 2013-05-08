@@ -77,7 +77,7 @@ public class PanelChoixQuantite extends JPanel implements ItemListener {
 		return quantite;
 	}
 	
-	/** Methode requise lors de l'implementation de l'interface ItemListener
+	/** Methode requise par l'implementation de l'interface ItemListener
 	 * Cette méthode est appelee lors du changement d'etat d'un composant.
 	 * Elle met à jour les booleens associes aux Checkbox.
 	 * 

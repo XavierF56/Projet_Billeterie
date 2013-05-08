@@ -11,9 +11,10 @@ import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+@SuppressWarnings("serial")
 public class ValiderModifierAction extends AbstractAction implements KeyListener {
-	private static final long serialVersionUID = 1L;
-	FenetreModifier fenetre;
+
+	private FenetreModifier fenetre;
 	
 	/**
 	 * Constructeur

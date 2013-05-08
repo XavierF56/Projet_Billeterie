@@ -9,9 +9,10 @@ import javax.swing.JTextField;
 
 import modele.ListeObjet;
 
+@SuppressWarnings("serial")
 public class RechercheAction extends AbstractAction implements KeyListener {
+	
 	private ListeObjet listeObjet;
-	private static final long serialVersionUID = 1L;
 	private JTextField textRecherche;
 
 	public RechercheAction(ListeObjet listeObjet, JTextField textRecherche) {
