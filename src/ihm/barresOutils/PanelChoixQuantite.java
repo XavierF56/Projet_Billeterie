@@ -39,13 +39,13 @@ public class PanelChoixQuantite extends JPanel implements ItemListener {
 		textField.addKeyListener(keyValiderAction);
 		
 		// Creation des Checkbox
-		chckSubventionne = new JCheckBox("Subventionne");
+		chckSubventionne = new JCheckBox("Billet subventionne");
 		chckSubventionne.setSelected(false);
 		chckSubventionne.addItemListener(this);
-		chckPaye = new JCheckBox("Paye");
+		chckPaye = new JCheckBox("Paye par la personne");
 		chckPaye.setSelected(false);
 		chckPaye.addItemListener(this);
-		chckDonne = new JCheckBox("Donne");
+		chckDonne = new JCheckBox("Donne a la personne");
 		chckDonne.setSelected(false);
 		chckDonne.addItemListener(this);
 		

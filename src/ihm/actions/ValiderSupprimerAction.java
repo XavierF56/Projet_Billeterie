@@ -12,8 +12,8 @@ import javax.swing.JOptionPane;
 import modele.ListeObjet;
 
 
+@SuppressWarnings("serial")
 public class ValiderSupprimerAction extends AbstractAction {
-	private static final long serialVersionUID = 1L;
 	private ListeObjet listeObjet;
 	Fenetre fenetre;
 	
