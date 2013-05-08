@@ -13,7 +13,7 @@ public class FenetreAjouterAction extends AbstractAction {
 	private ListeObjet listeObjet;
 	private String titre;
 	
-	/** Cette action permet l'appel de la fenetre Ajouter
+	/** L'action FenetreAjouter permet l'appel de la fenetre Ajouter
 	 * 
 	 * @param listeObjet la liste des objet
 	 * @param titre le titre de la fenetre qui sera appelee

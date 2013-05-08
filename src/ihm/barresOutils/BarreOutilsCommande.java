@@ -1,6 +1,6 @@
 package ihm.barresOutils;
 
-import ihm.actions.AjouterAuPanierAction;
+import ihm.actions.FenetreQuantiteAction;
 import ihm.actions.RechercheAction;
 
 import java.awt.FlowLayout;
@@ -24,6 +24,6 @@ public class BarreOutilsCommande extends JPanel {
 		setLayout(new FlowLayout(FlowLayout.LEFT));
 		this.add(textRecherche);
 		this.add(new JButton(new RechercheAction(billeterie.getListeBillets(), textRecherche)));
-		this.add(new JButton(new AjouterAuPanierAction(billeterie.getListeBillets(), tableau, commande)));
+		this.add(new JButton(new FenetreQuantiteAction(billeterie.getListeBillets(), tableau, commande)));
 	}
 }

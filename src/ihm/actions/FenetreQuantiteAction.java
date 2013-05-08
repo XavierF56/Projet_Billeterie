@@ -16,14 +16,13 @@ import modele.Commande;
 import modele.ListeBillets;
 
 @SuppressWarnings("serial")
-public class AjouterAuPanierAction extends AbstractAction {
+public class FenetreQuantiteAction extends AbstractAction {
 	
 	private ListeBillets listeBillets;
 	private JTable tableau;
 	private Commande commande;
 	
-	/**
-	 * L'action AjouterAuPanier appelle la fenetre pour choisir la quantite de billets a acheter.
+	/** L'action FenetreQuantite permet l'appel de la fenetre Quantite
 	 * 
 	 * @param listeBillets la liste des billets
 	 * @param tableau une copie modifiable du tableau
@@ -33,7 +32,7 @@ public class AjouterAuPanierAction extends AbstractAction {
 	 * @see FenetreQuantite
 	 * @see AbstractAction
 	 */
-	public AjouterAuPanierAction(ListeBillets listeBillets, JTable tableau, Commande commande) {
+	public FenetreQuantiteAction(ListeBillets listeBillets, JTable tableau, Commande commande) {
 	    super("Ajouter au panier");
 	    this.listeBillets = listeBillets;
 	    this.tableau = tableau;
