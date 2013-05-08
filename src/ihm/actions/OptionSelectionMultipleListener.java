@@ -9,12 +9,12 @@ import javax.swing.ListSelectionModel;
 import modele.Billeterie;
 
 @SuppressWarnings("serial")
-public class OptionListener extends AbstractAction {
+public class OptionSelectionMultipleListener extends AbstractAction {
 
-	private JCheckBox box;
-	private Billeterie billeterie;
+	JCheckBox box;
+	Billeterie billeterie;
 	
-	public OptionListener(JCheckBox box, Billeterie billeterie) {
+	public OptionSelectionMultipleListener(JCheckBox box, Billeterie billeterie) {
 		this.box = box;
 		this.billeterie = billeterie;
 		

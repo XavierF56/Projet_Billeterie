@@ -1,6 +1,6 @@
 package ihm.fenetres;
 
-import ihm.actions.OptionListener;
+import ihm.actions.OptionSelectionMultipleListener;
 import ihm.barresOutils.BarreOutilsBillets;
 import ihm.barresOutils.BarreOutilsPersonnes;
 import ihm.barresOutils.MenuContextuelBillet;
@@ -9,16 +9,16 @@ import ihm.barresOutils.MenuContextuelPersonne;
 import java.awt.BorderLayout;
 
 import javax.swing.BoxLayout;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.table.TableRowSorter;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
-import javax.swing.JCheckBox;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.TableRowSorter;
 
 import modele.Billeterie;
 import modele.ListeBillets;
@@ -107,9 +107,9 @@ public class FenetrePrincipale extends Fenetre {
 		
 		/* Onglet Options */
 		JPanel OngletOptions = new JPanel();
-		JCheckBox chckbxSuppressionMultiple = new JCheckBox("Autoriser la suppression multiple");
-		chckbxSuppressionMultiple.addActionListener(new OptionListener(chckbxSuppressionMultiple, billeterie));
-		OngletOptions.add(chckbxSuppressionMultiple, "North");
+		JCheckBox chckbxSelectionMultiple = new JCheckBox("Autoriser la selection multiple");
+		chckbxSelectionMultiple.addActionListener(new OptionSelectionMultipleListener(chckbxSelectionMultiple, billeterie));
+		OngletOptions.add(chckbxSelectionMultiple, "North");
 		Onglets.addTab("Options", null, OngletOptions, null);
 		
 		
