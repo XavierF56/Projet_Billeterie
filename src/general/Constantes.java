@@ -14,6 +14,7 @@ public class Constantes {
 	public final static int FLOAT = 2;
 	public final static int BOOLEAN = 3;
 	public final static int STRING = 4;
+	public final static Object[] options = {"Annuler", "Non", "Oui"};
 	
 	/**
 	 * Conversion d'une chaine de caractere en un entier associe

@@ -14,19 +14,20 @@ import modele.ListeBillets;
 
 @SuppressWarnings("serial")
 public class FenetreQuantite extends Fenetre {
+	
 	private JPanel contentPane;
 	private PanelChoixQuantite panelChoixQuantite;
 	
-	public FenetreQuantite(Billet billet, ListeBillets listeBillets, Commande commande) {
+	public FenetreQuantite(FenetreCommander fenetreCommander, Billet billet, ListeBillets listeBillets, Commande commande) {
 		this.setTitle("Choix de la quantite de billets");
 		
 		contentPane = new JPanel();
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		panelChoixQuantite = new PanelChoixQuantite(new ValiderQuantiteAction(this, commande, billet));
+		panelChoixQuantite = new PanelChoixQuantite(new ValiderQuantiteAction(fenetreCommander, this, commande, billet));
 		
 		contentPane.add(panelChoixQuantite, "Center");
-		contentPane.add(new JButton(new ValiderQuantiteAction(this, commande, billet)), "South");
+		contentPane.add(new JButton(new ValiderQuantiteAction(fenetreCommander, this, commande, billet)), "South");
 		
 		this.afficher();
 	}

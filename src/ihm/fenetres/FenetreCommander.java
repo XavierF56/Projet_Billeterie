@@ -49,7 +49,7 @@ public class FenetreCommander extends Fenetre {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		JScrollPane scrollPane = new JScrollPane(tableauBillets);
 		contentPane.add(scrollPane, "Center");
-		contentPane.add(new BarreOutilsCommande(billeterie, tableauBillets, commande), "North");
+		contentPane.add(new BarreOutilsCommande(this, billeterie, tableauBillets, commande), "North");
 		label = new JLabel(commande.toString());
 		
 		southPane.add(label);
@@ -58,5 +58,9 @@ public class FenetreCommander extends Fenetre {
 		
 		//Affichage de la fenetre
 		this.afficher();
+	}
+	
+	public void majLabel() {
+		label = new JLabel(commande.toString());
 	}
 }

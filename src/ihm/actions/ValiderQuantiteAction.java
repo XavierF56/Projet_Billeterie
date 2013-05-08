@@ -1,5 +1,6 @@
 package ihm.actions;
 
+import ihm.fenetres.FenetreCommander;
 import ihm.fenetres.FenetreQuantite;
 
 import java.awt.event.ActionEvent;
@@ -18,11 +19,13 @@ import modele.Commande;
 public class ValiderQuantiteAction extends AbstractAction implements KeyListener {
 	
 		private FenetreQuantite fenetre;
+		private FenetreCommander fenetreCommande;
 		private Billet billet;
 		private Commande commande;
 		
-		public ValiderQuantiteAction(FenetreQuantite fenetreQuantite, Commande commande, Billet billet) {
+		public ValiderQuantiteAction(FenetreCommander fenetreCommande, FenetreQuantite fenetreQuantite, Commande commande, Billet billet) {
 		    super("Valider");
+		    this.fenetreCommande = fenetreCommande;
 		    this.fenetre = fenetreQuantite;
 		    this.billet = billet;
 		    this.commande = commande;
@@ -35,7 +38,8 @@ public class ValiderQuantiteAction extends AbstractAction implements KeyListener
 		private void validerQuantite(){
 			try {
 				commande.ajoutCommande(billet, fenetre.getQuantite(), fenetre.getPaye(), fenetre.getDonne(), fenetre.getSubventionne());
-		    	fenetre.dispose();
+				fenetreCommande.majLabel();
+				fenetre.dispose();
 			} catch (AchatException ae) {
 				JOptionPane.showMessageDialog(new JFrame(), ae.toString(), "Erreur", JOptionPane.ERROR_MESSAGE);
 			} catch (Exception e1) {

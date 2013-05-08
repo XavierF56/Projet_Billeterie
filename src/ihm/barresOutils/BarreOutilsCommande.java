@@ -2,6 +2,7 @@ package ihm.barresOutils;
 
 import ihm.actions.FenetreQuantiteAction;
 import ihm.actions.RechercheAction;
+import ihm.fenetres.FenetreCommander;
 
 import java.awt.FlowLayout;
 
@@ -16,7 +17,7 @@ import modele.Commande;
 @SuppressWarnings("serial")
 public class BarreOutilsCommande extends JPanel {
 	
-	public BarreOutilsCommande(Billeterie billeterie, JTable tableau, Commande commande) {
+	public BarreOutilsCommande(FenetreCommander fenetreCommander, Billeterie billeterie, JTable tableau, Commande commande) {
 		JTextField textRecherche = new JTextField();
 		textRecherche.setColumns(20);
 		textRecherche.addKeyListener(new RechercheAction(billeterie.getListeBillets(), textRecherche));
@@ -24,6 +25,6 @@ public class BarreOutilsCommande extends JPanel {
 		setLayout(new FlowLayout(FlowLayout.LEFT));
 		this.add(textRecherche);
 		this.add(new JButton(new RechercheAction(billeterie.getListeBillets(), textRecherche)));
-		this.add(new JButton(new FenetreQuantiteAction(billeterie.getListeBillets(), tableau, commande)));
+		this.add(new JButton(new FenetreQuantiteAction(fenetreCommander, billeterie.getListeBillets(), tableau, commande)));
 	}
 }

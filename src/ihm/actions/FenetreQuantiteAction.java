@@ -1,6 +1,7 @@
 package ihm.actions;
 
 import general.Constantes;
+import ihm.fenetres.FenetreCommander;
 import ihm.fenetres.FenetreQuantite;
 
 import java.awt.EventQueue;
@@ -18,6 +19,7 @@ import modele.ListeBillets;
 @SuppressWarnings("serial")
 public class FenetreQuantiteAction extends AbstractAction {
 	
+	private FenetreCommander fenetreCommander;
 	private ListeBillets listeBillets;
 	private JTable tableau;
 	private Commande commande;
@@ -32,8 +34,9 @@ public class FenetreQuantiteAction extends AbstractAction {
 	 * @see FenetreQuantite
 	 * @see AbstractAction
 	 */
-	public FenetreQuantiteAction(ListeBillets listeBillets, JTable tableau, Commande commande) {
+	public FenetreQuantiteAction(FenetreCommander fenetreCommander, ListeBillets listeBillets, JTable tableau, Commande commande) {
 	    super("Ajouter au panier");
+	    this.fenetreCommander = fenetreCommander;
 	    this.listeBillets = listeBillets;
 	    this.tableau = tableau;
 	    this.commande = commande;
@@ -67,7 +70,7 @@ public class FenetreQuantiteAction extends AbstractAction {
 					// Cas ou un billet est bien selectionne
 					try {
 						Billet billet = (Billet) listeBillets.getObjetByIndex(selectionCorrige);
-						new FenetreQuantite(billet, listeBillets, commande);
+						new FenetreQuantite(fenetreCommander, billet, listeBillets, commande);
 					} catch (Exception e1) {
 						Constantes.afficherException(e1);
 					}		
