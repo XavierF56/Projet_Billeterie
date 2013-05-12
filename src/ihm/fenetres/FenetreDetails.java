@@ -23,10 +23,10 @@ public class FenetreDetails extends Fenetre {
 		this.setTitle("Informations sur les achat de " + personne);
 		contentPane = new JPanel();
 		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
+		contentPane.setLayout(new BorderLayout(0, 0));
 		this.add(contentPane);
 		
 		//Restant a payer
-		contentPane.setLayout(new BorderLayout(0, 0));
 		contentPane.add(new JLabel("Restant a payer : " + personne.restantAPayer() + "euros"), "North");
 		
 		// Tableau

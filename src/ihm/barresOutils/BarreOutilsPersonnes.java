@@ -1,19 +1,21 @@
 package ihm.barresOutils;
 
-import java.awt.FlowLayout;
-
 import ihm.actions.FenetreAjouterAction;
 import ihm.actions.FenetreCommanderAction;
+import ihm.actions.FenetreDetailsAction;
 import ihm.actions.FenetreModifierAction;
+import ihm.actions.FenetrePayerBilletsAction;
 import ihm.actions.FenetreSupprimerAction;
 import ihm.actions.RechercheAction;
-import ihm.actions.FenetreDetailsAction;
+
+import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import modele.Billeterie;
+import modele.ListePersonnes;
 
 @SuppressWarnings("serial")
 public class BarreOutilsPersonnes extends JPanel {
@@ -25,13 +27,15 @@ public class BarreOutilsPersonnes extends JPanel {
 		textRecherche = new JTextField();
 		textRecherche.setColumns(20);
 		textRecherche.addKeyListener(new RechercheAction(billeterie.getListePersonnes(), textRecherche));
+		ListePersonnes listePersonnes = billeterie.getListePersonnes();
 		
 		this.add(textRecherche);
-		this.add(new JButton(new RechercheAction(billeterie.getListePersonnes(), textRecherche)));
-		this.add(new JButton(new FenetreCommanderAction(billeterie.getListePersonnes(), billeterie)));
-		this.add(new JButton(new FenetreAjouterAction(billeterie.getListePersonnes(), "Ajouter une nouvelle personne")));
-		this.add(new JButton(new FenetreModifierAction(billeterie.getListePersonnes())));
-		this.add(new JButton(new FenetreSupprimerAction(billeterie.getListePersonnes())));
-		this.add(new JButton(new FenetreDetailsAction(billeterie.getListePersonnes())));
+		this.add(new JButton(new RechercheAction(listePersonnes, textRecherche)));
+		this.add(new JButton(new FenetreCommanderAction(listePersonnes, billeterie)));
+		this.add(new JButton(new FenetreAjouterAction(listePersonnes, "Ajouter une nouvelle personne")));
+		this.add(new JButton(new FenetreModifierAction(listePersonnes)));
+		this.add(new JButton(new FenetreSupprimerAction(listePersonnes)));
+		this.add(new JButton(new FenetreDetailsAction(listePersonnes)));
+		this.add(new JButton(new FenetrePayerBilletsAction(listePersonnes)));
 	}
 }

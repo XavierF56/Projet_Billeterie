@@ -147,8 +147,7 @@ public class Champs extends JPanel{
 		Set<String> set = listeChamps.keySet();
 		Iterator<String> it = set.iterator();
 		while(it.hasNext()) {
-			String nom = it.next();
-			JComponent compo = listeChamps.get(nom);
+			JComponent compo = listeChamps.get(it.next());
 			if(compo instanceof JFormattedTextField) {
 				((JFormattedTextField) compo).addKeyListener(keyAjoutAction);
 			}
