@@ -61,6 +61,6 @@ public class FenetreCommander extends Fenetre {
 	}
 	
 	public void majLabel() {
-		label = new JLabel(commande.toString());
+		label.setText(commande.toString());
 	}
 }
