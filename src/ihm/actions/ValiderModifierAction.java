@@ -36,7 +36,7 @@ public class ValiderModifierAction extends AbstractAction implements KeyListener
 		} catch (Exception e1) {
 			String message = "\"Erreur lors de la modification\"\n"
 			            + "Tous les champs n'ont pas ete renseignes\n";
-			JOptionPane.showMessageDialog(new JFrame(), message, "Dialog", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(new JFrame(), message, "Erreur", JOptionPane.ERROR_MESSAGE);
 		}
     }
     

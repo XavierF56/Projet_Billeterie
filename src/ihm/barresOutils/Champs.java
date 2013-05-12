@@ -53,7 +53,6 @@ public class Champs extends JPanel{
 			gridBagConstraints.gridx = 1;
 			JComponent champ = nouveauChamp(listeAttributs.get(i).getType());
 			listeChamps.put(listeAttributs.get(i).getNomBDD(), champ);
-			//System.out.println(listeAttributs);
 			add(champ,gridBagConstraints);
 			
 			nb++;
@@ -126,6 +125,7 @@ public class Champs extends JPanel{
 			case Constantes.FLOAT : res = strToFloat(((JTextField)champ).getText()); break;
 			case Constantes.STRING : res = ((JTextField)champ).getText(); break;
 			case Constantes.BOOLEAN : res = ((JCheckBox)champ).isSelected(); break;
+			//TODO : (Bruno) pas du tout sur de la validitee de la ligne precedente, je mettrai simplement break
 			default : res = null;
 			}
 		} catch (Exception e) {

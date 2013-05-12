@@ -30,12 +30,18 @@ public class FenetrePayerBillets extends Fenetre {
 		contentPane.add(new JLabel("Restant a payer pour "+ personne +" : " + personne.restantAPayer() + "euros."), "North");
 		
 		// Choix de la somme payee
+		JPanel centerPane = new JPanel();
+		centerPane.setLayout(new BorderLayout(0, 0));
+		
+		centerPane.add(new JLabel("Somme payee : "), "West");
+				
 		textField = new JFormattedTextField(NumberFormat.getIntegerInstance());
 		textField.setValue(personne.restantAPayer());
 		textField.setColumns(20);
 		textField.addKeyListener(keyValiderAction);
-
-		contentPane.add(textField, "Center");
+		centerPane.add(textField, "East");
+			
+		contentPane.add(centerPane, "Center");
 		
 		// TODO bouton valider paiement
 		contentPane.add(new JButton("Valider"), "South");
