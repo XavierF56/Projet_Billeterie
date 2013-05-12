@@ -8,14 +8,15 @@ import modele.Billeterie;
 
 /**
  * Urgent :
+ * 
  * TODO BUG
  * Lors de l'ajout d'une colonne depuis SQLITEManager, si aucune valeur par defaut affectee 
  * -> la recuperation du type pose probleme...
- * TODO Correction bug achat non limite de billets subventionnes
  * 
  * TODO Rendre possible le fait de payer dans un second temps (pour le moment un client qui n'a pas paye
  * lors de la commande ne peut plus le faire apres, sauf erreur de ma part)
  * 
+ * TODO Bouton choixquantite dans l'onglet Billets
  * 
  * Secondaire :
  * TODO Continuer la Javadoc
