@@ -31,7 +31,5 @@ public class BarreOutilsBillets extends JPanel {
 		this.add(new JButton(new FenetreAjouterAction(billeterie.getListeBillets(), "Ajouter un nouveau billet")));
 		this.add(new JButton(new FenetreModifierAction(billeterie.getListeBillets())));
 		this.add(new JButton(new FenetreSupprimerAction(billeterie.getListeBillets())));
-		this.add(new JButton("Modifier Qt"));
 	}
-
 }

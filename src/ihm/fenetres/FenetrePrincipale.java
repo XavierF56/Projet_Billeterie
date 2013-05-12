@@ -29,7 +29,6 @@ import modele.ListePersonnes;
 @SuppressWarnings("serial")
 public class FenetrePrincipale extends Fenetre {
 	
-	@SuppressWarnings("unused")
 	private Billeterie billeterie;
 	private JPanel contentPane;
 	private JTable tableauPersonnes;
@@ -39,8 +38,8 @@ public class FenetrePrincipale extends Fenetre {
 	/**
 	 * Create the frame.
 	 */
-	public FenetrePrincipale(Billeterie billeterie) {
-		this.billeterie = billeterie;
+	public FenetrePrincipale(Billeterie billets) {
+		this.billeterie = billets;
 		billeterie.setFenetre(this);
 		
 		

@@ -16,8 +16,6 @@ import modele.Billeterie;
  * TODO Rendre possible le fait de payer dans un second temps (pour le moment un client qui n'a pas paye
  * lors de la commande ne peut plus le faire apres, sauf erreur de ma part)
  * 
- * TODO Bouton choixquantite dans l'onglet Billets
- * 
  * Secondaire :
  * TODO Continuer la Javadoc
  * TODO Gestion du cas normalement non autorise de depassement des quotas
