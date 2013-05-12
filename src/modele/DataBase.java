@@ -1,5 +1,7 @@
 package modele;
 
+import general.Constantes;
+
 import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
@@ -17,7 +19,7 @@ public class DataBase {
 		try{
 			bdd = new SQLiteImpl(nomBdd);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Constantes.afficherException(e);
 		}
 	}
 	
@@ -31,7 +33,7 @@ public class DataBase {
 		try {
 			bdd.update(query);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Constantes.afficherException(e);
 		}
 	}
 	
@@ -104,8 +106,7 @@ public class DataBase {
 		try {
 			return bdd.query(query);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Constantes.afficherException(e);
 		}
 		return null;
 	}

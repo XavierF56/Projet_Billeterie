@@ -36,7 +36,7 @@ public class Launcher {
 					FenetrePrincipale frame = new FenetrePrincipale(new Billeterie("database.sqlite"));
 					frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					Constantes.afficherException(e);
 				}
 			}
 		});

@@ -31,7 +31,7 @@ public class ValiderAjouterAction extends AbstractAction implements KeyListener 
     }
     
     /**
-     * Cette fonction valider l'action
+     * Cette fonction valide l'action
      */
     public void valider() {
     	try {

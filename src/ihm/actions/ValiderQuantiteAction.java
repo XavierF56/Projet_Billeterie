@@ -23,6 +23,17 @@ public class ValiderQuantiteAction extends AbstractAction implements KeyListener
 		private Billet billet;
 		private Commande commande;
 		
+		/**
+		 * 
+		 * @param fenetreCommande la fenetre commande en cours
+		 * @param fenetreQuantite la fenetre quantite en cours
+		 * @param commande la commande en cours
+		 * @param billet le billet a commander
+		 * @see FenetreCommander
+		 * @see FenetreQuantite
+		 * @see Commande
+		 * @see Billet
+		 */
 		public ValiderQuantiteAction(FenetreCommander fenetreCommande, FenetreQuantite fenetreQuantite, Commande commande, Billet billet) {
 		    super("Valider");
 		    this.fenetreCommande = fenetreCommande;
@@ -35,6 +46,9 @@ public class ValiderQuantiteAction extends AbstractAction implements KeyListener
 			validerQuantite();
 		}
 		
+		/**
+		 *
+		 */
 		private void validerQuantite(){
 			try {
 				commande.ajoutCommande(billet, fenetre.getQuantite(), fenetre.getPaye(), fenetre.getDonne(), fenetre.getSubventionne());

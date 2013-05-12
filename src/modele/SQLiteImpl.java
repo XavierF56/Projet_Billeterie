@@ -70,7 +70,7 @@ public class SQLiteImpl implements SQLInterface{
 			stmt.close();
 			conn.close();
 		} catch (SQLException e){
-			e.printStackTrace();
+			Constantes.afficherException(e);
 		}
 		return resul;
 	}
@@ -96,7 +96,7 @@ public class SQLiteImpl implements SQLInterface{
 				resul.add(record);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			Constantes.afficherException(e);
 		}
 		
 		return resul;
@@ -132,7 +132,7 @@ public class SQLiteImpl implements SQLInterface{
 			stmt.close();
 		   	conn.close();
 		} catch (SQLException e){
-			e.printStackTrace();
+			Constantes.afficherException(e);
 		}
 	}
 	
@@ -173,7 +173,7 @@ public class SQLiteImpl implements SQLInterface{
 		    stmt.close();
 		    conn.close();
 		} catch (SQLException e){
-			e.printStackTrace();
+			Constantes.afficherException(e);
 		}
 		return resul;
 	}
@@ -196,8 +196,7 @@ public class SQLiteImpl implements SQLInterface{
 			SQLiteImpl bdd = new SQLiteImpl("database.sqlite");
 			bdd.update("");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Constantes.afficherException(e);
 		}
 	}
 }

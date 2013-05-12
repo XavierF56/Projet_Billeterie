@@ -1,5 +1,6 @@
 package ihm.actions;
 
+import general.Constantes;
 import ihm.fenetres.Fenetre;
 
 import java.awt.event.ActionEvent;
@@ -48,7 +49,7 @@ public class ValiderSupprimerAction extends AbstractAction {
 			}
 			fenetre.dispose();
         } catch (Exception e1) {
-        	e1.printStackTrace();
+        	Constantes.afficherException(e1);
         }
     }
 }

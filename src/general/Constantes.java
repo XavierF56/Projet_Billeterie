@@ -50,6 +50,6 @@ public class Constantes {
 	 * @param e l'exception a afficher
 	 */
 	public static void afficherException (Exception e) {
-		JOptionPane.showMessageDialog(new JFrame(), e.getMessage(), "Erreur - Exception", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(new JFrame(), "Une erreur inattendue s'est produite :\n"+ e.toString(), "Erreur - Exception", JOptionPane.ERROR_MESSAGE);
 	}
 }
