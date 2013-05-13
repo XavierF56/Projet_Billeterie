@@ -1,6 +1,6 @@
 package ihm.actions;
 
-import ihm.fenetres.FenetrePayerDonnerBillets;
+import ihm.fenetres.FenetreDetails;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -13,9 +13,9 @@ import javax.swing.JOptionPane;
 @SuppressWarnings("serial")
 public class ValiderPaiementAction extends AbstractAction implements KeyListener {
 
-	private FenetrePayerDonnerBillets fenetre;
+	private FenetreDetails fenetre;
 	
-	public ValiderPaiementAction(FenetrePayerDonnerBillets fenetre) {
+	public ValiderPaiementAction(FenetreDetails fenetre) {
 		super("Payer");
 		this.fenetre = fenetre;
 	}

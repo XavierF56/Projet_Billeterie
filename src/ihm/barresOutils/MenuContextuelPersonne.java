@@ -15,13 +15,12 @@ import javax.swing.ListSelectionModel;
 
 import modele.ListeObjet;
 
+@SuppressWarnings("serial")
 public class MenuContextuelPersonne extends JPopupMenu {
-	private static final long serialVersionUID = 1L;
-	ListeObjet listeObjet;
-	JTable table;
+
+	private JTable table;
 	
 	public MenuContextuelPersonne (ListeObjet listeObjet, JTable table) {
-		this.listeObjet = listeObjet;
 		this.table = table;
 		
 		this.add(new FenetreAjouterAction(listeObjet, "Ajouter une nouvelle personne"));
@@ -30,6 +29,7 @@ public class MenuContextuelPersonne extends JPopupMenu {
 		this.add(new FenetreDetailsAction(listeObjet));
 		this.add(new FenetreCommanderAction(listeObjet, listeObjet.getBilleterie()));
 	}
+	
 	public void show(Component invoker, int x, int y) {
 		Point p = table.getMousePosition();
 
@@ -40,7 +40,5 @@ public class MenuContextuelPersonne extends JPopupMenu {
        	}
 
 		super.show(invoker, x, y);
-    }
-	
-        
+    }     
 }

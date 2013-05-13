@@ -13,14 +13,12 @@ import javax.swing.JTextField;
 
 import modele.Billeterie;
 
+@SuppressWarnings("serial")
 public class BarreOutilsBillets extends JPanel {
 	
-	private static final long serialVersionUID = 1L;
-	Billeterie billeterie;
 	private JTextField textRecherche;
 	
 	public BarreOutilsBillets(Billeterie billeterie) {
-		this.billeterie = billeterie;
 		textRecherche = new JTextField();
 		textRecherche.setColumns(20);
 		textRecherche.addKeyListener(new RechercheAction(billeterie.getListeBillets(), textRecherche));

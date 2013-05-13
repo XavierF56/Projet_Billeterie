@@ -4,7 +4,6 @@ import ihm.actions.FenetreAjouterAction;
 import ihm.actions.FenetreCommanderAction;
 import ihm.actions.FenetreDetailsAction;
 import ihm.actions.FenetreModifierAction;
-import ihm.actions.FenetrePayerDonnerBilletsAction;
 import ihm.actions.FenetreSupprimerAction;
 import ihm.actions.RechercheAction;
 
@@ -19,7 +18,8 @@ import modele.ListePersonnes;
 
 @SuppressWarnings("serial")
 public class BarreOutilsPersonnes extends JPanel {
-	JTextField textRecherche;
+	
+	private JTextField textRecherche;
 
 	public BarreOutilsPersonnes(Billeterie billeterie) {
 		setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -36,6 +36,5 @@ public class BarreOutilsPersonnes extends JPanel {
 		this.add(new JButton(new FenetreModifierAction(listePersonnes)));
 		this.add(new JButton(new FenetreSupprimerAction(listePersonnes)));
 		this.add(new JButton(new FenetreDetailsAction(listePersonnes)));
-		this.add(new JButton(new FenetrePayerDonnerBilletsAction(listePersonnes)));
 	}
 }

@@ -1,5 +1,7 @@
 package ihm.fenetres;
 
+import ihm.barresOutils.BarreOutilsDetails;
+
 import java.awt.BorderLayout;
 
 import javax.swing.BorderFactory;
@@ -38,6 +40,8 @@ public class FenetreDetails extends Fenetre {
 		tableau.setRowSorter(sorter);
 		sorter.setSortsOnUpdates(true);
 		contentPane.add(new JScrollPane(tableau), "Center");
+		
+		contentPane.add(new BarreOutilsDetails(this), "South");
 		
 		this.afficher();
 	}
