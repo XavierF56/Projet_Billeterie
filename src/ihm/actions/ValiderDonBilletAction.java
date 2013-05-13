@@ -22,7 +22,6 @@ public class ValiderDonBilletAction extends AbstractAction implements KeyListene
 		
 		private void valider() {
 			try {
-		    	fenetre.dispose();
 			} catch (Exception e1) {
 				String message = "\"Erreur lors de la modification\"\n"
 				            + "Tous les champs n'ont pas ete renseignes\n";
@@ -30,7 +29,6 @@ public class ValiderDonBilletAction extends AbstractAction implements KeyListene
 			}
 	    }
 		
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			valider();
 		}

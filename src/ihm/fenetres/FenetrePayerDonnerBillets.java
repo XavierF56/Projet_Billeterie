@@ -1,31 +1,26 @@
 package ihm.fenetres;
 
-import ihm.actions.AnnulerAction;
-import ihm.actions.ValiderDonBilletAction;
-import ihm.actions.ValiderPaiementAction;
+import ihm.barresOutils.BarreOutilsDetails;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.text.NumberFormat;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.TableRowSorter;
 
+import modele.ListeAchats;
 import modele.Personne;
 
 @SuppressWarnings("serial")
 public class FenetrePayerDonnerBillets extends Fenetre {
 	
 	private JPanel contentPane;
-	private JFormattedTextField textField;
 	
-	public FenetrePayerDonnerBillets(Personne  personne) {
-		
-		ValiderPaiementAction keyPayerAction = new ValiderPaiementAction(this);
-		ValiderDonBilletAction keyDonBilletAction = new ValiderDonBilletAction(this);
+	public FenetrePayerDonnerBillets(Personne personne) {
 		
 		//Fenetre
 		this.setTitle("Paiement des billets de " + personne);
@@ -36,27 +31,18 @@ public class FenetrePayerDonnerBillets extends Fenetre {
 		contentPane.add(new JLabel("Restant a payer pour "+ personne +" : " + personne.restantAPayer() + "euros."), "North");
 		
 		// Choix de la somme payee
-		JPanel centerPane = new JPanel();
-		centerPane.setLayout(new FlowLayout(FlowLayout.LEFT));
+		// Tableau
+		JTable tableau = new JTable(personne.getAchats());
+		personne.getAchats().setTableau(tableau);
+		tableau.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		tableau.setAutoCreateRowSorter(true);// Gestion des tableaux triables
+		TableRowSorter<ListeAchats> sorter = new TableRowSorter<ListeAchats>((ListeAchats) tableau.getModel());   
+		tableau.setRowSorter(sorter);
+		sorter.setSortsOnUpdates(true);
+		contentPane.add(new JScrollPane(tableau), "Center");
 		
-		centerPane.add(new JLabel("Somme payee : "), "West");
-				
-		textField = new JFormattedTextField(NumberFormat.getIntegerInstance());
-		textField.setValue(personne.restantAPayer());
-		textField.setColumns(20);
-		textField.addKeyListener(keyPayerAction);
-		centerPane.add(textField, "East");
-			
-		contentPane.add(centerPane, "Center");
-		
-		// TODO bouton payer / donner
-		JPanel southPane = new JPanel();
-		southPane.setLayout(new FlowLayout(FlowLayout.CENTER));
-		southPane.add(new JButton(keyPayerAction));
-		southPane.add(new JButton(keyDonBilletAction));
-		southPane.add(new JButton(new AnnulerAction(this)));
-		
-		contentPane.add(southPane, "South");
+		// boutons payer / donner / annuler
+		contentPane.add(new BarreOutilsDetails(this), "South");
 		
 		
 		this.add(contentPane);

@@ -22,7 +22,7 @@ public class ValiderPaiementAction extends AbstractAction implements KeyListener
 	
 	private void valider() {
 		try {
-	    	fenetre.dispose();
+	   
 		} catch (Exception e1) {
 			String message = "\"Erreur lors de la modification\"\n"
 			            + "Tous les champs n'ont pas ete renseignes\n";
