@@ -9,13 +9,16 @@ import java.awt.event.KeyListener;
 import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+
+import modele.ListeBillets;
 
 @SuppressWarnings("serial")
 public class ValiderDonBilletAction extends AbstractAction implements KeyListener {
 
 		private FenetreDetails fenetre;
 		
-		public ValiderDonBilletAction(FenetreDetails fenetre) {
+		public ValiderDonBilletAction(FenetreDetails fenetre, ListeBillets listeBillets, JTable tableau) {
 			super("Donner");
 			this.fenetre = fenetre;
 		}

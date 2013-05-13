@@ -15,6 +15,7 @@ import modele.Objet;
 
 @SuppressWarnings("serial")
 public class FenetreModifier extends Fenetre {
+	
 	private Objet objetTraite;
 	private Champs champs;
 	private ListeObjet objets;

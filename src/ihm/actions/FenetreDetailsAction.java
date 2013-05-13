@@ -9,13 +9,14 @@ import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import modele.Billeterie;
 import modele.ListeObjet;
 import modele.Personne;
 
 @SuppressWarnings("serial")
 public class FenetreDetailsAction extends AbstractAction {
 
-		private ListeObjet listeObjet;
+		private Billeterie billeterie;
 		
 		/** L'action FenetreDetails permet l'appel de la fenetre Details
 		 * 
@@ -24,9 +25,9 @@ public class FenetreDetailsAction extends AbstractAction {
 		 * @see FenetreDetails
 		 * @see AbstractAction
 		 */
-		public FenetreDetailsAction(ListeObjet listeObjet) {
+		public FenetreDetailsAction(Billeterie billeterie) {
 	        super("Details");
-	    	this.listeObjet = listeObjet;
+	    	this.billeterie = billeterie;
 	    }
 
 		/** Methode requise par l'heritage de la classe AbstractAction
@@ -42,6 +43,7 @@ public class FenetreDetailsAction extends AbstractAction {
 	    public void actionPerformed(ActionEvent e) {
 	    	boolean select = true;
 	    	int selectionCorrige = 0;
+	    	ListeObjet listeObjet = billeterie.getListePersonnes();
 	    	int selection = listeObjet.getTableau().getSelectedRow();
 	    	try{
 	    		selectionCorrige = listeObjet.getTableau().getRowSorter().convertRowIndexToModel(selection);
@@ -52,7 +54,7 @@ public class FenetreDetailsAction extends AbstractAction {
 		    }
 	    	if(select) {
 		    	try {
-					new FenetreDetails((Personne) listeObjet.getObjetByIndex(selectionCorrige));
+					new FenetreDetails((Personne) listeObjet.getObjetByIndex(selectionCorrige), billeterie);
 				} catch (Exception e1) {
 					Constantes.afficherException(e1);
 				}

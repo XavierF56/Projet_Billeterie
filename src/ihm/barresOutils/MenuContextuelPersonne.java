@@ -26,7 +26,7 @@ public class MenuContextuelPersonne extends JPopupMenu {
 		this.add(new FenetreAjouterAction(listeObjet, "Ajouter une nouvelle personne"));
 		this.add(new FenetreModifierAction(listeObjet));
 		this.add(new FenetreSupprimerAction(listeObjet));
-		this.add(new FenetreDetailsAction(listeObjet));
+		this.add(new FenetreDetailsAction(listeObjet.getBilleterie()));
 		this.add(new FenetreCommanderAction(listeObjet, listeObjet.getBilleterie()));
 	}
 	

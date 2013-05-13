@@ -12,15 +12,20 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableRowSorter;
 
+import modele.Billeterie;
 import modele.ListeAchats;
 import modele.Personne;
 
 @SuppressWarnings("serial")
 public class FenetreDetails extends Fenetre {
+	
 	private JPanel contentPane;
 	private JTable tableau;
+	private Personne personne;
 	
-	public FenetreDetails(Personne personne) {
+	public FenetreDetails(Personne pers, Billeterie billeterie) {
+		this.personne = pers;
+		
 		//Fenetre
 		this.setTitle("Informations sur les achat de " + personne);
 		contentPane = new JPanel();
@@ -41,8 +46,12 @@ public class FenetreDetails extends Fenetre {
 		sorter.setSortsOnUpdates(true);
 		contentPane.add(new JScrollPane(tableau), "Center");
 		
-		contentPane.add(new BarreOutilsDetails(this), "South");
+		contentPane.add(new BarreOutilsDetails(this, billeterie.getListeBillets(), new JTable(billeterie.getListeBillets())), "South");
 		
 		this.afficher();
+	}
+	
+	public Personne getPersonne() {
+		return personne;
 	}
 }
