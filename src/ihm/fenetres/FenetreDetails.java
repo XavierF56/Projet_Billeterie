@@ -46,7 +46,7 @@ public class FenetreDetails extends Fenetre {
 		sorter.setSortsOnUpdates(true);
 		contentPane.add(new JScrollPane(tableau), "Center");
 		
-		contentPane.add(new BarreOutilsDetails(this, billeterie.getListeBillets(), new JTable(billeterie.getListeBillets())), "South");
+		contentPane.add(new BarreOutilsDetails(this, billeterie.getListeBillets(), tableau), "South");
 		
 		this.afficher();
 	}
