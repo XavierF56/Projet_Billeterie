@@ -4,7 +4,7 @@ import ihm.actions.FenetreAjouterAction;
 import ihm.actions.FenetreCommanderAction;
 import ihm.actions.FenetreDetailsAction;
 import ihm.actions.FenetreModifierAction;
-import ihm.actions.FenetrePayerBilletsAction;
+import ihm.actions.FenetrePayerDonnerBilletsAction;
 import ihm.actions.FenetreSupprimerAction;
 import ihm.actions.RechercheAction;
 
@@ -36,6 +36,6 @@ public class BarreOutilsPersonnes extends JPanel {
 		this.add(new JButton(new FenetreModifierAction(listePersonnes)));
 		this.add(new JButton(new FenetreSupprimerAction(listePersonnes)));
 		this.add(new JButton(new FenetreDetailsAction(listePersonnes)));
-		this.add(new JButton(new FenetrePayerBilletsAction(listePersonnes)));
+		this.add(new JButton(new FenetrePayerDonnerBilletsAction(listePersonnes)));
 	}
 }

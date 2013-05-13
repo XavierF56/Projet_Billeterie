@@ -28,7 +28,7 @@ public class ValiderModifierAction extends AbstractAction implements KeyListener
     /**
      * Cette fonction valide l'action
      */
-    public void valider() {
+    private void valider() {
 		try {
 			Map<String, Object>  map = fenetre.getChamps().getDonnees();
 			fenetre.getObjetTraite().modifie(map);
