@@ -11,15 +11,15 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 
-import modele.ListeBillets;
+import modele.ListeAchats;
 
 @SuppressWarnings("serial")
 public class BarreOutilsDetails extends JPanel {
 	
-	public BarreOutilsDetails(FenetreDetails fenetre, ListeBillets listeBillets, JTable tableau) {
+	public BarreOutilsDetails(FenetreDetails fenetre, ListeAchats listeAchats, JTable tableau) {
 		this.setLayout(new FlowLayout(FlowLayout.CENTER));
-		this.add(new JButton(new ValiderPaiementAction(fenetre, listeBillets, tableau)));
-		this.add(new JButton(new ValiderDonBilletAction(fenetre, listeBillets, tableau)));
+		this.add(new JButton(new ValiderPaiementAction(fenetre, listeAchats, tableau)));
+		this.add(new JButton(new ValiderDonBilletAction(fenetre, listeAchats, tableau)));
 		this.add(new JButton(new AnnulerAction(fenetre)));
 	}
 }

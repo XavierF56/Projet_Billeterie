@@ -54,7 +54,7 @@ public class FenetreDetailsAction extends AbstractAction {
 		    }
 	    	if(select) {
 		    	try {
-					new FenetreDetails((Personne) listeObjet.getObjetByIndex(selectionCorrige), billeterie);
+					new FenetreDetails((Personne) listeObjet.getObjetByIndex(selectionCorrige));
 				} catch (Exception e1) {
 					Constantes.afficherException(e1);
 				}

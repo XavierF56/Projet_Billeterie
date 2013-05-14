@@ -1,5 +1,7 @@
 package modele;
 
+import general.Constantes;
+
 import java.sql.SQLException;
 import java.util.Map;
 
@@ -82,7 +84,7 @@ public class Achat extends Objet {
 			personne.getBilleterie().getBdd().enregistreBDD("achat", map); //NOM BDD
 			map.put("Description", nom);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Constantes.afficherException(e);
 		}
 		personne.getAchats().modifier();
 	}
@@ -97,7 +99,7 @@ public class Achat extends Objet {
 					(Integer) map.get("id_billet"))).modifieQt(-(Integer) map.get("quantite"), 
 							(Boolean) map.get("subventionne"));
 		} catch (Exception e) {
-			e.printStackTrace();
+			Constantes.afficherException(e);
 		}
 	}
 	

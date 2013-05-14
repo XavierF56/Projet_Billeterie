@@ -13,8 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-import modele.Billet;
-import modele.ListeBillets;
+import modele.Achat;
+import modele.ListeAchats;
 import modele.Personne;
 
 @SuppressWarnings("serial")
@@ -22,13 +22,13 @@ public class ValiderDonBilletAction extends AbstractAction implements KeyListene
 
 		private FenetreDetails fenetreDetails;
 		private JTable tableau;
-		private ListeBillets listeBillets;
+		private ListeAchats listeAchats;
 		
-		public ValiderDonBilletAction(FenetreDetails fenetre, ListeBillets listeBillets, JTable tableau) {
+		public ValiderDonBilletAction(FenetreDetails fenetre, ListeAchats listeAchats, JTable tableau) {
 			super("Donner");
 			this.fenetreDetails = fenetre;
 			this.tableau = tableau;
-			this.listeBillets = listeBillets;
+			this.listeAchats = listeAchats;
 		}
 		
 		private void valider() {
@@ -38,7 +38,7 @@ public class ValiderDonBilletAction extends AbstractAction implements KeyListene
 					int selectionCorrige = 0;
 					int selection = tableau.getSelectedRow();
 					try {
-						selectionCorrige = listeBillets.getTableau().getRowSorter().convertRowIndexToModel(selection);
+						selectionCorrige = listeAchats.getTableau().getRowSorter().convertRowIndexToModel(selection);
 					} catch (Exception e) {
 						// Cas ou aucun billet n'est selectionne
 						select = false;
@@ -48,9 +48,15 @@ public class ValiderDonBilletAction extends AbstractAction implements KeyListene
 					if(select) {
 						// Cas ou un billet est bien selectionne
 						try {
-							Billet billet = (Billet) listeBillets.getObjetByIndex(selectionCorrige);
+							Achat achat = (Achat) listeAchats.getObjetByIndex(selectionCorrige);
 							Personne personne = fenetreDetails.getPersonne();
-							System.out.println("Vous vouler donner a "+ personne + " le(s) billet(s) "+ billet);
+							if(achat.getDonne()){
+								System.out.println("Vous donnez a "+ personne + " le(s) billet(s) "+ achat);
+								achat.setDonner(true);
+							} else {
+								JOptionPane.showMessageDialog(new JFrame(), 
+										"Ce billet a deja ete donne", "Attention", JOptionPane.INFORMATION_MESSAGE);
+							}	
 						} catch (Exception e1) {
 							Constantes.afficherException(e1);
 						}		
