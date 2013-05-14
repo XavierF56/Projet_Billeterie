@@ -151,8 +151,8 @@ public class Achat extends Objet {
 	public int getPrixUnitaire() {
 		return (Integer) map.get("prix_unitaire");
 	}
-	public double getPrixTotal() {
-		return (Double) map.get("prix_total");
+	public float getPrixTotal() {
+		return (Float) map.get("prix_total");
 	}
 	public Personne getPersonne() {
 		return personne;

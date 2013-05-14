@@ -113,11 +113,11 @@ public class Billet extends Objet {
 	public int getNbPlaceSub() {
 		return (Integer) map.get("nb_sub"); //NOM BDD
 	}
-	public double getPrixRed() {
-		return (Double) map.get("prix_sub"); //NOM BDD
+	public float getPrixRed() {
+		return (Float) map.get("prix_sub"); //NOM BDD
 	}
-	public double getPrixNor() {
-		return (Double) map.get("prix"); //NOM BDD
+	public float getPrixNor() {
+		return (Float) map.get("prix"); //NOM BDD
 	}
 	public int getNbPlacePerso() {
 		return (Integer) map.get("nb_sub_par_personne"); //NOM BDD
