@@ -97,7 +97,7 @@ public class Champs extends JPanel{
 		switch (type) {
 		case Constantes.INTEGER : champ = new JFormattedTextField(NumberFormat.getIntegerInstance()); 
 								((JFormattedTextField) champ).setColumns(20);break;
-		case Constantes.FLOAT : champ = new JFormattedTextField(NumberFormat.getNumberInstance()); 
+		case Constantes.DOUBLE : champ = new JFormattedTextField(NumberFormat.getNumberInstance()); 
 								((JFormattedTextField) champ).setColumns(20);break;
 		case Constantes.STRING : champ = new JFormattedTextField(); 
 								((JFormattedTextField) champ).setColumns(20);break;
@@ -122,7 +122,7 @@ public class Champs extends JPanel{
 		try {
 		switch (type) {
 			case Constantes.INTEGER : res = Integer.parseInt(((JTextField)champ).getText()); break;
-			case Constantes.FLOAT : res = strToFloat(((JTextField)champ).getText()); break;
+			case Constantes.DOUBLE : res = strToDouble(((JTextField)champ).getText()); break;
 			case Constantes.STRING : res = ((JTextField)champ).getText(); break;
 			case Constantes.BOOLEAN : res = ((JCheckBox)champ).isSelected(); break;
 			//TODO : (Bruno) pas du tout sur de la validitee de la ligne precedente, je mettrai simplement break
@@ -137,9 +137,9 @@ public class Champs extends JPanel{
 		return res;
 	}
 	
-	private static float strToFloat(String s){
+	private static double strToDouble(String s){
      	s = s.replace(',', '.');
-     	return Float.parseFloat(s);
+     	return Double.parseDouble(s);
     }
 
 

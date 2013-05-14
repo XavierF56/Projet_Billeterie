@@ -34,7 +34,7 @@ public class FenetreDetails extends Fenetre {
 		
 		//Restant a payer
 		contentPane.add(new JLabel("Restant a payer : " + personne.restantAPayer() + "euros"), "North");
-		
+
 		// Tableau
 		tableau = new JTable(personne.getAchats());
 		personne.getAchats().setTableau(tableau);

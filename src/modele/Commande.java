@@ -37,7 +37,7 @@ import java.util.Map;
 public class Commande {
 	private Personne personne;
 	private int nbArticle;
-	private float prixTotal;
+	private double prixTotal;
 	private List<Achat> listeValidee = new ArrayList<Achat>();
 	private Achat achatEnCours;
 	
@@ -143,7 +143,7 @@ public class Commande {
 	public int getNbArticle() {
 		return nbArticle;
 	}
-	public float getPrixTotal() {
+	public double getPrixTotal() {
 		return prixTotal;
 	}
 

@@ -56,6 +56,7 @@ public class FenetreDetailsAction extends AbstractAction {
 		    	try {
 					new FenetreDetails((Personne) listeObjet.getObjetByIndex(selectionCorrige));
 				} catch (Exception e1) {
+					System.out.println(e1);
 					Constantes.afficherException(e1);
 				}
 	    	}

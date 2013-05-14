@@ -113,18 +113,20 @@ public class Personne extends Objet{
 	 * Retourne ce qui reste a payer (lorsqu'un billet n'est pas directement paye)
 	 * @return le prix
 	 */
-	public float restantAPayer() {
+	public double restantAPayer() {
 		if (!achatEnMem) {
 			achats.metEnMemoire();
-		}
+		}					
+
 		List<Objet> liste = this.achats.getListeAchats();
-		float resul = 0;
+		double resul = 0;
 		
 		for (int i = 0; i < liste.size(); i++) {
 			if (! ((Achat) liste.get(i)).getPaye()) {
 				resul += ((Achat) liste.get(i)).getPrixTotal();
 			}
 		}
+
 		return resul;
 	}
 
