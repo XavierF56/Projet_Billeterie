@@ -1,6 +1,6 @@
 package ihm.fenetres;
 
-import ihm.actions.ValiderCommanderAction;
+import ihm.actions.CloturerCommanderAction;
 import ihm.barresOutils.BarreOutilsCommande;
 
 import java.awt.BorderLayout;
@@ -53,7 +53,7 @@ public class FenetreCommander extends Fenetre {
 		label = new JLabel(commande.toString());
 		
 		southPane.add(label);
-		southPane.add(new JButton(new ValiderCommanderAction(this, commande)));	
+		southPane.add(new JButton(new CloturerCommanderAction(this, commande)));	
 		contentPane.add(southPane, "South");
 		
 		//Affichage de la fenetre

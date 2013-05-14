@@ -11,11 +11,11 @@ import javax.swing.JOptionPane;
 import modele.Commande;
 
 @SuppressWarnings("serial")
-public class ValiderCommanderAction extends AbstractAction {
+public class CloturerCommanderAction extends AbstractAction {
 	private Fenetre fenetre;
 	private Commande commande;
 	
-	public ValiderCommanderAction(Fenetre fenetre, Commande commande) {
+	public CloturerCommanderAction(Fenetre fenetre, Commande commande) {
 	    super("Valider");
 	    this.fenetre = fenetre;
 	    this.commande = commande;
@@ -23,7 +23,7 @@ public class ValiderCommanderAction extends AbstractAction {
 	
 	public void actionPerformed(ActionEvent e) {
 		try {
-			//TODO faire marcher cette commande : commande.valider();
+			commande.cloturer();
 			fenetre.dispose();
 		} catch (Exception e1) {
 			String message = "Une erreur s'est produite lors de votre achat\nLa commande a été annulée";

@@ -1,6 +1,7 @@
 package ihm.actions;
 
 import ihm.fenetres.FenetreCommander;
+import ihm.fenetres.FenetreCommanderForcer;
 import ihm.fenetres.FenetreQuantite;
 
 import java.awt.event.ActionEvent;
@@ -53,13 +54,15 @@ public class ValiderQuantiteAction extends AbstractAction implements KeyListener
 			try {
 				commande.ajoutCommande(billet, fenetre.getQuantite(), fenetre.getPaye(), fenetre.getDonne(), fenetre.getSubventionne());
 				fenetreCommande.majLabel();
-				fenetre.dispose();
 			} catch (AchatException ae) {
-				JOptionPane.showMessageDialog(new JFrame(), ae.toString(), "Erreur", JOptionPane.ERROR_MESSAGE);
+				new FenetreCommanderForcer(commande, ae.toString(), fenetreCommande);
+				fenetreCommande.majLabel();
 			} catch (Exception e1) {
 				String message = "Erreur dans le choix de la quantité\nCommande de ce billet annulée";
 				JOptionPane.showMessageDialog(new JFrame(), message, "Erreur", JOptionPane.ERROR_MESSAGE);
 			}
+			fenetre.dispose();
+			
 		}
 
 		public void keyTyped(KeyEvent e) {
