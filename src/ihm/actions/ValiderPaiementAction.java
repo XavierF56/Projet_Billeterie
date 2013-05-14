@@ -51,9 +51,8 @@ public class ValiderPaiementAction extends AbstractAction implements KeyListener
 						Achat achat = (Achat) listeAchats.getObjetByIndex(selectionCorrige);
 						Personne personne = fenetreDetails.getPersonne();
 						if(!achat.getPaye()){
-							System.out.println("" + personne + " paye le billet "+ achat);
+							//System.out.println("" + personne + " paye le billet "+ achat);
 							achat.setPayer(true);
-							System.out.println("ok");
 						} else {
 							JOptionPane.showMessageDialog(new JFrame(), 
 									"Ce billet a deja ete paye", "Attention", JOptionPane.INFORMATION_MESSAGE);

@@ -76,8 +76,6 @@ public class DataBase {
 	 */
 	public void enregistreBDD (String table, Map<String, Object> map) throws SQLException {
 		if (map.containsKey("id")) {
-			System.out.println(map);
-
 			String query = "UPDATE " + table + " SET ";
 			boolean first = true;
 			Set<String> set = map.keySet();
@@ -93,9 +91,6 @@ public class DataBase {
 			}
 			
 			query = query.concat(" WHERE id='" + map.get("id")+"'");
-			System.out.println(query);
-
-			
 			bdd.update(query);
 		} else {
 			throw new SQLException("Pas de champ id dans la map");

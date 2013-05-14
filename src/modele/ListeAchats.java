@@ -61,11 +61,13 @@ public class ListeAchats extends ListeObjet{
 	 * @param achat
 	 */
 	public void ajouter(Achat achat) {
+		reinitialise();
 		if(!personne.isAchatEnMem()) {
 			metEnMemoire();
 		}
 		listeObjet.add(achat);
 		nbAchats++;
+		sauvegarde();
 	}
 	
 	/** Methodes non implementees */
