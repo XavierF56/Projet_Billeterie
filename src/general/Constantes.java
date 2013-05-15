@@ -23,10 +23,10 @@ public class Constantes {
 	 */
 	public static int stringToInt (String st) {
 		int res = 0;
-		if (st.equals("integer")) res = INTEGER;
-		else if (st.equals("float")) res = DOUBLE;
-		else if (st.equals("text")) res = STRING;
-		else if (st.equals("bool")) res = BOOLEAN;
+		if (st.equals("integer") || st.equals("INTEGER")) res = INTEGER;
+		else if (st.equals("float") || st.equals("FLOAT")) res = DOUBLE;
+		else if (st.equals("text") || st.equals("VARCHAR") || st.equals("TEXT")) res = STRING;
+		else if (st.equals("bool") || st.equals("BOOL")) res = BOOLEAN;
 		return res;
 	}
 	

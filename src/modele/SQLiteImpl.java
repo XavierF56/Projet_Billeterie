@@ -151,20 +151,20 @@ public class SQLiteImpl implements SQLInterface{
 			
 			// Execute query
 			stmt.setQueryTimeout(iTimeout);
-			res = stmt.executeQuery("Select * from " + table);
-			ResultSetMetaData metadata = res.getMetaData();
+			res = stmt.executeQuery("PRAGMA table_info (" + table +")");
+						
 			if(!table.equals("Achat")) {
-				for(int i = 0; i < metadata.getColumnCount(); i++){
-					String nomColonne = metadata.getColumnName(i+1);
+				while (res.next()) {
+					String nomColonne = (String)res.getObject(2);
 				    if(!nomColonne.equals("id")) {
-				    	resul.put(nomColonne, Constantes.stringToInt(metadata.getColumnTypeName(i+1)));
+				    	resul.put(nomColonne, Constantes.stringToInt((String)res.getObject(3)));
 				    }
 				}
 			} else {
-				for(int i = 0; i < metadata.getColumnCount(); i++){
-					String nomColonne = metadata.getColumnName(i+1);
+				while (res.next()) {
+					String nomColonne = (String)res.getObject(2);
 				    if(!(nomColonne.equals("id") || nomColonne.equals("id_billet") || nomColonne.equals("id_personne"))) {
-				    	resul.put(nomColonne, Constantes.stringToInt(metadata.getColumnTypeName(i+1)));
+				    	resul.put(nomColonne, Constantes.stringToInt((String)res.getObject(3)));
 				    }
 				}
 			}
@@ -190,13 +190,4 @@ public class SQLiteImpl implements SQLInterface{
 	System.out.println(sql);
 	stmt.executeUpdate(sql);
 }*/
-
-	public static void main(String[] args) {
-		try {
-			SQLiteImpl bdd = new SQLiteImpl("database.sqlite");
-			bdd.update("");
-		} catch (Exception e) {
-			Constantes.afficherException(e);
-		}
-	}
 }

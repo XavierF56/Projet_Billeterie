@@ -21,6 +21,7 @@ public class ListePersonnes extends ListeObjet {
 		super(billeterie);
 		attributs();
 		this.metEnMemoire(); 
+
 	}
 	
 	/********** Methodes ************/
@@ -29,10 +30,17 @@ public class ListePersonnes extends ListeObjet {
 	 */
 	public void metEnMemoire() {
 		List<Map<String, Object>> list = billeterie.getBdd().getObjets("SELECT * from personne"); //NOM BDD
+
 		for (int i = 0; i < list.size(); i++){
 			listeObjet.add(new Personne(list.get(i), billeterie));
 		}
-		Personne.setProchainId((Integer)list.get(listeObjet.size() - 1).get("id") + 1);
+	    
+		if(listeObjet.size() != 0) {
+			Personne.setProchainId((Integer)list.get(listeObjet.size() - 1).get("id") + 1);
+		} else { // cas ou la bdd est vide
+			Personne.setProchainId(0);
+		}
+
 		this.sauvegarde();
 	}
 	
@@ -55,7 +63,7 @@ public class ListePersonnes extends ListeObjet {
 			String nom = it.next();
 			resul.add(new Attribut(nom, nom, map.get(nom)));
 		}
-		
+
 		this.attributs = resul;
 	}
 	
