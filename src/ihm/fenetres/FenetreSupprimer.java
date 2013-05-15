@@ -13,11 +13,13 @@ import javax.swing.JPanel;
 import modele.ListeObjet;
 
 @SuppressWarnings("serial")
-public class FenetreSupprimer  extends Fenetre {
-	private ListeObjet listeObjets;
+public class FenetreSupprimer extends Fenetre {
 	
-	public FenetreSupprimer(ListeObjet listeObjet) {
-		this.listeObjets = listeObjet;
+	/**
+	 * 
+	 * @param listeObjet
+	 */
+	public FenetreSupprimer(ListeObjet listeObjets) {
 		
 		//Fenetre
 		this.setTitle("Confirmation de la suppression");

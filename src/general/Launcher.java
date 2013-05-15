@@ -13,14 +13,12 @@ import modele.Billeterie;
  * Lors de l'ajout d'une colonne depuis SQLITEManager, si aucune valeur par defaut affectee 
  * -> la recuperation du type pose probleme...
  * 
- * TODO Rendre possible le fait de payer dans un second temps (pour le moment un client qui n'a pas paye
- * lors de la commande ne peut plus le faire apres, sauf erreur de ma part)
+ * TODO Bouton payer tout / donner tout / selection multiple / payer et donner
  * 
  * Note : attention a la gestion des cacateres speciaux
  * 
  * Secondaire :
  * TODO Continuer la Javadoc
- * TODO Gestion du cas normalement non autorise de depassement des quotas
  * 
  * Bonus :
  * TODO : rendre disponibles d'autres options

@@ -1,5 +1,7 @@
 package modele;
 
+import general.Constantes;
+
 import java.sql.SQLException;
 import java.util.Map;
 
@@ -43,7 +45,7 @@ public class Billet extends Objet {
 		try {
 			bill.getBdd().ajoutBDD("billet", map); //NOM BDD
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Constantes.afficherException(e);
 		}
 	}
 	
@@ -65,7 +67,7 @@ public class Billet extends Objet {
 			// Sauvegarde les modifs dans la bdd
 			billeterie.getBdd().enregistreBDD("billet", map); //NOM BDD
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Constantes.afficherException(e);
 		}
 		billeterie.getListeBillets().modifier();
 	}

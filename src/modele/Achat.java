@@ -25,7 +25,7 @@ public class Achat extends Objet {
 		try {
 			billet =  (Billet) personne.getBilleterie().getListeBillets().getObjetById((Integer) map.get("id_billet"));
 		} catch (Exception e) {
-			e.printStackTrace();
+			Constantes.afficherException(e);
 		}
 		map.put("Description", billet.toString());
 	}
@@ -62,7 +62,7 @@ public class Achat extends Objet {
 		try {
 			personne.getBilleterie().getBdd().ajoutBDD("achat", map); //NOM BDD
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Constantes.afficherException(e);
 		}
 		
 		// Ajoute l'achat à la liste d'achats de la personne

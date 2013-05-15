@@ -1,5 +1,6 @@
 package modele;
 
+import general.Constantes;
 import ihm.fenetres.FenetrePrincipale;
 
 /*
@@ -18,7 +19,7 @@ public class Billeterie {
 		try{
 			bdd = new DataBase(nomBdd);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Constantes.afficherException(e);
 		}
 		listePersonnes = new ListePersonnes(this);
 		listeBillets = new ListeBillets(this);
