@@ -8,21 +8,19 @@ import modele.Billeterie;
 
 /**
  * Urgent :
- * 
- * TODO BUG
- * Lors de l'ajout d'une colonne depuis SQLITEManager, si aucune valeur par defaut affectee 
- * -> la recuperation du type pose probleme...
- * 
- * TODO Bouton payer tout / donner tout / selection multiple / payer et donner
+
+ * TODO Onglet Ajout
+ * TODO Applet .jar
+ * TODO Icon
  * 
  * Note : attention a la gestion des cacateres speciaux
  * 
  * Secondaire :
- * TODO Continuer la Javadoc
  * 
- * Bonus :
+ * TODO Continuer la Javadoc
+ * TODO Bouton payer tout / donner tout / selection multiple / payer et donner
+ * TODO : statistiques d'achat
  * TODO : rendre disponibles d'autres options
- * TODO : systeme de panier avec une validation a la fin
  */
 public class Launcher {
 	/**

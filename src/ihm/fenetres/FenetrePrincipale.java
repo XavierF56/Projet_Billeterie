@@ -61,7 +61,7 @@ public class FenetrePrincipale extends Fenetre {
 		}
 		
 		/* Fenetre */
-		this.setTitle("T-Key");
+		this.setTitle("Firebox");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -115,14 +115,10 @@ public class FenetrePrincipale extends Fenetre {
 		
 		/* Onglet Options */
 		JPanel OngletOptions = new JPanel();
-		JCheckBox chckbxSelectionMultiple = new JCheckBox("Desactiver la selection multiple");
+		JCheckBox chckbxSelectionMultiple = new JCheckBox("Utiliser la selection multiple");
 		chckbxSelectionMultiple.addActionListener(new OptionSelectionMultipleListener(chckbxSelectionMultiple, billeterie));
 		OngletOptions.add(chckbxSelectionMultiple, "North");
 		Onglets.addTab("Options", null, OngletOptions, null);
-		
-		/* Activation de la selection multiple */
-		billeterie.getFenetre().getTableauBillets().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		billeterie.getFenetre().getTableauPersonnes().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		
 		this.afficher();
 	}
