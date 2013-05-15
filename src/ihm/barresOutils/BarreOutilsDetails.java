@@ -1,8 +1,8 @@
 package ihm.barresOutils;
 
 import ihm.actions.AnnulerAction;
-import ihm.actions.ValiderDonBilletAction;
-import ihm.actions.ValiderPaiementAction;
+import ihm.actions.valider.ValiderDonBilletAction;
+import ihm.actions.valider.ValiderPaiementAction;
 import ihm.fenetres.FenetreDetails;
 
 import java.awt.FlowLayout;

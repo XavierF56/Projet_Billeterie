@@ -1,6 +1,6 @@
 package ihm.barresOutils;
 
-import ihm.actions.ValiderQuantiteAction;
+import ihm.actions.valider.ValiderQuantiteAction;
 
 import java.awt.GridLayout;
 import java.awt.event.ItemEvent;

@@ -74,7 +74,8 @@ public class FenetrePrincipale extends Fenetre {
 		contentPane.add(Onglets);
 		
 		/* Icone */
-		icon = new ImageIcon("ticket-icon-mini.png");
+		icon = new ImageIcon("carte.ico");
+		System.out.println("icone : " + icon + " fileName : " + icon.getIconHeight());
 		this.setIconImage(icon.getImage());
 		
 		/* Onglet Personnes */

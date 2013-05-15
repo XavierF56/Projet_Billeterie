@@ -1,6 +1,6 @@
 package ihm.fenetres;
 
-import ihm.actions.ValiderQuantiteAction;
+import ihm.actions.valider.ValiderQuantiteAction;
 import ihm.barresOutils.PanelChoixQuantite;
 
 import java.awt.BorderLayout;

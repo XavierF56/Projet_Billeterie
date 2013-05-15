@@ -21,7 +21,6 @@ import modele.Billeterie;
  * TODO Statistiques d'achat (Xavier)
  * TODO Rendre disponibles d'autres options
  * TODO Anglais
- * TODO sous Package pour les Actions
  */
 public class Launcher {
 	/**

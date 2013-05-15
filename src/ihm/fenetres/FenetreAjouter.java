@@ -2,7 +2,7 @@ package ihm.fenetres;
 
 import java.awt.BorderLayout;
 
-import ihm.actions.ValiderAjouterAction;
+import ihm.actions.valider.ValiderAjouterAction;
 import ihm.barresOutils.Champs;
 
 import javax.swing.BorderFactory;

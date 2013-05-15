@@ -1,7 +1,7 @@
 package ihm.fenetres;
 
 import ihm.actions.AnnulerCommandeAction;
-import ihm.actions.ValiderCommandeAction;
+import ihm.actions.valider.ValiderCommandeAction;
 
 import java.awt.BorderLayout;
 
