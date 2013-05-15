@@ -34,7 +34,13 @@ public class ListeBillets extends ListeObjet{
 		for (int i = 0; i < list.size(); i++){
 			listeObjet.add(new Billet(list.get(i), billeterie));
 		}
-		Billet.setProchainId((Integer)list.get(listeObjet.size() - 1).get("id")+1);
+		
+		if(listeObjet.size() != 0) {
+			Billet.setProchainId((Integer)list.get(listeObjet.size() - 1).get("id")+1);
+		} else { // cas ou la bdd est vide
+			Billet.setProchainId(0);
+		}
+		
 		this.sauvegarde();
 	}
 	

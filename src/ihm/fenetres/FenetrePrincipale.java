@@ -1,5 +1,6 @@
 package ihm.fenetres;
 
+import general.Constantes;
 import ihm.actions.OptionSelectionMultipleListener;
 import ihm.barresOutils.BarreOutilsBillets;
 import ihm.barresOutils.BarreOutilsPersonnes;
@@ -53,6 +54,7 @@ public class FenetrePrincipale extends Fenetre {
 				}
 			} */
 		} catch (Exception e) {
+			Constantes.afficherException(e);
 		}
 		
 		/* Fenetre */
@@ -106,11 +108,14 @@ public class FenetrePrincipale extends Fenetre {
 		
 		/* Onglet Options */
 		JPanel OngletOptions = new JPanel();
-		JCheckBox chckbxSelectionMultiple = new JCheckBox("Autoriser la selection multiple");
+		JCheckBox chckbxSelectionMultiple = new JCheckBox("Desactiver la selection multiple");
 		chckbxSelectionMultiple.addActionListener(new OptionSelectionMultipleListener(chckbxSelectionMultiple, billeterie));
 		OngletOptions.add(chckbxSelectionMultiple, "North");
 		Onglets.addTab("Options", null, OngletOptions, null);
 		
+		/* Activation de la selection multiple */
+		billeterie.getFenetre().getTableauBillets().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		billeterie.getFenetre().getTableauPersonnes().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		
 		this.afficher();
 	}
