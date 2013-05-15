@@ -8,6 +8,7 @@ import ihm.barresOutils.MenuContextuelBillet;
 import ihm.barresOutils.MenuContextuelPersonne;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -60,7 +61,7 @@ public class FenetrePrincipale extends Fenetre {
 		}
 		
 		/* Fenetre */
-		this.setTitle("Billeterie INSA");
+		this.setTitle("T-Key");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -68,6 +69,8 @@ public class FenetrePrincipale extends Fenetre {
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
 		JTabbedPane Onglets = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(Onglets);
+		
+		/* Icone */
 		icon = new ImageIcon("ticket-icon-mini.png");
 		this.setIconImage(icon.getImage());
 		
