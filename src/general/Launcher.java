@@ -9,7 +9,6 @@ import modele.Billeterie;
 /**
  * Urgent :
 
- * TODO Onglet About (Bruno)
  * TODO Applet .jar (Xavier)
  * TODO Icon (Bruno)
  * 

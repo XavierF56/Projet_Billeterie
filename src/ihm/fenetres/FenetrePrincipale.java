@@ -1,6 +1,7 @@
 package ihm.fenetres;
 
 import general.Constantes;
+import general.Langue;
 import general.MultiLineLabel;
 import ihm.actions.OptionSelectionMultipleListener;
 import ihm.barresOutils.BarreOutilsBillets;
@@ -59,6 +60,9 @@ public class FenetrePrincipale extends Fenetre {
 			Constantes.afficherException(e);
 		}
 		
+		/* Langue */
+		Langue.majLangue();
+		
 		/* Fenetre */
 		this.setTitle(Constantes.nomLogiciel);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -90,7 +94,7 @@ public class FenetrePrincipale extends Fenetre {
 		tableauPersonnes.setComponentPopupMenu(new MenuContextuelPersonne(billeterie.getListePersonnes(), tableauPersonnes));
 		ongletPersonne.add(new JScrollPane(tableauPersonnes), "Center");
 		
-		Onglets.addTab("Personnes", null, ongletPersonne, null);
+		Onglets.addTab(Langue.titreOngletPersonne, null, ongletPersonne, null);
 		
 		
 		/* Onglet Billets */
@@ -109,7 +113,7 @@ public class FenetrePrincipale extends Fenetre {
 		tableauBillets.setComponentPopupMenu(new MenuContextuelBillet(billeterie.getListeBillets(), tableauBillets));
 		ongletBillet.add(new JScrollPane(tableauBillets), "Center");
 		
-		Onglets.addTab("Billets", null, ongletBillet, null);
+		Onglets.addTab(Langue.titreOngletBillet, null, ongletBillet, null);
 		
 		
 		/* Onglet Options */
@@ -120,9 +124,11 @@ public class FenetrePrincipale extends Fenetre {
 		Onglets.addTab("Options", null, OngletOptions, null);
 		
 		/* Onglet A propos */
-		JPanel OngletAPropos = new JPanel();		
-		OngletAPropos.add(new MultiLineLabel(Constantes.aPropos()));
-		Onglets.addTab("A propos de " + Constantes.nomLogiciel, null, OngletAPropos, null);
+		JPanel OngletAPropos = new JPanel();
+		MultiLineLabel multiLineLabel = new MultiLineLabel(Langue.aPropos());
+		OngletAPropos.add(multiLineLabel);
+		Onglets.addTab(Langue.titreOngletAPropos, null, OngletAPropos, null);
+		
 		
 		this.afficher();
 	}
