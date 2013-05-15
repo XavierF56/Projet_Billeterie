@@ -16,7 +16,7 @@ public class CloturerCommanderAction extends AbstractAction {
 	private Commande commande;
 	
 	public CloturerCommanderAction(Fenetre fenetre, Commande commande) {
-	    super("Valider");
+	    super("Cloturer la commande");
 	    this.fenetre = fenetre;
 	    this.commande = commande;
 	}
