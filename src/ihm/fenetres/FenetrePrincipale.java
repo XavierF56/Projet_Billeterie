@@ -1,6 +1,7 @@
 package ihm.fenetres;
 
 import general.Constantes;
+import general.MultiLineLabel;
 import ihm.actions.OptionSelectionMultipleListener;
 import ihm.barresOutils.BarreOutilsBillets;
 import ihm.barresOutils.BarreOutilsPersonnes;
@@ -37,14 +38,13 @@ public class FenetrePrincipale extends Fenetre {
 	private JTable tableauBillets;
 	private ImageIcon icon;
 	
-	
 	/**
 	 * Create the frame.
 	 */
 	public FenetrePrincipale(Billeterie billets) {
+		
 		this.billeterie = billets;
 		billeterie.setFenetre(this);
-		
 		
 		/* Theme */
 		try {
@@ -60,7 +60,7 @@ public class FenetrePrincipale extends Fenetre {
 		}
 		
 		/* Fenetre */
-		this.setTitle("Firebox");
+		this.setTitle(Constantes.nomLogiciel);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -118,6 +118,11 @@ public class FenetrePrincipale extends Fenetre {
 		chckbxSelectionMultiple.addActionListener(new OptionSelectionMultipleListener(chckbxSelectionMultiple, billeterie));
 		OngletOptions.add(chckbxSelectionMultiple, "North");
 		Onglets.addTab("Options", null, OngletOptions, null);
+		
+		/* Onglet A propos */
+		JPanel OngletAPropos = new JPanel();		
+		OngletAPropos.add(new MultiLineLabel(Constantes.aPropos()));
+		Onglets.addTab("A propos de " + Constantes.nomLogiciel, null, OngletAPropos, null);
 		
 		this.afficher();
 	}
