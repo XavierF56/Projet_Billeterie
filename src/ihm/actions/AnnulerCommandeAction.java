@@ -1,5 +1,6 @@
 package ihm.actions;
 
+import general.Langue;
 import ihm.fenetres.Fenetre;
 
 import java.awt.event.ActionEvent;
@@ -14,7 +15,7 @@ public class AnnulerCommandeAction extends AbstractAction {
 	Fenetre fenetre;
 	
 	public AnnulerCommandeAction (Commande commande, Fenetre fenetre) {
-		super("Annuler");
+		super(Langue.annuler);
 		this.commande = commande;
 		this.fenetre = fenetre;
 	}

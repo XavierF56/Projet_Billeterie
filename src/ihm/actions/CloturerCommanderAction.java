@@ -1,5 +1,6 @@
 package ihm.actions;
 
+import general.Langue;
 import ihm.fenetres.Fenetre;
 
 import java.awt.event.ActionEvent;
@@ -16,7 +17,7 @@ public class CloturerCommanderAction extends AbstractAction {
 	private Commande commande;
 	
 	public CloturerCommanderAction(Fenetre fenetre, Commande commande) {
-	    super("Cloturer la commande");
+	    super(Langue.cloturerCommande);
 	    this.fenetre = fenetre;
 	    this.commande = commande;
 	}
@@ -26,8 +27,7 @@ public class CloturerCommanderAction extends AbstractAction {
 			commande.cloturer();
 			fenetre.dispose();
 		} catch (Exception e1) {
-			String message = "Une erreur s'est produite lors de votre achat\nLa commande a été annulée";
-			JOptionPane.showMessageDialog(new JFrame(), message, "Erreur", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(new JFrame(), Langue.erreurAchat, Langue.erreur, JOptionPane.ERROR_MESSAGE);
 			fenetre.dispose();
 		}
 	}
