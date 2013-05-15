@@ -49,9 +49,7 @@ public class ValiderDonBilletAction extends AbstractAction implements KeyListene
 						// Cas ou un billet est bien selectionne
 						try {
 							Achat achat = (Achat) listeAchats.getObjetByIndex(selectionCorrige);
-							Personne personne = fenetreDetails.getPersonne();
 							if(!achat.getDonne()){
-								//System.out.println("Vous donnez a "+ personne + " le(s) billet(s) "+ achat);
 								achat.setDonner(true);
 							} else {
 								JOptionPane.showMessageDialog(new JFrame(), 
