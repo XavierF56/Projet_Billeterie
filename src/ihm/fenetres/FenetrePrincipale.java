@@ -10,6 +10,7 @@ import ihm.barresOutils.MenuContextuelPersonne;
 import java.awt.BorderLayout;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -34,6 +35,7 @@ public class FenetrePrincipale extends Fenetre {
 	private JPanel contentPane;
 	private JTable tableauPersonnes;
 	private JTable tableauBillets;
+	private ImageIcon icon;
 	
 	
 	/**
@@ -66,6 +68,8 @@ public class FenetrePrincipale extends Fenetre {
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
 		JTabbedPane Onglets = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(Onglets);
+		icon = new ImageIcon("ticket-icon-mini.png");
+		this.setIconImage(icon.getImage());
 		
 		/* Onglet Personnes */
 		JPanel ongletPersonne = new JPanel();

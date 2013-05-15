@@ -15,7 +15,6 @@ import javax.swing.JTable;
 
 import modele.Achat;
 import modele.ListeAchats;
-import modele.Personne;
 
 @SuppressWarnings("serial")
 public class ValiderPaiementAction extends AbstractAction implements KeyListener {
