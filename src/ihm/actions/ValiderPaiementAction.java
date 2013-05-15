@@ -1,7 +1,6 @@
 package ihm.actions;
 
 import general.Constantes;
-import ihm.fenetres.FenetreDetails;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -19,13 +18,11 @@ import modele.ListeAchats;
 @SuppressWarnings("serial")
 public class ValiderPaiementAction extends AbstractAction implements KeyListener {
 
-	private FenetreDetails fenetreDetails;
 	private JTable tableau;
 	private ListeAchats listeAchats;
 	
-	public ValiderPaiementAction(FenetreDetails fenetre, ListeAchats listeAchats, JTable tableau) {
+	public ValiderPaiementAction(ListeAchats listeAchats, JTable tableau) {
 		super("Payer");
-		this.fenetreDetails = fenetre;
 		this.tableau = tableau;
 		this.listeAchats = listeAchats;
 	}

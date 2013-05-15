@@ -1,7 +1,6 @@
 package ihm.actions;
 
 import general.Constantes;
-import ihm.fenetres.FenetreDetails;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -15,18 +14,15 @@ import javax.swing.JTable;
 
 import modele.Achat;
 import modele.ListeAchats;
-import modele.Personne;
 
 @SuppressWarnings("serial")
 public class ValiderDonBilletAction extends AbstractAction implements KeyListener {
 
-		private FenetreDetails fenetreDetails;
 		private JTable tableau;
 		private ListeAchats listeAchats;
 		
-		public ValiderDonBilletAction(FenetreDetails fenetre, ListeAchats listeAchats, JTable tableau) {
+		public ValiderDonBilletAction(ListeAchats listeAchats, JTable tableau) {
 			super("Donner");
-			this.fenetreDetails = fenetre;
 			this.tableau = tableau;
 			this.listeAchats = listeAchats;
 		}

@@ -14,11 +14,12 @@ public class AnnulerAction extends AbstractAction {
 	/** Permet d'annuler une action en cours en fermant la fenetre en parametre
 	 * 
 	 * @param fenetre la fenetre a fermer
+	 * @param titre le titre de l'action
 	 * @see AbstractAction
 	 * @see Fenetre
 	 */
-    public AnnulerAction(Fenetre fenetre) {
-        super("Annuler");
+    public AnnulerAction(Fenetre fenetre, String titre) {
+        super(titre);
         this.fenetre = fenetre;
     }
     

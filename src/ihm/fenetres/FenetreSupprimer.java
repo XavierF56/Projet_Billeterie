@@ -28,7 +28,7 @@ public class FenetreSupprimer extends Fenetre {
 		this.add(fenetre);
 		
 		//Boutons Valider et Annuler
-		JButton buttonAnnuler = new JButton(new AnnulerAction(this));
+		JButton buttonAnnuler = new JButton(new AnnulerAction(this, "Annuler"));
 		JButton buttonSupprimer = new JButton(new ValiderSupprimerAction(listeObjets, this));
 		JPanel panelSouth = new JPanel();
 		panelSouth.add(buttonSupprimer);

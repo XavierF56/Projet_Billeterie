@@ -18,8 +18,8 @@ public class BarreOutilsDetails extends JPanel {
 	
 	public BarreOutilsDetails(FenetreDetails fenetre, ListeAchats listeAchats, JTable tableau) {
 		this.setLayout(new FlowLayout(FlowLayout.CENTER));
-		this.add(new JButton(new ValiderPaiementAction(fenetre, listeAchats, tableau)));
-		this.add(new JButton(new ValiderDonBilletAction(fenetre, listeAchats, tableau)));
-		this.add(new JButton(new AnnulerAction(fenetre)));
+		this.add(new JButton(new ValiderPaiementAction(listeAchats, tableau)));
+		this.add(new JButton(new ValiderDonBilletAction(listeAchats, tableau)));
+		this.add(new JButton(new AnnulerAction(fenetre, "Fermer")));
 	}
 }
