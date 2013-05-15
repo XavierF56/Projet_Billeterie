@@ -1,4 +1,4 @@
-package ihm.actions;
+package ihm.actions.fenetre;
 
 import ihm.fenetres.FenetreSupprimer;
 

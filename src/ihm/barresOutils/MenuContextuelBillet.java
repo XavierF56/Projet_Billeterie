@@ -3,9 +3,9 @@ package ihm.barresOutils;
 import java.awt.Component;
 import java.awt.Point;
 
-import ihm.actions.FenetreAjouterAction;
-import ihm.actions.FenetreModifierAction;
-import ihm.actions.FenetreSupprimerAction;
+import ihm.actions.fenetre.FenetreAjouterAction;
+import ihm.actions.fenetre.FenetreModifierAction;
+import ihm.actions.fenetre.FenetreSupprimerAction;
 
 import javax.swing.JPopupMenu;
 import javax.swing.JTable;

@@ -1,7 +1,7 @@
 package ihm.barresOutils;
 
-import ihm.actions.FenetreQuantiteAction;
 import ihm.actions.RechercheAction;
+import ihm.actions.fenetre.FenetreQuantiteAction;
 import ihm.fenetres.FenetreCommander;
 
 import java.awt.FlowLayout;

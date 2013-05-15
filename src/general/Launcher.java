@@ -9,18 +9,20 @@ import modele.Billeterie;
 /**
  * Urgent :
 
- * TODO Onglet Ajout
- * TODO Applet .jar
- * TODO Icon
+ * TODO Onglet About (Bruno)
+ * TODO Applet .jar (Xavier)
+ * TODO Icon (Bruno)
  * 
  * Note : attention a la gestion des cacateres speciaux
  * 
  * Secondaire :
  * 
  * TODO Continuer la Javadoc
- * TODO Bouton payer tout / donner tout / selection multiple / payer et donner
- * TODO : statistiques d'achat
- * TODO : rendre disponibles d'autres options
+ * TODO Bouton payer tout / donner tout / selection multiple / payer et donner (Bruno)
+ * TODO Statistiques d'achat (Xavier)
+ * TODO Rendre disponibles d'autres options
+ * TODO Anglais
+ * TODO sous Package pour les Actions
  */
 public class Launcher {
 	/**

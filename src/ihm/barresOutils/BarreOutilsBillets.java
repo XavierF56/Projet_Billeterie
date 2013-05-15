@@ -2,10 +2,10 @@ package ihm.barresOutils;
 
 import java.awt.FlowLayout;
 
-import ihm.actions.FenetreAjouterAction;
-import ihm.actions.FenetreModifierAction;
-import ihm.actions.FenetreSupprimerAction;
 import ihm.actions.RechercheAction;
+import ihm.actions.fenetre.FenetreAjouterAction;
+import ihm.actions.fenetre.FenetreModifierAction;
+import ihm.actions.fenetre.FenetreSupprimerAction;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
