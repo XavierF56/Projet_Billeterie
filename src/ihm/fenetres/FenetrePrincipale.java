@@ -12,7 +12,6 @@ import ihm.barresOutils.MenuContextuelPersonne;
 import java.awt.BorderLayout;
 
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -37,7 +36,6 @@ public class FenetrePrincipale extends Fenetre {
 	private JPanel contentPane;
 	private JTable tableauPersonnes;
 	private JTable tableauBillets;
-	private ImageIcon icon;
 	
 	/**
 	 * Create the frame.
@@ -73,10 +71,7 @@ public class FenetrePrincipale extends Fenetre {
 		JTabbedPane Onglets = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(Onglets);
 		
-		/* Icone */
-		icon = new ImageIcon("carte.ico");
-		System.out.println("icone : " + icon + " fileName : " + icon.getIconHeight());
-		this.setIconImage(icon.getImage());
+
 		
 		/* Onglet Personnes */
 		JPanel ongletPersonne = new JPanel();
