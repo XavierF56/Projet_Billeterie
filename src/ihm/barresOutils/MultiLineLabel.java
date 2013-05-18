@@ -1,4 +1,4 @@
-package general;
+package ihm.barresOutils;
 
 import java.util.StringTokenizer;
 

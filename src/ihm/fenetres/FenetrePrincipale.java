@@ -2,12 +2,12 @@ package ihm.fenetres;
 
 import general.Constantes;
 import general.Langue;
-import general.MultiLineLabel;
 import ihm.actions.OptionSelectionMultipleListener;
 import ihm.barresOutils.BarreOutilsBillets;
 import ihm.barresOutils.BarreOutilsPersonnes;
 import ihm.barresOutils.MenuContextuelBillet;
 import ihm.barresOutils.MenuContextuelPersonne;
+import ihm.barresOutils.MultiLineLabel;
 
 import java.awt.BorderLayout;
 

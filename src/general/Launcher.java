@@ -10,7 +10,6 @@ import modele.Billeterie;
  * Urgent :
 
  * TODO Applet .jar (Xavier)
- * TODO Icon (Bruno)
  * 
  * Note : attention a la gestion des cacateres speciaux
  * 
