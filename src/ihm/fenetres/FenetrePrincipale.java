@@ -36,6 +36,7 @@ public class FenetrePrincipale extends Fenetre {
 	private JPanel contentPane;
 	private JTable tableauPersonnes;
 	private JTable tableauBillets;
+	private OngletStats ongletStats;
 	
 	/**
 	 * Create the frame.
@@ -120,7 +121,8 @@ public class FenetrePrincipale extends Fenetre {
 		Onglets.addTab("Options", null, ongletOptions, null);
 		
 		/* Onglet Statistique */
-		Onglets.addTab("Statistiques", null, new OngletStats(billeterie), null);
+		ongletStats = new OngletStats(billeterie);
+		Onglets.addTab("Statistiques", null, ongletStats, null);
 		
 		/* Onglet A propos */
 		JPanel ongletAPropos = new JPanel();
@@ -138,4 +140,8 @@ public class FenetrePrincipale extends Fenetre {
 	public JTable getTableauBillets() {
 		return tableauBillets;
 	}
+	public OngletStats getOngletStats() {
+		return ongletStats;
+	}
+	
 }

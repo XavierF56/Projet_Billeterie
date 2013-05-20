@@ -54,11 +54,11 @@ public class ValiderQuantiteAction extends AbstractAction implements KeyListener
 			try {
 				commande.ajoutCommande(billet, fenetre.getQuantite(), fenetre.getPaye(), fenetre.getDonne(), fenetre.getSubventionne());
 				fenetreCommande.majLabel();
+		    	fenetreCommande.getBilleterie().getFenetre().getOngletStats().majLabel();
 			} catch (AchatException ae) {
 				new FenetreCommanderForcer(commande, ae.toString(), fenetreCommande);
 			} catch (Exception e1) {
-				String message = "Erreur dans le choix de la quantité\nCommande de ce billet annulée";
-				System.out.println(e1);
+				String message = "Erreur dans le choix de la quantité\nCommande de ce billet annulée \n"+e1;
 				JOptionPane.showMessageDialog(new JFrame(), message, "Erreur", JOptionPane.ERROR_MESSAGE);
 			}
 			fenetre.dispose();

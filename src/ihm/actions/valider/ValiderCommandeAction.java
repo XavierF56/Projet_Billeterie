@@ -25,6 +25,7 @@ public class ValiderCommandeAction extends AbstractAction {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		commande.valider();
+		fenetreCommande.getBilleterie().getFenetre().getOngletStats().majLabel();
 		fenetre.dispose();
 		fenetreCommande.majLabel();
 	}

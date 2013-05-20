@@ -26,7 +26,7 @@ public class FenetreCommander extends Fenetre {
 	private Commande commande;
 	private JLabel label;
 	private JPanel southPane;
-	
+	private Billeterie billeterie;
 	public FenetreCommander(Personne personne, Billeterie billeterie) {
 		
 		//Initialisation des attributs de la classe
@@ -34,6 +34,7 @@ public class FenetreCommander extends Fenetre {
 		this.contentPane = new JPanel();
 		this.southPane = new JPanel();
 		this.commande = new Commande(personne);
+		this.billeterie = billeterie;
 		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
 		this.add(contentPane);
 		
@@ -62,5 +63,9 @@ public class FenetreCommander extends Fenetre {
 	
 	public void majLabel() {
 		label.setText(commande.toString());
+	}
+
+	public Billeterie getBilleterie() {
+		return billeterie;
 	}
 }
