@@ -115,7 +115,7 @@ public class FenetrePrincipale extends Fenetre {
 		JCheckBox chckbxSelectionMultiple = new JCheckBox("Utiliser la selection multiple");
 		chckbxSelectionMultiple.addActionListener(new OptionSelectionMultipleListener(chckbxSelectionMultiple, billeterie));
 		ongletOptions.add(chckbxSelectionMultiple, "North");
-		ongletOptions.add(Langue.choixLangueMenu());
+		ongletOptions.add(Langue.choixLangueMenu(this));
 		
 		Onglets.addTab("Options", null, ongletOptions, null);
 		

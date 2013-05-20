@@ -27,7 +27,7 @@ public class FenetreModifierAction extends AbstractAction {
 	 * @see AbstractAction
 	 */
 	public FenetreModifierAction(ListeObjet listeObjet) {
-        super(Langue.modifier);
+        super(Langue.getTraduction("modify"));
     	this.listeObjet = listeObjet;
     }
 

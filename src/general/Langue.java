@@ -1,5 +1,7 @@
 package general;
 
+import ihm.fenetres.FenetrePrincipale;
+
 import java.awt.Component;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -7,6 +9,8 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javax.swing.JComboBox;
+
+import modele.Billeterie;
 
 public class Langue {
 	public final static int FRANCAIS = 100;
@@ -128,22 +132,26 @@ public class Langue {
 		return res;
 	}
 
-	public static Component choixLangueMenu() {
+	public static Component choixLangueMenu(final FenetrePrincipale fenetrePrincipale) {
 		JComboBox<String> jcb = new JComboBox<String>();
 		jcb.addItem("Francais");
-		jcb.addItem("Anglais");
+		jcb.addItem("English");
 		jcb.addItemListener(new ItemListener(){
 			public void itemStateChanged(ItemEvent e) {
-				System.out.println("Changement de langue");
 				if (e.getItem().equals("Francais")) {
 					currentLangage = FRANCAIS;
-					System.out.println("fr");
-				} else if (e.getItem().equals("Anglais")) {
+					locale = new Locale("fr", "FR");
+					res = ResourceBundle.getBundle("Messages", locale);
+				} else if (e.getItem().equals("English")) {
 					currentLangage = ENGLISH;
-					System.out.println("eng");
+					locale = new Locale("en", "US");
+					res = ResourceBundle.getBundle("Messages", locale);
 				}
 				majLangue();
-				System.out.println("maj");
+				
+				fenetrePrincipale.dispose();
+				FenetrePrincipale frame = new FenetrePrincipale(new Billeterie("database.sqlite"));
+				frame.setVisible(true);
 			}
 		});
 		return jcb;
