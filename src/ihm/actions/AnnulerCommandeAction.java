@@ -15,7 +15,7 @@ public class AnnulerCommandeAction extends AbstractAction {
 	Fenetre fenetre;
 	
 	public AnnulerCommandeAction (Commande commande, Fenetre fenetre) {
-		super(Langue.annuler);
+		super(Langue.getTraduction("cancel"));
 		this.commande = commande;
 		this.fenetre = fenetre;
 	}

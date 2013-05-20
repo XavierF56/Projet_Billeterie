@@ -3,6 +3,7 @@ package ihm.fenetres;
 
 import java.awt.BorderLayout;
 
+import general.Langue;
 import ihm.actions.valider.ValiderModifierAction;
 import ihm.barresOutils.Champs;
 
@@ -25,7 +26,7 @@ public class FenetreModifier extends Fenetre {
 		this.objets = listeObjet;
 		
 		//Fenetre
-		this.setTitle("Modification de " + objetTraite);
+		this.setTitle(Langue.getTraduction("modification") + objetTraite);
 		JPanel fenetre = new JPanel(new BorderLayout());
 		fenetre.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
 		this.add(fenetre);

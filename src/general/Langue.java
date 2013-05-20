@@ -45,9 +45,7 @@ public class Langue {
 		} catch (Exception e) {
 			/* Cas ou la langue habituelle de l'utilisateur n'est pas geree */
 			locale = new Locale("en", "US");
-			System.out.println(locale);
 			res = ResourceBundle.getBundle("Messages", locale);
-			
 		}
 		majLangue();
 	}
@@ -58,8 +56,7 @@ public class Langue {
 	
 	
 	public static void majLangue() {
-		switch(currentLangage) {
-		case FRANCAIS:
+		if(locale.equals(Locale.getDefault())){
 			titreOngletPersonne = "Personnes";
 			titreOngletBillet = "Billets";
 			titreOngletAPropos = "A propos de " + Constantes.nomLogiciel;
@@ -79,10 +76,7 @@ public class Langue {
 			erreurInattendue = "Attention, une erreur inattendue s'est produite :\n";
 			erreur = "Erreur";
 			avertissement = "Attention";
-			
-			break;
-			
-		case ENGLISH:
+		} else {
 			titreOngletPersonne = "Persons";
 			titreOngletBillet = "Tickets";
 			titreOngletAPropos = "About " + Constantes.nomLogiciel;
@@ -102,11 +96,6 @@ public class Langue {
 			erreurInattendue = "Caution, an unexpected error occurred :\n";
 			erreur = "Error";
 			avertissement = "Warning";
-			break;
-			
-		default:
-			Constantes.afficherException(new Exception("Langage non reconnu"));
-			break;
 		}
 	}
 	
