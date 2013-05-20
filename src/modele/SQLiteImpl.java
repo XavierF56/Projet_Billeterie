@@ -13,6 +13,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Implementation de SQLInterface avec une base de donnees SQLite
+ * @author xavier
+ */
 
 public class SQLiteImpl implements SQLInterface{
 	String sDriverName = "org.sqlite.JDBC";
@@ -29,7 +33,7 @@ public class SQLiteImpl implements SQLInterface{
 	}
 	
 	/**
-	 * Create a database connection.
+	 * Cette methode permet de se connecter a la bdd
 	 * @param name of the database
 	 * @return Connection
 	 */
@@ -39,9 +43,9 @@ public class SQLiteImpl implements SQLInterface{
 
 	
 	/**
-	 * Create and send a query to the database
+	 * Cette methode permet de faire une requete a la base de donnees
 	 * @param query
-	 * @return ResultSet with the information
+	 * @return List<Map>
 	 */
 	public List<Map<String, Object>> query(String query) {
 		List<Map<String, Object>> resul = new ArrayList<Map<String, Object>>();
@@ -92,7 +96,7 @@ public class SQLiteImpl implements SQLInterface{
 	
 	
 	/**
-	 * Update a database
+	 * Met a jour une base de donnees
 	 * @param query
 	 */
 	public void update(String query){

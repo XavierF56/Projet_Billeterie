@@ -6,29 +6,29 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * SqlInterface is the interface for the DataBase
- *
+ * SqlInterface est l'interface pour la base de donnees
+ * Elle permet d'utiliser differents types de bdd sans devoir tout recoder :
+ * Il faut juste recreer une implementation de cette interface
  * @author Xavier Fraboulet
- * @version 1.0
  */
 
 public interface SQLInterface {
 	
 	/**
-	 * Connect to a database file or server. BTW, this method may need more param
+	 * Cette methode permet de se connecter a la bdd
 	 * @param name of the database
 	 */
 	public Connection connect() throws SQLException;
 	
 	/**
-	 * Create and send a query to the database
+	 * Cette metjode permet de faire une requete a la base de donnees
 	 * @param query
-	 * @return ResultSet with the information
+	 * @return List<Map>
 	 */
 	public List<Map<String, Object>> query(String query) throws SQLException;
 	
 	/**
-	 * Update a database
+	 * Met a jour une base de donnees
 	 * @param query
 	 */
 	public void update(String query) throws SQLException;
@@ -38,5 +38,4 @@ public interface SQLInterface {
 	 * @return la liste des attributs (nom et type) d'une table
 	 */
 	public Map<String, Integer> getAttributs (String table);
-
 }

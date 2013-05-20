@@ -8,6 +8,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Class permettant la liaison avec la base de donnees
+ * Elle utilise les fonctions de l'interface SQLInterface
+ * @author xavier
+ */
+
 public class DataBase {
 	private SQLInterface bdd;
 	
