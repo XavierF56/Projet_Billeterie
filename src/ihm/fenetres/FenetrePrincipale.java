@@ -59,11 +59,8 @@ public class FenetrePrincipale extends Fenetre {
 			Constantes.afficherException(e);
 		}
 		
-		/* Langue */
-		Langue.majLangue();
-		
 		/* Fenetre */
-		this.setTitle(Constantes.nomLogiciel);
+		this.setTitle(Constantes.nomLogiciel /*+ Langue.getTraduction("annuler")*/);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
