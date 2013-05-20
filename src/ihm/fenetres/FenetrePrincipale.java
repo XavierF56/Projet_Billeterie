@@ -14,7 +14,6 @@ import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -121,9 +120,7 @@ public class FenetrePrincipale extends Fenetre {
 		Onglets.addTab("Options", null, ongletOptions, null);
 		
 		/* Onglet Statistique */
-		JPanel ongletStats = new JPanel();
-		Onglets.addTab("Statistiques", null, ongletStats, null);
-		ongletStats.add(new JLabel("Total Achats" + billeterie.getAchatsGeneral().getTotalPrix()));
+		Onglets.addTab("Statistiques", null, new OngletStats(billeterie), null);
 		
 		/* Onglet A propos */
 		JPanel ongletAPropos = new JPanel();

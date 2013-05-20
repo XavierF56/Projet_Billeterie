@@ -17,7 +17,7 @@ import modele.Billeterie;
  * 
  * TODO Continuer la Javadoc
  * TODO Bouton payer tout / donner tout / selection multiple / payer et donner (Bruno)
- * TODO Statistiques d'achat (Xavier)
+ * TODO Statistiques d'achat (Xavier) (Ameliorer display, moins crade, maj)
  * TODO Rendre disponibles d'autres options
  * TODO Anglais
  */
