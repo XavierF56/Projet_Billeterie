@@ -33,7 +33,7 @@ public class FenetreCommanderAction extends AbstractAction {
 	 * @see AbstractAction
 	 */
 	public FenetreCommanderAction(ListeObjet listeObjets, Billeterie billeterie) {
-		super(Langue.commanderBillet);
+		super(Langue.getTraduction("order_ticket"));
 		this.listeObjets = listeObjets;
 		this.billeterie = billeterie;
 	}
@@ -59,7 +59,7 @@ public class FenetreCommanderAction extends AbstractAction {
 				} catch (Exception e) {	
 					select = false;
 					JOptionPane.showMessageDialog(new JFrame(), 
-							Langue.personneSelectionne, Langue.avertissement, JOptionPane.INFORMATION_MESSAGE);
+							Langue.getTraduction("error_nobody_selected"), Langue.getTraduction("warning"), JOptionPane.INFORMATION_MESSAGE);
             	}
 				if(select) {
 					try {

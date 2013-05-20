@@ -23,7 +23,7 @@ public class FenetreAjouterAction extends AbstractAction {
      * @see AbstractAction
 	 */
 	public FenetreAjouterAction(ListeObjet listeObjet, String titre) {
-        super(Langue.ajouter);
+        super(Langue.getTraduction("add"));
     	this.listeObjet = listeObjet;
     	this.titre = titre;
     }

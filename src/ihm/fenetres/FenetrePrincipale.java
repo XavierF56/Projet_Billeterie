@@ -88,7 +88,7 @@ public class FenetrePrincipale extends Fenetre {
 		tableauPersonnes.setComponentPopupMenu(new MenuContextuelPersonne(billeterie.getListePersonnes(), tableauPersonnes));
 		ongletPersonne.add(new JScrollPane(tableauPersonnes), "Center");
 		
-		Onglets.addTab(Langue.titreOngletPersonne, null, ongletPersonne, null);
+		Onglets.addTab(Langue.getTraduction("persons"), null, ongletPersonne, null);
 		
 		
 		/* Onglet Billets */
@@ -107,12 +107,12 @@ public class FenetrePrincipale extends Fenetre {
 		tableauBillets.setComponentPopupMenu(new MenuContextuelBillet(billeterie.getListeBillets(), tableauBillets));
 		ongletBillet.add(new JScrollPane(tableauBillets), "Center");
 		
-		Onglets.addTab(Langue.titreOngletBillet, null, ongletBillet, null);
+		Onglets.addTab(Langue.getTraduction("tickets"), null, ongletBillet, null);
 		
 		
 		/* Onglet Options */
 		JPanel ongletOptions = new JPanel();
-		JCheckBox chckbxSelectionMultiple = new JCheckBox("Utiliser la selection multiple");
+		JCheckBox chckbxSelectionMultiple = new JCheckBox(Langue.getTraduction("multiple_selection"));
 		chckbxSelectionMultiple.addActionListener(new OptionSelectionMultipleListener(chckbxSelectionMultiple, billeterie));
 		ongletOptions.add(chckbxSelectionMultiple, "North");
 		ongletOptions.add(Langue.choixLangueMenu(this));
@@ -121,13 +121,13 @@ public class FenetrePrincipale extends Fenetre {
 		
 		/* Onglet Statistique */
 		ongletStats = new OngletStats(billeterie);
-		Onglets.addTab("Statistiques", null, ongletStats, null);
+		Onglets.addTab(Langue.getTraduction("statistics"), null, ongletStats, null);
 		
 		/* Onglet A propos */
 		JPanel ongletAPropos = new JPanel();
 		MultiLineLabel multiLineLabel = new MultiLineLabel(Langue.aPropos());
 		ongletAPropos.add(multiLineLabel);
-		Onglets.addTab(Langue.titreOngletAPropos, null, ongletAPropos, null);
+		Onglets.addTab(Langue.getTraduction("about") + Constantes.nomLogiciel, null, ongletAPropos, null);
 		
 		
 		this.afficher();

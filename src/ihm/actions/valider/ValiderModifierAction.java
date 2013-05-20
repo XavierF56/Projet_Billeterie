@@ -1,5 +1,6 @@
 package ihm.actions.valider;
 
+import general.Langue;
 import ihm.fenetres.FenetreModifier;
 
 import java.awt.event.ActionEvent;
@@ -21,7 +22,7 @@ public class ValiderModifierAction extends AbstractAction implements KeyListener
 	 * @param fenetreModifiePersonne
 	 */
 	public ValiderModifierAction(FenetreModifier fenetreModifiePersonne) {
-	    super("Valider");
+	    super(Langue.getTraduction("modify"));
 	    this.fenetre = fenetreModifiePersonne;
 	}
 	
@@ -34,9 +35,8 @@ public class ValiderModifierAction extends AbstractAction implements KeyListener
 			fenetre.getObjetTraite().modifie(map);
 	    	fenetre.dispose();
 		} catch (Exception e1) {
-			String message = "\"Erreur lors de la modification\"\n"
-			            + "Tous les champs n'ont pas ete renseignes\n";
-			JOptionPane.showMessageDialog(new JFrame(), message, "Erreur", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(new JFrame(), Langue.getTraduction("error_modifying"), 
+					Langue.getTraduction("error"), JOptionPane.ERROR_MESSAGE);
 		}
     }
     

@@ -12,32 +12,8 @@ import javax.swing.JComboBox;
 
 import modele.Billeterie;
 
-public class Langue {
-	public final static int FRANCAIS = 100;
-	public final static int ENGLISH = 101;
-	
-	public static int currentLangage = FRANCAIS;
-	
-	public static String titreOngletPersonne = "";
-	public static String titreOngletBillet = "";
-	public static String titreOngletAPropos = "";
-	public static String annuler = "";
-	public static String erreurAchat = "";
-	public static String cloturerCommande = "";
-	public static String rechercher = "";
-	public static String ajouter ="";
-	public static String commanderBillet = "";
-	public static String personneSelectionne = "";
-	public static String selectionVide = "";
-	public static String details ="";
-	public static String modifier ="";
-	public static String ajouterPanier ="";
-	public static String supprimer = "";
-	
+public class Langue {	
 	/* Initialises en anglais */
-	public static String erreurInattendue = "Caution, an unexpected error occurred :\n";
-	public static String erreur = "Error";
-	public static String avertissement = "Warning";
 	
 	public static Locale locale;
 	public static ResourceBundle res;
@@ -51,75 +27,27 @@ public class Langue {
 			locale = new Locale("en", "US");
 			res = ResourceBundle.getBundle("Messages", locale);
 		}
-		majLangue();
 	}
 	
 	public static String getTraduction(String traduction){
-		return res.getString(traduction);
-	}
-	
-	
-	public static void majLangue() {
-		if(locale.equals(Locale.getDefault())){
-			titreOngletPersonne = "Personnes";
-			titreOngletBillet = "Billets";
-			titreOngletAPropos = "A propos de " + Constantes.nomLogiciel;
-			annuler = "Annuler";
-			erreurAchat = "Une erreur s'est produite lors de votre achat\nLa commande a été annulée";
-			cloturerCommande = "Cloturer la commande";
-			rechercher = "Rechercher";
-			ajouter = "Ajouter";
-			commanderBillet = "Commander Billet";
-			personneSelectionne = "Vous n'avez sélectionnée personne";
-			selectionVide = "La selection est vide";
-			details = "Details";
-			modifier = "Modifier";
-			ajouterPanier = "Ajouter au panier";
-			supprimer = "Supprimer";
-			
-			erreurInattendue = "Attention, une erreur inattendue s'est produite :\n";
-			erreur = "Erreur";
-			avertissement = "Attention";
-		} else {
-			titreOngletPersonne = "Persons";
-			titreOngletBillet = "Tickets";
-			titreOngletAPropos = "About " + Constantes.nomLogiciel;
-			annuler = "Cancel";
-			erreurAchat = "An error has occurred while processing your purchase\nThe order was canceled";
-			cloturerCommande = "Close ordering";
-			rechercher = "Search";
-			ajouter = "Add";
-			commanderBillet = "Order Ticket";
-			personneSelectionne = "You have not selected person";
-			selectionVide = "The selection is empty";
-			details = "Details";
-			modifier = "Modify";
-			ajouterPanier = "Add to shopping";
-			supprimer = "Delete";
-			
-			erreurInattendue = "Caution, an unexpected error occurred :\n";
-			erreur = "Error";
-			avertissement = "Warning";
+		String result = "";
+		try {
+			result = res.getString(traduction);
+		} catch (Exception e) {
+			Constantes.afficherAvetissementException(e, getTraduction("error_traduction"));
 		}
+		return result;
 	}
-	
-	
 	
 	public static String aPropos() {
 		String text = " \n \n";
-		switch(currentLangage) {
-		case FRANCAIS:	
+		if (locale.equals(Locale.getDefault())) {	
 			text += "Version du logiciel : "+ Constantes.versionLogiciel +"\n \n" +
 					"Auteurs :\n";
-			break;
-		case ENGLISH:
+		} else {
 			text += "Software versus : "+ Constantes.versionLogiciel +"\n \n" +
 					"Authors :\n";
-			break;
-		default:
-			Constantes.afficherException(new Exception("Langage non reconnu"));
-			break;
-		}		
+		}	
 		text +=	"Raphael Baron - raphael.baron@insa-rennes.fr\n" +
 				"Xavier Fraboulet - xavier.fraboulet@insa-rennes.fr\n" +
 				"Bruno Matry - bruno.matry@insa-rennes.fr\n" +
@@ -128,7 +56,7 @@ public class Langue {
 	}
 
 	public static String erreurAffichageIcone() {
-		String res = erreur + " - ";
+		String res = "erreur "+ " - ";
 		return res;
 	}
 
@@ -139,15 +67,12 @@ public class Langue {
 		jcb.addItemListener(new ItemListener(){
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getItem().equals("Francais")) {
-					currentLangage = FRANCAIS;
 					locale = new Locale("fr", "FR");
 					res = ResourceBundle.getBundle("Messages", locale);
 				} else if (e.getItem().equals("English")) {
-					currentLangage = ENGLISH;
 					locale = new Locale("en", "US");
 					res = ResourceBundle.getBundle("Messages", locale);
 				}
-				majLangue();
 				
 				fenetrePrincipale.dispose();
 				FenetrePrincipale frame = new FenetrePrincipale(new Billeterie("database.sqlite"));

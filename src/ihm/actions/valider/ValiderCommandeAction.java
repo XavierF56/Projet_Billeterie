@@ -1,5 +1,6 @@
 package ihm.actions.valider;
 
+import general.Langue;
 import ihm.fenetres.Fenetre;
 import ihm.fenetres.FenetreCommander;
 
@@ -16,7 +17,7 @@ public class ValiderCommandeAction extends AbstractAction {
 	FenetreCommander fenetreCommande;
 
 	public ValiderCommandeAction (Commande commande, Fenetre fenetre, FenetreCommander fenetreCommande) {
-		super("Forcer");
+		super(Langue.getTraduction("force"));
 		this.commande = commande;
 		this.fenetre = fenetre;
 		this.fenetreCommande = fenetreCommande;

@@ -1,6 +1,7 @@
 package ihm.actions.valider;
 
 import general.Constantes;
+import general.Langue;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -22,7 +23,7 @@ public class ValiderDonBilletAction extends AbstractAction implements KeyListene
 		private ListeAchats listeAchats;
 		
 		public ValiderDonBilletAction(ListeAchats listeAchats, JTable tableau) {
-			super("Donner");
+			super(Langue.getTraduction("give"));
 			this.tableau = tableau;
 			this.listeAchats = listeAchats;
 		}
@@ -38,8 +39,8 @@ public class ValiderDonBilletAction extends AbstractAction implements KeyListene
 					} catch (Exception e) {
 						// Cas ou aucun billet n'est selectionne
 						select = false;
-						JOptionPane.showMessageDialog(new JFrame(), 
-								"Vous n'avez pas de selectionne de billet", "Attention", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(new JFrame(), Langue.getTraduction("error_no_ticket_selected"),
+								Langue.getTraduction("warning"), JOptionPane.INFORMATION_MESSAGE);
 	            	}
 					if(select) {
 						// Cas ou un billet est bien selectionne
@@ -48,8 +49,8 @@ public class ValiderDonBilletAction extends AbstractAction implements KeyListene
 							if(!achat.getDonne()){
 								achat.setDonner(true);
 							} else {
-								JOptionPane.showMessageDialog(new JFrame(), 
-										"Ce billet a deja ete donne", "Attention", JOptionPane.INFORMATION_MESSAGE);
+								JOptionPane.showMessageDialog(new JFrame(), Langue.getTraduction("ticket_already_given"), 
+										Langue.getTraduction("warning"), JOptionPane.INFORMATION_MESSAGE);
 							}	
 						} catch (Exception e1) {
 							Constantes.afficherException(e1);
@@ -62,23 +63,11 @@ public class ValiderDonBilletAction extends AbstractAction implements KeyListene
 		public void actionPerformed(ActionEvent e) {
 			valider();
 		}
-
-		@Override
 		public void keyTyped(KeyEvent e) {
-			// TODO Auto-generated method stub
-			
 		}
-
-		@Override
-		public void keyPressed(KeyEvent e) {
-			// TODO Auto-generated method stub
-			
+		public void keyPressed(KeyEvent e) {			
 		}
-
-		@Override
 		public void keyReleased(KeyEvent e) {
-			// TODO Auto-generated method stub
-			
 		}
 	}
 

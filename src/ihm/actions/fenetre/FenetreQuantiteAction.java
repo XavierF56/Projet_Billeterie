@@ -36,7 +36,7 @@ public class FenetreQuantiteAction extends AbstractAction {
 	 * @see AbstractAction
 	 */
 	public FenetreQuantiteAction(FenetreCommander fenetreCommander, ListeBillets listeBillets, JTable tableau, Commande commande) {
-	    super(Langue.ajouterPanier);
+	    super(Langue.getTraduction("add_to_shopping"));
 	    this.fenetreCommander = fenetreCommander;
 	    this.listeBillets = listeBillets;
 	    this.tableau = tableau;
@@ -65,7 +65,7 @@ public class FenetreQuantiteAction extends AbstractAction {
 					// Cas ou aucun billet n'est selectionne
 					select = false;
 					JOptionPane.showMessageDialog(new JFrame(), 
-							Langue.selectionVide, Langue.avertissement, JOptionPane.INFORMATION_MESSAGE);
+							Langue.getTraduction("error_empty_selection"), Langue.getTraduction("warning"), JOptionPane.INFORMATION_MESSAGE);
             	}
 				if(select) {
 					// Cas ou un billet est bien selectionne

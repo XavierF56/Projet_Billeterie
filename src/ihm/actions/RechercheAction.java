@@ -18,7 +18,7 @@ public class RechercheAction extends AbstractAction implements KeyListener {
 	private JTextField textRecherche;
 
 	public RechercheAction(ListeObjet listeObjet, JTextField textRecherche) {
-        super(Langue.rechercher);
+        super(Langue.getTraduction("search"));
         this.textRecherche = textRecherche;
     	this.listeObjet = listeObjet;
     }
