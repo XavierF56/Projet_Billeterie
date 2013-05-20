@@ -9,6 +9,7 @@ public class Billeterie {
 	private ListeBillets listeBillets = null;
 	private DataBase bdd;
 	private FenetrePrincipale fenetre;
+	private AchatsGeneral achatsGeneral;
 		
 	/********** Constructeur ************/
 	public Billeterie (String nomBdd) {
@@ -17,8 +18,8 @@ public class Billeterie {
 		} catch (Exception e) {
 			Constantes.afficherException(e);
 		}
+		achatsGeneral =  new AchatsGeneral(this);
 		listePersonnes = new ListePersonnes(this);
-		listePersonnes.metEnMemoire();// necessaire sinon nul pointer exception a cause de attributsAchats
 		listeBillets = new ListeBillets(this);
 	}
 	
@@ -41,5 +42,8 @@ public class Billeterie {
 	}
 	public void setFenetre(FenetrePrincipale fenetre) {
 		this.fenetre = fenetre;
+	}
+	public AchatsGeneral getAchatsGeneral() {
+		return achatsGeneral;
 	}
 }

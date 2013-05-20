@@ -37,8 +37,7 @@ public class ListeAchats extends ListeObjet{
 	 * Cette methode permet de récuperer la liste des attributs pour l'objet Achat
 	 */
 	private void attributs() {
-		ListePersonnes liste = billeterie.getListePersonnes();
-		this.attributs = liste.getAttributsAchats();
+		this.attributs = billeterie.getAchatsGeneral().getAttributsAchats();
 	}
 	
 	/**
