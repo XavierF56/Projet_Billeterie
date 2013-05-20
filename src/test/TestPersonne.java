@@ -46,7 +46,7 @@ public class TestPersonne extends TestCase {
 		setUp();
 		try {
 			Personne perso = (Personne) bill.getListePersonnes().getObjetById(1);
-			assertEquals(20, perso.nbBilletsAchete((Billet) bill.getListeBillets().getObjetById(101)));
+			assertEquals(20, perso.getNbBilletsAchete((Billet) bill.getListeBillets().getObjetById(101)));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -57,7 +57,7 @@ public class TestPersonne extends TestCase {
 		Personne perso;
 		try {
 			perso = (Personne) bill.getListePersonnes().getObjetById(1);
-			assertEquals(40, perso.restantAPayer(),0);
+			assertEquals(40, perso.getRestantAPayer(),0);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

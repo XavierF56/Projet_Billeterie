@@ -1,8 +1,12 @@
 package modele;
 
+/**
+ * Cette class exception gere les exceptions de type achat
+ * @author xavier
+ */
+
 @SuppressWarnings("serial")
 public class AchatException extends Exception {
-
 	private int type;
 	private String[] lien = {
 			"Cette personne a deja achete trop de ticket a prix reduit", 
@@ -16,5 +20,4 @@ public class AchatException extends Exception {
 	public String toString() {
 		return "Erreur d'achat : " + lien[type];
 	}
-
 }

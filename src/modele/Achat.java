@@ -13,6 +13,7 @@ public class Achat extends Objet {
 	private Billet billet;
 
 	
+	
 	/********** Constructeurs ************/
 	/**
 	 * Constructeur d'un achat deja present dans la bdd, 
@@ -54,6 +55,8 @@ public class Achat extends Objet {
 		}
 	}
 	
+	
+	
 	/********** Methodes ************/
 	/**
 	 * Lorsqu'une commande a ete validee, cette methode permet d'enregistrer chaque achat 
@@ -92,7 +95,6 @@ public class Achat extends Objet {
 		personne.getAchats().modifier();
 	}
 	
-	
 	/**
 	 * Cette fonction modifie le billet en diminuant sa quantite
 	 */
@@ -106,6 +108,9 @@ public class Achat extends Objet {
 		}
 	}
 	
+	/**
+	 * Cette methode supprimer un billet de la memoire ainsi que dans la ListeBillets
+	 */
 	public void supprimer() {
 		billeterie.getBdd().supprimer("achat", this.getId());
 		personne.getAchats().supprimer(this);
@@ -115,8 +120,6 @@ public class Achat extends Objet {
 		// Not Implemented
 	}
 	
-	
-	/********** Setters ************/
 	/**
 	 * Modifie l'attribut "paye" de l'achat 
 	 * Cela signifie que les billets ont ete payes
@@ -135,7 +138,9 @@ public class Achat extends Objet {
 		this.modifie();
 	}	
 	
-	/********** Getters ************/
+	
+	
+	/********** Getters sur les attributs de la BDD ************/
 	public boolean getPaye() {
 		return (Boolean) Boolean.valueOf(map.get("paye").toString());
 	}
@@ -166,6 +171,10 @@ public class Achat extends Objet {
 		}
 		return null;
 	}
+
+	
+	
+	/********** Getters & Setters ************/
 	public Personne getPersonne() {
 		return personne;
 	}

@@ -1,5 +1,13 @@
 package modele;
 
+/**
+ * Triplet de donnees permettant de stocker des informations sur un attribut de la bdd :
+ * - son nom dans la BDD
+ * - son nom dans l'IHM (affiche a l'ecran)
+ * - son type
+ * @author xavier
+ */
+
 public class Attribut {
 	private String nomBDD;
 	private String nomInterface;
@@ -11,6 +19,8 @@ public class Attribut {
 		this.nomInterface = nomInterface;
 		this.type = type;
 	}
+	
+	/********** Getters & Setters ************/
 	public String getNomBDD() {
 		return nomBDD;
 	}
@@ -20,10 +30,8 @@ public class Attribut {
 	public int getType() {
 		return type;
 	}
-	@Override
 	public String toString() {
 		return "Attribut [nomBDD=" + nomBDD + ", nomInterface=" + nomInterface
 				+ ", type=" + type + "]";
 	}
-	
 }

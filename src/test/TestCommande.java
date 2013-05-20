@@ -35,9 +35,9 @@ public class TestCommande extends TestCase {
 			System.out.println(billet1);
 			int nbBillet = billet1.getNbPlace();
 			int nbBilletSub = billet1.getNbPlaceSub();
-			int nb = personne.nbBilletsAchete(billet1);
+			int nb = personne.getNbBilletsAchete(billet1);
 			com.ajoutCommande(billet1, 5, true, true, true);
-			assertEquals(nb+5, personne.nbBilletsAchete(billet1));
+			assertEquals(nb+5, personne.getNbBilletsAchete(billet1));
 			assertEquals(nbBillet - 5, billet1.getNbPlace());
 			assertEquals(nbBilletSub - 5, billet1.getNbPlaceSub());
 		} catch (AchatException e) {
@@ -47,24 +47,24 @@ public class TestCommande extends TestCase {
 
 	public void testValider() {
 		setUp();
-		int nb = personne.nbBilletsAchete(billet1);
+		int nb = personne.getNbBilletsAchete(billet1);
 		try {
 			com.ajoutCommande(billet1, billet1.getNbPlacePerso(), true, true, true);
 		} catch (AchatException e) {
 			com.valider();
 		}
-		assertEquals(nb+billet1.getNbPlacePerso(), personne.nbBilletsAchete(billet1));
+		assertEquals(nb+billet1.getNbPlacePerso(), personne.getNbBilletsAchete(billet1));
 
 	}
 
 	public void testAnnuler() {
 		setUp();
-		int nb = personne.nbBilletsAchete(billet1);
+		int nb = personne.getNbBilletsAchete(billet1);
 		try {
 			com.ajoutCommande(billet1, billet1.getNbPlacePerso(), true, true, true);
 		} catch (AchatException e) {
 			com.annuler();
 		}
-		assertEquals(nb, personne.nbBilletsAchete(billet1));
+		assertEquals(nb, personne.getNbBilletsAchete(billet1));
 	}
 }

@@ -55,7 +55,7 @@ public class ListeAchats extends ListeObjet{
 	public void ajouter(Map<String, Object> map) {}
 	public void recherche(String chaine) {}
 	
-	/********** Methodes de base ************/
+	/********** Getters & Setters ************/
 	public List<Objet> getListeAchats() {
 		return listeObjet;
 	}

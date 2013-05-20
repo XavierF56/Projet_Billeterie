@@ -48,7 +48,7 @@ public class Personne extends Objet{
 		
 		// Enregistre la nouvelle personne dans la bdd
 		try {
-			bill.getBdd().ajoutBDD("personne", map); //NOM BDD
+			bill.getBdd().ajoutBDD("personne", map);
 		} catch (SQLException e) {
 			Constantes.afficherException(e);
 		}
@@ -89,11 +89,10 @@ public class Personne extends Objet{
 	}
 	
 	/**
-	 * Retourne le nombre de billet deja achete pour un Billet
 	 * @param billet
-	 * @return le nb de billets achetes
+	 * @return le nombre de billet deja achete pour un Billet
 	 */
-	public int nbBilletsAchete(Billet billet) {
+	public int getNbBilletsAchete(Billet billet) {
 		List<Objet> liste = this.listeAchats.getListeAchats();
 		int id = billet.getId();
 		int resul = 0;
@@ -107,10 +106,9 @@ public class Personne extends Objet{
 	}
 
 	/**
-	 * Retourne ce qui reste a payer (lorsqu'un billet n'est pas directement paye)
-	 * @return le prix
+	 * @return Retourne ce qui reste a payer (lorsqu'un billet n'est pas directement paye)
 	 */
-	public double restantAPayer() {				
+	public double getRestantAPayer() {				
 		List<Objet> liste = this.listeAchats.getListeAchats();
 		double resul = 0;
 		
@@ -124,8 +122,7 @@ public class Personne extends Objet{
 	}
 	
 	/**
-	 * Retourne le montant total des achats
-	 * @return le prix
+	 * @return Retourne le montant total des achats
 	 */
 	public double getTotalPrix() {				
 		List<Objet> liste = this.listeAchats.getListeAchats();
@@ -139,16 +136,15 @@ public class Personne extends Objet{
 	}
 	
 	/**
-	 * Retourne le nombre total des achats
-	 * @return le prix
+	 * @return le Retourne le nombre total des achats
 	 */
 	public int getTotalArticles() {				
 		return listeAchats.getNbAchats();
 	}
 	
 	/**
-	 * Retourne le montant total des achats
-	 * @return le prix
+	 * @param date
+	 * @return le montant total des achats depuis la date
 	 */
 	public double getMoisPrix(Date date) {				
 		List<Objet> liste = this.listeAchats.getListeAchats();
@@ -165,10 +161,10 @@ public class Personne extends Objet{
 	}
 	
 	/**
-	 * Retourne le montant total des achats
-	 * @return le prix
+	 * @param date
+	 * @return le nombre d'achat depuis la date
 	 */
-	public int getMoisArticles(Date date) {				
+	public int getDateArticles(Date date) {				
 		List<Objet> liste = this.listeAchats.getListeAchats();
 		int resul = 0;
 				
@@ -190,7 +186,7 @@ public class Personne extends Objet{
 		return (String) map.get("prenom");
 	}
 
-	/********** Methodes de base ************/
+	/********** Getters & Setters ************/
 	public static void setProchainId(int prochainId) {
 		Personne.prochainId = prochainId;
 	}

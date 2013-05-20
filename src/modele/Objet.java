@@ -7,18 +7,7 @@ public abstract class Objet {
 	protected Map<String,Object> map = new HashMap<String,Object>(); // le champ id n'est pas present dans cette map
 	protected Billeterie billeterie;
 
-	public Map<String, Object> getHashMap() {
-		return map;
-	}
-	
-	public int getId() {
-		return (Integer) map.get("id");
-	}
-	
-	public Billeterie getBilleterie() {
-		return this.billeterie;
-	}
-	
+	/********** Methodes abstract ************/
 	/**
 	 * Cette methode supprimer un objet de la memoire ainsi que dans la ListeObjet
 	 */
@@ -29,4 +18,16 @@ public abstract class Objet {
 	 *  @param map
 	 */
 	public abstract void modifie(Map<String, Object> map);
+	
+	
+	/********** Getters & Setters ************/
+	public int getId() {
+		return (Integer) map.get("id");
+	}
+	public Billeterie getBilleterie() {
+		return this.billeterie;
+	}
+	public Map<String, Object> getHashMap() {
+		return map;
+	}
 }

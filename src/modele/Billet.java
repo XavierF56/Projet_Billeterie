@@ -110,22 +110,22 @@ public class Billet extends Objet {
 	
 	/********** Getters sur les attributs de la BDD ************/
 	public int getNbPlace() {
-		return (Integer) map.get("nb_total"); //NOM BDD
+		return (Integer) map.get("nb_total");
 	}
 	public int getNbPlaceSub() {
-		return (Integer) map.get("nb_sub"); //NOM BDD
+		return (Integer) map.get("nb_sub");
 	}
 	public double getPrixRed() {
-		return (Double) map.get("prix_sub"); //NOM BDD
+		return (Double) map.get("prix_sub");
 	}
 	public double getPrixNor() {
-		return (Double) map.get("prix"); //NOM BDD
+		return (Double) map.get("prix");
 	}
 	public int getNbPlacePerso() {
-		return (Integer) map.get("nb_sub_par_personne"); //NOM BDD
+		return (Integer) map.get("nb_sub_par_personne");
 	}
 	
-	/********** Methodes de bases ************/
+	/********** Getters & Setters ************/
 	public static int getProchainId() {
 		return prochainId;
 	}

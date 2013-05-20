@@ -127,7 +127,7 @@ public class Commande {
 		if (billet.getNbPlace() >= qt) {
 			if(subventionne) {
 				if (billet.getNbPlaceSub() >= qt) {
-					if (billet.getNbPlacePerso() - personne.nbBilletsAchete(billet) >= qt) {
+					if (billet.getNbPlacePerso() - personne.getNbBilletsAchete(billet) >= qt) {
 						
 					} else {
 						throw new AchatException(0);
@@ -143,16 +143,13 @@ public class Commande {
 	}
 	
 	
-	/********** Getters ************/
+	/********** Getters & Setters ************/
 	public int getNbArticle() {
 		return nbArticle;
 	}
 	public double getPrixTotal() {
 		return prixTotal;
 	}
-
-	
-	/********** Methodes de base ************/
 	public String toString() {
 		return "Mon panier : " + nbArticle + " articles | " + prixTotal + " euros";
 	}
