@@ -1,5 +1,7 @@
 package ihm.actions;
 
+import general.Langue;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -16,7 +18,7 @@ public class RechercheAction extends AbstractAction implements KeyListener {
 	private JTextField textRecherche;
 
 	public RechercheAction(ListeObjet listeObjet, JTextField textRecherche) {
-        super("Rechercher");
+        super(Langue.rechercher);
         this.textRecherche = textRecherche;
     	this.listeObjet = listeObjet;
     }

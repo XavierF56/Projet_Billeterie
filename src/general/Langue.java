@@ -1,5 +1,11 @@
 package general;
 
+import java.awt.Component;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
+import javax.swing.JComboBox;
+
 public class Langue {
 	public final static int FRANCAIS = 100;
 	public final static int ENGLISH = 101;
@@ -11,8 +17,21 @@ public class Langue {
 	public static String titreOngletAPropos = "";
 	public static String annuler = "";
 	public static String erreurAchat = "";
-	public static String erreur = "";
 	public static String cloturerCommande = "";
+	public static String rechercher = "";
+	public static String ajouter ="";
+	public static String commanderBillet = "";
+	public static String personneSelectionne = "";
+	public static String selectionVide = "";
+	public static String details ="";
+	public static String modifier ="";
+	public static String ajouterPanier ="";
+	public static String supprimer = "";
+	
+	/* Initialises en anglais */
+	public static String erreurInattendue = "Caution, an unexpected error occurred :\n";
+	public static String erreur = "Error";
+	public static String avertissement = "Warning";
 	
 	
 	public static void majLangue() {
@@ -23,18 +42,45 @@ public class Langue {
 			titreOngletAPropos = "A propos de " + Constantes.nomLogiciel;
 			annuler = "Annuler";
 			erreurAchat = "Une erreur s'est produite lors de votre achat\nLa commande a été annulée";
-			erreur = "Erreur";
 			cloturerCommande = "Cloturer la commande";
+			rechercher = "Rechercher";
+			ajouter = "Ajouter";
+			commanderBillet = "Commander Billet";
+			personneSelectionne = "Vous n'avez sélectionnée personne";
+			selectionVide = "La selection est vide";
+			details = "Details";
+			modifier = "Modifier";
+			ajouterPanier = "Ajouter au panier";
+			supprimer = "Supprimer";
+			
+			erreurInattendue = "Attention, une erreur inattendue s'est produite :\n";
+			erreur = "Erreur";
+			avertissement = "Attention";
+			
 			break;
+			
 		case ENGLISH:
 			titreOngletPersonne = "Persons";
 			titreOngletBillet = "Tickets";
 			titreOngletAPropos = "About " + Constantes.nomLogiciel;
 			annuler = "Cancel";
 			erreurAchat = "An error has occurred while processing your purchase\nThe order was canceled";
-			erreur = "Error";
 			cloturerCommande = "Close ordering";
+			rechercher = "Search";
+			ajouter = "Add";
+			commanderBillet = "Order Ticket";
+			personneSelectionne = "You have not selected person";
+			selectionVide = "The selection is empty";
+			details = "Details";
+			modifier = "Modify";
+			ajouterPanier = "Add to shopping";
+			supprimer = "Delete";
+			
+			erreurInattendue = "Caution, an unexpected error occurred :\n";
+			erreur = "Error";
+			avertissement = "Warning";
 			break;
+			
 		default:
 			Constantes.afficherException(new Exception("Langage non reconnu"));
 			break;
@@ -61,5 +107,31 @@ public class Langue {
 				"Bruno Matry - bruno.matry@insa-rennes.fr\n" +
 				"Paul-Mehdy M’Rabet - paul-mehdy.mrabet@insa-rennes.fr";
 		return text;
+	}
+
+	public static String erreurAffichageIcone() {
+		String res = erreur + " - ";
+		return res;
+	}
+
+	public static Component choixLangueMenu() {
+		JComboBox<String> jcb = new JComboBox<String>();
+		jcb.addItem("Francais");
+		jcb.addItem("Anglais");
+		jcb.addItemListener(new ItemListener(){
+			public void itemStateChanged(ItemEvent e) {
+				System.out.println("Changement de langue");
+				if (e.getItem().equals("Francais")) {
+					currentLangage = FRANCAIS;
+					System.out.println("fr");
+				} else if (e.getItem().equals("Anglais")) {
+					currentLangage = ENGLISH;
+					System.out.println("eng");
+				}
+				majLangue();
+				System.out.println("maj");
+			}
+		});
+		return jcb;
 	}
 }

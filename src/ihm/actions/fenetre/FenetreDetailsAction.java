@@ -1,6 +1,7 @@
 package ihm.actions.fenetre;
 
 import general.Constantes;
+import general.Langue;
 import ihm.fenetres.FenetreDetails;
 
 import java.awt.event.ActionEvent;
@@ -26,7 +27,7 @@ public class FenetreDetailsAction extends AbstractAction {
 		 * @see AbstractAction
 		 */
 		public FenetreDetailsAction(Billeterie billeterie) {
-	        super("Details");
+	        super(Langue.details);
 	    	this.billeterie = billeterie;
 	    }
 
@@ -50,13 +51,12 @@ public class FenetreDetailsAction extends AbstractAction {
 		    } catch (Exception e1) {	
 				select = false;
 				JOptionPane.showMessageDialog(new JFrame(), 
-						"La selection est vide", "Attention", JOptionPane.INFORMATION_MESSAGE);
+						Langue.selectionVide, Langue.avertissement, JOptionPane.INFORMATION_MESSAGE);
 		    }
 	    	if(select) {
 		    	try {
 					new FenetreDetails((Personne) listeObjet.getObjetByIndex(selectionCorrige));
 				} catch (Exception e1) {
-					System.out.println(e1);
 					Constantes.afficherException(e1);
 				}
 	    	}

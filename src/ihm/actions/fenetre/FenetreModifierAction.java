@@ -1,6 +1,7 @@
 package ihm.actions.fenetre;
 
 import general.Constantes;
+import general.Langue;
 import ihm.fenetres.FenetreModifier;
 
 import java.awt.EventQueue;
@@ -26,7 +27,7 @@ public class FenetreModifierAction extends AbstractAction {
 	 * @see AbstractAction
 	 */
 	public FenetreModifierAction(ListeObjet listeObjet) {
-        super("Modifier");
+        super(Langue.modifier);
     	this.listeObjet = listeObjet;
     }
 
@@ -51,7 +52,7 @@ public class FenetreModifierAction extends AbstractAction {
 				} catch (Exception e) {	
 					select = false;
 					JOptionPane.showMessageDialog(new JFrame(), 
-							"Vous n'avez pas de selection a modifier", "Attention", JOptionPane.INFORMATION_MESSAGE);
+							Langue.selectionVide, Langue.avertissement, JOptionPane.INFORMATION_MESSAGE);
             	}
 				if(select) {
 					try {
