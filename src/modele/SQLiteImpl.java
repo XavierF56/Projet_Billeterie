@@ -1,9 +1,4 @@
-package modele;		    /*for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-if ("SystemLookAndFeel".equals(info.getName())) {
-UIManager.setLookAndFeel(info.getClassName());
-break;
-}
-}*/
+package modele;
 
 import general.Constantes;
 
@@ -20,25 +15,21 @@ import java.util.Map;
 
 
 public class SQLiteImpl implements SQLInterface{
-	// register the driver 
 	String sDriverName = "org.sqlite.JDBC";
 	
-	// now we set up a set of fairly basic string variables to use in the body of the code proper
 	String sTempDb = "database.sqlite";
 	String sJdbc = "jdbc:sqlite";
 	String sDbUrl = sJdbc + ":" + sTempDb;
 	
 	int iTimeout = 30;	 
-
 	
 	public SQLiteImpl(String name) throws Exception{
 		this.sTempDb = name;
 		Class.forName(sDriverName);
 	}
 	
-	
 	/**
-	 * Create a database connection. BTW, this method may need more param
+	 * Create a database connection.
 	 * @param name of the database
 	 * @return Connection
 	 */
@@ -55,17 +46,14 @@ public class SQLiteImpl implements SQLInterface{
 	public List<Map<String, Object>> query(String query) {
 		List<Map<String, Object>> resul = new ArrayList<Map<String, Object>>();
 		try {
-			// Creation statement
 			Connection conn = connect();
 			ResultSet res = null; 
 			Statement stmt = conn.createStatement();
 				
-			// Execute query
 			stmt.setQueryTimeout(iTimeout);
 			res = stmt.executeQuery(query);
 			resul = this.transforme(res);
 				
-			// Fermeture des statements
 			res.close(); 
 			stmt.close();
 			conn.close();
@@ -109,15 +97,14 @@ public class SQLiteImpl implements SQLInterface{
 	 */
 	public void update(String query){
 		try {
-			// Creation statement
 			Connection conn = connect();
 			Statement stmt = conn.createStatement();
 				
-			// Execute query
 			stmt.setQueryTimeout(iTimeout);
 			stmt.executeUpdate(query);
 			
-			/*for (int w = 1000; w < 2000; w++){
+			/* CREATION MULTIBLE D ENTREES POUR METHODE UPDATE
+			    for (int w = 1000; w < 2000; w++){
 				String sql = "INSERT INTO personne \nSELECT " + w + ", 'pierre', 'Durand'";
 
 				for (int y = w + 1 ; y < w + 500; y++){
@@ -128,7 +115,6 @@ public class SQLiteImpl implements SQLInterface{
 				stmt.executeUpdate(sql);
 			}*/
 				
-			// Fermeture des statements	
 			stmt.close();
 		   	conn.close();
 		} catch (SQLException e){
@@ -144,12 +130,10 @@ public class SQLiteImpl implements SQLInterface{
 	public Map<String, Integer> getAttributs (String table) {
 		Map<String, Integer> resul = new HashMap<String, Integer>();
 		try {
-			// Creation statement
 			Connection conn = connect();
 			ResultSet res = null; 
 			Statement stmt = conn.createStatement();
 			
-			// Execute query
 			stmt.setQueryTimeout(iTimeout);
 			res = stmt.executeQuery("PRAGMA table_info (" + table +")");
 						
@@ -168,7 +152,7 @@ public class SQLiteImpl implements SQLInterface{
 				    }
 				}
 			}
-			// Fermeture des statements
+			
 			res.close(); 
 		    stmt.close();
 		    conn.close();
@@ -177,17 +161,4 @@ public class SQLiteImpl implements SQLInterface{
 		}
 		return resul;
 	}
-
-
-//CREATION MULTIBLE D ENTREES POUR METHODE UPDATE
-/*for (int w = 21000; w < 32000; w++){
-	String sql = "INSERT INTO people \nSELECT " + w + ", 'pierre', 'Durand'";
-
-	for (int y = w + 1 ; y < w + 500; y++){
-		sql = sql.concat(" \n UNION \n SELECT " + y + ", 'pierre', 'durand'");
-	}
-	w += 500;
-	System.out.println(sql);
-	stmt.executeUpdate(sql);
-}*/
 }

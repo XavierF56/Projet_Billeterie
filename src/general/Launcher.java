@@ -13,11 +13,13 @@ import modele.Billeterie;
  * 
  * Note : attention a la gestion des cacateres speciaux
  * 
+ * BUG
+ * Disparition de l'icone dans bin/ihm/fenetre -> plus d'icone pour l'appli
+ * 
  * Secondaire :
  * 
  * TODO Continuer la Javadoc
  * TODO Bouton payer tout / donner tout / selection multiple / payer et donner (Bruno)
- * TODO Statistiques d'achat (Xavier) (depuis la date)
  * TODO Rendre disponibles d'autres options
  * TODO Anglais
  */
