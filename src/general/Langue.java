@@ -3,6 +3,8 @@ package general;
 import java.awt.Component;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.JComboBox;
 
@@ -32,6 +34,27 @@ public class Langue {
 	public static String erreurInattendue = "Caution, an unexpected error occurred :\n";
 	public static String erreur = "Error";
 	public static String avertissement = "Warning";
+	
+	public static Locale locale;
+	public static ResourceBundle res;
+	
+	public static void langueInit() throws Exception{
+		try {
+			locale = Locale.getDefault();
+			res = ResourceBundle.getBundle("Messages", locale);
+		} catch (Exception e) {
+			/* Cas ou la langue habituelle de l'utilisateur n'est pas geree */
+			locale = new Locale("en", "US");
+			System.out.println(locale);
+			res = ResourceBundle.getBundle("Messages", locale);
+			
+		}
+		majLangue();
+	}
+	
+	public static String getTraduction(String traduction){
+		return res.getString(traduction);
+	}
 	
 	
 	public static void majLangue() {
@@ -86,6 +109,8 @@ public class Langue {
 			break;
 		}
 	}
+	
+	
 	
 	public static String aPropos() {
 		String text = " \n \n";

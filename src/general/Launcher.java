@@ -25,6 +25,7 @@ import modele.Billeterie;
  * TODO Anglais
  */
 public class Launcher {
+
 	/**
 	 * Lance l'application
 	 * @param args arguments de la main 
@@ -33,6 +34,9 @@ public class Launcher {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					/* Langue */
+					Langue.langueInit();
+				
 					FenetrePrincipale frame = new FenetrePrincipale(new Billeterie("database.sqlite"));
 					frame.setVisible(true);
 				} catch (Exception e) {
