@@ -48,9 +48,6 @@ public class Commande {
 		this.personne = personne;
 		this.nbArticle = 0;
 		this.prixTotal = 0;
-		if(!personne.isAchatEnMem()){
-			personne.getAchats().metEnMemoire();
-		}
 	}
 	
 	/********** Methodes ************/
@@ -71,9 +68,7 @@ public class Commande {
 		map.put("subventionne", subventionne);
 		
 		Date maDateAvecFormat=new Date();
-
 		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy");
-
 		map.put("date", dateStandard.format(maDateAvecFormat));
 		
 		if (subventionne) {

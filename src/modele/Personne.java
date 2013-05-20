@@ -9,7 +9,6 @@ import java.util.Map;
 
 public class Personne extends Objet{
 	private ListeAchats achats = null;
-	private boolean achatEnMem;	// Booleen permettant de savoir si les achats sont en memoire
 	private static int prochainId; 	// id utilise par la prochaine personne creee
 
 	
@@ -24,7 +23,6 @@ public class Personne extends Objet{
 		super();
 		this.map = map;
 		this.billeterie = bill;
-		this.achatEnMem = false;
 		this.achats = new ListeAchats(this);
 	}
 	
@@ -39,7 +37,6 @@ public class Personne extends Objet{
 		super();
 		this.map = map;
 		this.billeterie = bill;
-		this.achatEnMem = false;
 
 		// Attribue un Id a cette nouvelle personne
 		if (!map.containsKey("id")) {
@@ -55,6 +52,7 @@ public class Personne extends Objet{
 		}
 		
 		this.achats = new ListeAchats(this);
+		achats.metEnMemoire();
 	}
 	
 	
@@ -94,9 +92,6 @@ public class Personne extends Objet{
 	 * @return le nb de billets achetes
 	 */
 	public int nbBilletsAchete(Billet billet) {
-		if (!achatEnMem) {
-			achats.metEnMemoire();
-		}
 		List<Objet> liste = this.achats.getListeAchats();
 		int id = billet.getId();
 		int resul = 0;
@@ -113,11 +108,7 @@ public class Personne extends Objet{
 	 * Retourne ce qui reste a payer (lorsqu'un billet n'est pas directement paye)
 	 * @return le prix
 	 */
-	public double restantAPayer() {
-		if (!achatEnMem) {
-			achats.metEnMemoire();
-		}					
-
+	public double restantAPayer() {				
 		List<Objet> liste = this.achats.getListeAchats();
 		double resul = 0;
 		
@@ -147,12 +138,6 @@ public class Personne extends Objet{
 	}
 	public ListeAchats getAchats() {
 		return this.achats;
-	}
-	public boolean isAchatEnMem() {
-		return achatEnMem;
-	}
-	public void setAchatEnMem(boolean achatEnMem) {
-		this.achatEnMem = achatEnMem;
 	}
 	public boolean equal(Personne pers) {
 		return this.getId() == pers.getId();

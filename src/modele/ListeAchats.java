@@ -35,7 +35,6 @@ public class ListeAchats extends ListeObjet{
 			listeObjet.add(new Achat(list.get(i), personne));
 			nbAchats++;
 		}
-		personne.setAchatEnMem(true);
 		sauvegarde();
 	}
 	
@@ -62,9 +61,6 @@ public class ListeAchats extends ListeObjet{
 	 */
 	public void ajouter(Achat achat) {
 		reinitialise();
-		if(!personne.isAchatEnMem()) {
-			metEnMemoire();
-		}
 		listeObjet.add(achat);
 		nbAchats++;
 		sauvegarde();
@@ -76,9 +72,6 @@ public class ListeAchats extends ListeObjet{
 	
 	/********** Methodes de base ************/
 	public List<Objet> getListeAchats() {
-		if(!personne.isAchatEnMem()) {
-			metEnMemoire();
-		}
 		return listeObjet;
 	}
 	public int getNbAchats() {
