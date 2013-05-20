@@ -51,8 +51,30 @@ public class Constantes {
 	/** Permet l'affichage graphique sous forme d'une fenetre d'erreur d'une exception e
 	 * 
 	 * @param e l'exception a afficher
+	 * @see JOptionPane
 	 */
 	public static void afficherException (Exception e) {
 		JOptionPane.showMessageDialog(new JFrame(), "Une erreur inattendue s'est produite :\n"+ e.toString(), "Erreur - Exception", JOptionPane.ERROR_MESSAGE);
-	}	 
+	}
+	
+	/** Permet l'affichage graphique sous forme d'une fenetre d'avertissement d'une exception e
+	 * 
+	 * @param e l'exception a afficher
+	 * @see JOptionPane
+	 */
+	public static void afficherAvetissementException (Exception e) {
+		JOptionPane.showMessageDialog(new JFrame(), "Attention, une erreur inattendue s'est produite :\n"+ e.toString(), "Avertissement - Exception", JOptionPane.INFORMATION_MESSAGE);
+	}
+
+	/**
+	 * Permet l'affichage graphique sous forme d'une fenetre d'avertissement d'une exception e et d'un message
+	 * 
+	 * @param e l'exception a afficher
+	 * @param message le message a affiche
+	 * @see JOptionPane
+	 */
+	public static void afficherAvetissementException(Exception e, String message) {
+		JOptionPane.showMessageDialog(new JFrame(), "Attention, une erreur inattendue s'est produite :\n" 
+	+ message + "\n" + e.toString(), "Avertissement - Exception", JOptionPane.INFORMATION_MESSAGE);
+	}
 }

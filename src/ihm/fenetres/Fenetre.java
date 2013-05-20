@@ -1,6 +1,7 @@
 package ihm.fenetres;
 
 import general.Constantes;
+import general.Langue;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -14,9 +15,9 @@ public abstract class Fenetre extends JFrame{
 	public Fenetre() {
 		// Icone de l'application : ce dernier se trouve dans le dossier ou se trouve fenetre.class
 		try {
-			setIconImage(new ImageIcon(this.getClass().getResource("ticket-icon.png")).getImage());
+			setIconImage(new ImageIcon(this.getClass().getResource("Ticket-icon.png")).getImage());
 		} catch (Exception e) {
-			Constantes.afficherException(e);
+			Constantes.afficherAvetissementException(e, Langue.erreurAffichageIcone());
 		}
 	}
 	protected void afficher() {

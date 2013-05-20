@@ -15,6 +15,7 @@ public class Langue {
 	public static String cloturerCommande = "";
 	
 	
+	
 	public static void majLangue() {
 		switch(currentLangage) {
 		case FRANCAIS:
@@ -61,5 +62,10 @@ public class Langue {
 				"Bruno Matry - bruno.matry@insa-rennes.fr\n" +
 				"Paul-Mehdy M’Rabet - paul-mehdy.mrabet@insa-rennes.fr";
 		return text;
+	}
+
+	public static String erreurAffichageIcone() {
+		String res = erreur + " - ";
+		return res;
 	}
 }

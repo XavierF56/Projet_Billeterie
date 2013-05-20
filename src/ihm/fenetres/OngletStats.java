@@ -1,7 +1,5 @@
 package ihm.fenetres;
 
-import ihm.actions.ModifierDateAction;
-
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
