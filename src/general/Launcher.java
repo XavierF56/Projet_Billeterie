@@ -19,6 +19,7 @@ import modele.Billeterie;
  * Secondaire :
  * 
  * TODO Continuer la Javadoc
+ * TODO Booleen true false -> vrai faux
  * TODO Bouton payer tout / donner tout / selection multiple / payer et donner (Bruno)
  * TODO Rendre disponibles d'autres options
  * TODO Anglais
