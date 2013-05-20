@@ -1,6 +1,7 @@
 package ihm.actions.fenetre;
 
 import general.Constantes;
+import general.Langue;
 import ihm.fenetres.FenetreCommander;
 import ihm.fenetres.FenetreQuantite;
 
@@ -35,7 +36,7 @@ public class FenetreQuantiteAction extends AbstractAction {
 	 * @see AbstractAction
 	 */
 	public FenetreQuantiteAction(FenetreCommander fenetreCommander, ListeBillets listeBillets, JTable tableau, Commande commande) {
-	    super("Ajouter au panier");
+	    super(Langue.ajouterPanier);
 	    this.fenetreCommander = fenetreCommander;
 	    this.listeBillets = listeBillets;
 	    this.tableau = tableau;
@@ -64,7 +65,7 @@ public class FenetreQuantiteAction extends AbstractAction {
 					// Cas ou aucun billet n'est selectionne
 					select = false;
 					JOptionPane.showMessageDialog(new JFrame(), 
-							"Vous n'avez pas de selectionne de billet", "Attention", JOptionPane.INFORMATION_MESSAGE);
+							Langue.selectionVide, Langue.avertissement, JOptionPane.INFORMATION_MESSAGE);
             	}
 				if(select) {
 					// Cas ou un billet est bien selectionne

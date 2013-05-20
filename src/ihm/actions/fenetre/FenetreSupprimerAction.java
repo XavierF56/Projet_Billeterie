@@ -1,5 +1,6 @@
 package ihm.actions.fenetre;
 
+import general.Langue;
 import ihm.fenetres.FenetreSupprimer;
 
 import java.awt.event.ActionEvent;
@@ -19,7 +20,7 @@ public class FenetreSupprimerAction extends AbstractAction {
      * @see AbstractAction
 	 */
 	public FenetreSupprimerAction (ListeObjet listeObjet) {
-		super("Supprimer");
+		super(Langue.supprimer);
     	this.listeObjet = listeObjet;
     }
 

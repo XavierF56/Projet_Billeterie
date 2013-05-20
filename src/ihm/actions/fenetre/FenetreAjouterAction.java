@@ -1,11 +1,13 @@
 package ihm.actions.fenetre;
 
+import general.Langue;
+import ihm.fenetres.FenetreAjouter;
+
 import java.awt.event.ActionEvent;
+
 import javax.swing.AbstractAction;
 
 import modele.ListeObjet;
-
-import ihm.fenetres.FenetreAjouter;
 
 @SuppressWarnings("serial")
 public class FenetreAjouterAction extends AbstractAction {
@@ -21,7 +23,7 @@ public class FenetreAjouterAction extends AbstractAction {
      * @see AbstractAction
 	 */
 	public FenetreAjouterAction(ListeObjet listeObjet, String titre) {
-        super("Ajouter");
+        super(Langue.ajouter);
     	this.listeObjet = listeObjet;
     	this.titre = titre;
     }

@@ -1,6 +1,7 @@
 package ihm.actions.fenetre;
 
 import general.Constantes;
+import general.Langue;
 import ihm.fenetres.FenetreCommander;
 
 import java.awt.EventQueue;
@@ -32,7 +33,7 @@ public class FenetreCommanderAction extends AbstractAction {
 	 * @see AbstractAction
 	 */
 	public FenetreCommanderAction(ListeObjet listeObjets, Billeterie billeterie) {
-		super("Commander Billet");
+		super(Langue.commanderBillet);
 		this.listeObjets = listeObjets;
 		this.billeterie = billeterie;
 	}
@@ -58,7 +59,7 @@ public class FenetreCommanderAction extends AbstractAction {
 				} catch (Exception e) {	
 					select = false;
 					JOptionPane.showMessageDialog(new JFrame(), 
-							"Vous n'avez sélectionnée personne", "Attention", JOptionPane.INFORMATION_MESSAGE);
+							Langue.personneSelectionne, Langue.avertissement, JOptionPane.INFORMATION_MESSAGE);
             	}
 				if(select) {
 					try {
