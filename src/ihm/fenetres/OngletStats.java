@@ -28,23 +28,23 @@ public class OngletStats extends JPanel {
 		gridBagConstraints = new GridBagConstraints();
 		this.setLayout(new GridBagLayout());
 		
-		label("Statistiques generales", 1);
+		label("Statistiques generales", 0, 0);
 		
-		label("Recette : ", 0);
+		label("Recette : ", 0, 1);
 		label(totalPrix);
 		
-		label("Commandes effectuees : ", 0);
+		label("Commandes effectuees : ", 0, 1);
 		label(totalArticles);
 		
 		ligneBlanche();
 		ligneBlanche();
 		
-		label("Statistiques depuis un mois", 1);
+		label("Statistiques depuis un mois              ", 0, 0);
 
-		label("Recette : ", 0);
+		label("Recette : ", 0,1);
 		label(moisPrix);
 		
-		label("Commandes effectuees : ", 0);
+		label("Commandes effectuees : ", 0,1);
 		label(moisArticles);
 	}
 	
@@ -54,16 +54,16 @@ public class OngletStats extends JPanel {
 		y++;
 	}
 	
-	private void label(String string, int i) {
-		gridBagConstraints.gridx = 0;
+	private void label(String string, int dy, int x) {
+		gridBagConstraints.gridx = x;
 		gridBagConstraints.gridy = y;
-		gridBagConstraints.anchor = GridBagConstraints.LINE_END;
+		gridBagConstraints.anchor = GridBagConstraints.LINE_START;
 		add(new JLabel(string), gridBagConstraints);
-		y += i;
+		y += dy;
 	}
 	
 	private void label(JLabel jLabel) {
-		gridBagConstraints.gridx = 1;
+		gridBagConstraints.gridx = 2;
 		gridBagConstraints.gridy = y;
 		gridBagConstraints.anchor = GridBagConstraints.LINE_START;
 		add(jLabel, gridBagConstraints);
