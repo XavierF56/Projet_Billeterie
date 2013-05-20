@@ -9,7 +9,7 @@ public class Billeterie {
 	private ListeBillets listeBillets = null;
 	private DataBase bdd;
 	private FenetrePrincipale fenetre;
-	private AchatsGeneral achatsGeneral;
+	private AchatsGeneral achatsGeneral = null;
 		
 	/********** Constructeur ************/
 	public Billeterie (String nomBdd) {
@@ -19,8 +19,8 @@ public class Billeterie {
 			Constantes.afficherException(e);
 		}
 		achatsGeneral =  new AchatsGeneral(this);
-		listePersonnes = new ListePersonnes(this);
 		listeBillets = new ListeBillets(this);
+		listePersonnes = new ListePersonnes(this);
 	}
 	
 	/********** Methodes ************/

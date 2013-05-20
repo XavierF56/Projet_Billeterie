@@ -151,4 +151,8 @@ public abstract class ListeObjet extends AbstractTableModel{
 	public String toString () {
 		return listeObjet.toString();
 	}
+	public List<Objet> getListeObjet() {
+		reinitialise();
+		return listeObjet;
+	}
 }

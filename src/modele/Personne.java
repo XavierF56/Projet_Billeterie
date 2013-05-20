@@ -3,12 +3,13 @@ package modele;
 import general.Constantes;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 
 public class Personne extends Objet{
-	private ListeAchats achats = null;
+	private ListeAchats listeAchats = null;
 	private static int prochainId; 	// id utilise par la prochaine personne creee
 
 	
@@ -23,7 +24,8 @@ public class Personne extends Objet{
 		super();
 		this.map = map;
 		this.billeterie = bill;
-		this.achats = new ListeAchats(this);
+		this.listeAchats = new ListeAchats(this);
+		listeAchats.metEnMemoire();
 	}
 	
 	/**
@@ -51,8 +53,8 @@ public class Personne extends Objet{
 			Constantes.afficherException(e);
 		}
 		
-		this.achats = new ListeAchats(this);
-		achats.metEnMemoire();
+		this.listeAchats = new ListeAchats(this);
+		listeAchats.metEnMemoire();
 	}
 	
 	
@@ -92,7 +94,7 @@ public class Personne extends Objet{
 	 * @return le nb de billets achetes
 	 */
 	public int nbBilletsAchete(Billet billet) {
-		List<Objet> liste = this.achats.getListeAchats();
+		List<Objet> liste = this.listeAchats.getListeAchats();
 		int id = billet.getId();
 		int resul = 0;
 		
@@ -109,12 +111,71 @@ public class Personne extends Objet{
 	 * @return le prix
 	 */
 	public double restantAPayer() {				
-		List<Objet> liste = this.achats.getListeAchats();
+		List<Objet> liste = this.listeAchats.getListeAchats();
 		double resul = 0;
 		
 		for (int i = 0; i < liste.size(); i++) {
 			if (! ((Achat) liste.get(i)).getPaye()) {
 				resul += ((Achat) liste.get(i)).getPrixTotal();
+			}
+		}
+
+		return resul;
+	}
+	
+	/**
+	 * Retourne le montant total des achats
+	 * @return le prix
+	 */
+	public double getTotalPrix() {				
+		List<Objet> liste = this.listeAchats.getListeAchats();
+		double resul = 0;
+		
+		for (int i = 0; i < liste.size(); i++) {
+				resul += ((Achat) liste.get(i)).getPrixTotal();
+		}
+
+		return resul;
+	}
+	
+	/**
+	 * Retourne le nombre total des achats
+	 * @return le prix
+	 */
+	public int getTotalArticles() {				
+		return listeAchats.getNbAchats();
+	}
+	
+	/**
+	 * Retourne le montant total des achats
+	 * @return le prix
+	 */
+	public double getMoisPrix(Date date) {				
+		List<Objet> liste = this.listeAchats.getListeAchats();
+		double resul = 0;
+				
+		for (int i = 0; i < liste.size(); i++) {
+			Achat achat = ((Achat) liste.get(i));
+			if (date.before(achat.getDate())) {	
+				resul += achat.getPrixTotal();
+			}
+		}
+
+		return resul;
+	}
+	
+	/**
+	 * Retourne le montant total des achats
+	 * @return le prix
+	 */
+	public int getMoisArticles(Date date) {				
+		List<Objet> liste = this.listeAchats.getListeAchats();
+		int resul = 0;
+				
+		for (int i = 0; i < liste.size(); i++) {
+			Achat achat = ((Achat) liste.get(i));
+			if (date.before(achat.getDate())) {	
+				resul += 1;
 			}
 		}
 
@@ -137,7 +198,7 @@ public class Personne extends Objet{
 		return prochainId;
 	}
 	public ListeAchats getAchats() {
-		return this.achats;
+		return this.listeAchats;
 	}
 	public boolean equal(Personne pers) {
 		return this.getId() == pers.getId();

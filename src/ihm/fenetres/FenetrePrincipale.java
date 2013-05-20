@@ -14,6 +14,7 @@ import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -113,21 +114,22 @@ public class FenetrePrincipale extends Fenetre {
 		
 		
 		/* Onglet Options */
-		JPanel OngletOptions = new JPanel();
+		JPanel ongletOptions = new JPanel();
 		JCheckBox chckbxSelectionMultiple = new JCheckBox("Utiliser la selection multiple");
 		chckbxSelectionMultiple.addActionListener(new OptionSelectionMultipleListener(chckbxSelectionMultiple, billeterie));
-		OngletOptions.add(chckbxSelectionMultiple, "North");
-		Onglets.addTab("Options", null, OngletOptions, null);
+		ongletOptions.add(chckbxSelectionMultiple, "North");
+		Onglets.addTab("Options", null, ongletOptions, null);
 		
 		/* Onglet Statistique */
-		JPanel OngletStats = new JPanel();
-		Onglets.addTab("Statistiques", null, OngletStats, null);
+		JPanel ongletStats = new JPanel();
+		Onglets.addTab("Statistiques", null, ongletStats, null);
+		ongletStats.add(new JLabel("Total Achats" + billeterie.getAchatsGeneral().getTotalPrix()));
 		
 		/* Onglet A propos */
-		JPanel OngletAPropos = new JPanel();
+		JPanel ongletAPropos = new JPanel();
 		MultiLineLabel multiLineLabel = new MultiLineLabel(Langue.aPropos());
-		OngletAPropos.add(multiLineLabel);
-		Onglets.addTab(Langue.titreOngletAPropos, null, OngletAPropos, null);
+		ongletAPropos.add(multiLineLabel);
+		Onglets.addTab(Langue.titreOngletAPropos, null, ongletAPropos, null);
 		
 		
 		this.afficher();

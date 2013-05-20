@@ -3,6 +3,7 @@ package modele;
 import general.Constantes;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -36,5 +37,51 @@ public class AchatsGeneral {
 
 	public List<Attribut> getAttributsAchats() {
 		return attributsAchats;
+	}
+	
+	public double getTotalPrix() {
+		List<Objet> list = billeterie.getListePersonnes().getListeObjet();
+		double result = 0;
+		for (int i = 0; i < list.size(); i++) {
+			Personne personne = (Personne) list.get(i);
+			result += personne.getTotalPrix();
+		}
+		return result;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public double getMoisPrix() {
+		List<Objet> list = billeterie.getListePersonnes().getListeObjet();
+		Date date = new Date();
+		date.setMonth((date.getMonth()-1)%12);
+		double result = 0;
+		for (int i = 0; i < list.size(); i++) {
+			Personne personne = (Personne) list.get(i);
+			result += personne.getMoisPrix(date);
+		}
+		return result;
+	}
+	
+	public int getTotalArticles() {
+		List<Objet> list = billeterie.getListePersonnes().getListeObjet();
+		int result = 0;
+		for (int i = 0; i < list.size(); i++) {
+			Personne personne = (Personne) list.get(i);
+			result += personne.getTotalArticles();
+		}
+		return result;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public int getMoisArticle() {
+		List<Objet> list = billeterie.getListePersonnes().getListeObjet();
+		Date date = new Date();
+		date.setMonth((date.getMonth()-1)%12);
+		int result = 0;
+		for (int i = 0; i < list.size(); i++) {
+			Personne personne = (Personne) list.get(i);
+			result += personne.getMoisArticles(date);
+		}
+		return result;
 	}
 }

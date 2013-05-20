@@ -3,6 +3,9 @@ package modele;
 import general.Constantes;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 public class Achat extends Objet {
@@ -153,6 +156,15 @@ public class Achat extends Objet {
 	}
 	public double getPrixTotal() {
 		return (Double) map.get("prix_total");
+	}
+	public Date getDate() {
+		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			return dateStandard.parse((String) map.get("date"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	public Personne getPersonne() {
 		return personne;
