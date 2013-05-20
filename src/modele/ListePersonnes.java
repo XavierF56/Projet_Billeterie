@@ -11,6 +11,8 @@ import java.util.Set;
 
 public class ListePersonnes extends ListeObjet {
 	private static final long serialVersionUID = 1L;
+	protected List<Attribut> attributsAchats = new ArrayList<Attribut>();
+
 	
 	/********** Constructeur ************/
 	/**
@@ -20,8 +22,7 @@ public class ListePersonnes extends ListeObjet {
 	public ListePersonnes(Billeterie billeterie) {
 		super(billeterie);
 		attributs();
-		this.metEnMemoire(); 
-
+		attributsAchats();
 	}
 	
 	/********** Methodes ************/
@@ -125,5 +126,26 @@ public class ListePersonnes extends ListeObjet {
 			}
 		}
 		return retour;
+	}
+	
+	/**
+	 * Methode permettant de mettre en memoire les attributs de l'objet Achat
+	 */
+	private void attributsAchats() {
+		Map<String, Integer> map = billeterie.getBdd().getAttributs("Achat");
+		List<Attribut> resul = new ArrayList<Attribut>();
+		resul.add(new Attribut("Description", "Description", Constantes.STRING));
+		
+		Set<String> set = map.keySet();
+		Iterator<String> it = set.iterator();
+		while (it.hasNext()) {
+			String nom = it.next();
+			resul.add(new Attribut(nom, nom, map.get(nom)));
+		}
+		this.attributsAchats = resul;
+	}
+
+	public List<Attribut> getAttributsAchats() {
+		return attributsAchats;
 	}
 }

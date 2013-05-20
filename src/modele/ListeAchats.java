@@ -1,13 +1,8 @@
 package modele;
 
 
-import general.Constantes;
-
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class ListeAchats extends ListeObjet{
 	private static final long serialVersionUID = 1L;
@@ -39,20 +34,11 @@ public class ListeAchats extends ListeObjet{
 	}
 	
 	/**
-	 * Cette methode permet de récuperer la liste des attributs pour l'objet Personne
+	 * Cette methode permet de récuperer la liste des attributs pour l'objet Achat
 	 */
 	private void attributs() {
-		Map<String, Integer> map = billeterie.getBdd().getAttributs("Achat");
-		List<Attribut> resul = new ArrayList<Attribut>();
-		resul.add(new Attribut("Description", "Description", Constantes.STRING));
-		
-		Set<String> set = map.keySet();
-		Iterator<String> it = set.iterator();
-		while (it.hasNext()) {
-			String nom = it.next();
-			resul.add(new Attribut(nom, nom, map.get(nom)));
-		}
-		this.attributs = resul;
+		ListePersonnes liste = billeterie.getListePersonnes();
+		this.attributs = liste.getAttributsAchats();
 	}
 	
 	/**

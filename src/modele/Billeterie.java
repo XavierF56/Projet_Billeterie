@@ -3,14 +3,10 @@ package modele;
 import general.Constantes;
 import ihm.fenetres.FenetrePrincipale;
 
-/*
- * This is the main class where you can launch the application
- * 
- */
 
 public class Billeterie {
-	private ListePersonnes listePersonnes;
-	private ListeBillets listeBillets;
+	private ListePersonnes listePersonnes = null;
+	private ListeBillets listeBillets = null;
 	private DataBase bdd;
 	private FenetrePrincipale fenetre;
 		
@@ -22,6 +18,7 @@ public class Billeterie {
 			Constantes.afficherException(e);
 		}
 		listePersonnes = new ListePersonnes(this);
+		listePersonnes.metEnMemoire();// necessaire sinon nul pointer exception a cause de attributsAchats
 		listeBillets = new ListeBillets(this);
 	}
 	
