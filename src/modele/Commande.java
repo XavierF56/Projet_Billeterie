@@ -1,6 +1,8 @@
 package modele;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,6 +69,13 @@ public class Commande {
 		map.put("paye", paye);
 		map.put("donne", donne);
 		map.put("subventionne", subventionne);
+		
+		Date maDateAvecFormat=new Date();
+
+		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy");
+
+		map.put("date", dateStandard.format(maDateAvecFormat));
+		
 		if (subventionne) {
 			map.put("prix_unitaire", billet.getPrixRed());
 			map.put("prix_total", billet.getPrixRed() * qt);
