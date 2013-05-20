@@ -119,6 +119,10 @@ public class FenetrePrincipale extends Fenetre {
 		OngletOptions.add(chckbxSelectionMultiple, "North");
 		Onglets.addTab("Options", null, OngletOptions, null);
 		
+		/* Onglet Statistique */
+		JPanel OngletStats = new JPanel();
+		Onglets.addTab("Statistiques", null, OngletStats, null);
+		
 		/* Onglet A propos */
 		JPanel OngletAPropos = new JPanel();
 		MultiLineLabel multiLineLabel = new MultiLineLabel(Langue.aPropos());
