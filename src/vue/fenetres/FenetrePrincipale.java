@@ -4,10 +4,13 @@ import general.Constantes;
 import general.Langue;
 
 import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -115,11 +118,24 @@ public class FenetrePrincipale extends Fenetre {
 		
 		
 		/* Onglet Options */
+		GridBagConstraints gridBagConstraints = new GridBagConstraints();
 		JPanel ongletOptions = new JPanel();
-		JCheckBox chckbxSelectionMultiple = new JCheckBox(Langue.getTraduction("multiple_selection"));
+		ongletOptions.setLayout(new GridBagLayout());
+		gridBagConstraints.anchor = GridBagConstraints.LINE_START;
+		
+		gridBagConstraints.gridx = 0;
+		gridBagConstraints.gridy = 0;
+		ongletOptions.add(new JLabel(Langue.getTraduction("option_multiselection")), gridBagConstraints);
+		gridBagConstraints.gridx = 1;
+		JCheckBox chckbxSelectionMultiple = new JCheckBox("");
 		chckbxSelectionMultiple.addActionListener(new OptionSelectionMultipleListener(chckbxSelectionMultiple, billeterie));
-		ongletOptions.add(chckbxSelectionMultiple, "North");
-		ongletOptions.add(Langue.choixLangueMenu(this), "Center");
+		ongletOptions.add(chckbxSelectionMultiple, gridBagConstraints);
+		
+		gridBagConstraints.gridy = 1;
+		gridBagConstraints.gridx = 0;
+		ongletOptions.add(new JLabel(Langue.getTraduction("option_language")), gridBagConstraints);
+		gridBagConstraints.gridx = 1;
+		ongletOptions.add(Langue.choixLangueMenu(this), gridBagConstraints);
 		
 		Onglets.addTab("Options", null, ongletOptions, null);
 		
