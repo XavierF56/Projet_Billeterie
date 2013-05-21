@@ -31,6 +31,7 @@ public class FenetreCommander extends Fenetre {
 		
 		//Initialisation des attributs de la classe
 		this.setTitle("Commande de billet pour "+ personne);
+		this.setSize(800,600);
 		this.contentPane = new JPanel();
 		this.southPane = new JPanel();
 		this.commande = new Commande(personne);
@@ -58,7 +59,7 @@ public class FenetreCommander extends Fenetre {
 		contentPane.add(southPane, "South");
 		
 		//Affichage de la fenetre
-		this.afficherDialog();
+		this.afficherFenetre();
 	}
 	
 	public void majLabel() {
