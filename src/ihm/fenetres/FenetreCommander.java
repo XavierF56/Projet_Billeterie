@@ -2,6 +2,8 @@ package ihm.fenetres;
 
 import ihm.actions.CloturerCommanderAction;
 import ihm.barresOutils.BarreOutilsCommande;
+import ihm.barresOutils.MenuContextuelCommande;
+import ihm.barresOutils.MenuContextuelPersonne;
 
 import java.awt.BorderLayout;
 
@@ -57,6 +59,9 @@ public class FenetreCommander extends Fenetre {
 		southPane.add(label);
 		southPane.add(new JButton(new CloturerCommanderAction(this, commande)));	
 		contentPane.add(southPane, "South");
+		
+		//Menu Contextuel
+		tableauBillets.setComponentPopupMenu(new MenuContextuelCommande(this, billeterie.getListeBillets(), tableauBillets, commande));
 		
 		//Affichage de la fenetre
 		this.afficherFenetre();
