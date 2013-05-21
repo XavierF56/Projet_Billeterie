@@ -9,18 +9,19 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import modele.Billeterie;
 
 public class Langue {	
-	/* Initialises en anglais */
 	
-	public static Locale locale;
-	public static ResourceBundle res;
+	private static Locale locale;
+	private static ResourceBundle res;
 	
 	public static void langueInit() throws Exception{
 		try {
-			locale = Locale.getDefault();
+			locale = new Locale(Proprietes.getOption("langage"), Proprietes.getOption("country"));
 			res = ResourceBundle.getBundle("Messages", locale);
 		} catch (Exception e) {
 			/* Cas ou la langue habituelle de l'utilisateur n'est pas geree */
@@ -34,7 +35,8 @@ public class Langue {
 		try {
 			result = res.getString(traduction);
 		} catch (Exception e) {
-			Constantes.afficherAvetissementException(e, getTraduction("error_traduction"));
+			JOptionPane.showMessageDialog(new JFrame(), "Error_unexpected" 
+					+ "Error : traduction" + "\n" + e.toString(), "warning", JOptionPane.INFORMATION_MESSAGE);
 		}
 		return result;
 	}
