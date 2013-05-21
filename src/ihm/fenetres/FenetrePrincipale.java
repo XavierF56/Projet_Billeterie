@@ -28,7 +28,6 @@ import modele.ListeBillets;
 import modele.ListePersonnes;
 
 
-
 @SuppressWarnings("serial")
 public class FenetrePrincipale extends Fenetre {
 	
@@ -118,7 +117,7 @@ public class FenetrePrincipale extends Fenetre {
 		JCheckBox chckbxSelectionMultiple = new JCheckBox(Langue.getTraduction("multiple_selection"));
 		chckbxSelectionMultiple.addActionListener(new OptionSelectionMultipleListener(chckbxSelectionMultiple, billeterie));
 		ongletOptions.add(chckbxSelectionMultiple, "North");
-		ongletOptions.add(Langue.choixLangueMenu(this));
+		ongletOptions.add(Langue.choixLangueMenu(this), "Center");
 		
 		Onglets.addTab("Options", null, ongletOptions, null);
 		
@@ -145,5 +144,4 @@ public class FenetrePrincipale extends Fenetre {
 	public OngletStats getOngletStats() {
 		return ongletStats;
 	}
-	
 }
