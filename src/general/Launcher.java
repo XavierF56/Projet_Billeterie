@@ -35,6 +35,7 @@ public class Launcher {
 			public void run() {
 				try {
 					/* Langue */
+					Proprietes.proprietesInit();
 					Langue.langueInit();
 				
 					FenetrePrincipale frame = new FenetrePrincipale(new Billeterie("database.sqlite"));

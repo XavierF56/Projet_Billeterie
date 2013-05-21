@@ -54,7 +54,8 @@ public class Constantes {
 	 * @see JOptionPane
 	 */
 	public static void afficherException (Exception e) {
-		JOptionPane.showMessageDialog(new JFrame(), Langue.erreurInattendue + e.toString(), Langue.erreur, JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(new JFrame(), Langue.getTraduction("error_unexpected") + e.toString(), 
+				Langue.getTraduction("error"), JOptionPane.ERROR_MESSAGE);
 	}
 	
 	/** Permet l'affichage graphique sous forme d'une fenetre d'avertissement d'une exception e
@@ -63,7 +64,8 @@ public class Constantes {
 	 * @see JOptionPane
 	 */
 	public static void afficherAvetissementException (Exception e) {
-		JOptionPane.showMessageDialog(new JFrame(), Langue.erreurInattendue  + e.toString(), Langue.avertissement, JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(new JFrame(), Langue.getTraduction("error_unexpected")  + e.toString(), 
+				Langue.getTraduction("warning"), JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	/**
@@ -74,7 +76,7 @@ public class Constantes {
 	 * @see JOptionPane
 	 */
 	public static void afficherAvetissementException(Exception e, String message) {
-		JOptionPane.showMessageDialog(new JFrame(), Langue.erreurInattendue 
-	+ message + "\n" + e.toString(), Langue.avertissement, JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(new JFrame(), Langue.getTraduction("error_unexpected") 
+	+ message + "\n" + e.toString(), Langue.getTraduction("warning"), JOptionPane.INFORMATION_MESSAGE);
 	}
 }

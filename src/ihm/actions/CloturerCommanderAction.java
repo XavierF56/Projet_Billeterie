@@ -17,7 +17,7 @@ public class CloturerCommanderAction extends AbstractAction {
 	private Commande commande;
 	
 	public CloturerCommanderAction(Fenetre fenetre, Commande commande) {
-	    super(Langue.cloturerCommande);
+	    super(Langue.getTraduction("ok"));
 	    this.fenetre = fenetre;
 	    this.commande = commande;
 	}
@@ -27,7 +27,7 @@ public class CloturerCommanderAction extends AbstractAction {
 			commande.cloturer();
 			fenetre.dispose();
 		} catch (Exception e1) {
-			JOptionPane.showMessageDialog(new JFrame(), Langue.erreurAchat, Langue.erreur, JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(new JFrame(), Langue.getTraduction("error_purchase"), Langue.getTraduction("error"), JOptionPane.ERROR_MESSAGE);
 			fenetre.dispose();
 		}
 	}

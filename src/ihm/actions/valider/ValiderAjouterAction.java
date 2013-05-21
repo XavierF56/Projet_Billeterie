@@ -1,5 +1,6 @@
 package ihm.actions.valider;
 
+import general.Langue;
 import ihm.fenetres.FenetreAjouter;
 
 import java.awt.event.ActionEvent;
@@ -25,7 +26,7 @@ public class ValiderAjouterAction extends AbstractAction implements KeyListener 
 	 * @param listeObjet
 	 */
     public ValiderAjouterAction(FenetreAjouter fenetre, ListeObjet listeObjet) {
-        super("Valider");
+        super(Langue.getTraduction("validate"));
         this.fenetre = fenetre;
         this.listeObjet = listeObjet;
     }
@@ -40,9 +41,8 @@ public class ValiderAjouterAction extends AbstractAction implements KeyListener 
         	fenetre.dispose();
 		} catch (Exception e1) {
 			System.out.println(e1);
-			String message = "\"Erreur lors de l'ajout\"\n"
-		            + "Tous les champs n'ont pas ete renseignes\n";
-			JOptionPane.showMessageDialog(new JFrame(), message, "Dialog", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(new JFrame(), Langue.getTraduction("error_adding"),
+					Langue.getTraduction("error"), JOptionPane.ERROR_MESSAGE);
 		}
     }
     

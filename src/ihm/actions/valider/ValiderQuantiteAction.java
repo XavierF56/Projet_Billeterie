@@ -1,5 +1,6 @@
 package ihm.actions.valider;
 
+import general.Langue;
 import ihm.fenetres.FenetreCommander;
 import ihm.fenetres.FenetreCommanderForcer;
 import ihm.fenetres.FenetreQuantite;
@@ -36,7 +37,7 @@ public class ValiderQuantiteAction extends AbstractAction implements KeyListener
 		 * @see Billet
 		 */
 		public ValiderQuantiteAction(FenetreCommander fenetreCommande, FenetreQuantite fenetreQuantite, Commande commande, Billet billet) {
-		    super("Valider");
+		    super(Langue.getTraduction("validate"));
 		    this.fenetreCommande = fenetreCommande;
 		    this.fenetre = fenetreQuantite;
 		    this.billet = billet;
@@ -58,8 +59,8 @@ public class ValiderQuantiteAction extends AbstractAction implements KeyListener
 			} catch (AchatException ae) {
 				new FenetreCommanderForcer(commande, ae.toString(), fenetreCommande);
 			} catch (Exception e1) {
-				String message = "Erreur dans le choix de la quantité\nCommande de ce billet annulée \n"+e1;
-				JOptionPane.showMessageDialog(new JFrame(), message, "Erreur", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(new JFrame(), Langue.getTraduction("error_quantity_choice") + e1,
+						Langue.getTraduction("error") , JOptionPane.ERROR_MESSAGE);
 			}
 			fenetre.dispose();
 			

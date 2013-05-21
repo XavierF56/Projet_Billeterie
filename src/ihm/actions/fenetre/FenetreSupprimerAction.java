@@ -20,7 +20,7 @@ public class FenetreSupprimerAction extends AbstractAction {
      * @see AbstractAction
 	 */
 	public FenetreSupprimerAction (ListeObjet listeObjet) {
-		super(Langue.supprimer);
+		super(Langue.getTraduction("delete"));
     	this.listeObjet = listeObjet;
     }
 

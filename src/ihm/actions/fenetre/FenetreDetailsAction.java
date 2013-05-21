@@ -27,7 +27,7 @@ public class FenetreDetailsAction extends AbstractAction {
 		 * @see AbstractAction
 		 */
 		public FenetreDetailsAction(Billeterie billeterie) {
-	        super(Langue.details);
+	        super(Langue.getTraduction("details"));
 	    	this.billeterie = billeterie;
 	    }
 
@@ -51,7 +51,7 @@ public class FenetreDetailsAction extends AbstractAction {
 		    } catch (Exception e1) {	
 				select = false;
 				JOptionPane.showMessageDialog(new JFrame(), 
-						Langue.selectionVide, Langue.avertissement, JOptionPane.INFORMATION_MESSAGE);
+						Langue.getTraduction("error_empty_selection"), Langue.getTraduction("warning"), JOptionPane.INFORMATION_MESSAGE);
 		    }
 	    	if(select) {
 		    	try {

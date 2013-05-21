@@ -27,7 +27,7 @@ public class FenetreModifierAction extends AbstractAction {
 	 * @see AbstractAction
 	 */
 	public FenetreModifierAction(ListeObjet listeObjet) {
-        super(Langue.modifier);
+        super(Langue.getTraduction("modify"));
     	this.listeObjet = listeObjet;
     }
 
@@ -52,7 +52,7 @@ public class FenetreModifierAction extends AbstractAction {
 				} catch (Exception e) {	
 					select = false;
 					JOptionPane.showMessageDialog(new JFrame(), 
-							Langue.selectionVide, Langue.avertissement, JOptionPane.INFORMATION_MESSAGE);
+							Langue.getTraduction("error_empty_selection"), Langue.getTraduction("warning"), JOptionPane.INFORMATION_MESSAGE);
             	}
 				if(select) {
 					try {
