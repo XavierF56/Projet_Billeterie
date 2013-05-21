@@ -32,6 +32,7 @@ public class Langue {
 			/* Langue par defaut */
 			locale = new Locale("en", "US");
 			res = ResourceBundle.getBundle("Messages", locale);
+			
 		}
 	}
 	
