@@ -1,5 +1,6 @@
 package ihm.fenetres;
 
+import general.Langue;
 import ihm.actions.CloturerCommanderAction;
 import ihm.barresOutils.BarreOutilsCommande;
 import ihm.barresOutils.MenuContextuelCommande;
@@ -37,7 +38,7 @@ public class FenetreCommander extends Fenetre {
 		this.billeterie = billeterie;
 		
 		//Initialisation de la fenetre
-		this.setTitle("Commande de billet pour "+ personne);
+		this.setTitle(Langue.getTraduction("ticket_order_for") + personne);
 		this.setSize(800,600);
 		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
 		this.add(contentPane);

@@ -37,7 +37,7 @@ public class OngletStats extends JPanel {
 		
 		label(Langue.getTraduction("statistics_generals"), 0, 0);
 		
-		label("Recette : ", 0, 1);
+		label(Langue.getTraduction("recipe"), 0, 1);
 		label(totalPrix);
 		
 		label(Langue.getTraduction("orders_fulfilled"), 0, 1);
@@ -50,10 +50,10 @@ public class OngletStats extends JPanel {
 		gridBagConstraints.gridy = y;
 		add(intituleMois, gridBagConstraints);
 		
-		label("Recette : ", 0,1);
+		label(Langue.getTraduction("recipe"), 0,1);
 		label(moisPrix);
 		
-		label("Commandes effectuees : ", 0,1);
+		label(Langue.getTraduction("orders_fulfilled"), 0,1);
 		label(moisArticles);
 		
 		ligneBlanche();
@@ -74,7 +74,7 @@ public class OngletStats extends JPanel {
 
 		gridBagConstraints.gridx = 0;
 		gridBagConstraints.gridy = y;
-		add(new JLabel("Modifier la date pour la gestion des statistiques : "), gridBagConstraints);
+		add(new JLabel(Langue.getTraduction("statistics_modify_date")), gridBagConstraints);
 		
 		field.setText(billeterie.getAchatsGeneral().getDate());
 		field.addKeyListener(listener);
@@ -109,7 +109,7 @@ public class OngletStats extends JPanel {
 	
 	
 	public void majLabel() {
-		intituleMois.setText("Statistiques depuis le "+ billeterie.getAchatsGeneral().getDate() +"              ");
+		intituleMois.setText(Langue.getTraduction("statistics_since") + billeterie.getAchatsGeneral().getDate() +"              ");
 		totalArticles.setText(billeterie.getAchatsGeneral().getTotalArticles() + "");
 		moisArticles.setText(billeterie.getAchatsGeneral().getMoisArticle() + "");
 		totalPrix.setText(billeterie.getAchatsGeneral().getTotalPrix() + " euros");
@@ -117,7 +117,7 @@ public class OngletStats extends JPanel {
 	}
 	
 	private void createLabel() {
-		intituleMois = new JLabel("Statistiques depuis le "+ billeterie.getAchatsGeneral().getDate() +"              ");
+		intituleMois = new JLabel(Langue.getTraduction("statistics_since") + billeterie.getAchatsGeneral().getDate() +"              ");
 		totalArticles = new JLabel(billeterie.getAchatsGeneral().getTotalArticles() + "");
 		moisArticles = new JLabel(billeterie.getAchatsGeneral().getMoisArticle() + "");
 		totalPrix = new JLabel(billeterie.getAchatsGeneral().getTotalPrix() + " euros");
