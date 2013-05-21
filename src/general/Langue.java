@@ -19,12 +19,17 @@ public class Langue {
 	private static Locale locale;
 	private static ResourceBundle res;
 	
-	public static void langueInit() throws Exception{
+	/**
+	 * Initialisation de la langue
+	 * @throws Exception
+	 */
+	public static void langueInit() {
 		try {
+			/* Recuperation de la langue dans le fichier de proprietes */
 			locale = new Locale(Proprietes.getOption("langage"), Proprietes.getOption("country"));
 			res = ResourceBundle.getBundle("Messages", locale);
 		} catch (Exception e) {
-			/* Cas ou la langue habituelle de l'utilisateur n'est pas geree */
+			/* Langue par defaut */
 			locale = new Locale("en", "US");
 			res = ResourceBundle.getBundle("Messages", locale);
 		}
@@ -42,26 +47,14 @@ public class Langue {
 	}
 	
 	public static String aPropos() {
-		String text = " \n \n";
-		if (locale.equals(Locale.getDefault())) {	
-			text += "Version du logiciel : "+ Constantes.versionLogiciel +"\n \n" +
-					"Auteurs :\n";
-		} else {
-			text += "Software versus : "+ Constantes.versionLogiciel +"\n \n" +
-					"Authors :\n";
-		}	
-		text +=	"Raphael Baron - raphael.baron@insa-rennes.fr\n" +
-				"Xavier Fraboulet - xavier.fraboulet@insa-rennes.fr\n" +
-				"Bruno Matry - bruno.matry@insa-rennes.fr\n" +
-				"Paul-Mehdy M’Rabet - paul-mehdy.mrabet@insa-rennes.fr";
-		return text;
+		return Langue.getTraduction("software_versus") + Constantes.versionLogiciel + Langue.getTraduction("authors");
 	}
 
-	public static String erreurAffichageIcone() {
-		String res = "erreur "+ " - ";
-		return res;
-	}
-
+	/**
+	 * Gestion du menu deroulant du choix des langues
+	 * @param fenetrePrincipale
+	 * @return
+	 */
 	public static Component choixLangueMenu(final FenetrePrincipale fenetrePrincipale) {
 		JComboBox<String> jcb = new JComboBox<String>();
 		jcb.addItem("Francais");

@@ -1,5 +1,6 @@
 package ihm.fenetres;
 
+import general.Langue;
 import ihm.actions.ModifierDateAction;
 
 import java.awt.GridBagConstraints;
@@ -34,12 +35,12 @@ public class OngletStats extends JPanel {
 		gridBagConstraints = new GridBagConstraints();
 		this.setLayout(new GridBagLayout());
 		
-		label("Statistiques generales", 0, 0);
+		label(Langue.getTraduction("statistics_generals"), 0, 0);
 		
 		label("Recette : ", 0, 1);
 		label(totalPrix);
 		
-		label("Commandes effectuees : ", 0, 1);
+		label(Langue.getTraduction("orders_fulfilled"), 0, 1);
 		label(totalArticles);
 		
 		ligneBlanche();

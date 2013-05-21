@@ -14,7 +14,6 @@ public abstract class Fenetre extends JFrame{
 		try {
 			setIconImage(new ImageIcon(this.getClass().getResource("ticket-icon.png")).getImage());
 		} catch (Exception e) {
-			// Note : la classeLangue n'est pas utilisable car initialisee dans la fenetrePrincipale uniquement
 			//TODO Constantes.afficherAvetissementException(e, "An error occurred while loading the application icon");
 		}
 	}
