@@ -1,6 +1,7 @@
 package ihm.fenetres;
 
 import ihm.barresOutils.BarreOutilsDetails;
+import ihm.barresOutils.MenuContextuelDetails;
 
 import java.awt.BorderLayout;
 
@@ -34,7 +35,7 @@ public class FenetreDetails extends Fenetre {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		this.add(contentPane);
 		
-		//Restant a payer
+		// Label restant a payer
 		contentPane.add(new JLabel("Restant a payer : " + personne.getRestantAPayer() + "euros"), "North");
 
 		// Tableau
@@ -50,7 +51,12 @@ public class FenetreDetails extends Fenetre {
 		TableColumn col = tableau.getColumnModel().getColumn(0);        
         col.setPreferredWidth(200);
 		
+        // BarreOutils
 		contentPane.add(new BarreOutilsDetails(this, personne.getAchats(), tableau), "South");
+		
+		// Menu Contextuel
+		tableau.setComponentPopupMenu(new MenuContextuelDetails(personne.getAchats(), tableau));
+				
 		
 		this.afficherFenetre();
 	}
