@@ -1,6 +1,5 @@
 package general;
 
-import ihm.fenetres.FenetrePrincipale;
 
 import java.awt.Component;
 import java.awt.event.ItemEvent;
@@ -11,6 +10,8 @@ import java.util.ResourceBundle;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
+import vue.fenetres.FenetrePrincipale;
 
 import modele.Billeterie;
 

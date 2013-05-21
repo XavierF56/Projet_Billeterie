@@ -1,7 +1,7 @@
 package modele;
 
+import vue.fenetres.FenetrePrincipale;
 import general.Constantes;
-import ihm.fenetres.FenetrePrincipale;
 
 
 public class Billeterie {
