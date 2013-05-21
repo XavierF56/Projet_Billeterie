@@ -3,7 +3,6 @@ package ihm.fenetres;
 import ihm.actions.CloturerCommanderAction;
 import ihm.barresOutils.BarreOutilsCommande;
 import ihm.barresOutils.MenuContextuelCommande;
-import ihm.barresOutils.MenuContextuelPersonne;
 
 import java.awt.BorderLayout;
 
@@ -32,12 +31,14 @@ public class FenetreCommander extends Fenetre {
 	public FenetreCommander(Personne personne, Billeterie billeterie) {
 		
 		//Initialisation des attributs de la classe
-		this.setTitle("Commande de billet pour "+ personne);
-		this.setSize(800,600);
 		this.contentPane = new JPanel();
 		this.southPane = new JPanel();
 		this.commande = new Commande(personne);
 		this.billeterie = billeterie;
+		
+		//Initialisation de la fenetre
+		this.setTitle("Commande de billet pour "+ personne);
+		this.setSize(800,600);
 		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
 		this.add(contentPane);
 		
