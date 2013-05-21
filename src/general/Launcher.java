@@ -1,8 +1,9 @@
 package general;
 
-import ihm.fenetres.FenetrePrincipale;
 
 import java.awt.EventQueue;
+
+import vue.fenetres.FenetrePrincipale;
 
 import modele.Billeterie;
 
