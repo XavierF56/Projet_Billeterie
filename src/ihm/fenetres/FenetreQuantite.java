@@ -29,7 +29,7 @@ public class FenetreQuantite extends Fenetre {
 		contentPane.add(panelChoixQuantite, "Center");
 		contentPane.add(new JButton(new ValiderQuantiteAction(fenetreCommander, this, commande, billet)), "South");
 		
-		this.afficher();
+		this.afficherDialog();
 	}
 
 	public boolean getSubventionne() {

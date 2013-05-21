@@ -39,6 +39,6 @@ public class FenetreSupprimer extends Fenetre {
 		JLabel label = new JLabel("Voulez-vous vraiment supprimer ?");
 		fenetre.add(label, "Center");
 		
-		this.afficher();
+		this.afficherDialog();
 	}
 }

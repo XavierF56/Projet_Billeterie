@@ -43,7 +43,7 @@ public class FenetreModifier extends Fenetre {
 		panelSouth.add(button);
 		fenetre.add(panelSouth, "South");
 		
-		this.afficher();
+		this.afficherDialog();
 	}
 	
 	public Champs getChamps() {

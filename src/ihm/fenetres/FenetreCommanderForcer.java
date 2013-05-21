@@ -33,6 +33,6 @@ public class FenetreCommanderForcer extends Fenetre {
 		JLabel label = new JLabel(erreur +"\n Voulez-vous quand meme valider cet achat ?");
 		fenetre.add(label, "Center");
 		
-		this.afficher();
+		this.afficherDialog();
 	}
 }

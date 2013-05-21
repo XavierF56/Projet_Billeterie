@@ -41,7 +41,7 @@ public class FenetreAjouter extends Fenetre {
 		panelSouth.add(button);
 		contentPane.add(panelSouth, "South");
 		
-		this.afficher();
+		this.afficherDialog();
 	}
 	
 	public Champs getChamps() {

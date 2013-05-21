@@ -58,7 +58,7 @@ public class FenetreCommander extends Fenetre {
 		contentPane.add(southPane, "South");
 		
 		//Affichage de la fenetre
-		this.afficher();
+		this.afficherDialog();
 	}
 	
 	public void majLabel() {

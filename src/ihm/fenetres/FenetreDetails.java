@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
 
 import modele.ListeAchats;
@@ -27,6 +28,7 @@ public class FenetreDetails extends Fenetre {
 		
 		//Fenetre
 		this.setTitle("Informations sur les achat de " + personne);
+		this.setSize(800,600);
 		contentPane = new JPanel();
 		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -45,9 +47,12 @@ public class FenetreDetails extends Fenetre {
 		sorter.setSortsOnUpdates(true);
 		contentPane.add(new JScrollPane(tableau), "Center");
 		
+		TableColumn col = tableau.getColumnModel().getColumn(0);        
+        col.setPreferredWidth(200);
+		
 		contentPane.add(new BarreOutilsDetails(this, personne.getAchats(), tableau), "South");
 		
-		this.afficher();
+		this.afficherFenetre();
 	}
 	
 	public Personne getPersonne() {

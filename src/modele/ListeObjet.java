@@ -134,7 +134,6 @@ public abstract class ListeObjet extends AbstractTableModel{
     	return listeObjet.get(rowIndex).getHashMap().get(attributs.get(columnIndex).getNomBDD());    	
     }
     
-    
 	/********** getters & Setters ************/
 	public Billeterie getBilleterie() {
 		return billeterie;

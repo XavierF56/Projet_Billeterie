@@ -61,6 +61,7 @@ public class FenetrePrincipale extends Fenetre {
 		
 		/* Fenetre */
 		this.setTitle(Constantes.nomLogiciel /*+ Langue.getTraduction("annuler")*/);
+		setSize(1000, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -81,6 +82,8 @@ public class FenetrePrincipale extends Fenetre {
 		TableRowSorter<ListePersonnes> sorter = new TableRowSorter<ListePersonnes>((ListePersonnes) tableauPersonnes.getModel());   
 		tableauPersonnes.setRowSorter(sorter);
 		sorter.setSortsOnUpdates(true);
+		
+		tableauPersonnes.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS );
 		
 		ongletPersonne.setLayout(new BorderLayout(0, 0));
 		BarreOutilsPersonnes barre = new BarreOutilsPersonnes(billeterie);
@@ -130,7 +133,7 @@ public class FenetrePrincipale extends Fenetre {
 		Onglets.addTab(Langue.getTraduction("about") + Constantes.nomLogiciel, null, ongletAPropos, null);
 		
 		
-		this.afficher();
+		this.afficherFenetre();
 	}
 
 	public JTable getTableauPersonnes() {
