@@ -27,11 +27,11 @@ public class Langue {
 	public static void langueInit() {
 		try {
 			/* Recuperation de la langue dans le fichier de proprietes */
-			locale = new Locale(Proprietes.getOption("langage"), Proprietes.getOption("country"));
+			locale = new Locale(Proprietes.getOption("langage"));
 			res = ResourceBundle.getBundle("Messages", locale);
 		} catch (Exception e) {
 			/* Langue par defaut */
-			locale = new Locale("en", "US");
+			locale = new Locale("en");
 			res = ResourceBundle.getBundle("Messages", locale);
 			
 		}
@@ -59,21 +59,27 @@ public class Langue {
 	 */
 	public static Component choixLangueMenu(final FenetrePrincipale fenetrePrincipale) {
 		JComboBox<String> jcb = new JComboBox<String>();
-		jcb.addItem("Francais");
-		jcb.addItem("English");
+		
+		jcb.addItem(Proprietes.currentLangage);
+		for(String s : Proprietes.otherLangages){
+			jcb.addItem(s);
+		}
+		
 		jcb.addItemListener(new ItemListener(){
 			public void itemStateChanged(ItemEvent e) {
-				if (e.getItem().equals("Francais")) {
-					locale = new Locale("fr", "FR");
-					res = ResourceBundle.getBundle("Messages", locale);
-				} else if (e.getItem().equals("English")) {
-					locale = new Locale("en", "US");
-					res = ResourceBundle.getBundle("Messages", locale);
+				for(String s : Proprietes.otherLangages){
+					if(e.getItem().equals(s)) {
+						System.out.println(s);
+						locale = new Locale(Proprietes.getOption(s));
+						res = ResourceBundle.getBundle("Messages", locale);
+						
+						Proprietes.setCurrentLangage(s);
+						System.out.println(s);
+						fenetrePrincipale.dispose();
+						FenetrePrincipale frame = new FenetrePrincipale(new Billeterie("database.sqlite"));
+						frame.setVisible(true);
+					}
 				}
-				
-				fenetrePrincipale.dispose();
-				FenetrePrincipale frame = new FenetrePrincipale(new Billeterie("database.sqlite"));
-				frame.setVisible(true);
 			}
 		});
 		return jcb;
