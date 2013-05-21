@@ -42,7 +42,7 @@ public class Langue {
 			result = res.getString(traduction);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(new JFrame(), "Error_unexpected" 
-					+ "Error : traduction" + "\n" + e.toString(), "warning", JOptionPane.INFORMATION_MESSAGE);
+					+ "Error : traduction of " + traduction + "\n" + e.toString(), "Warning", JOptionPane.INFORMATION_MESSAGE);
 		}
 		return result;
 	}
