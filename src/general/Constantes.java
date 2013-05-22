@@ -15,7 +15,7 @@ public class Constantes {
 	public final static int BOOLEAN = 3;
 	public final static int STRING = 4;
 	public final static Object[] options = {"Annuler", "Non", "Oui"};
-	public final static String nomLogiciel = "Titi et gros Tickets";
+	public final static String nomLogiciel = "Billetterie";
 	public final static String versionLogiciel = "Alpha - 0.7";
 	
 	
