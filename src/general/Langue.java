@@ -50,8 +50,8 @@ public class Langue {
 	}
 	
 	public static String aPropos() {
-		return Langue.getTraduction("software_versus") + Proprietes.getOption("versionLogiciel") 
-				+ Langue.getTraduction("authors") + Proprietes.getOption("authors_names");
+		return "\n \n" + Langue.getTraduction("software_versus") + " : " + Proprietes.getOption("versionLogiciel") 
+				+ "\n \n" + Langue.getTraduction("authors") + " :\n" + Proprietes.getOption("authors_names");
 	}
 
 	/**
