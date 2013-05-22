@@ -74,7 +74,6 @@ public class Langue {
 						res = ResourceBundle.getBundle("Messages", locale);
 						
 						Proprietes.setCurrentLangage(s);
-						System.out.println(s);
 						fenetrePrincipale.dispose();
 						FenetrePrincipale frame = new FenetrePrincipale(new Billeterie("database.sqlite"));
 						frame.setVisible(true);
