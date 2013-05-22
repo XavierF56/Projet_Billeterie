@@ -1,7 +1,5 @@
 package modele;
 
-import general.Constantes;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -22,6 +20,7 @@ public class ListePersonnes extends ListeObjet {
 		super(billeterie);
 		attributs();
 		metEnMemoire();
+		table = "personne";
 	}
 	
 	/********** Methodes ************/
@@ -67,32 +66,7 @@ public class ListePersonnes extends ListeObjet {
 		this.attributs = resul;
 	}
 	
-	/**
-	 * Renvoie l'ensemble des personnes lies a la recherche
-	 * @param chaine a trouver dans les attributs de l'objet
-	 * @return la liste des billets
-	 */
-	public void recherche(String chaine) {
-		reinitialise();
-		List<Objet> resul= new ArrayList<Objet>();
-		
-		String query = requete(chaine);
-		List<Map<String, Object>> list = billeterie.getBdd().getObjets(query);
-		if(!list.isEmpty()) {
-			for (int i = 0; i< listeObjet.size(); i++) {
-				int Id = listeObjet.get(i).getId();
-				boolean stop = false;
-				for (int j = 0; j < list.size() && !stop; j++) {
-					if (Id == (Integer)list.get(j).get("id")) {
-						resul.add(listeObjet.get(i));
-						stop = true;
-					}
-				}
-			}
-			listeObjet = resul;
-		}
-		fireTableDataChanged();
-	}
+	
 	
 	/**
 	 * Cette methode permet d'ajouter une Personne dans la liste
@@ -104,29 +78,5 @@ public class ListePersonnes extends ListeObjet {
 		listeObjet.add(personne);
 		fireTableDataChanged();
 		sauvegarde();
-	}
-	
-	/**
-	 * Methode creant une requete pour la recherche
-	 */
-	private String requete (String chaine) {
-		String retour = "SELECT id FROM personne WHERE ";
-		boolean premier = true;
-		List<Attribut> list = getAttributs();
-		String[] st = chaine.split("\\s+");
-		
-		for (int j = 0; j < st.length; j++) {
-			for (int i = 0; i < list.size() ; i++) {
-				if(list.get(i).getType() == Constantes.STRING) {
-					String aAjouter = list.get(i).getNomBDD() + " Like '"+st[j]+"%' ";
-					if(!premier) {
-						retour = retour.concat(" OR ");
-					}
-					retour = retour.concat(aAjouter);
-					premier = false;
-				}
-			}
-		}
-		return retour;
 	}
 }

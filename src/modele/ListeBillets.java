@@ -1,7 +1,5 @@
 package modele;
 
-import general.Constantes;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -21,7 +19,8 @@ public class ListeBillets extends ListeObjet{
 	public ListeBillets(Billeterie billeterie) {
 		super(billeterie);
 		attributs();
-		this.metEnMemoire(); 
+		this.metEnMemoire();
+		table = "billet";
 	}
 	
 	
@@ -67,35 +66,7 @@ public class ListeBillets extends ListeObjet{
 		}
 		this.attributs = resul;
 	}
-	
-	/**
-	 * Renvoie l'ensemble des billets lies a la recherche
-	 * @param chaine a trouver dans le billet
-	 * @return la liste des billets
-	 */
-	public void recherche(String chaine) {
-		reinitialise();
-		List<Objet> resul= new ArrayList<Objet>();
-		
-		String query = requete(chaine);
-		List<Map<String, Object>> list = billeterie.getBdd().getObjets(query);
-		
-		if(!list.isEmpty()) {
-			for (int i = 0; i< listeObjet.size(); i++) {
-				int Id = listeObjet.get(i).getId();
-				boolean stop = false;
-				for (int j = 0; j < list.size() && !stop; j++) {
-					if (Id == (Integer)list.get(j).get("id")) {
-						resul.add(listeObjet.get(i));
-						stop = true;
-					}
-				}
-			}
-			listeObjet = resul;
-		}
-		
-		fireTableDataChanged();
-	}
+
 	
 	/**
 	 * Cette methode permet d'ajouter un Billet dans la liste
@@ -107,26 +78,5 @@ public class ListeBillets extends ListeObjet{
 		listeObjet.add(billet);
 		fireTableDataChanged();
 		sauvegarde();
-	}
-	
-	/**
-	 * Methode creant une requete pour la recherche
-	 */
-	public String requete (String chaine) {
-		String retour = "SELECT id FROM billet WHERE ";//NOM BDD
-		boolean premier = true;
-		List<Attribut> list = getAttributs();
-		
-		for (int i = 0; i < list.size() ; i++) {
-			if(list.get(i).getType() == Constantes.STRING) {
-				String aAjouter = list.get(i).getNomBDD() + " Like '"+chaine+"%' ";
-				if(!premier) {
-					retour = retour.concat(" OR ");
-				}
-				retour = retour.concat(aAjouter);
-				premier = false;
-			}
-		}
-		return retour;
 	}
 }

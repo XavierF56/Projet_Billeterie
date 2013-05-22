@@ -1,6 +1,8 @@
 package modele;
 
 
+import general.Constantes;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +17,7 @@ public abstract class ListeObjet extends AbstractTableModel{
 	protected List<Objet> listeObjetSauvegarde = new ArrayList<Objet>();
 	protected JTable tableau;
 	protected List<Attribut> attributs = new ArrayList<Attribut>();
+	protected String table;
 
 	
 	/**
@@ -31,11 +34,37 @@ public abstract class ListeObjet extends AbstractTableModel{
 	public abstract void metEnMemoire();
 	
 	/**
-	 * Renvoie l'ensemble des billets lies a la recherche
-	 * @param chaine la chaine a trouver dans le billet
+	 * Ajoute un objet dans la liste
+	 * @param objet
+	 */
+	public abstract void ajouter(Map<String, Object> map);
+	
+	/**
+	 * Renvoie l'ensemble des personnes lies a la recherche
+	 * @param chaine a trouver dans les attributs de l'objet
 	 * @return la liste des billets
 	 */
-	public abstract void recherche(String chaine);
+	public void recherche(String chaine) {
+		reinitialise();
+		List<Objet> resul= new ArrayList<Objet>();
+		
+		String query = requete(chaine);
+		List<Map<String, Object>> list = billeterie.getBdd().getObjets(query);
+		if(!list.isEmpty()) {
+			for (int i = 0; i< listeObjet.size(); i++) {
+				int Id = listeObjet.get(i).getId();
+				boolean stop = false;
+				for (int j = 0; j < list.size() && !stop; j++) {
+					if (Id == (Integer)list.get(j).get("id")) {
+						resul.add(listeObjet.get(i));
+						stop = true;
+					}
+				}
+			}
+			listeObjet = resul;
+		}
+		fireTableDataChanged();
+	}
 	
 	/**
 	 * Cette methode met a jour le modele de donnes lors de suppressions
@@ -55,12 +84,6 @@ public abstract class ListeObjet extends AbstractTableModel{
 		fireTableDataChanged();
 		sauvegarde();
 	}
-	
-	/**
-	 * Ajoute un objet dans la liste
-	 * @param objet
-	 */
-	public abstract void ajouter(Map<String, Object> map);
 	
 	/**
 	 * @param index
@@ -117,6 +140,31 @@ public abstract class ListeObjet extends AbstractTableModel{
 	public void reinitialise() {
 		listeObjet = listeObjetSauvegarde;
 		sauvegarde();
+	}
+	
+	/**
+	 * @param chaine provenant de la recherche
+	 * @return la chaine qui permet de realiser la requete pour la recherche
+	 */
+	private String requete (String chaine) {
+		String retour = "SELECT id FROM " + table + " WHERE ";
+		boolean premier = true;
+		List<Attribut> list = getAttributs();
+		String[] st = chaine.split("\\s+");
+		
+		for (int j = 0; j < st.length; j++) {
+			for (int i = 0; i < list.size() ; i++) {
+				if(list.get(i).getType() == Constantes.STRING) {
+					String aAjouter = list.get(i).getNomBDD() + " Like '"+st[j]+"%' ";
+					if(!premier) {
+						retour = retour.concat(" OR ");
+					}
+					retour = retour.concat(aAjouter);
+					premier = false;
+				}
+			}
+		}
+		return retour;
 	}
 	
 	

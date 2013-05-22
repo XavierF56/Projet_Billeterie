@@ -15,6 +15,8 @@ public class ListeAchats extends ListeObjet{
 		super(perso.getBilleterie());
 		this.personne = perso;
 		attributs();
+		table = "achat";
+
 	}
 	
 	
@@ -53,7 +55,7 @@ public class ListeAchats extends ListeObjet{
 	
 	/** Methodes non implementees */
 	public void ajouter(Map<String, Object> map) {}
-	public void recherche(String chaine) {}
+	public String requete (String chaine){return null;}
 	
 	/********** Getters & Setters ************/
 	public List<Objet> getListeAchats() {
