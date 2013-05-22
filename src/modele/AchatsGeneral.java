@@ -43,6 +43,14 @@ public class AchatsGeneral {
 		List<Attribut> resul = new ArrayList<Attribut>();
 		resul.add(new Attribut("Description", "Description", Constantes.STRING));
 		
+		resul.add(new Attribut("quantite", "Quantite", map.get("quantite"))); map.remove("quantite");
+		resul.add(new Attribut("prix_unitaire", "Prix Unite", map.get("prix_unitaire"))); map.remove("prix_unitaire");
+		resul.add(new Attribut("prix_total", "Prix Total", map.get("prix_total"))); map.remove("prix_total");
+		resul.add(new Attribut("date", "Date", map.get("date"))); map.remove("date");
+		resul.add(new Attribut("paye", "Paye", map.get("paye"))); map.remove("paye");
+		resul.add(new Attribut("donne", "Donne", map.get("donne"))); map.remove("donne");
+		resul.add(new Attribut("subventionne", "Subventionne", map.get("subventionne"))); map.remove("subventionne");
+		
 		Set<String> set = map.keySet();
 		Iterator<String> it = set.iterator();
 		while (it.hasNext()) {
