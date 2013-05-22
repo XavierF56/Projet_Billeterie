@@ -42,8 +42,8 @@ public class Langue {
 		try {
 			result = res.getString(traduction);
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(new JFrame(), "Error_unexpected" 
-					+ "Error : traduction of " + traduction + "\n" + e.toString(), "Warning", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(new JFrame(), "Error unexpected\n" 
+					+ "Error : traduction of \"" + traduction + "\"\n" + e.toString(), "Warning", JOptionPane.INFORMATION_MESSAGE);
 		}
 		return result;
 	}
