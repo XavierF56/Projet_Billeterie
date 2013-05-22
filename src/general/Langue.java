@@ -44,6 +44,7 @@ public class Langue {
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(new JFrame(), "Error unexpected\n" 
 					+ "Error : traduction of \"" + traduction + "\"\n" + e.toString(), "Warning", JOptionPane.INFORMATION_MESSAGE);
+			result = traduction;
 		}
 		return result;
 	}
