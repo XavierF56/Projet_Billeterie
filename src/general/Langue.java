@@ -27,7 +27,7 @@ public class Langue {
 	public static void langueInit() {
 		try {
 			/* Recuperation de la langue dans le fichier de proprietes */
-			locale = new Locale(Proprietes.getOption("langage"));
+			locale = new Locale(Proprietes.getOption(Proprietes.getOption("langage_curr")));
 			res = ResourceBundle.getBundle("Messages", locale);
 		} catch (Exception e) {
 			/* Langue par defaut */

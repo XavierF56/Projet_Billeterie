@@ -16,8 +16,9 @@ public class Proprietes {
 		res = ResourceBundle.getBundle("Options", locale);
 		currentLangage = Proprietes.getOption("langage_curr");
 		otherLangages = new ArrayList<String>();
-		otherLangages.add(Proprietes.getOption("other_langage_0"));
-		otherLangages.add(Proprietes.getOption("other_langage_1"));
+		for(int i = 0 ; i < Integer.decode(Proprietes.getOption("nb_langages"))-1 ; i++){
+			otherLangages.add(Proprietes.getOption("other_langage_"+i));
+		}
 	}
 	
 	public static String getOption(String option){
