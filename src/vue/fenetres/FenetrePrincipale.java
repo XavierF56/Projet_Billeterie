@@ -49,7 +49,7 @@ public class FenetrePrincipale extends Fenetre {
 		
 		this.billeterie = billets;
 		billeterie.setFenetre(this);
-		
+
 		/* Theme */
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());

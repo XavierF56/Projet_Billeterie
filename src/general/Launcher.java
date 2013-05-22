@@ -33,7 +33,7 @@ public class Launcher {
 					/* Langue */
 					Proprietes.proprietesInit();
 					Langue.langueInit();
-					
+
 					FenetrePrincipale frame = new FenetrePrincipale(new Billeterie("database.sqlite"));
 					frame.setVisible(true);
 				} catch (Exception e) {
