@@ -113,15 +113,18 @@ public class ListePersonnes extends ListeObjet {
 		String retour = "SELECT id FROM personne WHERE ";
 		boolean premier = true;
 		List<Attribut> list = getAttributs();
+		String[] st = chaine.split("\\s+");
 		
-		for (int i = 0; i < list.size() ; i++) {
-			if(list.get(i).getType() == Constantes.STRING) {
-				String aAjouter = list.get(i).getNomBDD() + " Like '"+chaine+"%' ";
-				if(!premier) {
-					retour = retour.concat(" OR ");
+		for (int j = 0; j < st.length; j++) {
+			for (int i = 0; i < list.size() ; i++) {
+				if(list.get(i).getType() == Constantes.STRING) {
+					String aAjouter = list.get(i).getNomBDD() + " Like '"+st[j]+"%' ";
+					if(!premier) {
+						retour = retour.concat(" OR ");
+					}
+					retour = retour.concat(aAjouter);
+					premier = false;
 				}
-				retour = retour.concat(aAjouter);
-				premier = false;
 			}
 		}
 		return retour;
