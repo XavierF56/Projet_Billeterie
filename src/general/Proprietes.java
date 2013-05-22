@@ -17,6 +17,7 @@ public class Proprietes {
 		currentLangage = Proprietes.getOption("langage_curr");
 		otherLangages = new ArrayList<String>();
 		otherLangages.add(Proprietes.getOption("other_langage_0"));
+		otherLangages.add(Proprietes.getOption("other_langage_1"));
 	}
 	
 	public static String getOption(String option){
