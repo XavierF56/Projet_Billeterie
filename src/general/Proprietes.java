@@ -14,9 +14,11 @@ public class Proprietes {
 	public static void proprietesInit() throws Exception{
 		locale = new Locale("");
 		res = ResourceBundle.getBundle("Options", locale);
-		currentLangage = "Francais";
+		currentLangage = Proprietes.getOption("langage_curr");
 		otherLangages = new ArrayList<String>();
-		otherLangages.add("English");
+		for(int i = 0 ; i < Integer.decode(Proprietes.getOption("nb_langages"))-1 ; i++){
+			otherLangages.add(Proprietes.getOption("other_langage_"+i));
+		}
 	}
 	
 	public static String getOption(String option){

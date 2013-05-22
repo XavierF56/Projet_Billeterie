@@ -1,6 +1,8 @@
 package vue.fenetres;
 
 
+import general.Langue;
+
 import java.awt.BorderLayout;
 
 import javax.swing.BorderFactory;
@@ -16,8 +18,9 @@ import modele.Commande;
 @SuppressWarnings("serial")
 public class FenetreCommanderForcer extends Fenetre {
 	public FenetreCommanderForcer(Commande commande, String erreur, FenetreCommander fenetreCommande) {
+		
 		//Fenetre
-		this.setTitle("Arreur lors de l'achat");
+		this.setTitle(Langue.getTraduction("error_buying"));
 		JPanel fenetre = new JPanel(new BorderLayout());
 		fenetre.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
 		this.add(fenetre);
@@ -31,7 +34,7 @@ public class FenetreCommanderForcer extends Fenetre {
 		fenetre.add(panelSouth, "South");
 		
 		//Message
-		JLabel label = new JLabel(erreur +"\n Voulez-vous quand meme valider cet achat ?");
+		JLabel label = new JLabel(erreur + "\n " + Langue.getTraduction("validate_anyway"));
 		fenetre.add(label, "Center");
 		
 		this.afficherDialog();

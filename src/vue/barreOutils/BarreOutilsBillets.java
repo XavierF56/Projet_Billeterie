@@ -1,5 +1,7 @@
 package vue.barreOutils;
 
+import general.Langue;
+
 import java.awt.FlowLayout;
 
 
@@ -27,7 +29,8 @@ public class BarreOutilsBillets extends JPanel {
 		setLayout(new FlowLayout(FlowLayout.LEFT));
 		this.add(textRecherche);
 		this.add(new JButton(new RechercheAction(billeterie.getListeBillets(), textRecherche)));
-		this.add(new JButton(new FenetreAjouterAction(billeterie.getListeBillets(), "Ajouter un nouveau billet")));
+		this.add(new JButton(new FenetreAjouterAction(billeterie.getListeBillets(), 
+				Langue.getTraduction("add_new_ticket"))));
 		this.add(new JButton(new FenetreModifierAction(billeterie.getListeBillets())));
 		this.add(new JButton(new FenetreSupprimerAction(billeterie.getListeBillets())));
 	}

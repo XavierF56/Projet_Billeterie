@@ -36,12 +36,12 @@ public class OngletStats extends JPanel {
 		gridBagConstraints = new GridBagConstraints();
 		this.setLayout(new GridBagLayout());
 		
-		label(Langue.getTraduction("statistics_generals"), 0, 0);
+		label(Langue.getTraduction("statistics_generals") + "        ", 0, 0);
 		
-		label(Langue.getTraduction("recipe"), 0, 1);
+		label(Langue.getTraduction("recipe") + " : ", 0, 1);
 		label(totalPrix);
 		
-		label(Langue.getTraduction("orders_fulfilled"), 0, 1);
+		label(Langue.getTraduction("orders_fulfilled") + " :         ", 0, 1);
 		label(totalArticles);
 		
 		ligneBlanche();
@@ -51,16 +51,18 @@ public class OngletStats extends JPanel {
 		gridBagConstraints.gridy = y;
 		add(intituleMois, gridBagConstraints);
 		
-		label(Langue.getTraduction("recipe"), 0,1);
+		modifierDate();
+		
+		label(Langue.getTraduction("recipe") + " : ", 0, 1);
 		label(moisPrix);
 		
-		label(Langue.getTraduction("orders_fulfilled"), 0,1);
+		label(Langue.getTraduction("orders_fulfilled") + " :         ", 0, 1);
 		label(moisArticles);
 		
 		ligneBlanche();
 		ligneBlanche();
 		
-		modifierDate();
+		
 	}
 	
 	private void modifierDate() {
@@ -73,10 +75,6 @@ public class OngletStats extends JPanel {
         JFormattedTextField field = new JFormattedTextField(formatter);
         ModifierDateAction listener = new ModifierDateAction(billeterie, field);
 
-		gridBagConstraints.gridx = 0;
-		gridBagConstraints.gridy = y;
-		add(new JLabel(Langue.getTraduction("statistics_modify_date")), gridBagConstraints);
-		
 		field.setText(billeterie.getAchatsGeneral().getDate());
 		field.addKeyListener(listener);
 		gridBagConstraints.gridx = 1;
@@ -84,6 +82,7 @@ public class OngletStats extends JPanel {
 		
 		gridBagConstraints.gridx = 2;
 		add(new JButton(listener), gridBagConstraints);
+		y++;
 	}
 	
 	private void ligneBlanche() {
@@ -110,7 +109,7 @@ public class OngletStats extends JPanel {
 	
 	
 	public void majLabel() {
-		intituleMois.setText(Langue.getTraduction("statistics_since") + billeterie.getAchatsGeneral().getDate() +"              ");
+		intituleMois.setText(Langue.getTraduction("statistics_since"));
 		totalArticles.setText(billeterie.getAchatsGeneral().getTotalArticles() + "");
 		moisArticles.setText(billeterie.getAchatsGeneral().getMoisArticle() + "");
 		totalPrix.setText(billeterie.getAchatsGeneral().getTotalPrix() + " euros");
@@ -118,7 +117,7 @@ public class OngletStats extends JPanel {
 	}
 	
 	private void createLabel() {
-		intituleMois = new JLabel(Langue.getTraduction("statistics_since") + billeterie.getAchatsGeneral().getDate() +"              ");
+		intituleMois = new JLabel(Langue.getTraduction("statistics_since"));
 		totalArticles = new JLabel(billeterie.getAchatsGeneral().getTotalArticles() + "");
 		moisArticles = new JLabel(billeterie.getAchatsGeneral().getMoisArticle() + "");
 		totalPrix = new JLabel(billeterie.getAchatsGeneral().getTotalPrix() + " euros");

@@ -1,6 +1,8 @@
 package vue.fenetres;
 
 
+import general.Langue;
+
 import java.awt.BorderLayout;
 
 import javax.swing.JButton;
@@ -21,7 +23,7 @@ public class FenetreQuantite extends Fenetre {
 	private PanelChoixQuantite panelChoixQuantite;
 	
 	public FenetreQuantite(FenetreCommander fenetreCommander, Billet billet, ListeBillets listeBillets, Commande commande) {
-		this.setTitle("Choix de la quantite de billets");
+		this.setTitle(Langue.getTraduction("choice_title"));
 		
 		contentPane = new JPanel();
 		setContentPane(contentPane);

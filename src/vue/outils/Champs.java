@@ -1,6 +1,7 @@
 package vue.outils;
 
 import general.Constantes;
+import general.Langue;
 import modele.Attribut;
 
 import java.awt.GridBagConstraints;
@@ -20,7 +21,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-//TODO Verifier que les champs de text ne contiennent pas de caracteres etranges, "'" par ex
 @SuppressWarnings("serial")
 public class Champs extends JPanel{
 	
@@ -121,25 +121,34 @@ public class Champs extends JPanel{
 		int type = listeAttributs.get(index).getType();
 		try {
 		switch (type) {
-			case Constantes.INTEGER : res = Integer.parseInt(((JTextField)champ).getText()); break;
+			case Constantes.INTEGER : res = strToInt(((JTextField)champ).getText()); break;
 			case Constantes.DOUBLE : res = strToDouble(((JTextField)champ).getText()); break;
 			case Constantes.STRING : res = ((JTextField)champ).getText(); break;
 			case Constantes.BOOLEAN : res = ((JCheckBox)champ).isSelected(); break;
-			//TODO : (Bruno) pas du tout sur de la validitee de la ligne precedente, je mettrai simplement break
 			default : res = null;
 			}
 		} catch (Exception e) {
-			throw new Exception("Les champs ne sont pas remplis");
+			throw new Exception(Langue.getTraduction("fields_not_filled"));
 		}
 		if(res instanceof String && res.equals("")) {
-			throw new Exception("Les champs ne sont pas remplis");
+			throw new Exception(Langue.getTraduction("fields_not_filled"));
 		}
 		return res;
 	}
 	
 	private static double strToDouble(String s){
      	s = s.replace(',', '.');
+     	Character espace = (char) 160;
+		String reg = espace.toString();
+		s = s.replace(reg, "");
      	return Double.parseDouble(s);
+    }
+	
+	private static int strToInt(String s){
+		Character espace = (char) 160;
+		String reg = espace.toString();
+		s = s.replace(reg, "");
+     	return Integer.parseInt(s);
     }
 
 

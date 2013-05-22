@@ -7,9 +7,8 @@ import java.util.Map;
 import java.util.Set;
 
 
+@SuppressWarnings("serial")
 public class ListeBillets extends ListeObjet{
-	private static final long serialVersionUID = 1L;
-	
 	
 	/********** Constructeur ************/
 	/**

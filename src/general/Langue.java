@@ -27,7 +27,7 @@ public class Langue {
 	public static void langueInit() {
 		try {
 			/* Recuperation de la langue dans le fichier de proprietes */
-			locale = new Locale(Proprietes.getOption("langage"));
+			locale = new Locale(Proprietes.getOption(Proprietes.getOption("langage_curr")));
 			res = ResourceBundle.getBundle("Messages", locale);
 		} catch (Exception e) {
 			/* Langue par defaut */
@@ -42,14 +42,16 @@ public class Langue {
 		try {
 			result = res.getString(traduction);
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(new JFrame(), "Error_unexpected" 
-					+ "Error : traduction of " + traduction + "\n" + e.toString(), "Warning", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(new JFrame(), "Error unexpected\n" 
+					+ "Error : traduction of \"" + traduction + "\"\n" + e.toString(), "Warning", JOptionPane.INFORMATION_MESSAGE);
+			result = traduction;
 		}
 		return result;
 	}
 	
 	public static String aPropos() {
-		return Langue.getTraduction("software_versus") + Constantes.versionLogiciel + Langue.getTraduction("authors");
+		return "\n \n" + Langue.getTraduction("software_versus") + " : " + Proprietes.getOption("versionLogiciel") 
+				+ "\n \n" + Langue.getTraduction("authors") + " :\n" + Proprietes.getOption("authors_names");
 	}
 
 	/**
@@ -73,7 +75,6 @@ public class Langue {
 						res = ResourceBundle.getBundle("Messages", locale);
 						
 						Proprietes.setCurrentLangage(s);
-						System.out.println(s);
 						fenetrePrincipale.dispose();
 						FenetrePrincipale frame = new FenetrePrincipale(new Billeterie("database.sqlite"));
 						frame.setVisible(true);

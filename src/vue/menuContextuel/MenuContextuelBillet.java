@@ -1,5 +1,7 @@
 package vue.menuContextuel;
 
+import general.Langue;
+
 import java.awt.Component;
 import java.awt.Point;
 
@@ -21,7 +23,7 @@ public class MenuContextuelBillet extends JPopupMenu {
 	
 	public MenuContextuelBillet (ListeObjet listeObjet, JTable table) {
 		this.table = table;
-		this.add(new FenetreAjouterAction(listeObjet, "Ajouter une nouvelle personne"));
+		this.add(new FenetreAjouterAction(listeObjet, Langue.getTraduction("add_new_person")));
 		this.add(new FenetreModifierAction(listeObjet));
 		this.add(new FenetreSupprimerAction(listeObjet));
 	}

@@ -17,8 +17,7 @@ public class Constantes {
 	public final static Object[] options = {"Annuler", "Non", "Oui"};
 	public final static String nomLogiciel = "Billetterie";
 	public final static String versionLogiciel = "Alpha - 0.7";
-	
-	
+
 	/**
 	 * Conversion d'une chaine de caractere en un entier associe
 	 * @param st La chaine a convertir

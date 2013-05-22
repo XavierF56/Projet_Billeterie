@@ -2,6 +2,7 @@ package vue.fenetres;
 
 import general.Constantes;
 import general.Langue;
+import general.Proprietes;
 
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
@@ -64,7 +65,7 @@ public class FenetrePrincipale extends Fenetre {
 		}
 		
 		/* Fenetre */
-		this.setTitle(Constantes.nomLogiciel /*+ Langue.getTraduction("annuler")*/);
+		this.setTitle(Proprietes.getOption("nomLogiciel"));
 		setSize(1000, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
@@ -147,7 +148,7 @@ public class FenetrePrincipale extends Fenetre {
 		JPanel ongletAPropos = new JPanel();
 		MultiLineLabel multiLineLabel = new MultiLineLabel(Langue.aPropos());
 		ongletAPropos.add(multiLineLabel);
-		Onglets.addTab(Langue.getTraduction("about") + Constantes.nomLogiciel, null, ongletAPropos, null);
+		Onglets.addTab(Langue.getTraduction("about") + Proprietes.getOption("nomLogiciel"), null, ongletAPropos, null);
 		
 		
 		this.afficherFenetre();

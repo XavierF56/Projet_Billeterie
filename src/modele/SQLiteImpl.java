@@ -1,6 +1,7 @@
 package modele;
 
 import general.Constantes;
+import general.Proprietes;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,7 +22,7 @@ import java.util.Map;
 public class SQLiteImpl implements SQLInterface{
 	String sDriverName = "org.sqlite.JDBC";
 	
-	String sTempDb = "database.sqlite";
+	String sTempDb = Proprietes.getOption("billeterie");
 	String sJdbc = "jdbc:sqlite";
 	String sDbUrl = sJdbc + ":" + sTempDb;
 	
