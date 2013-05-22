@@ -14,8 +14,7 @@ import modele.Billeterie;
  * TODO Gestion erreurs - "1 000 blanc" (Xavier)
  * TODO Gestion reset quotas (Xavier)
  * TODO Gestion cases vides billets non sub (Xavier)
- * TODO affichage statistiques (Bruno)
- * TODO nom application (Bruno)
+ * TODO Achat subventionne au max si possible (Xavier)
  */
 public class Launcher {
 
