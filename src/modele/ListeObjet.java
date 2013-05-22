@@ -2,6 +2,7 @@ package modele;
 
 
 import general.Constantes;
+import general.Langue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +11,9 @@ import java.util.Map;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 
+@SuppressWarnings("serial")
 public abstract class ListeObjet extends AbstractTableModel{
-	private static final long serialVersionUID = 1L;
+
 	protected Billeterie billeterie;	
 	protected List<Objet> listeObjet = new ArrayList<Objet>();
 	protected List<Objet> listeObjetSauvegarde = new ArrayList<Objet>();
@@ -94,7 +96,8 @@ public abstract class ListeObjet extends AbstractTableModel{
 		Objet objet = null;
 		objet = listeObjet.get(index);
 		if (objet == null){
-			throw new Exception("Objet d'index " + index + " non existante");
+			throw new Exception(Langue.getTraduction("object_index") + " " + index
+					+ " " + Langue.getTraduction("non_existent"));
 		}
 		return objet;
 	}
@@ -114,7 +117,8 @@ public abstract class ListeObjet extends AbstractTableModel{
 			}
 		}
 		if (objet == null){
-			throw new Exception("Objet d'id " + id + " non existante");
+			throw new Exception(Langue.getTraduction("object_id") + " " + id
+					+ " " + Langue.getTraduction("non_existent"));
 		}
 		return objet;
 	}

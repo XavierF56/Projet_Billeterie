@@ -9,6 +9,7 @@ import java.util.Map;
 
 
 public class Personne extends Objet{
+	
 	private ListeAchats listeAchats = null;
 	private static int prochainId; 	// id utilise par la prochaine personne creee
 

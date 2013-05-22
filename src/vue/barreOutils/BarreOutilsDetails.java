@@ -1,5 +1,6 @@
 package vue.barreOutils;
 
+import general.Langue;
 
 import java.awt.FlowLayout;
 
@@ -22,6 +23,6 @@ public class BarreOutilsDetails extends JPanel {
 		this.setLayout(new FlowLayout(FlowLayout.CENTER));
 		this.add(new JButton(new ValiderPaiementAction(listeAchats, tableau)));
 		this.add(new JButton(new ValiderDonBilletAction(listeAchats, tableau)));
-		this.add(new JButton(new AnnulerAction(fenetre, "Fermer")));
+		this.add(new JButton(new AnnulerAction(fenetre, Langue.getTraduction("close"))));
 	}
 }

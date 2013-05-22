@@ -1,6 +1,8 @@
 package vue.fenetres;
 
 
+import general.Langue;
+
 import java.awt.BorderLayout;
 
 import javax.swing.BorderFactory;
@@ -23,13 +25,13 @@ public class FenetreSupprimer extends Fenetre {
 	public FenetreSupprimer(ListeObjet listeObjets) {
 		
 		//Fenetre
-		this.setTitle("Confirmation de la suppression");
+		this.setTitle(Langue.getTraduction("delete_confirmation"));
 		JPanel fenetre = new JPanel(new BorderLayout());
 		fenetre.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
 		this.add(fenetre);
 		
 		//Boutons Valider et Annuler
-		JButton buttonAnnuler = new JButton(new AnnulerAction(this, "Annuler"));
+		JButton buttonAnnuler = new JButton(new AnnulerAction(this, Langue.getTraduction("cancel")));
 		JButton buttonSupprimer = new JButton(new ValiderSupprimerAction(listeObjets, this));
 		JPanel panelSouth = new JPanel();
 		panelSouth.add(buttonSupprimer);
@@ -37,7 +39,7 @@ public class FenetreSupprimer extends Fenetre {
 		fenetre.add(panelSouth, "South");
 		
 		//Message
-		JLabel label = new JLabel("Voulez-vous vraiment supprimer ?");
+		JLabel label = new JLabel(Langue.getTraduction("delete_query"));
 		fenetre.add(label, "Center");
 		
 		this.afficherDialog();

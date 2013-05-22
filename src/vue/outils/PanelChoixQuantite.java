@@ -1,6 +1,8 @@
 package vue.outils;
 
 
+import general.Langue;
+
 import java.awt.GridLayout;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -31,7 +33,7 @@ public class PanelChoixQuantite extends JPanel implements ItemListener {
 		this.quantite = 0;
 		
 		// Label
-		JLabel label = new JLabel("\nChoisissez la quantité de billets à commander :\n");
+		JLabel label = new JLabel("\n" + Langue.getTraduction("choose_quantity") + " :\n");
 		
 		// Choix de la quantite de billets a commander
 		textField = new JFormattedTextField(NumberFormat.getIntegerInstance());
@@ -40,13 +42,13 @@ public class PanelChoixQuantite extends JPanel implements ItemListener {
 		textField.addKeyListener(keyValiderAction);
 		
 		// Creation des Checkbox
-		chckSubventionne = new JCheckBox("Billet subventionne");
+		chckSubventionne = new JCheckBox(Langue.getTraduction("subsidizes_ticket"));
 		chckSubventionne.setSelected(false);
 		chckSubventionne.addItemListener(this);
-		chckPaye = new JCheckBox("Paye par la personne");
+		chckPaye = new JCheckBox(Langue.getTraduction("paid_person"));
 		chckPaye.setSelected(false);
 		chckPaye.addItemListener(this);
-		chckDonne = new JCheckBox("Donne a la personne");
+		chckDonne = new JCheckBox(Langue.getTraduction("given_person"));
 		chckDonne.setSelected(false);
 		chckDonne.addItemListener(this);
 		

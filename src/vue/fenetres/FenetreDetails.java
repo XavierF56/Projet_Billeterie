@@ -1,6 +1,8 @@
 package vue.fenetres;
 
 
+import general.Langue;
+
 import java.awt.BorderLayout;
 
 import javax.swing.BorderFactory;
@@ -29,7 +31,7 @@ public class FenetreDetails extends Fenetre {
 		this.personne = pers;
 		
 		//Fenetre
-		this.setTitle("Informations sur les achat de " + personne);
+		this.setTitle(Langue.getTraduction("information_about") + " " + personne);
 		this.setSize(800,600);
 		contentPane = new JPanel();
 		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
@@ -37,7 +39,8 @@ public class FenetreDetails extends Fenetre {
 		this.add(contentPane);
 		
 		// Label restant a payer
-		contentPane.add(new JLabel("Restant a payer : " + personne.getRestantAPayer() + "euros"), "North");
+		contentPane.add(new JLabel(Langue.getTraduction("left_to_pay") + " : " 
+				+ personne.getRestantAPayer() + " euros"), "North");
 
 		// Tableau
 		tableau = new JTable(personne.getAchats());

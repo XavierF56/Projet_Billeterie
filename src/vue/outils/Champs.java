@@ -1,6 +1,7 @@
 package vue.outils;
 
 import general.Constantes;
+import general.Langue;
 import modele.Attribut;
 
 import java.awt.GridBagConstraints;
@@ -129,10 +130,10 @@ public class Champs extends JPanel{
 			default : res = null;
 			}
 		} catch (Exception e) {
-			throw new Exception("Les champs ne sont pas remplis");
+			throw new Exception(Langue.getTraduction("fields_not_filled"));
 		}
 		if(res instanceof String && res.equals("")) {
-			throw new Exception("Les champs ne sont pas remplis");
+			throw new Exception(Langue.getTraduction("fields_not_filled"));
 		}
 		return res;
 	}

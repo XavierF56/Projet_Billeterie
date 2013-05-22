@@ -8,17 +8,14 @@ import vue.fenetres.FenetrePrincipale;
 import modele.Billeterie;
 
 /**
- * Urgent :
-
- * TODO Applet .jar
- * 
- * Note : attention a la gestion des cacateres speciaux
- * 
- * Secondaire :
- * 
  * TODO Continuer la Javadoc
  * TODO Booleen true false -> vrai faux
  * TODO Bouton payer tout / donner tout / selection multiple / payer et donner (Bruno)
+ * TODO Gestion erreurs - "1 000 blanc" (Xavier)
+ * TODO Gestion reset quotas (Xavier)
+ * TODO Gestion cases vides billets non sub (Xavier)
+ * TODO affichage statistiques (Bruno)
+ * TODO nom application (Bruno)
  */
 public class Launcher {
 
@@ -34,7 +31,7 @@ public class Launcher {
 					Proprietes.proprietesInit();
 					Langue.langueInit();
 
-					FenetrePrincipale frame = new FenetrePrincipale(new Billeterie("database.sqlite"));
+					FenetrePrincipale frame = new FenetrePrincipale(new Billeterie(Proprietes.getOption("billeterie")));
 					frame.setVisible(true);
 				} catch (Exception e) {
 					Constantes.afficherException(e);

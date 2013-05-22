@@ -1,5 +1,7 @@
 package modele;
 
+import general.Langue;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -151,6 +153,7 @@ public class Commande {
 		return prixTotal;
 	}
 	public String toString() {
-		return "Mon panier : " + nbArticle + " articles | " + prixTotal + " euros";
+		return Langue.getTraduction("shopping") + " : " + nbArticle + " " + 
+				Langue.getTraduction("articles") + " | " + prixTotal + " euros";
 	}
 }

@@ -4,8 +4,9 @@ package modele;
 import java.util.List;
 import java.util.Map;
 
+@SuppressWarnings("serial")
 public class ListeAchats extends ListeObjet{
-	private static final long serialVersionUID = 1L;
+
 	private Personne personne;
 	private int nbAchats;
 	

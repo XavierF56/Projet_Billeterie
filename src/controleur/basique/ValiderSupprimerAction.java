@@ -1,6 +1,7 @@
 package controleur.basique;
 
 import general.Constantes;
+import general.Langue;
 
 import java.awt.event.ActionEvent;
 import java.util.Arrays;
@@ -20,7 +21,7 @@ public class ValiderSupprimerAction extends AbstractAction {
 	Fenetre fenetre;
 	
 	public ValiderSupprimerAction(ListeObjet listeObjet, Fenetre fenetre) {
-        super("Valider");
+        super(Langue.getTraduction("validate"));
     	this.listeObjet = listeObjet;
     	this.fenetre = fenetre;
     }
@@ -39,7 +40,7 @@ public class ValiderSupprimerAction extends AbstractAction {
         	} catch (Exception e1) {	
 				select = false;
 				JOptionPane.showMessageDialog(new JFrame(), 
-						"Vous n'avez pas de selection a supprimer", "Attention", JOptionPane.INFORMATION_MESSAGE);
+						Langue.getTraduction("error_empty_selection"), Langue.getTraduction("warning"), JOptionPane.INFORMATION_MESSAGE);
         	}
 			if(select) {
 				Arrays.sort(modelIndexes);
