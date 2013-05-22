@@ -69,7 +69,6 @@ public class Langue {
 			public void itemStateChanged(ItemEvent e) {
 				for(String s : Proprietes.otherLangages){
 					if(e.getItem().equals(s)) {
-						System.out.println(s);
 						locale = new Locale(Proprietes.getOption(s));
 						res = ResourceBundle.getBundle("Messages", locale);
 						

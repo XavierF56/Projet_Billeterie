@@ -14,16 +14,11 @@ import modele.Billeterie;
  * 
  * Note : attention a la gestion des cacateres speciaux
  * 
- * BUG
- * Disparition de l'icone dans bin/ihm/fenetre -> plus d'icone pour l'appli
- * 
  * Secondaire :
  * 
  * TODO Continuer la Javadoc
  * TODO Booleen true false -> vrai faux
  * TODO Bouton payer tout / donner tout / selection multiple / payer et donner (Bruno)
- * TODO Rendre disponibles d'autres options
- * TODO Anglais
  */
 public class Launcher {
 
