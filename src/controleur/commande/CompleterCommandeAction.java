@@ -6,19 +6,18 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
+import modele.Commande;
 import vue.fenetres.Fenetre;
 import vue.fenetres.FenetreCommander;
 
-import modele.Commande;
-
 @SuppressWarnings("serial")
-public class ValiderCommandeAction extends AbstractAction {
+public class CompleterCommandeAction extends AbstractAction {
 	Commande commande;
 	Fenetre fenetre;
 	FenetreCommander fenetreCommande;
 
-	public ValiderCommandeAction (Commande commande, Fenetre fenetre, FenetreCommander fenetreCommande) {
-		super(Langue.getTraduction("force"));
+	public CompleterCommandeAction (Commande commande, Fenetre fenetre, FenetreCommander fenetreCommande) {
+		super(Langue.getTraduction("complete"));
 		this.commande = commande;
 		this.fenetre = fenetre;
 		this.fenetreCommande = fenetreCommande;
@@ -26,7 +25,7 @@ public class ValiderCommandeAction extends AbstractAction {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		commande.valider();
+		commande.completer();
 		fenetreCommande.getBilleterie().getFenetre().getOngletStats().majLabel();
 		fenetre.dispose();
 		fenetreCommande.majLabel();

@@ -115,8 +115,9 @@ public class Commande {
 	}
 	
 	public void completer() {
-		this.creer(billet, qt_acceptable, paye, donne, subventionne);
-		this.creer(billet, qt-qt_acceptable, paye, donne, subventionne);
+		if(qt_acceptable > 0)
+			this.creer(billet, qt_acceptable, paye, donne, subventionne);
+		this.creer(billet, qt-qt_acceptable, paye, donne, false);
 	}
 	
 	/**

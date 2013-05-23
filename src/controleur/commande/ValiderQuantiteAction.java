@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import vue.fenetres.FenetreCommander;
-import vue.fenetres.FenetreCommanderForcer;
+import vue.fenetres.FenetreCommanderErreur;
 import vue.fenetres.FenetreQuantite;
 
 import modele.AchatException;
@@ -58,7 +58,7 @@ public class ValiderQuantiteAction extends AbstractAction implements KeyListener
 				fenetreCommande.majLabel();
 		    	fenetreCommande.getBilleterie().getFenetre().getOngletStats().majLabel();
 			} catch (AchatException ae) {
-				new FenetreCommanderForcer(commande, ae.toString(), fenetreCommande);
+				new FenetreCommanderErreur(commande, ae.toString(), fenetreCommande);
 			} catch (Exception e1) {
 				JOptionPane.showMessageDialog(new JFrame(), Langue.getTraduction("error_quantity_choice") + e1,
 						Langue.getTraduction("error") , JOptionPane.ERROR_MESSAGE);

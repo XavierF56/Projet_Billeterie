@@ -7,17 +7,19 @@ import java.awt.BorderLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import vue.outils.MultiLineLabel;
+
 import controleur.commande.AnnulerCommandeAction;
-import controleur.commande.ValiderCommandeAction;
+import controleur.commande.CompleterCommandeAction;
+import controleur.commande.ForcerCommandeAction;
 
 import modele.Commande;
 
 @SuppressWarnings("serial")
-public class FenetreCommanderForcer extends Fenetre {
-	public FenetreCommanderForcer(Commande commande, String erreur, FenetreCommander fenetreCommande) {
+public class FenetreCommanderErreur extends Fenetre {
+	public FenetreCommanderErreur(Commande commande, String erreur, FenetreCommander fenetreCommande) {
 		
 		//Fenetre
 		this.setTitle(Langue.getTraduction("error_buying"));
@@ -27,15 +29,18 @@ public class FenetreCommanderForcer extends Fenetre {
 		
 		//Boutons Valider et Annuler
 		JButton buttonAnnuler = new JButton(new AnnulerCommandeAction(commande, this));
-		JButton buttonSupprimer = new JButton(new ValiderCommandeAction(commande, this, fenetreCommande));
+		JButton buttonSupprimer = new JButton(new ForcerCommandeAction(commande, this, fenetreCommande));
+		JButton buttonCompleter = new JButton(new CompleterCommandeAction(commande, this, fenetreCommande));
 		JPanel panelSouth = new JPanel();
-		panelSouth.add(buttonSupprimer);
 		panelSouth.add(buttonAnnuler);
+		panelSouth.add(buttonSupprimer);
+		panelSouth.add(buttonCompleter);
 		fenetre.add(panelSouth, "South");
 		
 		//Message
-		JLabel label = new JLabel(erreur + "\n " + Langue.getTraduction("validate_anyway"));
-		fenetre.add(label, "Center");
+		MultiLineLabel multiLineLabel = new MultiLineLabel(erreur + "\n" + Langue.getTraduction("validate_anyway"));
+
+		fenetre.add(multiLineLabel, "Center");
 		
 		this.afficherDialog();
 	}
