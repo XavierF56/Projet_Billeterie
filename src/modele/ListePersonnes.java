@@ -55,6 +55,8 @@ public class ListePersonnes extends ListeObjet {
 		map.remove("nom");
 		resul.add(new Attribut("prenom", "Prenom", map.get("prenom")));
 		map.remove("prenom");
+		resul.add(new Attribut("mail", "Mail", map.get("mail")));
+		map.remove("mail");
 		
 		Set<String> set = map.keySet();
 		Iterator<String> it = set.iterator();
