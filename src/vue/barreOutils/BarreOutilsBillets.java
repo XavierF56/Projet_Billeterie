@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 
 import controleur.basique.FenetreAjouterAction;
 import controleur.basique.FenetreModifierAction;
+import controleur.basique.FenetreRAZQuotaAction;
 import controleur.basique.FenetreSupprimerAction;
 import controleur.basique.RechercheAction;
 
@@ -33,5 +34,6 @@ public class BarreOutilsBillets extends JPanel {
 				Langue.getTraduction("add_new_ticket"))));
 		this.add(new JButton(new FenetreModifierAction(billeterie.getListeBillets())));
 		this.add(new JButton(new FenetreSupprimerAction(billeterie.getListeBillets())));
+		this.add(new JButton(new FenetreRAZQuotaAction(billeterie.getListeBillets())));
 	}
 }

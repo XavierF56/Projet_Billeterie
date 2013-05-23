@@ -45,7 +45,7 @@ public class Billet extends Objet {
 		}
 		
 		Date maDateAvecFormat=new Date();
-		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy-hh-mm");
 		map.put("date", dateStandard.format(maDateAvecFormat));
 		
 		// Enregistre le nouveau billet dans la bdd
@@ -116,7 +116,7 @@ public class Billet extends Objet {
 	
 	public void razQuota() {
 		Date maDateAvecFormat=new Date();
-		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy-hh-mm");
 		map.put("date", dateStandard.format(maDateAvecFormat));
 	}
 	
@@ -138,7 +138,7 @@ public class Billet extends Objet {
 		return (Integer) map.get("nb_sub_par_personne");
 	}
 	public Date getDateQuota() {
-		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy-hh-mm");
 		try {
 			return dateStandard.parse((String) map.get("date"));
 		} catch (ParseException e) {

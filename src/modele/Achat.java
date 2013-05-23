@@ -163,7 +163,7 @@ public class Achat extends Objet {
 		return (Double) map.get("prix_total");
 	}
 	public Date getDate() {
-		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy-hh-mm");
 		try {
 			return dateStandard.parse((String) map.get("date"));
 		} catch (ParseException e) {

@@ -70,7 +70,7 @@ public class Commande {
 		map.put("subventionne", subventionne);
 		
 		Date maDateAvecFormat=new Date();
-		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy-hh-mm");
 		map.put("date", dateStandard.format(maDateAvecFormat));
 		
 		if (subventionne) {
