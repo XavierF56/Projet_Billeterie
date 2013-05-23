@@ -114,14 +114,12 @@ public class Personne extends Objet{
 		List<Objet> liste = this.listeAchats.getListeAchats();
 		int id = billet.getId();
 		int resul = 0;
-		
 		for (int i = 0; i < liste.size(); i++) {
 			Achat achat = (Achat) liste.get(i);
 			if (id == achat.getBillet().getId() && achat.isQuotaEnCours()) {
 				resul += ((Achat) liste.get(i)).getQt();
 			}
 		}
-		System.out.println("><<" + resul);
 		return resul;
 	}
 

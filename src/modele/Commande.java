@@ -43,13 +43,21 @@ public class Commande {
 	private int nbArticle;
 	private double prixTotal;
 	private List<Achat> listeValidee = new ArrayList<Achat>();
-	private Achat achatEnCours;
+	
+	private Billet billet;
+	private int qt;
+	private int qt_acceptable;
+	private boolean donne;
+	private boolean paye;
+	private boolean subventionne;
 	
 	
 	public Commande(Personne personne) {
 		this.personne = personne;
 		this.nbArticle = 0;
 		this.prixTotal = 0;
+		
+		
 	}
 	
 	/********** Methodes ************/
@@ -63,6 +71,17 @@ public class Commande {
 	 * @throws AchatException 
 	 */
 	public void ajoutCommande(Billet billet, int qt, boolean paye, boolean donne, boolean subventionne) throws AchatException {
+		this.billet = billet;
+		this.qt = qt;
+		this.paye = paye;
+		this.donne = donne;
+		this.subventionne = subventionne;
+		if (this.achatPossible()) {
+			valider();
+		}
+	}
+	
+	private void creer(Billet billet, int qt, boolean paye, boolean donne, boolean subventionne) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("quantite", qt);
 		map.put("paye", paye);
@@ -70,7 +89,7 @@ public class Commande {
 		map.put("subventionne", subventionne);
 		
 		Date maDateAvecFormat=new Date();
-		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy-hh-mm");
+		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy-HH-mm");
 		map.put("date", dateStandard.format(maDateAvecFormat));
 		
 		if (subventionne) {
@@ -80,11 +99,10 @@ public class Commande {
 			map.put("prix_unitaire", billet.getPrixNor());
 			map.put("prix_total", billet.getPrixNor() * qt);
 		}
-		achatEnCours = new Achat(map, personne, billet);
-		
-		if (this.achatPossible(billet, qt, subventionne)) {
-			valider();
-		}
+		Achat achatEnCours = new Achat(map, personne, billet);
+		listeValidee.add(achatEnCours);
+		prixTotal += achatEnCours.getPrixTotal();
+		nbArticle++;
 	}
 	
 	/**
@@ -93,11 +111,12 @@ public class Commande {
 	 * Cette methode valide la derniere commande
 	 */
 	public void valider() {
-		listeValidee.add(achatEnCours);
-		achatEnCours.ajoute();
-		prixTotal += achatEnCours.getPrixTotal();
-		achatEnCours = null;
-		nbArticle++;
+		this.creer(billet, qt, paye, donne, subventionne);		
+	}
+	
+	public void completer() {
+		this.creer(billet, qt_acceptable, paye, donne, subventionne);
+		this.creer(billet, qt-qt_acceptable, paye, donne, subventionne);
 	}
 	
 	/**
@@ -106,7 +125,7 @@ public class Commande {
 	 * Cette methode annule la derniere commande en l'enlevant de la liste
 	 */
 	public void annuler() {
-		achatEnCours = null;
+		//TODO
 	}
 	
 	/**
@@ -125,12 +144,13 @@ public class Commande {
 	 * @return
 	 * @throws AchatException
 	 */
-	public boolean achatPossible(Billet billet, int qt, boolean subventionne) throws AchatException{
+	public boolean achatPossible() throws AchatException{
 		if (billet.getNbPlace() >= qt) {
 			if(subventionne) {
 				if (billet.getNbPlaceSub() >= qt) {
-					if (billet.getNbPlacePerso() - personne.getNbBilletsAcheteSub(billet) >= qt) {
-						
+					qt_acceptable = billet.getNbPlacePerso() - personne.getNbBilletsAcheteSub(billet);
+					if (qt_acceptable >= qt) {
+						qt_acceptable = qt;
 					} else {
 						throw new AchatException(0);
 					}

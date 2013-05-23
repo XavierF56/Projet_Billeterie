@@ -53,24 +53,14 @@ public class Achat extends Objet {
 			map.put("id_personne", personne.getId());
 			map.put("id_billet", billet.getId());
 		}
-	}
-	
-	
-	
-	/********** Methodes ************/
-	/**
-	 * Lorsqu'une commande a ete validee, cette methode permet d'enregistrer chaque achat 
-	 * dans la liste des achats d'une personne ainsi que dans la bdd.
-	 * Elle repercute les modifs sur le billet
-	 */
-	public void ajoute() {
+		
 		// Enregistre l'achat dans la bdd
 		try {
 			personne.getBilleterie().getBdd().ajoutBDD("achat", map); //NOM BDD
 		} catch (SQLException e) {
 			Constantes.afficherException(e);
 		}
-		
+				
 		// Ajoute l'achat à la liste d'achats de la personne
 		personne.getAchats().ajouter(this);
 		map.put("Description", billet.toString());
@@ -79,6 +69,9 @@ public class Achat extends Objet {
 		this.repercuter();
 	}
 	
+	
+	
+	/********** Methodes ************/
 	/**
 	 *  Cette methode modifie un Achat dans la bdd
 	 *  @param map
@@ -163,7 +156,7 @@ public class Achat extends Objet {
 		return (Double) map.get("prix_total");
 	}
 	public Date getDate() {
-		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy-hh-mm");
+		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy-HH-mm");
 		try {
 			return dateStandard.parse((String) map.get("date"));
 		} catch (ParseException e) {

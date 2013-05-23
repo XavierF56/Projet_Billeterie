@@ -3,10 +3,11 @@ package modele;
 import general.Constantes;
 
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 
 public class Billet extends Objet {
@@ -45,7 +46,7 @@ public class Billet extends Objet {
 		}
 		
 		Date maDateAvecFormat=new Date();
-		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy-hh-mm");
+		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy-HH-mm");
 		map.put("date", dateStandard.format(maDateAvecFormat));
 		
 		// Enregistre le nouveau billet dans la bdd
@@ -65,10 +66,11 @@ public class Billet extends Objet {
 	public void modifie(Map<String,Object> nouvelleMap) {
 		try {
 			// Remplace l'ancienne map par la nouvelle en ajoutant l'id si celui-ci n'est pas present dans la nouvelle
-			int ancId = this.getId();
-			this.map = nouvelleMap;
-			if (!map.containsKey("id")) {
-				map.put("id", ancId);
+			Set<String> set = nouvelleMap.keySet();
+			Iterator<String> it = set.iterator();
+			while (it.hasNext()) {
+				String key = it.next();
+				map.put(key, nouvelleMap.get(key));
 			}
 			
 			// Sauvegarde les modifs dans la bdd
@@ -116,8 +118,7 @@ public class Billet extends Objet {
 	
 	public void razQuota() {
 		Date maDateAvecFormat=new Date();
-		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy-hh-mm");
-		System.out.println(dateStandard.format(maDateAvecFormat));
+		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy-HH-mm");
 		map.put("date", dateStandard.format(maDateAvecFormat));
 		modifie(this.map);
 	}
@@ -140,10 +141,10 @@ public class Billet extends Objet {
 		return (Integer) map.get("nb_sub_par_personne");
 	}
 	public Date getDateQuota() {
-		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy-hh-mm");
+		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy-HH-mm");
 		try {
 			return dateStandard.parse((String) map.get("date"));
-		} catch (ParseException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
