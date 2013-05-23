@@ -1,6 +1,7 @@
 package modele;
 
 import general.Constantes;
+import general.Langue;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -43,13 +44,13 @@ public class AchatsGeneral {
 		List<Attribut> resul = new ArrayList<Attribut>();
 		resul.add(new Attribut("Description", "Description", Constantes.STRING));
 		
-		resul.add(new Attribut("quantite", "Quantite", map.get("quantite"))); map.remove("quantite");
-		resul.add(new Attribut("prix_unitaire", "Prix Unite", map.get("prix_unitaire"))); map.remove("prix_unitaire");
-		resul.add(new Attribut("prix_total", "Prix Total", map.get("prix_total"))); map.remove("prix_total");
-		resul.add(new Attribut("date", "Date", map.get("date"))); map.remove("date");
-		resul.add(new Attribut("paye", "Paye", map.get("paye"))); map.remove("paye");
-		resul.add(new Attribut("donne", "Donne", map.get("donne"))); map.remove("donne");
-		resul.add(new Attribut("subventionne", "Subventionne", map.get("subventionne"))); map.remove("subventionne");
+		resul.add(new Attribut("quantite", Langue.getTraduction("qt"), map.get("quantite"))); map.remove("quantite");
+		resul.add(new Attribut("prix_unitaire", Langue.getTraduction("price_uni"), map.get("prix_unitaire"))); map.remove("prix_unitaire");
+		resul.add(new Attribut("prix_total", Langue.getTraduction("price_total"), map.get("prix_total"))); map.remove("prix_total");
+		resul.add(new Attribut("date", Langue.getTraduction("date"), map.get("date"))); map.remove("date");
+		resul.add(new Attribut("paye", Langue.getTraduction("paid"), map.get("paye"))); map.remove("paye");
+		resul.add(new Attribut("donne", Langue.getTraduction("given"), map.get("donne"))); map.remove("donne");
+		resul.add(new Attribut("subventionne", Langue.getTraduction("sub"), map.get("subventionne"))); map.remove("subventionne");
 		
 		Set<String> set = map.keySet();
 		Iterator<String> it = set.iterator();

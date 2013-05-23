@@ -1,5 +1,7 @@
 package modele;
 
+import general.Langue;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -51,11 +53,11 @@ public class ListePersonnes extends ListeObjet {
 		List<Attribut> resul = new ArrayList<Attribut>();
 		
 		// Formatage a la main
-		resul.add(new Attribut("nom", "Nom", map.get("nom")));
+		resul.add(new Attribut("nom", Langue.getTraduction("name"), map.get("nom")));
 		map.remove("nom");
-		resul.add(new Attribut("prenom", "Prenom", map.get("prenom")));
+		resul.add(new Attribut("prenom", Langue.getTraduction("firstname"), map.get("prenom")));
 		map.remove("prenom");
-		resul.add(new Attribut("mail", "Mail", map.get("mail")));
+		resul.add(new Attribut("mail", Langue.getTraduction("mail"), map.get("mail")));
 		map.remove("mail");
 		
 		Set<String> set = map.keySet();

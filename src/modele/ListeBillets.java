@@ -1,5 +1,7 @@
 package modele;
 
+import general.Langue;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -49,13 +51,13 @@ public class ListeBillets extends ListeObjet{
 		Map<String, Integer> map = billeterie.getBdd().getAttributs("Billet");
 		List<Attribut> resul = new ArrayList<Attribut>();
 		map.remove("date");
-		resul.add(new Attribut("categorie", "Categorie", map.get("categorie"))); map.remove("categorie");
-		resul.add(new Attribut("sous_categorie", "Sous categorie", map.get("sous_categorie"))); map.remove("sous_categorie");
-		resul.add(new Attribut("prix", "Prix", map.get("prix"))); map.remove("prix");
-		resul.add(new Attribut("prix_sub", "Prix Subventionne", map.get("prix_sub"))); map.remove("prix_sub");
-		resul.add(new Attribut("nb_total", "Quantite", map.get("nb_total"))); map.remove("nb_total");
-		resul.add(new Attribut("nb_sub_par_personne", "Quantite Sub/Personne", map.get("nb_sub_par_personne"))); map.remove("nb_sub_par_personne");
-		resul.add(new Attribut("nb_sub", "Quantite Sub", map.get("nb_sub"))); map.remove("nb_sub");
+		resul.add(new Attribut("categorie", Langue.getTraduction("category"), map.get("categorie"))); map.remove("categorie");
+		resul.add(new Attribut("sous_categorie", Langue.getTraduction("subcategory"), map.get("sous_categorie"))); map.remove("sous_categorie");
+		resul.add(new Attribut("prix", Langue.getTraduction("price"), map.get("prix"))); map.remove("prix");
+		resul.add(new Attribut("prix_sub", Langue.getTraduction("price_sub"), map.get("prix_sub"))); map.remove("prix_sub");
+		resul.add(new Attribut("nb_total", Langue.getTraduction("qt"), map.get("nb_total"))); map.remove("nb_total");
+		resul.add(new Attribut("nb_sub_par_personne", Langue.getTraduction("qt_sub_per"), map.get("nb_sub_par_personne"))); map.remove("nb_sub_par_personne");
+		resul.add(new Attribut("nb_sub", Langue.getTraduction("qt_sub"), map.get("nb_sub"))); map.remove("nb_sub");
 		
 		Set<String> set = map.keySet();
 		Iterator<String> it = set.iterator();
