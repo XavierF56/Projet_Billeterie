@@ -114,6 +114,12 @@ public class Billet extends Objet {
 		modifie(this.map);
 	}
 	
+	public void razQuota() {
+		Date maDateAvecFormat=new Date();
+		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy");
+		map.put("date", dateStandard.format(maDateAvecFormat));
+	}
+	
 	
 	/********** Getters sur les attributs de la BDD ************/
 	public int getNbPlace() {
