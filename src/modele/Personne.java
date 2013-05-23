@@ -121,6 +121,7 @@ public class Personne extends Objet{
 				resul += ((Achat) liste.get(i)).getQt();
 			}
 		}
+		System.out.println("><<" + resul);
 		return resul;
 	}
 

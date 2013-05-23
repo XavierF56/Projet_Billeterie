@@ -172,7 +172,7 @@ public class Achat extends Objet {
 		return null;
 	}
 	public boolean isQuotaEnCours() {
-		return billet.getDateQuota().before(this.getDate());
+		return billet.getDateQuota().before(this.getDate()) || billet.getDateQuota().equals(this.getDate());
 	}
 
 	
