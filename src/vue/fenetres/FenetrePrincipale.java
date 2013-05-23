@@ -138,7 +138,7 @@ public class FenetrePrincipale extends Fenetre {
 		gridBagConstraints.gridx = 1;
 		ongletOptions.add(Langue.choixLangueMenu(this), gridBagConstraints);
 		
-		Onglets.addTab("Options", null, ongletOptions, null);
+		Onglets.addTab(Langue.getTraduction("options"), null, ongletOptions, null);
 		
 		/* Onglet Statistique */
 		ongletStats = new OngletStats(billeterie);
