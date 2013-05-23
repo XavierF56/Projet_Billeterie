@@ -105,6 +105,24 @@ public class Personne extends Objet{
 		}
 		return resul;
 	}
+	
+	/**
+	 * @param billet
+	 * @return le nombre de billet deja achete pour un Billet
+	 */
+	public int getNbBilletsAcheteSub(Billet billet) {
+		List<Objet> liste = this.listeAchats.getListeAchats();
+		int id = billet.getId();
+		int resul = 0;
+		
+		for (int i = 0; i < liste.size(); i++) {
+			Achat achat = (Achat) liste.get(i);
+			if (id == achat.getBillet().getId() && achat.isQuotaEnCours()) {
+				resul += ((Achat) liste.get(i)).getQt();
+			}
+		}
+		return resul;
+	}
 
 	/**
 	 * @return Retourne ce qui reste a payer (lorsqu'un billet n'est pas directement paye)

@@ -171,6 +171,9 @@ public class Achat extends Objet {
 		}
 		return null;
 	}
+	public boolean isQuotaEnCours() {
+		return billet.getDateQuota().before(this.getDate());
+	}
 
 	
 	
@@ -181,4 +184,6 @@ public class Achat extends Objet {
 	public String toString () {
 		return map +"\n";
 	}
+
+
 }

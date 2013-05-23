@@ -68,6 +68,7 @@ public class Commande {
 		map.put("paye", paye);
 		map.put("donne", donne);
 		map.put("subventionne", subventionne);
+		map.put("quota", subventionne);
 		
 		Date maDateAvecFormat=new Date();
 		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy");
@@ -129,7 +130,7 @@ public class Commande {
 		if (billet.getNbPlace() >= qt) {
 			if(subventionne) {
 				if (billet.getNbPlaceSub() >= qt) {
-					if (billet.getNbPlacePerso() - personne.getNbBilletsAchete(billet) >= qt) {
+					if (billet.getNbPlacePerso() - personne.getNbBilletsAcheteSub(billet) >= qt) {
 						
 					} else {
 						throw new AchatException(0);

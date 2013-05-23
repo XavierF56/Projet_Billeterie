@@ -3,6 +3,9 @@ package modele;
 import general.Constantes;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 
@@ -40,6 +43,10 @@ public class Billet extends Objet {
 			map.put("id", prochainId);
 			prochainId++;
 		}
+		
+		Date maDateAvecFormat=new Date();
+		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy");
+		map.put("date", dateStandard.format(maDateAvecFormat));
 		
 		// Enregistre le nouveau billet dans la bdd
 		try {
@@ -123,6 +130,15 @@ public class Billet extends Objet {
 	}
 	public int getNbPlacePerso() {
 		return (Integer) map.get("nb_sub_par_personne");
+	}
+	public Date getDateQuota() {
+		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			return dateStandard.parse((String) map.get("date"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	/********** Getters & Setters ************/

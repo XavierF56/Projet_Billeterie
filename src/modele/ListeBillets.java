@@ -48,7 +48,7 @@ public class ListeBillets extends ListeObjet{
 	private void attributs() {
 		Map<String, Integer> map = billeterie.getBdd().getAttributs("Billet");
 		List<Attribut> resul = new ArrayList<Attribut>();
-		
+		map.remove("date");
 		resul.add(new Attribut("categorie", "Categorie", map.get("categorie"))); map.remove("categorie");
 		resul.add(new Attribut("sous_categorie", "Sous categorie", map.get("sous_categorie"))); map.remove("sous_categorie");
 		resul.add(new Attribut("prix", "Prix", map.get("prix"))); map.remove("prix");
