@@ -117,7 +117,9 @@ public class Billet extends Objet {
 	public void razQuota() {
 		Date maDateAvecFormat=new Date();
 		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy-hh-mm");
+		System.out.println(dateStandard.format(maDateAvecFormat));
 		map.put("date", dateStandard.format(maDateAvecFormat));
+		modifie(this.map);
 	}
 	
 	
