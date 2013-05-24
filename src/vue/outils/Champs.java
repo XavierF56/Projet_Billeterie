@@ -51,6 +51,7 @@ public class Champs extends JPanel{
 			
 			//Ajout du champ
 			gridBagConstraints.gridx = 1;
+			gridBagConstraints.anchor = GridBagConstraints.LINE_START;
 			JComponent champ = nouveauChamp(listeAttributs.get(i).getType());
 			listeChamps.put(listeAttributs.get(i).getNomBDD(), champ);
 			add(champ,gridBagConstraints);

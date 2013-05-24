@@ -5,6 +5,7 @@ import general.Langue;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Map;
 
 import javax.swing.AbstractAction;
 import javax.swing.JFrame;
@@ -13,6 +14,7 @@ import javax.swing.JOptionPane;
 import vue.fenetres.FenetreCommander;
 import vue.fenetres.FenetreCommanderErreur;
 import vue.fenetres.FenetreCommandeAjouter;
+import vue.outils.Champs;
 
 import modele.AchatException;
 import modele.Billet;
@@ -25,6 +27,7 @@ public class ValiderQuantiteAction extends AbstractAction implements KeyListener
 		private FenetreCommander fenetreCommande;
 		private Billet billet;
 		private Commande commande;
+		private Champs champs;
 		
 		/**
 		 * 
@@ -37,12 +40,13 @@ public class ValiderQuantiteAction extends AbstractAction implements KeyListener
 		 * @see Commande
 		 * @see Billet
 		 */
-		public ValiderQuantiteAction(FenetreCommander fenetreCommande, FenetreCommandeAjouter fenetreQuantite, Commande commande, Billet billet) {
+		public ValiderQuantiteAction(FenetreCommander fenetreCommande, FenetreCommandeAjouter fenetreQuantite, Commande commande, Billet billet, Champs champs) {
 		    super(Langue.getTraduction("validate"));
 		    this.fenetreCommande = fenetreCommande;
 		    this.fenetre = fenetreQuantite;
 		    this.billet = billet;
 		    this.commande = commande;
+		    this.champs = champs;
 		}
 		
 		public void actionPerformed(ActionEvent e) {
@@ -54,14 +58,20 @@ public class ValiderQuantiteAction extends AbstractAction implements KeyListener
 		 */
 		private void validerQuantite(){
 			try {
-				commande.ajoutCommande(billet, fenetre.getQuantite(), fenetre.getPaye(), fenetre.getDonne(), fenetre.getSubventionne());
+				Map<String, Object>  map = champs.getDonnees();
+				boolean sub;
+				if (billet.getSub()) // Si le billet n'est pas subventionne, il n'y a pas de champs sub
+					sub = (Boolean) map.get("subventionne");
+				else 
+					sub = false;
+				
+				commande.ajoutCommande(billet, (Integer) map.get("quantite"), (Boolean) map.get("paye"), (Boolean) map.get("donne"), sub);
 				fenetreCommande.majLabel();
 		    	fenetreCommande.getBilleterie().getFenetre().getOngletStats().majLabel();
 			} catch (AchatException ae) {
 				new FenetreCommanderErreur(commande, ae.toString(), fenetreCommande);
 			} catch (Exception e1) {
-				JOptionPane.showMessageDialog(new JFrame(), Langue.getTraduction("error_quantity_choice") + e1,
-						Langue.getTraduction("error") , JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(new JFrame(), e1, Langue.getTraduction("error") , JOptionPane.ERROR_MESSAGE);
 			}
 			fenetre.dispose();
 			

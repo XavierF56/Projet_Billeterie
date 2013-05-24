@@ -16,12 +16,11 @@ public class TypeBilletListener extends AbstractAction {
 	JComboBox<String> jcb;
 	
 	public TypeBilletListener(FenetreAjouter fenetre, JComboBox<String> jcb) {
-		super("OK");
+		super(Langue.getTraduction("ok"));
 		this.fenetre = fenetre;
 		this.jcb = jcb;
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		ListeObjet list = fenetre.getListeObjet();
 		String titre = fenetre.getTitre();

@@ -117,6 +117,7 @@ public class FenetreAjouter extends Fenetre {
 		this.afficherDialog();
 	}
 
+	
 	public Champs getChamps() {
 		return champs;
 	}

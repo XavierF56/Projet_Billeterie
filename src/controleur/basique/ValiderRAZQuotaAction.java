@@ -24,7 +24,7 @@ public class ValiderRAZQuotaAction extends AbstractAction {
 	 * @param listeObjet
 	 */
     public ValiderRAZQuotaAction(Fenetre fenetre, ListeObjet listeObjet) {
-        super("Valider");
+        super(Langue.getTraduction("validate"));
         this.fenetre = fenetre;
         this.listeObjet = listeObjet;
     }

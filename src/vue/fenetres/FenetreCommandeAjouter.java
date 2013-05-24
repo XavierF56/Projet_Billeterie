@@ -2,25 +2,26 @@ package vue.fenetres;
 
 
 import general.Langue;
+import general.Constantes;
 
-import java.awt.BorderLayout;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import controleur.commande.ValiderQuantiteAction;
-
-import vue.outils.PanelChoixQuantite;
-
+import modele.Attribut;
 import modele.Billet;
 import modele.Commande;
 import modele.ListeBillets;
+import vue.outils.Champs;
+import controleur.commande.ValiderQuantiteAction;
 
 @SuppressWarnings("serial")
 public class FenetreCommandeAjouter extends Fenetre {
 	
 	private JPanel contentPane;
-	private PanelChoixQuantite panelChoixQuantite;
 	private boolean sub;
 	
 	public FenetreCommandeAjouter(FenetreCommander fenetreCommander, Billet billet, ListeBillets listeBillets, Commande commande) {
@@ -28,32 +29,21 @@ public class FenetreCommandeAjouter extends Fenetre {
 		this.sub = billet.getSub();
 		
 		contentPane = new JPanel();
+		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
 		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
-		panelChoixQuantite = new PanelChoixQuantite(sub, new ValiderQuantiteAction(fenetreCommander, this, commande, billet));
 		
-		contentPane.add(panelChoixQuantite, "Center");
-		contentPane.add(new JButton(new ValiderQuantiteAction(fenetreCommander, this, commande, billet)), "South");
+		List<Attribut> map = new ArrayList<Attribut>();
+		map.add(new Attribut("quantite", Langue.getTraduction("qt"), Constantes.INTEGER));
+		if (sub) {
+			map.add(new Attribut("subventionne", Langue.getTraduction("subsidizes_ticket"), Constantes.BOOLEAN));
+		}
+		map.add(new Attribut("paye", Langue.getTraduction("paid_person"), Constantes.BOOLEAN));
+		map.add(new Attribut("donne", Langue.getTraduction("given_person"), Constantes.BOOLEAN));
+		Champs champs = new Champs(map);
+		
+		contentPane.add(champs, "North");
+		contentPane.add(new JButton(new ValiderQuantiteAction(fenetreCommander, this, commande, billet, champs)), "South");
 		
 		this.afficherDialog();
-	}
-
-	public boolean getSubventionne() {
-		if(sub)
-			return panelChoixQuantite.getSubventionne();
-		else
-			return false;
-	}
-	
-	public int getQuantite() {
-		return panelChoixQuantite.getQuantite();
-	}
-
-	public boolean getPaye() {
-		return panelChoixQuantite.getPaye();
-	}
-
-	public boolean getDonne() {
-		return panelChoixQuantite.getDonne();
 	}
 }

@@ -46,7 +46,7 @@ public class ListeBillets extends ListeObjet{
 	}
 	
 	/**
-	 * Cette methode permet de récuperer la liste des attributs pour l'objet Billet
+	 * Cette methode permet de récuperer la liste des attributs pour l'objet Billet (billet subventionne)
 	 */
 	private void attributs() {
 		Map<String, Integer> map = billeterie.getBdd().getAttributs("Billet");
@@ -69,9 +69,11 @@ public class ListeBillets extends ListeObjet{
 		}
 		this.attributs = resul;
 		attributsRed();
-		System.out.println(attributs + "\n\n" + attributsRed);
 	}
 	
+	/**
+	 * Cette methode permet de récuperer la liste des attributs pour l'objet Billet (billet normal)
+	 */
 	private void attributsRed() {
 		Map<String, Integer> map = billeterie.getBdd().getAttributs("Billet");
 		List<Attribut> resul = new ArrayList<Attribut>();
