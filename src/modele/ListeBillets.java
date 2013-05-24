@@ -11,6 +11,7 @@ import java.util.Set;
 
 @SuppressWarnings("serial")
 public class ListeBillets extends ListeObjet{
+	protected List<Attribut> attributsRed = new ArrayList<Attribut>();
 	
 	/********** Constructeur ************/
 	/**
@@ -66,6 +67,28 @@ public class ListeBillets extends ListeObjet{
 			resul.add(new Attribut(nom, nom, map.get(nom)));
 		}
 		this.attributs = resul;
+		attributsRed();
+		System.out.println(attributs + "\n\n" + attributsRed);
+	}
+	
+	private void attributsRed() {
+		Map<String, Integer> map = billeterie.getBdd().getAttributs("Billet");
+		List<Attribut> resul = new ArrayList<Attribut>();
+		map.remove("date");
+		resul.add(new Attribut("categorie", Langue.getTraduction("category"), map.get("categorie"))); map.remove("categorie");
+		resul.add(new Attribut("sous_categorie", Langue.getTraduction("subcategory"), map.get("sous_categorie"))); map.remove("sous_categorie");
+		resul.add(new Attribut("prix", Langue.getTraduction("price"), map.get("prix"))); map.remove("prix");
+		resul.add(new Attribut("nb_total", Langue.getTraduction("qt"), map.get("nb_total"))); map.remove("nb_total");
+		map.remove("prix_sub");
+		map.remove("nb_sub_par_personne");
+		map.remove("nb_sub");
+		Set<String> set = map.keySet();
+		Iterator<String> it = set.iterator();
+		while (it.hasNext()) {
+			String nom = it.next();
+			resul.add(new Attribut(nom, nom, map.get(nom)));
+		}
+		this.attributsRed = resul;
 	}
 
 	
