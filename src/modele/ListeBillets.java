@@ -54,8 +54,8 @@ public class ListeBillets extends ListeObjet{
 		resul.add(new Attribut("categorie", Langue.getTraduction("category"), map.get("categorie"))); map.remove("categorie");
 		resul.add(new Attribut("sous_categorie", Langue.getTraduction("subcategory"), map.get("sous_categorie"))); map.remove("sous_categorie");
 		resul.add(new Attribut("prix", Langue.getTraduction("price"), map.get("prix"))); map.remove("prix");
-		resul.add(new Attribut("prix_sub", Langue.getTraduction("price_sub"), map.get("prix_sub"))); map.remove("prix_sub");
 		resul.add(new Attribut("nb_total", Langue.getTraduction("qt"), map.get("nb_total"))); map.remove("nb_total");
+		resul.add(new Attribut("prix_sub", Langue.getTraduction("price_sub"), map.get("prix_sub"))); map.remove("prix_sub");
 		resul.add(new Attribut("nb_sub_par_personne", Langue.getTraduction("qt_sub_per"), map.get("nb_sub_par_personne"))); map.remove("nb_sub_par_personne");
 		resul.add(new Attribut("nb_sub", Langue.getTraduction("qt_sub"), map.get("nb_sub"))); map.remove("nb_sub");
 		
