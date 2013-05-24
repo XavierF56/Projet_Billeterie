@@ -37,7 +37,7 @@ public class BarreOutilsPersonnes extends JPanel {
 		this.add(new JButton(new FenetreCommanderAction(listePersonnes, billeterie)));
 		this.add(new JButton(new FenetreDetailsAction(billeterie)));
 		this.add(new JButton(new FenetreAjouterAction(listePersonnes, 
-				Langue.getTraduction("add_new_person"))));
+				Langue.getTraduction("add_new_person"), true)));
 		this.add(new JButton(new FenetreModifierAction(listePersonnes)));
 		this.add(new JButton(new FenetreSupprimerAction(listePersonnes)));
 	}

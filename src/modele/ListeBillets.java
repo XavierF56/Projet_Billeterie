@@ -96,11 +96,15 @@ public class ListeBillets extends ListeObjet{
 	 * Cette methode permet d'ajouter un Billet dans la liste
 	 * @param la liste des attributs sous forme d'une map
 	 */
-	public void ajouter(Map<String, Object> map) {
+	public void ajouter(Map<String, Object> map, boolean sub) {
 		reinitialise();
-		Billet billet = new Billet(map, billeterie, 1);
+		Billet billet = new Billet(map, billeterie, sub);
 		listeObjet.add(billet);
 		fireTableDataChanged();
 		sauvegarde();
+	}
+	
+	public List<Attribut> getAttributsRed() {
+		return attributsRed;
 	}
 }

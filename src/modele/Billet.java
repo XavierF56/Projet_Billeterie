@@ -34,10 +34,16 @@ public class Billet extends Objet {
 	 * @param bill
 	 * @param useless ce param sert juste a diffrencier les deux constructeurs
 	 */
-	public Billet(Map<String,Object> map, Billeterie bill, int useless) {
+	public Billet(Map<String,Object> map, Billeterie bill, boolean sub) {
 		super();
 		this.map = map;
 		this.billeterie = bill;
+		
+		if (!sub) {
+			map.put("prix_sub", 0);
+			map.put("nb_sub_par_personne", 0);
+			map.put("nb_sub", 0);
+		}
 		
 		// Attribue un Id a ce nouveau billet
 		if (!map.containsKey("id")) { //NOM BDD

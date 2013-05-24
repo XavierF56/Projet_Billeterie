@@ -15,6 +15,7 @@ public class FenetreAjouterAction extends AbstractAction {
 	
 	private ListeObjet listeObjet;
 	private String titre;
+	private boolean sub;
 	
 	/** L'action FenetreAjouter permet l'appel de la fenetre Ajouter
 	 * 
@@ -23,10 +24,11 @@ public class FenetreAjouterAction extends AbstractAction {
 	 * @see FenetreAjouter
      * @see AbstractAction
 	 */
-	public FenetreAjouterAction(ListeObjet listeObjet, String titre) {
+	public FenetreAjouterAction(ListeObjet listeObjet, String titre, boolean sub) {
         super(Langue.getTraduction("add"));
     	this.listeObjet = listeObjet;
     	this.titre = titre;
+    	this.sub = sub;
     }
 
     /** Methode requise par l'heritage de la classe AbstractAction
@@ -35,6 +37,6 @@ public class FenetreAjouterAction extends AbstractAction {
      * @see AbstractAction
 	 */
     public void actionPerformed(ActionEvent e) {
-    	new FenetreAjouter(listeObjet, titre);
+    	new FenetreAjouter(listeObjet, titre, sub);
     }
 }

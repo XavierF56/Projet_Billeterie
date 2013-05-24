@@ -76,7 +76,7 @@ public class ListePersonnes extends ListeObjet {
 	 * Cette methode permet d'ajouter une Personne dans la liste
 	 * @param la liste des attributs sous forme d'une map
 	 */
-	public void ajouter(Map<String, Object> map) {
+	public void ajouter(Map<String, Object> map, boolean sub) {
 		reinitialise();
 		Personne personne = new Personne(map, billeterie, 1);
 		listeObjet.add(personne);
