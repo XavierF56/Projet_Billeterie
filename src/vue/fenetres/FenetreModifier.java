@@ -34,7 +34,12 @@ public class FenetreModifier extends Fenetre {
 		this.add(fenetre);
 		
 		//Champs
-		champs = new Champs(objets.getAttributs());
+		boolean sub = true;
+		if (sub) {
+			champs = new Champs(listeObjet.getAttributs());
+		} else  {
+			champs = new Champs(listeObjet.getAttributsRed());
+		}
 		champs.setValeurs(objetTraite.getHashMap());
 		fenetre.add(champs, "Center");
 		champs.ajouterListener(new ValiderModifierAction(this));

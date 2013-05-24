@@ -17,7 +17,6 @@ import modele.ListeObjet;
 public class FenetreAjouter extends Fenetre {
 	
 	private Champs champs;
-	private boolean sub;
 	
 	/** Fenetre permettant l'ajout d'un billet ou d'une personne
 	 * 
@@ -26,8 +25,6 @@ public class FenetreAjouter extends Fenetre {
 	 * @see Fenetre
 	 */
 	public FenetreAjouter(ListeObjet listeObjet, String titre, boolean sub) {
-		this.sub = sub;
-		
 		//Fenetre
 		this.setTitle(titre);
 		JPanel contentPane = new JPanel(new BorderLayout());
