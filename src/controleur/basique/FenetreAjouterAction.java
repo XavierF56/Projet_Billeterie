@@ -6,16 +6,14 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
-import vue.fenetres.FenetreAjouter;
-
 import modele.ListeObjet;
+import vue.fenetres.FenetreAjouter;
 
 @SuppressWarnings("serial")
 public class FenetreAjouterAction extends AbstractAction {
 	
 	private ListeObjet listeObjet;
 	private String titre;
-	private boolean sub;
 	
 	/** L'action FenetreAjouter permet l'appel de la fenetre Ajouter
 	 * 
@@ -24,11 +22,10 @@ public class FenetreAjouterAction extends AbstractAction {
 	 * @see FenetreAjouter
      * @see AbstractAction
 	 */
-	public FenetreAjouterAction(ListeObjet listeObjet, String titre, boolean sub) {
+	public FenetreAjouterAction(ListeObjet listeObjet, String titre) {
         super(Langue.getTraduction("add"));
     	this.listeObjet = listeObjet;
     	this.titre = titre;
-    	this.sub = sub;
     }
 
     /** Methode requise par l'heritage de la classe AbstractAction
@@ -37,6 +34,6 @@ public class FenetreAjouterAction extends AbstractAction {
      * @see AbstractAction
 	 */
     public void actionPerformed(ActionEvent e) {
-    	new FenetreAjouter(listeObjet, titre, sub);
+    	new FenetreAjouter(listeObjet, titre);
     }
 }

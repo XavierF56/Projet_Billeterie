@@ -31,9 +31,7 @@ public class BarreOutilsBillets extends JPanel {
 		this.add(textRecherche);
 		this.add(new JButton(new RechercheAction(billeterie.getListeBillets(), textRecherche)));
 		this.add(new JButton(new FenetreAjouterAction(billeterie.getListeBillets(), 
-				Langue.getTraduction("add_new_ticket"), true)));
-		this.add(new JButton(new FenetreAjouterAction(billeterie.getListeBillets(), 
-				Langue.getTraduction("add_new_ticket"), false)));
+				Langue.getTraduction("add_new_ticket"))));
 		this.add(new JButton(new FenetreModifierAction(billeterie.getListeBillets())));
 		this.add(new JButton(new FenetreSupprimerAction(billeterie.getListeBillets())));
 		this.add(new JButton(new FenetreRAZQuotaAction(billeterie.getListeBillets())));
