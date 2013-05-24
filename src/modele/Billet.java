@@ -45,6 +45,8 @@ public class Billet extends Objet {
 			map.put("nb_sub", 0);
 		}
 		
+		map.put("sub", sub);
+		
 		// Attribue un Id a ce nouveau billet
 		if (!map.containsKey("id")) { //NOM BDD
 			map.put("id", prochainId);
@@ -154,6 +156,9 @@ public class Billet extends Objet {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	public boolean getSub() {
+		return (Boolean) Boolean.valueOf(map.get("sub").toString());
 	}
 	
 	/********** Getters & Setters ************/

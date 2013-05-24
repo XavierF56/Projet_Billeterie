@@ -19,7 +19,6 @@ import modele.Objet;
 public class FenetreModifierAction extends AbstractAction {
 	
 	private ListeObjet listeObjet;
-	private boolean sub;
 	
 	/** L'action FenetreModifier permet l'appel de la fenetre Modifier
 	 * 
@@ -31,7 +30,6 @@ public class FenetreModifierAction extends AbstractAction {
 	public FenetreModifierAction(ListeObjet listeObjet) {
         super(Langue.getTraduction("modify"));
     	this.listeObjet = listeObjet;
-    	this.sub = sub;
     }
 
 	/** Methode requise par l'heritage de la classe AbstractAction

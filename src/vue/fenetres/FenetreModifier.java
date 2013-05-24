@@ -34,7 +34,7 @@ public class FenetreModifier extends Fenetre {
 		this.add(fenetre);
 		
 		//Champs
-		boolean sub = true;
+		boolean sub = objetTraite.getSub();
 		if (sub) {
 			champs = new Champs(listeObjet.getAttributs());
 		} else  {

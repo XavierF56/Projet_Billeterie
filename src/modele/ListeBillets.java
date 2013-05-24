@@ -52,6 +52,7 @@ public class ListeBillets extends ListeObjet{
 		Map<String, Integer> map = billeterie.getBdd().getAttributs("Billet");
 		List<Attribut> resul = new ArrayList<Attribut>();
 		map.remove("date");
+		map.remove("sub");
 		resul.add(new Attribut("categorie", Langue.getTraduction("category"), map.get("categorie"))); map.remove("categorie");
 		resul.add(new Attribut("sous_categorie", Langue.getTraduction("subcategory"), map.get("sous_categorie"))); map.remove("sous_categorie");
 		resul.add(new Attribut("prix", Langue.getTraduction("price"), map.get("prix"))); map.remove("prix");
@@ -75,6 +76,7 @@ public class ListeBillets extends ListeObjet{
 		Map<String, Integer> map = billeterie.getBdd().getAttributs("Billet");
 		List<Attribut> resul = new ArrayList<Attribut>();
 		map.remove("date");
+		map.remove("sub");
 		resul.add(new Attribut("categorie", Langue.getTraduction("category"), map.get("categorie"))); map.remove("categorie");
 		resul.add(new Attribut("sous_categorie", Langue.getTraduction("subcategory"), map.get("sous_categorie"))); map.remove("sous_categorie");
 		resul.add(new Attribut("prix", Langue.getTraduction("price"), map.get("prix"))); map.remove("prix");

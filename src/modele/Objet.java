@@ -30,4 +30,7 @@ public abstract class Objet {
 	public Map<String, Object> getHashMap() {
 		return map;
 	}
+	public boolean getSub() {
+		return true;
+	}
 }
