@@ -1,4 +1,6 @@
-package controleur.basique;
+package controleur.modifier;
+
+import general.Langue;
 
 import java.awt.event.ActionEvent;
 
@@ -23,7 +25,7 @@ public class TypeBilletListener extends AbstractAction {
 	public void actionPerformed(ActionEvent e) {
 		ListeObjet list = fenetre.getListeObjet();
 		String titre = fenetre.getTitre();
-		boolean bool = jcb.getSelectedItem().equals("Billet normal");
+		boolean bool = jcb.getSelectedItem().equals(Langue.getTraduction("ticket_normal"));
 		if(bool) {
 			new FenetreAjouter(list, titre, false);
 		} else {

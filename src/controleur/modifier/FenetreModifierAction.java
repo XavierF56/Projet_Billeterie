@@ -1,4 +1,4 @@
-package controleur.basique;
+package controleur.modifier;
 
 import general.Constantes;
 import general.Langue;

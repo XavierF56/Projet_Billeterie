@@ -9,7 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import controleur.basique.ValiderModifierAction;
+import controleur.modifier.ValiderModifierAction;
 
 import vue.outils.Champs;
 

@@ -10,10 +10,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controleur.basique.FenetreAjouterAction;
-import controleur.basique.FenetreModifierAction;
 import controleur.basique.FenetreRAZQuotaAction;
 import controleur.basique.FenetreSupprimerAction;
 import controleur.basique.RechercheAction;
+import controleur.modifier.FenetreModifierAction;
 
 import modele.Billeterie;
 
