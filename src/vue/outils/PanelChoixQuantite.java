@@ -23,7 +23,7 @@ public class PanelChoixQuantite extends JPanel implements ItemListener {
 	private JCheckBox chckSubventionne, chckPaye, chckDonne;
 	private JFormattedTextField textField;
 	
-	public PanelChoixQuantite (ValiderQuantiteAction keyValiderAction) {
+	public PanelChoixQuantite (boolean sub, ValiderQuantiteAction keyValiderAction) {
 
 		// Initialisation du panel et des attributs de la classe
 		this.setLayout(new GridLayout(0, 1));
@@ -34,30 +34,32 @@ public class PanelChoixQuantite extends JPanel implements ItemListener {
 		
 		// Label
 		JLabel label = new JLabel("\n" + Langue.getTraduction("choose_quantity") + " :\n");
+		this.add(label);
 		
 		// Choix de la quantite de billets a commander
 		textField = new JFormattedTextField(NumberFormat.getIntegerInstance());
 		textField.setValue(1);
 		textField.setColumns(20);
 		textField.addKeyListener(keyValiderAction);
+		this.add(textField);
 		
 		// Creation des Checkbox
-		chckSubventionne = new JCheckBox(Langue.getTraduction("subsidizes_ticket"));
-		chckSubventionne.setSelected(false);
-		chckSubventionne.addItemListener(this);
+		if (sub) {
+			chckSubventionne = new JCheckBox(Langue.getTraduction("subsidizes_ticket"));
+			chckSubventionne.setSelected(false);
+			chckSubventionne.addItemListener(this);
+			this.add(chckSubventionne);
+		}
+		
 		chckPaye = new JCheckBox(Langue.getTraduction("paid_person"));
 		chckPaye.setSelected(false);
 		chckPaye.addItemListener(this);
+		this.add(chckPaye);
+		
 		chckDonne = new JCheckBox(Langue.getTraduction("given_person"));
 		chckDonne.setSelected(false);
 		chckDonne.addItemListener(this);
-		
-		// Ajout des composants du panel
-		this.add(label);
-		this.add(textField);
-		this.add(chckSubventionne);
-		this.add(chckPaye);
-		this.add(chckDonne);
+		this.add(chckDonne);	
 	}
 
 	public boolean getSubventionne() {

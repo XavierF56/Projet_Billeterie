@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 import vue.fenetres.FenetreCommander;
 import vue.fenetres.FenetreCommanderErreur;
-import vue.fenetres.FenetreQuantite;
+import vue.fenetres.FenetreCommandeAjouter;
 
 import modele.AchatException;
 import modele.Billet;
@@ -21,7 +21,7 @@ import modele.Commande;
 @SuppressWarnings("serial")
 public class ValiderQuantiteAction extends AbstractAction implements KeyListener {
 	
-		private FenetreQuantite fenetre;
+		private FenetreCommandeAjouter fenetre;
 		private FenetreCommander fenetreCommande;
 		private Billet billet;
 		private Commande commande;
@@ -33,11 +33,11 @@ public class ValiderQuantiteAction extends AbstractAction implements KeyListener
 		 * @param commande la commande en cours
 		 * @param billet le billet a commander
 		 * @see FenetreCommander
-		 * @see FenetreQuantite
+		 * @see FenetreCommandeAjouter
 		 * @see Commande
 		 * @see Billet
 		 */
-		public ValiderQuantiteAction(FenetreCommander fenetreCommande, FenetreQuantite fenetreQuantite, Commande commande, Billet billet) {
+		public ValiderQuantiteAction(FenetreCommander fenetreCommande, FenetreCommandeAjouter fenetreQuantite, Commande commande, Billet billet) {
 		    super(Langue.getTraduction("validate"));
 		    this.fenetreCommande = fenetreCommande;
 		    this.fenetre = fenetreQuantite;
