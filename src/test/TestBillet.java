@@ -68,7 +68,7 @@ public class TestBillet extends TestCase {
 		map.put("nb_sub_par_personne", 5);
 		map.put("nb_total", 500);
 		map.put("nb_sub", 200);
-		bill.getListeBillets().ajouter(map);
+		bill.getListeBillets().ajouter(map, true);
 		try {
 			Billet modif = (Billet) bill.getListeBillets().getObjetById(Billet.getProchainId()-1);
 			assertEquals(200, modif.getNbPlaceSub());

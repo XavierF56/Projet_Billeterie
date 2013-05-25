@@ -105,6 +105,8 @@ public class Commande {
 		nbArticle++;
 	}
 	
+	
+	
 	/**
 	 * Si le message d'erreur quota depasse est lance par la commande ajoutCommande. 
 	 * Une boite de dialogue est affichee pour valider cette action normalement non autorisee

@@ -100,9 +100,12 @@ public class Personne extends Objet{
 		List<Objet> listeObjet = listeAchats.getListeAchats();
 		for (int i = 0; i < listeObjet.size(); i++) {
 			Achat achat = (Achat) listeObjet.get(i);
-			if (achat.getBillet().equals(billet))
+			if (achat.getBillet().equals(billet)) {
 				achat.supprimer();
+				i--;
+			}
 		}
+
 	}
 	
 	/**

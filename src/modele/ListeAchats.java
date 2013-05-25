@@ -54,6 +54,8 @@ public class ListeAchats extends ListeObjet{
 		sauvegarde();
 	}
 	
+
+	
 	/** Methodes non implementees */
 	public void ajouter(Map<String, Object> map, boolean sub) {}
 	public String requete (String chaine){return null;}
