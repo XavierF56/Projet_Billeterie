@@ -19,7 +19,7 @@ import modele.Commande;
 
 @SuppressWarnings("serial")
 public class FenetreCommanderErreur extends Fenetre {
-	public FenetreCommanderErreur(Commande commande, String erreur, FenetreCommander fenetreCommande) {
+	public FenetreCommanderErreur(Commande commande, String erreur, FenetreCommander fenetreCommande, boolean completer) {
 		
 		//Fenetre
 		this.setTitle(Langue.getTraduction("error_buying"));
@@ -29,18 +29,26 @@ public class FenetreCommanderErreur extends Fenetre {
 		
 		//Boutons Valider et Annuler
 		JButton buttonAnnuler = new JButton(new AnnulerCommandeAction(commande, this));
-		JButton buttonSupprimer = new JButton(new ForcerCommandeAction(commande, this, fenetreCommande));
-		JButton buttonCompleter = new JButton(new CompleterCommandeAction(commande, this, fenetreCommande));
+		
 		JPanel panelSouth = new JPanel();
 		panelSouth.add(buttonAnnuler);
-		panelSouth.add(buttonSupprimer);
-		panelSouth.add(buttonCompleter);
+		if(completer) {
+			JButton buttonCompleter = new JButton(new CompleterCommandeAction(commande, this, fenetreCommande));
+			panelSouth.add(buttonCompleter);
+		}
+		JButton buttonForcer = new JButton(new ForcerCommandeAction(commande, this, fenetreCommande));
+		panelSouth.add(buttonForcer);
+		
 		fenetre.add(panelSouth, "South");
 		
 		//Message
-		MultiLineLabel multiLineLabel = new MultiLineLabel(erreur + "\n" + Langue.getTraduction("validate_anyway"));
-
-		fenetre.add(multiLineLabel, "Center");
+		if(completer) {
+			MultiLineLabel multiLineLabel = new MultiLineLabel(erreur + "\n" + Langue.getTraduction("validate_anyway"));
+			fenetre.add(multiLineLabel, "Center");
+		} else {
+			MultiLineLabel multiLineLabel = new MultiLineLabel(erreur + "\n" + Langue.getTraduction("validate_anyway_force"));
+			fenetre.add(multiLineLabel, "Center");
+		}
 		
 		this.afficherDialog();
 	}

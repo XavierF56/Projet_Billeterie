@@ -69,7 +69,11 @@ public class ValiderQuantiteAction extends AbstractAction implements KeyListener
 				fenetreCommande.majLabel();
 		    	fenetreCommande.getBilleterie().getFenetre().getOngletStats().majLabel();
 			} catch (AchatException ae) {
-				new FenetreCommanderErreur(commande, ae.toString(), fenetreCommande);
+				if (ae.getId() == 0) {
+					new FenetreCommanderErreur(commande, ae.toString(), fenetreCommande, true);
+				} else {
+					new FenetreCommanderErreur(commande, ae.toString(), fenetreCommande, false);
+				}
 			} catch (Exception e1) {
 				JOptionPane.showMessageDialog(new JFrame(), e1, Langue.getTraduction("error") , JOptionPane.ERROR_MESSAGE);
 			}
