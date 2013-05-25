@@ -55,7 +55,7 @@ public class ListeAchats extends ListeObjet{
 	}
 	
 	/** Methodes non implementees */
-	public void ajouter(Map<String, Object> map) {}
+	public void ajouter(Map<String, Object> map, boolean sub) {}
 	public String requete (String chaine){return null;}
 	
 	/********** Getters & Setters ************/

@@ -6,9 +6,8 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
-import vue.fenetres.FenetreAjouter;
-
 import modele.ListeObjet;
+import vue.fenetres.FenetreAjouter;
 
 @SuppressWarnings("serial")
 public class FenetreAjouterAction extends AbstractAction {

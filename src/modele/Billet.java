@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -34,10 +35,18 @@ public class Billet extends Objet {
 	 * @param bill
 	 * @param useless ce param sert juste a diffrencier les deux constructeurs
 	 */
-	public Billet(Map<String,Object> map, Billeterie bill, int useless) {
+	public Billet(Map<String,Object> map, Billeterie bill, boolean sub) {
 		super();
 		this.map = map;
 		this.billeterie = bill;
+		
+		if (!sub) {
+			map.put("prix_sub", 0);
+			map.put("nb_sub_par_personne", 0);
+			map.put("nb_sub", 0);
+		}
+		
+		map.put("sub", sub);
 		
 		// Attribue un Id a ce nouveau billet
 		if (!map.containsKey("id")) { //NOM BDD
@@ -85,8 +94,12 @@ public class Billet extends Objet {
 	 * Cette methode supprimer un billet de la memoire ainsi que dans la ListeBillets
 	 */
 	public void supprimer() {
-		billeterie.getBdd().supprimer("Billet", this.getId());
+		billeterie.getBdd().supprimer("Billet", this.getId()+"");
 		billeterie.getListeBillets().supprimer(this);
+		List<Objet> listeObjet = billeterie.getListePersonnes().getListeObjet();
+		for (int i = 0; i < listeObjet.size(); i++) {
+			((Personne) listeObjet.get(i)).supprimerAchat(this);
+		}
 	}
 	
 	/**
@@ -148,6 +161,9 @@ public class Billet extends Objet {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	public boolean getSub() {
+		return (Boolean) Boolean.valueOf(map.get("sub").toString());
 	}
 	
 	/********** Getters & Setters ************/

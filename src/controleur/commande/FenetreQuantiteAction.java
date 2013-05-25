@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 import vue.fenetres.FenetreCommander;
-import vue.fenetres.FenetreQuantite;
+import vue.fenetres.FenetreCommandeAjouter;
 
 import modele.Billet;
 import modele.Commande;
@@ -33,7 +33,7 @@ public class FenetreQuantiteAction extends AbstractAction {
 	 * @param commande la commande en cours
 	 * @see ListeBillets
 	 * @see Commande
-	 * @see FenetreQuantite
+	 * @see FenetreCommandeAjouter
 	 * @see AbstractAction
 	 */
 	public FenetreQuantiteAction(FenetreCommander fenetreCommander, ListeBillets listeBillets, JTable tableau, Commande commande) {
@@ -51,7 +51,7 @@ public class FenetreQuantiteAction extends AbstractAction {
 	 * de donnees, les traces de l'exception sont affichees graphiquement.
 	 * Sinon la fenetre Quantite est appelee.
 	 * 
-	 * @see FenetreQuantite
+	 * @see FenetreCommandeAjouter
 	 * @see AbstractAction
 	 */
 	public void actionPerformed(ActionEvent e) {
@@ -72,7 +72,7 @@ public class FenetreQuantiteAction extends AbstractAction {
 					// Cas ou un billet est bien selectionne
 					try {
 						Billet billet = (Billet) listeBillets.getObjetByIndex(selectionCorrige);
-						new FenetreQuantite(fenetreCommander, billet, listeBillets, commande);
+						new FenetreCommandeAjouter(fenetreCommander, billet, listeBillets, commande);
 					} catch (Exception e1) {
 						Constantes.afficherException(e1);
 					}		

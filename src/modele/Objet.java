@@ -22,12 +22,19 @@ public abstract class Objet {
 	
 	/********** Getters & Setters ************/
 	public int getId() {
-		return (Integer) map.get("id");
+		try {
+			return (Integer) map.get("id");
+		} catch (Exception e) {
+			return Integer.valueOf((String) map.get("id"));
+		}
 	}
 	public Billeterie getBilleterie() {
 		return this.billeterie;
 	}
 	public Map<String, Object> getHashMap() {
 		return map;
+	}
+	public boolean getSub() {
+		return true;
 	}
 }

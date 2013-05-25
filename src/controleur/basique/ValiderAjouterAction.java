@@ -20,16 +20,18 @@ public class ValiderAjouterAction extends AbstractAction implements KeyListener 
 
 	private FenetreAjouter fenetre;
 	private ListeObjet listeObjet;
+	private boolean sub;
 	
 	/**
 	 * Constructeur
 	 * @param fenetre
 	 * @param listeObjet
 	 */
-    public ValiderAjouterAction(FenetreAjouter fenetre, ListeObjet listeObjet) {
+    public ValiderAjouterAction(FenetreAjouter fenetre, ListeObjet listeObjet, boolean sub) {
         super(Langue.getTraduction("validate"));
         this.fenetre = fenetre;
         this.listeObjet = listeObjet;
+        this.sub = sub;
     }
     
     /**
@@ -38,7 +40,7 @@ public class ValiderAjouterAction extends AbstractAction implements KeyListener 
     public void valider() {
     	try {
 			Map<String, Object>  map = fenetre.getChamps().getDonnees();
-			listeObjet.ajouter(map);
+			listeObjet.ajouter(map, sub);
         	fenetre.dispose();
 		} catch (Exception e1) {
 			System.out.println(e1);

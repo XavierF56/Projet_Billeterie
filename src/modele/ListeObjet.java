@@ -39,7 +39,7 @@ public abstract class ListeObjet extends AbstractTableModel{
 	 * Ajoute un objet dans la liste
 	 * @param objet
 	 */
-	public abstract void ajouter(Map<String, Object> map);
+	public abstract void ajouter(Map<String, Object> map, boolean sub);
 	
 	/**
 	 * Renvoie l'ensemble des personnes lies a la recherche
@@ -205,5 +205,8 @@ public abstract class ListeObjet extends AbstractTableModel{
 	public List<Objet> getListeObjet() {
 		reinitialise();
 		return listeObjet;
+	}
+	public List<Attribut> getAttributsRed() {
+		return null;
 	}
 }

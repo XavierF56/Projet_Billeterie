@@ -11,10 +11,6 @@ import modele.Billeterie;
  * TODO Continuer la Javadoc
  * TODO Booleen true false -> vrai faux
  * TODO Bouton payer tout / donner tout / selection multiple / payer et donner (Bruno)
- * TODO Gestion erreurs - "1 000 blanc" (Xavier)
- * TODO Gestion reset quotas (Xavier)
- * TODO Gestion cases vides billets non sub (Xavier)
- * TODO Achat subventionne au max si possible (Xavier)
  */
 public class Launcher {
 

@@ -22,4 +22,8 @@ public class AchatException extends Exception {
 	public String toString() {
 		return Langue.getTraduction("error_buying") + " : " + lien[type];
 	}
+	
+	public int getId() {
+		return type;
+	}
 }

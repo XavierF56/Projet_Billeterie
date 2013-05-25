@@ -11,8 +11,8 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
 import controleur.basique.FenetreAjouterAction;
-import controleur.basique.FenetreModifierAction;
 import controleur.basique.FenetreSupprimerAction;
+import controleur.modifier.FenetreModifierAction;
 
 import modele.ListeObjet;
 

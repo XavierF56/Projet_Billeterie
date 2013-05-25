@@ -11,9 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.text.MaskFormatter;
 
-import controleur.option.ModifierDateAction;
-
 import modele.Billeterie;
+import controleur.option.ModifierDateAction;
 
 @SuppressWarnings("serial")
 public class OngletStats extends JPanel {

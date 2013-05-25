@@ -10,11 +10,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controleur.basique.FenetreAjouterAction;
-import controleur.basique.FenetreModifierAction;
 import controleur.basique.FenetreSupprimerAction;
 import controleur.basique.RechercheAction;
 import controleur.commande.FenetreCommanderAction;
 import controleur.details.FenetreDetailsAction;
+import controleur.modifier.FenetreModifierAction;
 
 import modele.Billeterie;
 import modele.ListePersonnes;

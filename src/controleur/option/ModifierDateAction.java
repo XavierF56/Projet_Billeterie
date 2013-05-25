@@ -10,9 +10,8 @@ import java.text.SimpleDateFormat;
 import javax.swing.AbstractAction;
 import javax.swing.JFormattedTextField;
 
-import vue.fenetres.Fenetre;
-
 import modele.Billeterie;
+import vue.fenetres.Fenetre;
 
 @SuppressWarnings("serial")
 public class ModifierDateAction extends AbstractAction implements KeyListener {
@@ -38,6 +37,7 @@ public class ModifierDateAction extends AbstractAction implements KeyListener {
 		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy");
 		try {
 			billeterie.getAchatsGeneral().setDate(dateStandard.parse(source));
+			System.out.println(dateStandard.parse(source));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}

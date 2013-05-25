@@ -9,7 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import controleur.basique.ValiderModifierAction;
+import controleur.modifier.ValiderModifierAction;
 
 import vue.outils.Champs;
 
@@ -34,7 +34,12 @@ public class FenetreModifier extends Fenetre {
 		this.add(fenetre);
 		
 		//Champs
-		champs = new Champs(objets.getAttributs());
+		boolean sub = objetTraite.getSub();
+		if (sub) {
+			champs = new Champs(listeObjet.getAttributs());
+		} else  {
+			champs = new Champs(listeObjet.getAttributsRed());
+		}
 		champs.setValeurs(objetTraite.getHashMap());
 		fenetre.add(champs, "Center");
 		champs.ajouterListener(new ValiderModifierAction(this));
