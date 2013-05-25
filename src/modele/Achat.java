@@ -49,7 +49,7 @@ public class Achat extends Objet {
 		
 		// Attribue un Id a cette nouvelle personne
 		if (!map.containsKey("id")) {
-			map.put("id", billet.getId() + "Z" + personne.getId() + "Z" + personne.getAchats().getNbAchats());
+			map.put("id", billet.getId() + "0" + personne.getId() + "0" + personne.getAchats().getNbAchats());
 			map.put("id_personne", personne.getId());
 			map.put("id_billet", billet.getId());
 		}
@@ -105,7 +105,7 @@ public class Achat extends Objet {
 	 * Cette methode supprimer un billet de la memoire ainsi que dans la ListeBillets
 	 */
 	public void supprimer() {
-		billeterie.getBdd().supprimer("achat", this.getId());
+		billeterie.getBdd().supprimer("achat", this.getId()+"");
 		personne.getAchats().supprimer(this);
 	}
 
@@ -143,9 +143,6 @@ public class Achat extends Objet {
 	public boolean getSubventionne() {
 		return (Boolean) Boolean.valueOf(map.get("subventionne").toString());
 	}
-	public Billet getBillet() {
-		return billet;
-	}
 	public int getQt() {
 		return (Integer) map.get("quantite");
 	}
@@ -167,8 +164,6 @@ public class Achat extends Objet {
 	public boolean isQuotaEnCours() {
 		return billet.getDateQuota().before(this.getDate()) || billet.getDateQuota().equals(this.getDate());
 	}
-
-	
 	
 	/********** Getters & Setters ************/
 	public Personne getPersonne() {
@@ -177,6 +172,7 @@ public class Achat extends Objet {
 	public String toString () {
 		return map +"\n";
 	}
-
-
+	public Billet getBillet() {
+		return billet;
+	}
 }

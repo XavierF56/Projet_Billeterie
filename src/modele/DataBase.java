@@ -34,7 +34,7 @@ public class DataBase {
 	 * @param table
 	 * @param id
 	 */
-	public void supprimer (String table, int id){
+	public void supprimer (String table, String id){
 		String query = "Delete From " + table + " Where id='" + id + "'";
 		try {
 			bdd.update(query);

@@ -25,7 +25,7 @@ public class FenetreCommandeAjouter extends Fenetre {
 	private boolean sub;
 	
 	public FenetreCommandeAjouter(FenetreCommander fenetreCommander, Billet billet, ListeBillets listeBillets, Commande commande) {
-		this.setTitle(Langue.getTraduction("choice_title"));
+		this.setTitle(Langue.getTraduction("choice_title")+ " : " + billet);
 		this.sub = billet.getSub();
 		
 		contentPane = new JPanel();

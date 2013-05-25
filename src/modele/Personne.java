@@ -85,8 +85,24 @@ public class Personne extends Objet{
 	 * Cette methode supprimer une personne de la memoire ainsi que dans la ListePersonnes
 	 */
 	public void supprimer() {
-		billeterie.getBdd().supprimer("Personne", this.getId());
+		billeterie.getBdd().supprimer("Personne", this.getId()+"");
 		billeterie.getListePersonnes().supprimer(this);
+		List<Objet> listeObjet = listeAchats.getListeAchats();
+		for (int i = 0; i < listeObjet.size(); i++) {
+			listeObjet.get(i).supprimer();
+		}
+	}
+	
+	/**
+	 * Cette methode supprimer l'ensemble des achats lies au billet
+	 */
+	public void supprimerAchat(Billet billet) {
+		List<Objet> listeObjet = listeAchats.getListeAchats();
+		for (int i = 0; i < listeObjet.size(); i++) {
+			Achat achat = (Achat) listeObjet.get(i);
+			if (achat.getBillet().equals(billet))
+				achat.supprimer();
+		}
 	}
 	
 	/**
@@ -139,6 +155,7 @@ public class Personne extends Objet{
 		return resul;
 	}
 	
+	/* Methodes pour les statistiques*/
 	/**
 	 * @return Retourne le montant total des achats
 	 */
