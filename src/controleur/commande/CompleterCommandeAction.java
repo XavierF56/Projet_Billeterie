@@ -12,10 +12,17 @@ import vue.fenetres.FenetreCommander;
 
 @SuppressWarnings("serial")
 public class CompleterCommandeAction extends AbstractAction {
-	Commande commande;
-	Fenetre fenetre;
-	FenetreCommander fenetreCommande;
+	
+	private Commande commande;
+	private Fenetre fenetre;
+	private FenetreCommander fenetreCommande;
 
+	/**
+	 * 
+	 * @param commande
+	 * @param fenetre
+	 * @param fenetreCommande
+	 */
 	public CompleterCommandeAction (Commande commande, Fenetre fenetre, FenetreCommander fenetreCommande) {
 		super(Langue.getTraduction("complete"));
 		this.commande = commande;
@@ -23,7 +30,6 @@ public class CompleterCommandeAction extends AbstractAction {
 		this.fenetreCommande = fenetreCommande;
 	}
 	
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		commande.completer();
 		fenetreCommande.getBilleterie().getFenetre().getOngletStats().majLabel();

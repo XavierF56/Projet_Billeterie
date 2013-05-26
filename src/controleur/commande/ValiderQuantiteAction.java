@@ -30,32 +30,34 @@ public class ValiderQuantiteAction extends AbstractAction implements KeyListener
 		private Champs champs;
 		
 		/**
+		 * Cette classe permet la gestion de la validation d'une quantite de billets par l'utilisteur.
 		 * 
 		 * @param fenetreCommande la fenetre commande en cours
-		 * @param fenetreQuantite la fenetre quantite en cours
+		 * @param fenetre la fenetre CommandeAjout en cours
 		 * @param commande la commande en cours
 		 * @param billet le billet a commander
-		 * @see FenetreCommander
+		 * @see FenetreCommander la fenetre
 		 * @see FenetreCommandeAjouter
 		 * @see Commande
 		 * @see Billet
 		 */
-		public ValiderQuantiteAction(FenetreCommander fenetreCommande, FenetreCommandeAjouter fenetreQuantite, Commande commande, Billet billet, Champs champs) {
+		public ValiderQuantiteAction(FenetreCommander fenetreCommande, FenetreCommandeAjouter fenetre, Commande commande, Billet billet, Champs champs) {
 		    super(Langue.getTraduction("validate"));
 		    this.fenetreCommande = fenetreCommande;
-		    this.fenetre = fenetreQuantite;
+		    this.fenetre = fenetre;
 		    this.billet = billet;
 		    this.commande = commande;
 		    this.champs = champs;
 		}
 		
+		/** Methode requise par l'heritage de la classe AbstractAction
+	     * 
+	     * @see AbstractAction
+		 */
 		public void actionPerformed(ActionEvent e) {
 			validerQuantite();
 		}
 		
-		/**
-		 *
-		 */
 		private void validerQuantite(){
 			try {
 				Map<String, Object>  map = champs.getDonnees();

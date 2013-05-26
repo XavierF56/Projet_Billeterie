@@ -41,7 +41,7 @@ public class ValiderModifierAction extends AbstractAction implements KeyListener
 		}
     }
     
-    /** Listeners **/
+    /** Listeners */
     public void actionPerformed(ActionEvent e) {
 		valider();
     }

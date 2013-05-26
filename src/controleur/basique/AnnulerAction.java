@@ -12,9 +12,9 @@ public class AnnulerAction extends AbstractAction {
 	
 	private Fenetre fenetre;
 	
-	/** Permet d'annuler une action en cours en fermant la fenetre en parametre
+	/** Permet d'annuler une action en cours en fermant la fenêtre en parametre
 	 * 
-	 * @param fenetre la fenetre a fermer
+	 * @param fenetre la fenêtre à fermer
 	 * @param titre le titre de l'action
 	 * @see AbstractAction
 	 * @see Fenetre
