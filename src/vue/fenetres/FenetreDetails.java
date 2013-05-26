@@ -27,10 +27,18 @@ public class FenetreDetails extends Fenetre {
 	private JTable tableau;
 	private Personne personne;
 	
+	/**
+	 * Classe permettant la gestion de l'affichage de la fenêtre Détails.
+	 * Cette fenêtre permet à l'utilisteur de consulter l'historique des achats d'une personne ;
+	 * elle donne aussi la possibilité de payer ou de donner des billets après une commande.
+	 * 
+	 * @param pers la personne selectionnée
+	 */
 	public FenetreDetails(Personne pers) {
+		
 		this.personne = pers;
 		
-		//Fenetre
+		/* Fenêtre */
 		this.setTitle(Langue.getTraduction("information_about") + " " + personne);
 		this.setSize(800,600);
 		contentPane = new JPanel();
@@ -38,11 +46,11 @@ public class FenetreDetails extends Fenetre {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		this.add(contentPane);
 		
-		// Label restant a payer
+		/* Label restant a payer */
 		contentPane.add(new JLabel(Langue.getTraduction("left_to_pay") + " : " 
 				+ personne.getRestantAPayer() + " euros"), "North");
 
-		// Tableau
+		/* Tableau */
 		tableau = new JTable(personne.getAchats());
 		personne.getAchats().setTableau(tableau);
 		tableau.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -55,13 +63,13 @@ public class FenetreDetails extends Fenetre {
 		TableColumn col = tableau.getColumnModel().getColumn(0);        
         col.setPreferredWidth(200);
 		
-        // BarreOutils
+        /* BarreOutils */
 		contentPane.add(new BarreOutilsDetails(this, personne.getAchats(), tableau), "South");
 		
-		// Menu Contextuel
+		/* Menu Contextuel */
 		tableau.setComponentPopupMenu(new MenuContextuelDetails(personne.getAchats(), tableau));
-				
-		
+
+		/* Affichage de la fenetre */
 		this.afficherFenetre();
 	}
 	

@@ -44,14 +44,18 @@ public class FenetrePrincipale extends Fenetre {
 	private OngletStats ongletStats;
 	
 	/**
-	 * Create the frame.
+	 * Cette classe permet la gestion de l'affichage de la fenêtre Principale.
+	 * Cette fenêtre constitue le coprs de l'application et permet à l'utilisteur d'accéder à différents onglets.
+	 * 
+	 * @param billets la billeterie en cours
+	 * @see Billeterie
 	 */
 	public FenetrePrincipale(Billeterie billets) {
 		
 		this.billeterie = billets;
 		billeterie.setFenetre(this);
 
-		/* Theme */
+		/* Gestion du thème */
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			/*for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -150,7 +154,7 @@ public class FenetrePrincipale extends Fenetre {
 		ongletAPropos.add(multiLineLabel);
 		Onglets.addTab(Langue.getTraduction("about") + Proprietes.getOption("nomLogiciel"), null, ongletAPropos, null);
 		
-		
+		/* Affichage de la fenetre */
 		this.afficherFenetre();
 	}
 

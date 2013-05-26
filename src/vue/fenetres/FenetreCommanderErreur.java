@@ -36,7 +36,7 @@ public class FenetreCommanderErreur extends Fenetre {
 		fenetre.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
 		this.add(fenetre);
 		
-		/* Boutons Valider et Annuler */
+		/* Boutons */
 		JButton buttonAnnuler = new JButton(new AnnulerCommandeAction(commande, this));
 		
 		JPanel panelSouth = new JPanel();
@@ -60,6 +60,7 @@ public class FenetreCommanderErreur extends Fenetre {
 			fenetre.add(multiLineLabel, "Center");
 		}
 		
+		/* Affichage de la fenetre */
 		this.afficherDialog();
 	}
 }

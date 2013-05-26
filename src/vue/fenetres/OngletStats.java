@@ -16,6 +16,7 @@ import controleur.option.ModifierDateAction;
 
 @SuppressWarnings("serial")
 public class OngletStats extends JPanel {
+	
 	private Billeterie billeterie;
 	private GridBagConstraints gridBagConstraints;
 	private JLabel totalArticles;
@@ -26,6 +27,11 @@ public class OngletStats extends JPanel {
 	
 	private int y;
 	
+	/**
+	 * Cette classe permet la gestion de l'affichage de l'onglet Statistiques dans la fenêtre Principale.
+	 * 
+	 * @param billeterie la billeterie en cours
+	 */
 	public OngletStats(Billeterie billeterie) {
 		super();
 		this.billeterie = billeterie;
@@ -106,7 +112,9 @@ public class OngletStats extends JPanel {
 		y++;
 	}
 	
-	
+	/**
+	 * Permet la mise à jour des labels
+	 */
 	public void majLabel() {
 		intituleMois.setText(Langue.getTraduction("statistics_since"));
 		totalArticles.setText(billeterie.getAchatsGeneral().getTotalArticles() + "");

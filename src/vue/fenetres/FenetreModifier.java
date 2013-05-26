@@ -23,17 +23,24 @@ public class FenetreModifier extends Fenetre {
 	private Champs champs;
 	private ListeObjet objets;
 	
+	/**
+	 * Cette classe permet la gestion de l'affichage de la fenêtre Modifier.
+	 * Cette fenêtre permet à l'utilisateur de modifier les attributs d'un objet (Billet ou Personne).
+	 * 
+	 * @param objetTraite l'objet sélectionné
+	 * @param listeObjet la liste des différents objets (Billets ou Personnes)
+	 */
 	public FenetreModifier(Objet objetTraite, ListeObjet listeObjet) {
 		this.objetTraite = objetTraite;
 		this.objets = listeObjet;
 		
-		//Fenetre
+		/* Fenêtre */
 		this.setTitle(Langue.getTraduction("modification") + objetTraite);
 		JPanel fenetre = new JPanel(new BorderLayout());
 		fenetre.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
 		this.add(fenetre);
 		
-		//Champs
+		/* Champs */
 		boolean sub = objetTraite.getSub();
 		if (sub) {
 			champs = new Champs(listeObjet.getAttributs());
@@ -44,12 +51,13 @@ public class FenetreModifier extends Fenetre {
 		fenetre.add(champs, "Center");
 		champs.ajouterListener(new ValiderModifierAction(this));
 		
-		//Bouton Valider
+		/* Bouton Valider */
 		JButton button = new JButton(new ValiderModifierAction(this));
 		JPanel panelSouth = new JPanel();
 		panelSouth.add(button);
 		fenetre.add(panelSouth, "South");
 		
+		/* Affichage de la fenetre */
 		this.afficherDialog();
 	}
 	

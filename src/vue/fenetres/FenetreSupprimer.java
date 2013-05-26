@@ -19,18 +19,20 @@ import modele.ListeObjet;
 public class FenetreSupprimer extends Fenetre {
 	
 	/**
+	 * Cette classe permet la gestion de l'affichage de la fenêtre Supprimer.
+	 * Cette fenêtre permet à l'utilisteur de supprimer des personnes ou des billets dans la base de données.
 	 * 
-	 * @param listeObjet
+	 * @param listeObjet la liste des objets à supprimer
 	 */
 	public FenetreSupprimer(ListeObjet listeObjets) {
 		
-		//Fenetre
+		/* Fenêtre */
 		this.setTitle(Langue.getTraduction("delete_confirmation"));
 		JPanel fenetre = new JPanel(new BorderLayout());
 		fenetre.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
 		this.add(fenetre);
 		
-		//Boutons Valider et Annuler
+		/* Boutons Valider et Annuler */
 		JButton buttonAnnuler = new JButton(new AnnulerAction(this, Langue.getTraduction("cancel")));
 		JButton buttonSupprimer = new JButton(new ValiderSupprimerAction(listeObjets, this));
 		JPanel panelSouth = new JPanel();
@@ -38,10 +40,11 @@ public class FenetreSupprimer extends Fenetre {
 		panelSouth.add(buttonAnnuler);
 		fenetre.add(panelSouth, "South");
 		
-		//Message
+		/* Message */
 		JLabel label = new JLabel(Langue.getTraduction("delete_query"));
 		fenetre.add(label, "Center");
 		
+		/* Affichage de la fenêtre */
 		this.afficherDialog();
 	}
 }

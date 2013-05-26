@@ -19,10 +19,18 @@ import modele.ListeBillets;
 public class MenuContextuelCommande extends JPopupMenu {
 	JTable tableau;
 	
-	public MenuContextuelCommande (FenetreCommander fenetreCommander, ListeBillets listeBillets, JTable tableau, Commande commande) {
+	/**
+	 * 
+	 * 
+	 * @param fenetre
+	 * @param listeBillets
+	 * @param tableau
+	 * @param commande
+	 */
+	public MenuContextuelCommande (FenetreCommander fenetre, ListeBillets listeBillets, JTable tableau, Commande commande) {
 		this.tableau = tableau;
 		
-		this.add(new FenetreQuantiteAction(fenetreCommander, listeBillets, tableau, commande));
+		this.add(new FenetreQuantiteAction(fenetre, listeBillets, tableau, commande));
 	}
 	
 	public void show(Component invoker, int x, int y) {

@@ -21,6 +21,11 @@ public class MenuContextuelBillet extends JPopupMenu {
 	
 	private JTable table;
 	
+	/**
+	 * 
+	 * @param listeObjet
+	 * @param table
+	 */
 	public MenuContextuelBillet (ListeObjet listeObjet, JTable table) {
 		this.table = table;
 		this.add(new FenetreAjouterAction(listeObjet, Langue.getTraduction("add_new_person")));

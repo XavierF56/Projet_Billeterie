@@ -23,6 +23,11 @@ public class MenuContextuelPersonne extends JPopupMenu {
 
 	private JTable table;
 	
+	/**
+	 * 
+	 * @param listeObjet
+	 * @param table
+	 */
 	public MenuContextuelPersonne (ListeObjet listeObjet, JTable table) {
 		this.table = table;
 		

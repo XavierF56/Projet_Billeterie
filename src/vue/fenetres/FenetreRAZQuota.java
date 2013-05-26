@@ -17,18 +17,20 @@ import controleur.basique.ValiderRAZQuotaAction;
 public class FenetreRAZQuota extends Fenetre {
 	
 	/**
+	 * Cette classe permet la gestion de l'affichage de la fenêtre RAZQuota
+	 * Cette fenêtre permet la remise à zéro des quotas d'une personne (Dans le cas d'une nouvelle année par exemple).
 	 * 
-	 * @param listeObjet
+	 * @param listeObjet la liste des billets
 	 */
 	public FenetreRAZQuota(ListeObjet listeObjets) {
 		
-		//Fenetre
+		/* Fenêtre */
 		this.setTitle(Langue.getTraduction("reset_Confirmation"));
 		JPanel fenetre = new JPanel(new BorderLayout());
 		fenetre.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
 		this.add(fenetre);
 		
-		//Boutons Valider et Annuler
+		/* Boutons Valider et Annuler */
 		JButton buttonAnnuler = new JButton(new AnnulerAction(this, Langue.getTraduction("cancel")));
 		JButton buttonQuota = new JButton(new ValiderRAZQuotaAction(this, listeObjets));
 		JPanel panelSouth = new JPanel();
@@ -36,10 +38,11 @@ public class FenetreRAZQuota extends Fenetre {
 		panelSouth.add(buttonAnnuler);
 		fenetre.add(panelSouth, "South");
 		
-		//Message
+		/* Message */
 		JLabel label = new JLabel(Langue.getTraduction("reset_query"));
 		fenetre.add(label, "Center");
 		
+		/* Affichage de la fenêtre */
 		this.afficherDialog();
 	}
 }

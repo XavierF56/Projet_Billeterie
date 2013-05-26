@@ -15,8 +15,14 @@ import modele.ListeAchats;
 
 @SuppressWarnings("serial")
 public class MenuContextuelDetails extends JPopupMenu {
+	
 	JTable tableau;
 	
+	/**
+	 * 
+	 * @param listeAchats
+	 * @param tableau
+	 */
 	public MenuContextuelDetails (ListeAchats listeAchats, JTable tableau) {
 		this.tableau = tableau;
 		
