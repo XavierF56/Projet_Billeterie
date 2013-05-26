@@ -23,6 +23,7 @@ public class ValiderAjouterAction extends AbstractAction implements KeyListener 
 	private boolean sub;
 	
 	/**
+	 * Cette action permet la gestion de la validation de l'ajout dun objet (Billet ou Personne) par l'utilisteur.
 	 * 
 	 * @param fenetre la fenetre en cours
 	 * @param listeObjet la liste des Billets
@@ -34,7 +35,6 @@ public class ValiderAjouterAction extends AbstractAction implements KeyListener 
         super(Langue.getTraduction("validate"));
         this.fenetre = fenetre;
         this.listeObjet = listeObjet;
-        this.sub = sub;
     }
     
     /**

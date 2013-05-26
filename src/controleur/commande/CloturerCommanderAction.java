@@ -16,6 +16,14 @@ public class CloturerCommanderAction extends AbstractAction {
 	private Fenetre fenetre;
 	private Commande commande;
 	
+	/**
+	 * Cette classe permet la gestion de la cloture d'une commande par l'utilisateur.
+	 * 
+	 * @param fenetre la fenetre en cours
+	 * @param commande la commande en cours
+	 * @see Fenetre
+	 * @see Commande
+	 */
 	public CloturerCommanderAction(Fenetre fenetre, Commande commande) {
 	    super(Langue.getTraduction("ok"));
 	    this.fenetre = fenetre;

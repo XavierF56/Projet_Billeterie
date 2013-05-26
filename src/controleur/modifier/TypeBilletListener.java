@@ -12,9 +12,15 @@ import vue.fenetres.FenetreAjouter;
 
 @SuppressWarnings("serial")
 public class TypeBilletListener extends AbstractAction {
-	FenetreAjouter fenetre;
-	JComboBox<String> jcb;
 	
+	private FenetreAjouter fenetre;
+	private JComboBox<String> jcb;
+	
+	/**
+	 * Cette classe permet 
+	 * @param fenetre
+	 * @param jcb
+	 */
 	public TypeBilletListener(FenetreAjouter fenetre, JComboBox<String> jcb) {
 		super(Langue.getTraduction("ok"));
 		this.fenetre = fenetre;

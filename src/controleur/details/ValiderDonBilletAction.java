@@ -23,9 +23,11 @@ public class ValiderDonBilletAction extends AbstractAction implements KeyListene
 		private ListeAchats listeAchats;
 		
 		/**
+		 * Cette classe permet la gestion du don des billets dans la fenêtre Détails.
 		 * 
-		 * @param listeAchats
-		 * @param tableau
+		 * @param listeAchats la liste des achats en cours
+		 * @param tableau une copie du tableau des billets
+		 * @see ListeAchats
 		 */
 		public ValiderDonBilletAction(ListeAchats listeAchats, JTable tableau) {
 			super(Langue.getTraduction("give"));

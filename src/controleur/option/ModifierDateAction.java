@@ -11,7 +11,6 @@ import javax.swing.AbstractAction;
 import javax.swing.JFormattedTextField;
 
 import modele.Billeterie;
-import vue.fenetres.Fenetre;
 
 @SuppressWarnings("serial")
 public class ModifierDateAction extends AbstractAction implements KeyListener {
@@ -19,12 +18,10 @@ public class ModifierDateAction extends AbstractAction implements KeyListener {
 	private Billeterie billeterie;
 	private JFormattedTextField date;
 	
-	/** Permet d'annuler une action en cours en fermant la fenetre en parametre
+	/**
 	 * 
-	 * @param fenetre la fenetre a fermer
-	 * @param titre le titre de l'action
-	 * @see AbstractAction
-	 * @see Fenetre
+	 * @param billeterie
+	 * @param date
 	 */
     public ModifierDateAction(Billeterie billeterie, JFormattedTextField date) {
     	super("OK");

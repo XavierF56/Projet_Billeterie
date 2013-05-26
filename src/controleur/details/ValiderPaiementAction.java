@@ -23,6 +23,7 @@ public class ValiderPaiementAction extends AbstractAction implements KeyListener
 	private ListeAchats listeAchats;
 	
 	/**
+	 * Cette classe permet la gestion du paiement dans la fenêtre Détails.
 	 * 
 	 * @param listeAchats la liste des achats en cours
 	 * @param tableau une copie du tableau des billets

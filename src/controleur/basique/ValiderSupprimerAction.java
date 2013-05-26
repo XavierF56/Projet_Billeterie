@@ -18,14 +18,24 @@ import modele.ListeObjet;
 @SuppressWarnings("serial")
 public class ValiderSupprimerAction extends AbstractAction {
 	private ListeObjet listeObjet;
-	Fenetre fenetre;
+	private Fenetre fenetre;
 	
+	/**
+	 * Cette classe permet la gestion de la validation de la suppression d'une liste d'objets (Billets ou Personnes) de la base de données par l'utilisateur.
+	 * 
+	 * @param listeObjet la liste des objets à supprimer
+	 * @param fenetre la fenetre en cours
+	 */
 	public ValiderSupprimerAction(ListeObjet listeObjet, Fenetre fenetre) {
         super(Langue.getTraduction("validate"));
     	this.listeObjet = listeObjet;
     	this.fenetre = fenetre;
     }
 
+	/** Methode requise par l'heritage de la classe AbstractAction
+     * 
+     * @see AbstractAction
+	 */
     public void actionPerformed(ActionEvent e) {
         try {
         	boolean select = true;

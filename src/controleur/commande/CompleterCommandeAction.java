@@ -18,10 +18,12 @@ public class CompleterCommandeAction extends AbstractAction {
 	private FenetreCommander fenetreCommande;
 
 	/**
+	 * Cette classe permet la gestion d'une commande que l'utilisteur veut compléter.
+	 * Cette classe est appelée si une erreur est survenue lors de l'achat de billets subventionnés.
 	 * 
-	 * @param commande
-	 * @param fenetre
-	 * @param fenetreCommande
+	 * @param commande la commande en cours
+	 * @param fenetre la fenêtre en cours
+	 * @param fenetreCommande la fenetre Commande en cours
 	 */
 	public CompleterCommandeAction (Commande commande, Fenetre fenetre, FenetreCommander fenetreCommande) {
 		super(Langue.getTraduction("complete"));
