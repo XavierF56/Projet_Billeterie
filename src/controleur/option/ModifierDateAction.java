@@ -19,9 +19,12 @@ public class ModifierDateAction extends AbstractAction implements KeyListener {
 	private JFormattedTextField date;
 	
 	/**
+	 * Cette classe permet la gestion de la modification de la date dans l'onglet Statistiques de la fenêtre Principale.
 	 * 
-	 * @param billeterie
-	 * @param date
+	 * @param billeterie la billeterie en cours
+	 * @param date la date à définir
+	 * @see Billeterie
+	 * @see JFormattedTextField
 	 */
     public ModifierDateAction(Billeterie billeterie, JFormattedTextField date) {
     	super("OK");
@@ -29,7 +32,10 @@ public class ModifierDateAction extends AbstractAction implements KeyListener {
         this.date = date;
     }
     
-	public void action() {
+    /**
+     * Permet de valider l'action
+     */
+	public void valider() {
 		String source = date.getText();	
 		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy");
 		try {
@@ -46,12 +52,12 @@ public class ModifierDateAction extends AbstractAction implements KeyListener {
      * @see AbstractAction
 	 */
 	public void actionPerformed(ActionEvent e) {
-		action();
+		valider();
 	}
 	
 	public void keyPressed(KeyEvent e) {
 	   if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-	       action();
+		   valider();
 	   }
 	}
 	public void keyTyped(KeyEvent e) {}

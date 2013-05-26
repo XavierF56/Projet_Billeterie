@@ -20,10 +20,11 @@ public class FenetreDetailsAction extends AbstractAction {
 
 		private Billeterie billeterie;
 		
-		/** L'action FenetreDetails permet l'appel de la fenetre Details
+		/** 
+		 * Cette classe permet la gestion de l'affichage de la fenêtre Details.
 		 * 
-		 * @param listeObjet la liste d'objets selectionnee
-		 * @see ListeObjet
+		 * @param billeterie la billeterie en cours
+		 * @see Billeterie
 		 * @see FenetreDetails
 		 * @see AbstractAction
 		 */

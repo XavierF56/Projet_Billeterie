@@ -18,7 +18,8 @@ public class TypeBilletListener extends AbstractAction {
 	
 	/**
 	 * Cette classe permet 
-	 * @param fenetre
+	 * 
+	 * @param fenetre la fenetre en cours
 	 * @param jcb
 	 */
 	public TypeBilletListener(FenetreAjouter fenetre, JComboBox<String> jcb) {
