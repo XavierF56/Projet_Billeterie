@@ -19,7 +19,18 @@ import modele.Commande;
 @SuppressWarnings("serial")
 public class BarreOutilsCommande extends JPanel {
 	
-	public BarreOutilsCommande(FenetreCommander fenetreCommander, Billeterie billeterie, JTable tableau, Commande commande) {
+	/**
+	 * Cette classe permet l'affichage du champ de recherches et des boutons de la barre d'outils de la fenetre Commander
+	 * 
+	 * @param fenetre la fenetre Commander ouverte
+	 * @param billeterie la billeterie en cours
+	 * @param tableau une copie du tableau des billets
+	 * @param commande la commande en cours
+	 * @see FenetreCommander
+	 * @see Billeterie
+	 * @see Commande
+	 */
+	public BarreOutilsCommande(FenetreCommander fenetre, Billeterie billeterie, JTable tableau, Commande commande) {
 		JTextField textRecherche = new JTextField();
 		textRecherche.setColumns(20);
 		textRecherche.addKeyListener(new RechercheAction(billeterie.getListeBillets(), textRecherche));
@@ -27,6 +38,6 @@ public class BarreOutilsCommande extends JPanel {
 		setLayout(new FlowLayout(FlowLayout.LEFT));
 		this.add(textRecherche);
 		this.add(new JButton(new RechercheAction(billeterie.getListeBillets(), textRecherche)));
-		this.add(new JButton(new FenetreQuantiteAction(fenetreCommander, billeterie.getListeBillets(), tableau, commande)));
+		this.add(new JButton(new FenetreQuantiteAction(fenetre, billeterie.getListeBillets(), tableau, commande)));
 	}
 }

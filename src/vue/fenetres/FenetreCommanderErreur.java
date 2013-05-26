@@ -19,15 +19,23 @@ import modele.Commande;
 
 @SuppressWarnings("serial")
 public class FenetreCommanderErreur extends Fenetre {
+	
+	/**
+	 * 
+	 * @param commande
+	 * @param erreur
+	 * @param fenetreCommande
+	 * @param completer
+	 */
 	public FenetreCommanderErreur(Commande commande, String erreur, FenetreCommander fenetreCommande, boolean completer) {
 		
-		//Fenetre
+		/* Fenêtre */
 		this.setTitle(Langue.getTraduction("error_buying"));
 		JPanel fenetre = new JPanel(new BorderLayout());
 		fenetre.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
 		this.add(fenetre);
 		
-		//Boutons Valider et Annuler
+		/* Boutons Valider et Annuler */
 		JButton buttonAnnuler = new JButton(new AnnulerCommandeAction(commande, this));
 		
 		JPanel panelSouth = new JPanel();

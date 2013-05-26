@@ -25,22 +25,24 @@ public class FenetreAjouter extends Fenetre {
 	
 	/** Fenetre permettant l'ajout d'un billet ou d'une personne
 	 * Si la listeObjet est une ListeBillet elle ajout un champ de selection Billet sub/Billet normal.
-	 * Par défaut cela créé un billet subventionne.
+	 * Par défaut cela créé un billet subventionne
+	 * 
 	 * @param listeObjet la liste des billets ou des personnes
 	 * @param titre le titre de la fenetre
-	 * @see Fenetre
+	 * @see ListeObjet
 	 */
 	public FenetreAjouter(ListeObjet listeObjet, String titre) {
 		this.listeObjet = listeObjet;
 		this.titre = titre;
 		
-		//Fenetre
+		/* Fenetre */
 		this.setTitle(titre);
 		JPanel contentPane = new JPanel(new BorderLayout());
 		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
 		this.add(contentPane);
 		
-		if (listeObjet instanceof ListeBillets) {//Champs de selection billet normal ou subventionne
+		/* Champs de selection billet normal ou subventionne */
+		if (listeObjet instanceof ListeBillets) {
 			JPanel north = new JPanel();
 			JComboBox<String> jcb = new JComboBox<String>();
 			jcb.addItem(Langue.getTraduction("ticket_subsidized"));
@@ -50,19 +52,20 @@ public class FenetreAjouter extends Fenetre {
 			contentPane.add(north, "North");
 		}
 		
-		//Champs
+		/* Champs */
 		champs = new Champs(listeObjet.getAttributs());
 
 		contentPane.add(champs, "Center");
 		ValiderAjouterAction listener = new ValiderAjouterAction(this, listeObjet, true);
 		champs.ajouterListener(listener);
 		
-		//Bouton Valider
+		/* Bouton Valider */
 		JButton button = new JButton(listener);
 		JPanel panelSouth = new JPanel();
 		panelSouth.add(button);
 		contentPane.add(panelSouth, "South");
 		
+		/* Affichage de la fenetre */
 		this.afficherDialog();
 	}
 	
@@ -71,21 +74,22 @@ public class FenetreAjouter extends Fenetre {
 	 * Ce constructeur permet de creer une fenetre de creation pour un billet 
 	 * -> subventionne si sub = true
 	 * -> normal si sub = false
+	 * 
 	 * @param listeObjet la liste des billets ou des personnes
 	 * @param titre le titre de la fenetre
-	 * @see Fenetre
+	 * @see ListeObjet
 	 */
 	public FenetreAjouter(ListeObjet listeObjet, String titre, boolean sub) {
 		this.listeObjet = listeObjet;
 		this.titre = titre;
 		
-		//Fenetre
+		/* Fenetre */
 		this.setTitle(titre);
 		JPanel contentPane = new JPanel(new BorderLayout());
 		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
 		this.add(contentPane);
 		
-		// Choix billet normal ou sub
+		/* Choix billet normal ou sub */
 		JPanel north = new JPanel();
 		JComboBox<String> jcb = new JComboBox<String>();
 		jcb.addItem(Langue.getTraduction("ticket_subsidized"));
@@ -95,7 +99,7 @@ public class FenetreAjouter extends Fenetre {
 		contentPane.add(north, "North");
 
 		
-		//Champs
+		/* Champs */
 		if (sub) {
 			champs = new Champs(listeObjet.getAttributs());
 			jcb.setSelectedIndex(0);
@@ -108,12 +112,13 @@ public class FenetreAjouter extends Fenetre {
 		ValiderAjouterAction listener = new ValiderAjouterAction(this, listeObjet, sub);
 		champs.ajouterListener(listener);
 		
-		//Bouton Valider
+		/* Bouton Valider */
 		JButton button = new JButton(listener);
 		JPanel panelSouth = new JPanel();
 		panelSouth.add(button);
 		contentPane.add(panelSouth, "South");
 		
+		/* Affichage de la fenetre */
 		this.afficherDialog();
 	}
 
@@ -121,9 +126,11 @@ public class FenetreAjouter extends Fenetre {
 	public Champs getChamps() {
 		return champs;
 	}
+	
 	public ListeObjet getListeObjet() {
 		return listeObjet;
 	}
+	
 	public String getTitre() {
 		return titre;
 	}

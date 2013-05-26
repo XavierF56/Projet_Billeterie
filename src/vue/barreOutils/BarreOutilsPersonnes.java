@@ -24,6 +24,12 @@ public class BarreOutilsPersonnes extends JPanel {
 	
 	private JTextField textRecherche;
 
+	/**
+	 * Cette classe permet l'affichage du champ de recherches et des boutons de la barre d'outils de l'onglet Personnes
+	 * 
+	 * @param billeterie la billeterie en cours
+	 * @see Billeterie
+	 */
 	public BarreOutilsPersonnes(Billeterie billeterie) {
 		setLayout(new FlowLayout(FlowLayout.LEFT));
 		

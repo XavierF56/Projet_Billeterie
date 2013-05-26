@@ -24,7 +24,22 @@ public class FenetreCommandeAjouter extends Fenetre {
 	private JPanel contentPane;
 	private boolean sub;
 	
-	public FenetreCommandeAjouter(FenetreCommander fenetreCommander, Billet billet, ListeBillets listeBillets, Commande commande) {
+	/**
+	 * Classe permettant de générer la fenêtre qui permet à l'utilisateur d'ajouter un achat à la commande et de choisirs la quantité de billets à réserver
+	 * Cette classe est appelée après avoir sélectionné un billet dans la fenêtre Commander
+	 * 
+	 * @param fenetreCommander la fenetre commander en cours
+	 * @param billet le billet selectionne
+	 * @param listeBillets la liste des billets
+	 * @param commande la commande en cours
+	 * @see FenetreCommander
+	 * @see Billet
+	 * @see ListeBillets
+	 * @see Commande
+	 */
+	public FenetreCommandeAjouter(FenetreCommander fenetre, Billet billet, ListeBillets listeBillets, Commande commande) {
+		
+		/* Fenetre */
 		this.setTitle(Langue.getTraduction("choice_title")+ " : " + billet);
 		this.sub = billet.getSub();
 		
@@ -32,6 +47,7 @@ public class FenetreCommandeAjouter extends Fenetre {
 		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
 		setContentPane(contentPane);
 		
+		/* Champs */
 		List<Attribut> map = new ArrayList<Attribut>();
 		map.add(new Attribut("quantite", Langue.getTraduction("qt"), Constantes.INTEGER));
 		if (sub) {
@@ -42,8 +58,9 @@ public class FenetreCommandeAjouter extends Fenetre {
 		Champs champs = new Champs(map);
 		
 		contentPane.add(champs, "North");
-		contentPane.add(new JButton(new ValiderQuantiteAction(fenetreCommander, this, commande, billet, champs)), "South");
+		contentPane.add(new JButton(new ValiderQuantiteAction(fenetre, this, commande, billet, champs)), "South");
 		
+		/* Affichage de la fenetre */
 		this.afficherDialog();
 	}
 }
