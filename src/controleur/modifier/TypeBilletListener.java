@@ -17,10 +17,10 @@ public class TypeBilletListener extends AbstractAction {
 	private JComboBox<String> jcb;
 	
 	/**
-	 * Cette classe permet 
+	 * Cette classe permet la gestion du choix entre un billet subventionné ou non lors de sa création.
 	 * 
 	 * @param fenetre la fenetre en cours
-	 * @param jcb
+	 * @param jcb le menu déroulant permettant le choix
 	 */
 	public TypeBilletListener(FenetreAjouter fenetre, JComboBox<String> jcb) {
 		super(Langue.getTraduction("ok"));
