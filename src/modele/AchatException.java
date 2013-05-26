@@ -3,8 +3,7 @@ package modele;
 import general.Langue;
 
 /**
- * Cette class exception gere les exceptions de type achat
- * @author xavier
+ * Cette class permet de gérer les exceptions de type achat
  */
 
 @SuppressWarnings("serial")

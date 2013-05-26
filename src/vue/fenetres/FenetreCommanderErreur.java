@@ -21,10 +21,11 @@ import modele.Commande;
 public class FenetreCommanderErreur extends Fenetre {
 	
 	/**
+	 * Cette classe permet la gestion de l'affichage de la fenêtre d'erreur associé à une commande dont les paramètres ne sont pas valides
 	 * 
-	 * @param commande
-	 * @param erreur
-	 * @param fenetreCommande
+	 * @param commande la commande en cours
+	 * @param erreur le texte de l'erreur
+	 * @param fenetreCommande la fenetre Commande en cours
 	 * @param completer
 	 */
 	public FenetreCommanderErreur(Commande commande, String erreur, FenetreCommander fenetreCommande, boolean completer) {
@@ -39,17 +40,18 @@ public class FenetreCommanderErreur extends Fenetre {
 		JButton buttonAnnuler = new JButton(new AnnulerCommandeAction(commande, this));
 		
 		JPanel panelSouth = new JPanel();
-		panelSouth.add(buttonAnnuler);
+		
 		if(completer) {
 			JButton buttonCompleter = new JButton(new CompleterCommandeAction(commande, this, fenetreCommande));
 			panelSouth.add(buttonCompleter);
 		}
 		JButton buttonForcer = new JButton(new ForcerCommandeAction(commande, this, fenetreCommande));
 		panelSouth.add(buttonForcer);
+		panelSouth.add(buttonAnnuler);
 		
 		fenetre.add(panelSouth, "South");
 		
-		//Message
+		/* Message */
 		if(completer) {
 			MultiLineLabel multiLineLabel = new MultiLineLabel(erreur + "\n" + Langue.getTraduction("validate_anyway"));
 			fenetre.add(multiLineLabel, "Center");
