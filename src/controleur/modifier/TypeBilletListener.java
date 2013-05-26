@@ -21,6 +21,10 @@ public class TypeBilletListener extends AbstractAction {
 		this.jcb = jcb;
 	}
 
+	/** Methode requise par l'heritage de la classe AbstractAction
+     * 
+     * @see AbstractAction
+	 */
 	public void actionPerformed(ActionEvent e) {
 		ListeObjet list = fenetre.getListeObjet();
 		String titre = fenetre.getTitre();

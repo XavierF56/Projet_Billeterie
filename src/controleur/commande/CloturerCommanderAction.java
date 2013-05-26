@@ -8,9 +8,8 @@ import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import vue.fenetres.Fenetre;
-
 import modele.Commande;
+import vue.fenetres.Fenetre;
 
 @SuppressWarnings("serial")
 public class CloturerCommanderAction extends AbstractAction {
@@ -23,6 +22,10 @@ public class CloturerCommanderAction extends AbstractAction {
 	    this.commande = commande;
 	}
 	
+	/** Methode requise par l'heritage de la classe AbstractAction
+     * 
+     * @see AbstractAction
+	 */
 	public void actionPerformed(ActionEvent e) {
 		try {
 			commande.cloturer();

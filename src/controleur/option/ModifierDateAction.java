@@ -44,6 +44,10 @@ public class ModifierDateAction extends AbstractAction implements KeyListener {
 		billeterie.getFenetre().getOngletStats().majLabel();
 	}
     
+	/** Methode requise par l'heritage de la classe AbstractAction
+     * 
+     * @see AbstractAction
+	 */
 	public void actionPerformed(ActionEvent e) {
 		action();
 	}

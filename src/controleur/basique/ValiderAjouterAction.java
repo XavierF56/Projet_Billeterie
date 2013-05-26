@@ -23,9 +23,12 @@ public class ValiderAjouterAction extends AbstractAction implements KeyListener 
 	private boolean sub;
 	
 	/**
-	 * Constructeur
-	 * @param fenetre
-	 * @param listeObjet
+	 * 
+	 * @param fenetre la fenetre en cours
+	 * @param listeObjet la liste des Billets
+	 * @param sub
+	 * @see FenetreAjouter
+	 * @see ListeObjet
 	 */
     public ValiderAjouterAction(FenetreAjouter fenetre, ListeObjet listeObjet, boolean sub) {
         super(Langue.getTraduction("validate"));
@@ -49,7 +52,10 @@ public class ValiderAjouterAction extends AbstractAction implements KeyListener 
 		}
     }
     
-    /** Listeners **/
+    /** Methode requise par l'heritage de la classe AbstractAction
+     * 
+     * @see AbstractAction
+	 */
     public void actionPerformed(ActionEvent e) {
 		valider();
     }

@@ -22,12 +22,21 @@ public class ValiderPaiementAction extends AbstractAction implements KeyListener
 	private JTable tableau;
 	private ListeAchats listeAchats;
 	
+	/**
+	 * 
+	 * @param listeAchats la liste des achats en cours
+	 * @param tableau une copie du tableau des billets
+	 * @see ListeAchats
+	 */
 	public ValiderPaiementAction(ListeAchats listeAchats, JTable tableau) {
 		super(Langue.getTraduction("pay"));
 		this.tableau = tableau;
 		this.listeAchats = listeAchats;
 	}
 	
+	/**
+	 * Permet de valider l'action
+	 */
 	private void valider() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -37,13 +46,13 @@ public class ValiderPaiementAction extends AbstractAction implements KeyListener
 				try {
 					selectionCorrige = listeAchats.getTableau().getRowSorter().convertRowIndexToModel(selection);
 				} catch (Exception e) {
-					// Cas ou aucun billet n'est selectionne
+					/* Cas où aucun billet n'est sélectionné */
 					select = false;
 					JOptionPane.showMessageDialog(new JFrame(), Langue.getTraduction("error_no_ticket_selected"), 
 							Langue.getTraduction("warning"), JOptionPane.INFORMATION_MESSAGE);
             	}
 				if(select) {
-					// Cas ou un billet est bien selectionne
+					/* Cas où un billet est bien sélectionné */
 					try {
 						Achat achat = (Achat) listeAchats.getObjetByIndex(selectionCorrige);
 						if(!achat.getPaye()){
@@ -61,6 +70,10 @@ public class ValiderPaiementAction extends AbstractAction implements KeyListener
 		});
     }
 	
+	/** Methode requise par l'heritage de la classe AbstractAction
+     * 
+     * @see AbstractAction
+	 */
 	public void actionPerformed(ActionEvent e) {
 		valider();
 	}

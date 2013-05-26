@@ -22,12 +22,20 @@ public class ValiderDonBilletAction extends AbstractAction implements KeyListene
 		private JTable tableau;
 		private ListeAchats listeAchats;
 		
+		/**
+		 * 
+		 * @param listeAchats
+		 * @param tableau
+		 */
 		public ValiderDonBilletAction(ListeAchats listeAchats, JTable tableau) {
 			super(Langue.getTraduction("give"));
 			this.tableau = tableau;
 			this.listeAchats = listeAchats;
 		}
 		
+		/**
+		 * Permet de valider l'action
+		 */
 		private void valider() {
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
@@ -60,6 +68,10 @@ public class ValiderDonBilletAction extends AbstractAction implements KeyListene
 			});
 	    }
 		
+		/** Methode requise par l'heritage de la classe AbstractAction
+	     * 
+	     * @see AbstractAction
+		 */
 		public void actionPerformed(ActionEvent e) {
 			valider();
 		}

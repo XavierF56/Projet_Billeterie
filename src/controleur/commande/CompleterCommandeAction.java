@@ -30,6 +30,10 @@ public class CompleterCommandeAction extends AbstractAction {
 		this.fenetreCommande = fenetreCommande;
 	}
 	
+	/** Methode requise par l'heritage de la classe AbstractAction
+     * 
+     * @see AbstractAction
+	 */
 	public void actionPerformed(ActionEvent e) {
 		commande.completer();
 		fenetreCommande.getBilleterie().getFenetre().getOngletStats().majLabel();
