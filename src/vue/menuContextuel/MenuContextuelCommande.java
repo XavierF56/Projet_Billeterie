@@ -20,12 +20,13 @@ public class MenuContextuelCommande extends JPopupMenu {
 	JTable tableau;
 	
 	/**
+	 * Cette classe permet la gestion du clic droit dans la fenêtre Commander
 	 * 
-	 * 
-	 * @param fenetre
-	 * @param listeBillets
-	 * @param tableau
-	 * @param commande
+	 * @param fenetre la fenetre Commander en cours
+	 * @param listeBillets la liste des billets
+	 * @param tableau une copie du tableau des billets
+	 * @param commande la commande en cours
+	 * @see FenetreCommande
 	 */
 	public MenuContextuelCommande (FenetreCommander fenetre, ListeBillets listeBillets, JTable tableau, Commande commande) {
 		this.tableau = tableau;
@@ -33,6 +34,9 @@ public class MenuContextuelCommande extends JPopupMenu {
 		this.add(new FenetreQuantiteAction(fenetre, listeBillets, tableau, commande));
 	}
 	
+	/**
+	 * Permet l'affichage du menu contextuel
+	 */
 	public void show(Component invoker, int x, int y) {
 		Point p = tableau.getMousePosition();
 

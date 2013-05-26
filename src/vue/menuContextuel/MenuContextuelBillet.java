@@ -22,9 +22,11 @@ public class MenuContextuelBillet extends JPopupMenu {
 	private JTable table;
 	
 	/**
+	 * Cette classe permet la gestion du clic droit dans l'onglet Billets.
 	 * 
-	 * @param listeObjet
-	 * @param table
+	 * @param listeObjet la liste des billets
+	 * @param table une copie de la table des billets
+	 * @see FenetrePrincipale
 	 */
 	public MenuContextuelBillet (ListeObjet listeObjet, JTable table) {
 		this.table = table;
@@ -33,6 +35,9 @@ public class MenuContextuelBillet extends JPopupMenu {
 		this.add(new FenetreSupprimerAction(listeObjet));
 	}
 	
+	/**
+	 * Permet l'affichage du menu contextuel
+	 */
 	public void show(Component invoker, int x, int y) {
 		Point p = table.getMousePosition();
 

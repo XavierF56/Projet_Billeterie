@@ -30,10 +30,12 @@ public class Champs extends JPanel{
 	private int nb = 0;
 	
 	
-	/********** Constructeur ************/
 	/**
-	 * Constructeur d'un champs
+	 * Cette classe permet permet la gestion de champs modifiables.
+	 * 
 	 * @param listeAttributs
+	 * @see FenetreAjouter
+	 * @see FenetreModifier
 	 */
 	public Champs(List<Attribut> listeAttributs) {
 		this.listeAttributs = listeAttributs;
@@ -42,14 +44,14 @@ public class Champs extends JPanel{
 		gridBagConstraints = new GridBagConstraints();
 		
 		for (int i = 0; i < listeAttributs.size(); i++) {
-			//Ajout de l'etiquette
+			/* Ajout de l'etiquette */
 			gridBagConstraints.gridx = 0;
 			gridBagConstraints.gridy = nb;
 			gridBagConstraints.anchor = GridBagConstraints.LINE_END;
 			JLabel etiquette = new JLabel(listeAttributs.get(i).getNomInterface() + " : ");
 			add(etiquette,gridBagConstraints);
 			
-			//Ajout du champ
+			/* Ajout du champ */
 			gridBagConstraints.gridx = 1;
 			gridBagConstraints.anchor = GridBagConstraints.LINE_START;
 			JComponent champ = nouveauChamp(listeAttributs.get(i).getType());
@@ -60,8 +62,6 @@ public class Champs extends JPanel{
 		}
 	}
 	
-	
-	/********** Methodes ************/
 	/**
 	 * Permet d'affecter des valeurs au champs à remplir
 	 * @param map
@@ -109,13 +109,6 @@ public class Champs extends JPanel{
 		return champ;
 	}
 	
-	/**
-	 * 
-	 * @param index
-	 * @param nom
-	 * @return
-	 * @throws Exception
-	 */
 	private Object getValeur(int index, String nom) throws Exception {
 		Object res;
 		JComponent champ = listeChamps.get(nom);
@@ -152,7 +145,12 @@ public class Champs extends JPanel{
      	return Integer.parseInt(s);
     }
 
-
+	/**
+	 * Cette classe permet l'ajout de KeyListener aux champs
+	 * 
+	 * @param keyAjoutAction
+	 * @see KeyListener
+	 */
 	public void ajouterListener(KeyListener keyAjoutAction) {
 		Set<String> set = listeChamps.keySet();
 		Iterator<String> it = set.iterator();

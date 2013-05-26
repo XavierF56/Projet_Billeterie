@@ -24,9 +24,11 @@ public class MenuContextuelPersonne extends JPopupMenu {
 	private JTable table;
 	
 	/**
+	 * Cette classe permet la gestion du clic droit dans l'onglet Personnes.
 	 * 
-	 * @param listeObjet
-	 * @param table
+	 * @param listeObjet la liste des personnes
+	 * @param table une copie de la table des personnes
+	 * @see FenetrePrincipale
 	 */
 	public MenuContextuelPersonne (ListeObjet listeObjet, JTable table) {
 		this.table = table;
@@ -38,6 +40,9 @@ public class MenuContextuelPersonne extends JPopupMenu {
 		this.add(new FenetreCommanderAction(listeObjet, listeObjet.getBilleterie()));
 	}
 	
+	/**
+	 * Permet l'affichage du menu contextuel
+	 */
 	public void show(Component invoker, int x, int y) {
 		Point p = table.getMousePosition();
 

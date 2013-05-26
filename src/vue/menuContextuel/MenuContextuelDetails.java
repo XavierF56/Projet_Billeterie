@@ -19,9 +19,11 @@ public class MenuContextuelDetails extends JPopupMenu {
 	JTable tableau;
 	
 	/**
+	 * Cette classe permet la gestion du clic droit dans la fenêtre Détails
 	 * 
-	 * @param listeAchats
+	 * @param listeAchats la liste des achats de la personne sélectionnée
 	 * @param tableau
+	 * @see FenetreDetails
 	 */
 	public MenuContextuelDetails (ListeAchats listeAchats, JTable tableau) {
 		this.tableau = tableau;
@@ -30,6 +32,9 @@ public class MenuContextuelDetails extends JPopupMenu {
 		this.add(new ValiderPaiementAction(listeAchats, tableau));
 	}
 	
+	/**
+	 * Permet l'affichage du menu contextuel
+	 */
 	public void show(Component invoker, int x, int y) {
 		Point p = tableau.getMousePosition();
 

@@ -9,6 +9,11 @@ import javax.swing.JPanel;
 	@SuppressWarnings("serial")
 	public class MultiLineLabel extends JPanel {
 		 
+		/**
+		 * Cette classe permet l'affichage sous forme de label d'un texte à plusieurs lignes
+		 * 
+		 * @param text le texte à traiter
+		 */
 		public MultiLineLabel(String text) {
 		      super();
 		      this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
