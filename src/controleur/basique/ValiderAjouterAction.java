@@ -46,7 +46,6 @@ public class ValiderAjouterAction extends AbstractAction implements KeyListener 
 			listeObjet.ajouter(map, sub);
         	fenetre.dispose();
 		} catch (Exception e1) {
-			System.out.println(e1);
 			JOptionPane.showMessageDialog(new JFrame(), Langue.getTraduction("error_adding"),
 					Langue.getTraduction("error"), JOptionPane.ERROR_MESSAGE);
 		}

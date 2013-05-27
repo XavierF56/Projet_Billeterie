@@ -40,7 +40,6 @@ public class ModifierDateAction extends AbstractAction implements KeyListener {
 		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy");
 		try {
 			billeterie.getAchatsGeneral().setDate(dateStandard.parse(source));
-			System.out.println(dateStandard.parse(source));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
