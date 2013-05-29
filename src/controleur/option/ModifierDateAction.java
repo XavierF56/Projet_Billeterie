@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.AbstractAction;
 import javax.swing.JFormattedTextField;
@@ -16,30 +17,33 @@ import modele.Billeterie;
 public class ModifierDateAction extends AbstractAction implements KeyListener {
 	
 	private Billeterie billeterie;
-	private JFormattedTextField date;
+	private JFormattedTextField champ;
 	
 	/**
 	 * Cette classe permet la gestion de la modification de la date dans l'onglet Statistiques de la fenêtre Principale.
 	 * 
 	 * @param billeterie la billeterie en cours
-	 * @param date la date à définir
+	 * @param champ la date à définir
 	 * @see Billeterie
 	 * @see JFormattedTextField
 	 */
-    public ModifierDateAction(Billeterie billeterie, JFormattedTextField date) {
+    public ModifierDateAction(Billeterie billeterie, JFormattedTextField champ) {
     	super("OK");
         this.billeterie = billeterie;
-        this.date = date;
+        this.champ = champ;
     }
     
     /**
      * Permet de valider l'action
      */
 	public void valider() {
-		String source = date.getText();	
+		String source = champ.getText();	
 		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy");
+		
 		try {
-			billeterie.getAchatsGeneral().setDate(dateStandard.parse(source));
+			Date date = dateStandard.parse(source);
+			billeterie.getAchatsGeneral().setDate(date);
+			champ.setText(dateStandard.format(date));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
