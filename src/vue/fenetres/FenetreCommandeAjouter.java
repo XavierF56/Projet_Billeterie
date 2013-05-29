@@ -4,6 +4,7 @@ package vue.fenetres;
 import general.Langue;
 import general.Constantes;
 
+import java.awt.BorderLayout;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,14 +41,12 @@ public class FenetreCommandeAjouter extends Fenetre {
 	 * @see Commande
 	 */
 	public FenetreCommandeAjouter(FenetreCommander fenetre, Billet billet, ListeBillets listeBillets, Commande commande) {
-		
+		this.sub = billet.getSub();
+
 		/* Fenetre */
 		this.setTitle(Langue.getTraduction("choice_title")+ " : " + billet);
-		this.sub = billet.getSub();
-		
-		contentPane = new JPanel();
+		contentPane = new JPanel(new BorderLayout());
 		contentPane.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
-		setContentPane(contentPane);
 		
 		/* Champs */
 		List<Attribut> map = new ArrayList<Attribut>();
@@ -64,9 +63,13 @@ public class FenetreCommandeAjouter extends Fenetre {
 		valeurs.put("donne", true);
 		Champs champs = new Champs(map);
 		champs.setValeurs(valeurs);
+		contentPane.add(champs, "Center");
 		
-		contentPane.add(champs, "North");
-		contentPane.add(new JButton(new ValiderQuantiteAction(fenetre, this, commande, billet, champs)), "South");
+		/* Valider */
+		JPanel panelSouth = new JPanel();
+		panelSouth.add(new JButton(new ValiderQuantiteAction(fenetre, this, commande, billet, champs)));
+		contentPane.add(panelSouth, "South");
+		add(contentPane);
 		
 		/* Affichage de la fenetre */
 		this.afficherDialog();
