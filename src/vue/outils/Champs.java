@@ -117,11 +117,12 @@ public class Champs extends JPanel{
 		switch (type) {
 			case Constantes.INTEGER : res = strToInt(((JTextField)champ).getText()); break;
 			case Constantes.DOUBLE : res = strToDouble(((JTextField)champ).getText()); break;
-			case Constantes.STRING : res = ((JTextField)champ).getText(); break;
+			case Constantes.STRING : res = strToStr(((JTextField)champ).getText()); break;
 			case Constantes.BOOLEAN : res = ((JCheckBox)champ).isSelected(); break;
 			default : res = null;
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new Exception(Langue.getTraduction("fields_not_filled"));
 		}
 		if(res instanceof String && res.equals("")) {
@@ -143,6 +144,13 @@ public class Champs extends JPanel{
 		String reg = espace.toString();
 		s = s.replace(reg, "");
      	return Integer.parseInt(s);
+    }
+	
+	private static String strToStr(String s){
+		System.out.print("<<<<<<<<<<<<"+s+"//");
+		s = s.replace('\'', '\0');
+		System.out.println(">>>>>>>>>>");
+     	return s;
     }
 
 	/**

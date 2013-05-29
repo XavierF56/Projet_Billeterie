@@ -105,7 +105,6 @@ public class Personne extends Objet{
 				i--;
 			}
 		}
-
 	}
 	
 	/**
