@@ -114,6 +114,13 @@ public class Commande {
 	}
 	
 	/**
+	 * Cette methode annule un achat
+	 */
+	public void annuler() {
+		//Rien a faire pour l'instant
+	}
+	
+	/**
 	 * Vide la listeValidee :  clorture une commande
 	 */
 	public void cloturer() {

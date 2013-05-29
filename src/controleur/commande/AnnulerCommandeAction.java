@@ -17,7 +17,7 @@ public class AnnulerCommandeAction extends AbstractAction {
 	private Fenetre fenetre;
 	
 	/**
-	 * Cette classe permet la gestion de l'annulation d'une commande
+	 * Cette classe permet la gestion de l'annulation d'un achat
 	 * 
 	 * @param commande la commande en cours
 	 * @param fenetre la fenêtre en cours
@@ -33,6 +33,7 @@ public class AnnulerCommandeAction extends AbstractAction {
      * @see AbstractAction
 	 */
 	public void actionPerformed(ActionEvent e) {
+		commande.annuler();
 		fenetre.dispose();
 	}
 }
