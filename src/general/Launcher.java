@@ -5,7 +5,7 @@ import java.awt.EventQueue;
 
 import vue.fenetres.FenetrePrincipale;
 
-import modele.Billeterie;
+import modele.Billetterie;
 
 /**
  * TODO Continuer la Javadoc
@@ -27,7 +27,7 @@ public class Launcher {
 					Proprietes.proprietesInit();
 					Langue.langueInit();
 
-					FenetrePrincipale frame = new FenetrePrincipale(new Billeterie(Proprietes.getOption("billeterie")));
+					FenetrePrincipale frame = new FenetrePrincipale(new Billetterie(Proprietes.getOption("billeterie")));
 					frame.setVisible(true);
 				} catch (Exception e) {
 					Constantes.afficherException(e);

@@ -10,7 +10,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-
+/**
+ * Cette class represente un billet, elle est associee a la table Billets dans la bdd.
+ * Cahque billet est represente par differents attributs stockes dans une HashMap(afin
+ * de pouvoir rajouter des attributs). Ces billets sont stockes dans la ListeBillet.
+ * @author xavier
+ *
+ */
 public class Billet extends Objet {
 	private static int prochainId; 	// id utilise par le prochain billet cree
 
@@ -22,7 +28,7 @@ public class Billet extends Objet {
 	 * @param map
 	 * @param bill
 	 */
-	public Billet(Map<String,Object> map, Billeterie bill) {
+	public Billet(Map<String,Object> map, Billetterie bill) {
 		super();
 		this.map = map;
 		this.billeterie = bill;
@@ -35,7 +41,7 @@ public class Billet extends Objet {
 	 * @param bill
 	 * @param useless ce param sert juste a diffrencier les deux constructeurs
 	 */
-	public Billet(Map<String,Object> map, Billeterie bill, boolean sub) {
+	public Billet(Map<String,Object> map, Billetterie bill, boolean sub) {
 		super();
 		this.map = map;
 		this.billeterie = bill;
@@ -129,6 +135,12 @@ public class Billet extends Objet {
 		modifie(this.map);
 	}
 	
+	/**
+	 * Cette methode permet de remettre a zero le quota associe a ce billet.
+	 * Elle change le champ date du billet par la date actuelle.
+	 * Ainsi l'ensemble des achats ralises avant cette date ne seront plus pris en
+	 * compte par la suite.
+	 */
 	public void razQuota() {
 		Date maDateAvecFormat=new Date();
 		SimpleDateFormat dateStandard = new SimpleDateFormat("dd/MM/yyyy-HH-mm");

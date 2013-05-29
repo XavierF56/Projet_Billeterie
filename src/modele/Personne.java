@@ -21,7 +21,7 @@ public class Personne extends Objet{
 	 * @param map
 	 * @param bill
 	 */
-	public Personne (Map<String, Object> map, Billeterie bill){
+	public Personne (Map<String, Object> map, Billetterie bill){
 		super();
 		this.map = map;
 		this.billeterie = bill;
@@ -36,7 +36,7 @@ public class Personne extends Objet{
 	 * @param bill
 	 * @param useless ce param sert juste a diffrencier les deux constructeurs
 	 */
-	public Personne (Map<String,Object> map, Billeterie bill, int useless){
+	public Personne (Map<String,Object> map, Billetterie bill, int useless){
 		super();
 		this.map = map;
 		this.billeterie = bill;
@@ -94,7 +94,7 @@ public class Personne extends Objet{
 	}
 	
 	/**
-	 * Cette methode supprimer l'ensemble des achats lies au billet
+	 * Cette methode supprimer l'ensemble des achats lies au billet passe en parametre
 	 */
 	public void supprimerAchat(Billet billet) {
 		List<Objet> listeObjet = listeAchats.getListeAchats();
@@ -109,7 +109,7 @@ public class Personne extends Objet{
 	
 	/**
 	 * @param billet
-	 * @return le nombre de billet deja achete pour un Billet
+	 * @return le nombre de billet deja achete par une personne
 	 */
 	public int getNbBilletsAchete(Billet billet) {
 		List<Objet> liste = this.listeAchats.getListeAchats();
@@ -126,7 +126,7 @@ public class Personne extends Objet{
 	
 	/**
 	 * @param billet
-	 * @return le nombre de billet deja achete pour un Billet
+	 * @return le nombre de billet subventionne deja achete par cette personne
 	 */
 	public int getNbBilletsAcheteSub(Billet billet) {
 		List<Objet> liste = this.listeAchats.getListeAchats();
@@ -157,7 +157,7 @@ public class Personne extends Objet{
 		return resul;
 	}
 	
-	/* Methodes pour les statistiques*/
+	/** Methodes pour les statistiques **/
 	/**
 	 * @return Retourne le montant total des achats
 	 */

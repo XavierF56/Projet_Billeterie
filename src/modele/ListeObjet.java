@@ -14,7 +14,7 @@ import javax.swing.table.AbstractTableModel;
 @SuppressWarnings("serial")
 public abstract class ListeObjet extends AbstractTableModel{
 
-	protected Billeterie billeterie;	
+	protected Billetterie billeterie;	
 	protected List<Objet> listeObjet = new ArrayList<Objet>();
 	protected List<Objet> listeObjetSauvegarde = new ArrayList<Objet>();
 	protected JTable tableau;
@@ -26,7 +26,7 @@ public abstract class ListeObjet extends AbstractTableModel{
 	 * Constructeur
 	 * @param billeterie
 	 */
-	public ListeObjet(Billeterie billeterie) {
+	public ListeObjet(Billetterie billeterie) {
 		this.billeterie = billeterie;
 	}
 	
@@ -187,7 +187,7 @@ public abstract class ListeObjet extends AbstractTableModel{
     }
     
 	/********** getters & Setters ************/
-	public Billeterie getBilleterie() {
+	public Billetterie getBilleterie() {
 		return billeterie;
 	}
 	public List<Attribut> getAttributs() {

@@ -33,7 +33,6 @@ public class AnnulerCommandeAction extends AbstractAction {
      * @see AbstractAction
 	 */
 	public void actionPerformed(ActionEvent e) {
-		commande.annuler();
 		fenetre.dispose();
 	}
 }

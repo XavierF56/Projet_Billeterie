@@ -8,6 +8,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
+/**
+ * Cette class represente l'objet Achat present dans la bdd dans la table Achats.
+ * Les achats sont regroupes dans des ListeAchats. Chaque personne possede une ListeAchats,
+ * afin de garder en memoire les achats passes.
+ * @author xavier
+ */
 public class Achat extends Objet {
 	private Personne personne;
 	private Billet billet;
@@ -35,7 +41,7 @@ public class Achat extends Objet {
 	}
 	
 	/**
-	 * Cration d'un nouveau billet, non présent dans la bdd
+	 * Cration d'un nouvel achat, non présent dans la bdd
 	 * @param map
 	 * @param perso
 	 * @param billet
@@ -89,7 +95,7 @@ public class Achat extends Objet {
 	}
 	
 	/**
-	 * Cette fonction modifie le billet en diminuant sa quantite
+	 * Cette fonction modifie le billet liee a cet achat en diminuant la quantite
 	 */
 	private void repercuter() {
 		try {
@@ -102,7 +108,7 @@ public class Achat extends Objet {
 	}
 	
 	/**
-	 * Cette methode supprimer un billet de la memoire ainsi que dans la ListeBillets
+	 * Cette methode supprimer un achat
 	 */
 	public void supprimer() {
 		billeterie.getBdd().supprimer("achat", this.getId()+"");
@@ -130,8 +136,7 @@ public class Achat extends Objet {
 		map.put("donne", bl);
 		this.modifie();
 	}	
-	
-	
+
 	
 	/********** Getters sur les attributs de la BDD ************/
 	public boolean getPaye() {

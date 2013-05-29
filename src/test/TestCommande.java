@@ -3,19 +3,19 @@ package test;
 import junit.framework.TestCase;
 import modele.AchatException;
 import modele.Billet;
-import modele.Billeterie;
+import modele.Billetterie;
 import modele.Commande;
 import modele.Personne;
 
 
 
 public class TestCommande extends TestCase {
-	Billeterie bill;
+	Billetterie bill;
 	Personne personne;
 	Commande com;
 	Billet billet1, billet2, billet3;
 	protected void setUp() {
-		bill = new Billeterie("database.sqlite");
+		bill = new Billetterie("database.sqlite");
 
 		try {
 			personne = (Personne) bill.getListePersonnes().getObjetById(3);
@@ -55,16 +55,5 @@ public class TestCommande extends TestCase {
 		}
 		assertEquals(nb+billet1.getNbPlacePerso(), personne.getNbBilletsAchete(billet1));
 
-	}
-
-	public void testAnnuler() {
-		setUp();
-		int nb = personne.getNbBilletsAchete(billet1);
-		try {
-			com.ajoutCommande(billet1, billet1.getNbPlacePerso(), true, true, true);
-		} catch (AchatException e) {
-			com.annuler();
-		}
-		assertEquals(nb, personne.getNbBilletsAchete(billet1));
 	}
 }

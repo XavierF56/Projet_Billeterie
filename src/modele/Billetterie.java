@@ -3,8 +3,11 @@ package modele;
 import vue.fenetres.FenetrePrincipale;
 import general.Constantes;
 
-
-public class Billeterie {
+/**
+ * Cette class permet de faire le lien entre la base de donnees, les listeBillets et listePersonnes.
+ * @author xavier
+ */
+public class Billetterie {
 	private ListePersonnes listePersonnes = null;
 	private ListeBillets listeBillets = null;
 	private DataBase bdd;
@@ -12,7 +15,7 @@ public class Billeterie {
 	private AchatsGeneral achatsGeneral = null;
 		
 	/********** Constructeur ************/
-	public Billeterie (String nomBdd) {
+	public Billetterie (String nomBdd) {
 		try{
 			bdd = new DataBase(nomBdd);
 		} catch (Exception e) {

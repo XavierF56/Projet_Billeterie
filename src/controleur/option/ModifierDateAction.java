@@ -11,12 +11,12 @@ import java.util.Date;
 import javax.swing.AbstractAction;
 import javax.swing.JFormattedTextField;
 
-import modele.Billeterie;
+import modele.Billetterie;
 
 @SuppressWarnings("serial")
 public class ModifierDateAction extends AbstractAction implements KeyListener {
 	
-	private Billeterie billeterie;
+	private Billetterie billeterie;
 	private JFormattedTextField champ;
 	
 	/**
@@ -24,10 +24,10 @@ public class ModifierDateAction extends AbstractAction implements KeyListener {
 	 * 
 	 * @param billeterie la billeterie en cours
 	 * @param champ la date à définir
-	 * @see Billeterie
+	 * @see Billetterie
 	 * @see JFormattedTextField
 	 */
-    public ModifierDateAction(Billeterie billeterie, JFormattedTextField champ) {
+    public ModifierDateAction(Billetterie billeterie, JFormattedTextField champ) {
     	super("OK");
         this.billeterie = billeterie;
         this.champ = champ;

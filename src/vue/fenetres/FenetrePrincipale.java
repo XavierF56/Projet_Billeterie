@@ -29,7 +29,7 @@ import vue.menuContextuel.MenuContextuelBillet;
 import vue.menuContextuel.MenuContextuelPersonne;
 import vue.outils.MultiLineLabel;
 
-import modele.Billeterie;
+import modele.Billetterie;
 import modele.ListeBillets;
 import modele.ListePersonnes;
 
@@ -37,7 +37,7 @@ import modele.ListePersonnes;
 @SuppressWarnings("serial")
 public class FenetrePrincipale extends Fenetre {
 	
-	private Billeterie billeterie;
+	private Billetterie billeterie;
 	private JPanel contentPane;
 	private JTable tableauPersonnes;
 	private JTable tableauBillets;
@@ -48,9 +48,9 @@ public class FenetrePrincipale extends Fenetre {
 	 * Cette fenêtre constitue le coprs de l'application et permet à l'utilisteur d'accéder à différents onglets.
 	 * 
 	 * @param billets la billeterie en cours
-	 * @see Billeterie
+	 * @see Billetterie
 	 */
-	public FenetrePrincipale(Billeterie billets) {
+	public FenetrePrincipale(Billetterie billets) {
 		
 		this.billeterie = billets;
 		billeterie.setFenetre(this);

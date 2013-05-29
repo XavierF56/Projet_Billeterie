@@ -13,6 +13,12 @@ public class Attribut {
 	private String nomInterface;
 	private int type;
 	
+	/**
+	 * Constrcuteur d'un attribut
+	 * @param nomBDD
+	 * @param nomInterface
+	 * @param type
+	 */
 	public Attribut(String nomBDD, String nomInterface, int type) {
 		super();
 		this.nomBDD = nomBDD;

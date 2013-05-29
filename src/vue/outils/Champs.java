@@ -131,6 +131,11 @@ public class Champs extends JPanel{
 		return res;
 	}
 	
+	/**
+	 * Cette methode permet de traduire une chaine de caracteres en double
+	 * @param s
+	 * @return
+	 */
 	private static double strToDouble(String s){
      	s = s.replace(',', '.');
      	Character espace = (char) 160;
@@ -139,6 +144,11 @@ public class Champs extends JPanel{
      	return Double.parseDouble(s);
     }
 	
+	/**
+	 * Cette methode permet de traduire une chaine de caracteres en entier
+	 * @param s
+	 * @return
+	 */
 	private static int strToInt(String s){
 		Character espace = (char) 160;
 		String reg = espace.toString();
@@ -146,15 +156,19 @@ public class Champs extends JPanel{
      	return Integer.parseInt(s);
     }
 	
+	/**
+	 * Cette methode permet d'enlever les \' dans les chaines de caracteres afin de ne 
+	 * pas causer d'erreur dans le requete sql.
+	 * @param s
+	 * @return
+	 */
 	private static String strToStr(String s){
-		System.out.print("<<<<<<<<<<<<"+s+"//");
 		s = s.replace('\'', '\0');
-		System.out.println(">>>>>>>>>>");
      	return s;
     }
 
 	/**
-	 * Cette classe permet l'ajout de KeyListener aux champs
+	 * Cette classe permet l'ajout de KeyListener(key enter) aux diffrents champs
 	 * 
 	 * @param keyAjoutAction
 	 * @see KeyListener

@@ -2,15 +2,15 @@ package test;
 
 import junit.framework.TestCase;
 
-import modele.Billeterie;
+import modele.Billetterie;
 import modele.Personne;
 
 
 public class TestListePersonnes extends TestCase {
-	Billeterie bill;
+	Billetterie bill;
 	Personne personne1, personne2, personne3;
 	protected void setUp() {
-		bill = new Billeterie("database.sqlite");
+		bill = new Billetterie("database.sqlite");
 
 		try {
 			personne1 = (Personne) bill.getListePersonnes().getObjetById(3);
