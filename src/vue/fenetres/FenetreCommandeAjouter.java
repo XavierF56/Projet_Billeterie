@@ -5,7 +5,9 @@ import general.Langue;
 import general.Constantes;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -49,13 +51,19 @@ public class FenetreCommandeAjouter extends Fenetre {
 		
 		/* Champs */
 		List<Attribut> map = new ArrayList<Attribut>();
+		Map<String, Object> valeurs =  new HashMap<String, Object>();
 		map.add(new Attribut("quantite", Langue.getTraduction("qt"), Constantes.INTEGER));
+		
 		if (sub) {
 			map.add(new Attribut("subventionne", Langue.getTraduction("subsidizes_ticket"), Constantes.BOOLEAN));
+			valeurs.put("subventionne", true);
 		}
 		map.add(new Attribut("paye", Langue.getTraduction("paid_person"), Constantes.BOOLEAN));
+		valeurs.put("paye", true);
 		map.add(new Attribut("donne", Langue.getTraduction("given_person"), Constantes.BOOLEAN));
+		valeurs.put("donne", true);
 		Champs champs = new Champs(map);
+		champs.setValeurs(valeurs);
 		
 		contentPane.add(champs, "North");
 		contentPane.add(new JButton(new ValiderQuantiteAction(fenetre, this, commande, billet, champs)), "South");

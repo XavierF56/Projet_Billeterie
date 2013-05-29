@@ -12,6 +12,7 @@ import modele.Billeterie;
  * TODO Booleen true false -> vrai faux
  * TODO Bouton payer tout / donner tout / selection multiple / payer et donner (Bruno)
  */
+
 public class Launcher {
 
 	/**
