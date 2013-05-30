@@ -6,7 +6,6 @@ import javax.swing.AbstractAction;
 
 import vue.fenetres.Fenetre;
 
-
 @SuppressWarnings("serial")
 public class AnnulerAction extends AbstractAction {
 	
