@@ -90,6 +90,7 @@ public class Personne extends Objet{
 		List<Objet> listeObjet = listeAchats.getListeAchats();
 		for (int i = 0; i < listeObjet.size(); i++) {
 			listeObjet.get(i).supprimer();
+			i--;
 		}
 	}
 	
