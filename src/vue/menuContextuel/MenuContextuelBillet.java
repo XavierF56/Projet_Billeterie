@@ -5,16 +5,16 @@ import general.Langue;
 import java.awt.Component;
 import java.awt.Point;
 
-
 import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
+import modele.ListeObjet;
+import vue.fenetres.FenetrePrincipale;
 import controleur.basique.FenetreAjouterAction;
+import controleur.basique.FenetreRAZQuotaAction;
 import controleur.basique.FenetreSupprimerAction;
 import controleur.modifier.FenetreModifierAction;
-
-import modele.ListeObjet;
 
 @SuppressWarnings("serial")
 public class MenuContextuelBillet extends JPopupMenu {
@@ -33,6 +33,7 @@ public class MenuContextuelBillet extends JPopupMenu {
 		this.add(new FenetreAjouterAction(listeObjet, Langue.getTraduction("add_new_person")));
 		this.add(new FenetreModifierAction(listeObjet));
 		this.add(new FenetreSupprimerAction(listeObjet));
+		this.add(new FenetreRAZQuotaAction(listeObjet));
 	}
 	
 	/**

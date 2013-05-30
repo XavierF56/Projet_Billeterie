@@ -117,11 +117,12 @@ public class Champs extends JPanel{
 		switch (type) {
 			case Constantes.INTEGER : res = strToInt(((JTextField)champ).getText()); break;
 			case Constantes.DOUBLE : res = strToDouble(((JTextField)champ).getText()); break;
-			case Constantes.STRING : res = ((JTextField)champ).getText(); break;
+			case Constantes.STRING : res = strToStr(((JTextField)champ).getText()); break;
 			case Constantes.BOOLEAN : res = ((JCheckBox)champ).isSelected(); break;
 			default : res = null;
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new Exception(Langue.getTraduction("fields_not_filled"));
 		}
 		if(res instanceof String && res.equals("")) {
@@ -130,6 +131,11 @@ public class Champs extends JPanel{
 		return res;
 	}
 	
+	/**
+	 * Cette methode permet de traduire une chaine de caracteres en double
+	 * @param s
+	 * @return
+	 */
 	private static double strToDouble(String s){
      	s = s.replace(',', '.');
      	Character espace = (char) 160;
@@ -138,15 +144,31 @@ public class Champs extends JPanel{
      	return Double.parseDouble(s);
     }
 	
+	/**
+	 * Cette methode permet de traduire une chaine de caracteres en entier
+	 * @param s
+	 * @return
+	 */
 	private static int strToInt(String s){
 		Character espace = (char) 160;
 		String reg = espace.toString();
 		s = s.replace(reg, "");
      	return Integer.parseInt(s);
     }
+	
+	/**
+	 * Cette methode permet d'enlever les \' dans les chaines de caracteres afin de ne 
+	 * pas causer d'erreur dans le requete sql.
+	 * @param s
+	 * @return
+	 */
+	private static String strToStr(String s){
+		s = s.replace('\'', '\0');
+     	return s;
+    }
 
 	/**
-	 * Cette classe permet l'ajout de KeyListener aux champs
+	 * Cette classe permet l'ajout de KeyListener(key enter) aux diffrents champs
 	 * 
 	 * @param keyAjoutAction
 	 * @see KeyListener

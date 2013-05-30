@@ -18,7 +18,7 @@ public class ListeBillets extends ListeObjet{
 	 * Crée l'objet en mettant en mémoire l ensemble des billets de la bdd
 	 * @param billeterie 
 	 */
-	public ListeBillets(Billeterie billeterie) {
+	public ListeBillets(Billetterie billeterie) {
 		super(billeterie);
 		attributs();
 		this.metEnMemoire();

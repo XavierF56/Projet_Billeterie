@@ -8,16 +8,16 @@ import junit.framework.TestCase;
 
 
 import modele.Billet;
-import modele.Billeterie;
+import modele.Billetterie;
 
 
 
 
 public class TestBillet extends TestCase {
-	Billeterie bill;
+	Billetterie bill;
 	Billet billet, billet1, billet2;
 	protected void setUp() {
-		bill = new Billeterie("database.sqlite");
+		bill = new Billetterie("database.sqlite");
 
 		try {
 			billet = (Billet) bill.getListeBillets().getObjetById(100);

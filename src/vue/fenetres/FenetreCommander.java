@@ -18,7 +18,7 @@ import controleur.commande.CloturerCommanderAction;
 import vue.barreOutils.BarreOutilsCommande;
 import vue.menuContextuel.MenuContextuelCommande;
 
-import modele.Billeterie;
+import modele.Billetterie;
 import modele.Commande;
 import modele.ListeBillets;
 import modele.Personne;
@@ -31,7 +31,7 @@ public class FenetreCommander extends Fenetre {
 	private Commande commande;
 	private JLabel label;
 	private JPanel southPane;
-	private Billeterie billeterie;
+	private Billetterie billeterie;
 	
 	/**
 	 * Cette classe permet la gestion de l'affichage de le fenêtre qui permet à l'utilisateur de réaliser la commande d'un ou plusieurs billets
@@ -39,7 +39,7 @@ public class FenetreCommander extends Fenetre {
 	 * @param personne la personne qui réalise la commande
 	 * @param billeterie la billeterie en cours
 	 */
-	public FenetreCommander(Personne personne, Billeterie billeterie) {
+	public FenetreCommander(Personne personne, Billetterie billeterie) {
 		
 		/* Initialisation des attributs de la classe */
 		this.contentPane = new JPanel();
@@ -86,7 +86,7 @@ public class FenetreCommander extends Fenetre {
 		label.setText(commande.toString());
 	}
 
-	public Billeterie getBilleterie() {
+	public Billetterie getBilleterie() {
 		return billeterie;
 	}
 }

@@ -10,32 +10,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Fonctionnement des commandes
- * Lorque l'on clique sur "Passer commande"
- * 1 L'ecran Achat billet apparait, il permet de : 
- * 		1 Choisir un billet à partir d'un tableau -> fait
- * 		2 Choisir la quantite -> fait
- * 		3 Choisir subventionne (permet de savoir si le billet est subventionne)
- * 		4 Choisir donne (permet de savoir si le billet a ete remis a la personne)
- * 		5 Choisir paye (permet de savoir si le billet a ete paye par la personne)
- * 		6 Deux boutons : Terminer la commande ou Continuer la commande
- * 			-> Le bouton "Continuer la Commande" fait appel aux fonctions 
- * 					1 ajoutCommande(param) (cf 2.)
- * 					2 affiche un nouvel ecran Achat Billet
- * 			-> Le bouton "Terminer la Commande" fait appel aux fonctions 
- * 					1 ajoutCommande(param) (cf 2.)
- * 					2 affiche la fenetre "Fin de la commande" (cf 3.)
- *
- * 2 Fonction ajoutCommande : La fonction verifie si l'achat est possible (pas suffisament de billet sub par ex)
- * 		-> Si c'est possible, l'achat est automatiquement valide (ajout a la liste des achats de la personne)
- * 		-> Si ce n'est pas possible, une erreur est lance par ajoutCommande
- * 			=> une fenêtre de "forçage" doit être proposés
- * 				1 Si on valide, cella appelle la focntion valider() : on force le processus même si il y a des erreurs 
- * 				2 Si on annule, cella appelle la focntion annuler() : la commande n'est pas prise en compte
- *
- * 3 Si "Terminer la commande"
- * 		2 Cette fenetre presente un recapitulatif des billets achetes ainsi que le montant à payer
- * 		3 Un unique bouton qui affiche "Terminer"
+ * Cette class permet la gestion des commandes.
+ * Elle permet d'ajouter des achats a la listeAchats d'une personne passe en prametre.
+ * @author xavier
  */
 
 public class Commande {
@@ -81,6 +58,15 @@ public class Commande {
 		}
 	}
 	
+	/**
+	 * Cette methode cree un nouvel achat et l'ajoute a la listeAchats de la 
+	 * personne associe a cet commande.
+	 * @param billet
+	 * @param qt
+	 * @param paye
+	 * @param donne
+	 * @param subventionne
+	 */
 	private void creer(Billet billet, int qt, boolean paye, boolean donne, boolean subventionne) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("quantite", qt);
@@ -108,14 +94,17 @@ public class Commande {
 	
 	
 	/**
-	 * Si le message d'erreur quota depasse est lance par la commande ajoutCommande. 
-	 * Une boite de dialogue est affichee pour valider cette action normalement non autorisee
-	 * Cette methode valide la derniere commande
+	 * Cette methode valide l'achat d'un billet et l'ajoute à la listeAchats d'une personne
 	 */
 	public void valider() {
 		this.creer(billet, qt, paye, donne, subventionne);		
 	}
 	
+	/**
+	 * Si le message d'erreur quota depasse est lance par la commande ajoutCommande.
+	 * Cette methode permet d'acheter le nombre de billet subventionne autorise
+	 * et de completer avec des billets non subventionne.
+	 */
 	public void completer() {
 		if(qt_acceptable > 0)
 			this.creer(billet, qt_acceptable, paye, donne, subventionne);
@@ -125,12 +114,10 @@ public class Commande {
 	}
 	
 	/**
-	 * Si le message d'erreur quota depasse est lance par la commande ajoutCommande. 
-	 * Une boite de dialogue est affichee pour valider cette action normalement non autorisee
-	 * Cette methode annule la derniere commande en l'enlevant de la liste
+	 * Cette methode annule un achat
 	 */
 	public void annuler() {
-		//TODO
+		//Rien a faire pour l'instant
 	}
 	
 	/**

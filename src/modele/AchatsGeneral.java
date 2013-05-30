@@ -20,13 +20,14 @@ import java.util.Set;
 
 public class AchatsGeneral {
 	private List<Attribut> attributsAchats = new ArrayList<Attribut>();
-	private Billeterie billeterie;
+	private Billetterie billeterie;
 	private Date date;
 	
-	
-	
-	/********** Constructeur ************/
-	public AchatsGeneral(Billeterie billeterie) {
+	/**
+	 * Constructeur de AchatsGeneral
+	 * @param billeterie
+	 */
+	public AchatsGeneral(Billetterie billeterie) {
 		this.billeterie = billeterie;
 		attributsAchats();
 		

@@ -11,24 +11,24 @@ import javax.swing.JOptionPane;
 
 import vue.fenetres.FenetreDetails;
 
-import modele.Billeterie;
+import modele.Billetterie;
 import modele.ListeObjet;
 import modele.Personne;
 
 @SuppressWarnings("serial")
 public class FenetreDetailsAction extends AbstractAction {
 
-		private Billeterie billeterie;
+		private Billetterie billeterie;
 		
 		/** 
 		 * Cette classe permet la gestion de l'affichage de la fenêtre Details.
 		 * 
 		 * @param billeterie la billeterie en cours
-		 * @see Billeterie
+		 * @see Billetterie
 		 * @see FenetreDetails
 		 * @see AbstractAction
 		 */
-		public FenetreDetailsAction(Billeterie billeterie) {
+		public FenetreDetailsAction(Billetterie billeterie) {
 	        super(Langue.getTraduction("details"));
 	    	this.billeterie = billeterie;
 	    }

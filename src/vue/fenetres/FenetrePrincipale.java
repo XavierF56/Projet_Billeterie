@@ -9,6 +9,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,23 +22,21 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableRowSorter;
 
-import controleur.option.OptionSelectionMultipleListener;
-
+import modele.Billetterie;
+import modele.ListeBillets;
+import modele.ListePersonnes;
 import vue.barreOutils.BarreOutilsBillets;
 import vue.barreOutils.BarreOutilsPersonnes;
 import vue.menuContextuel.MenuContextuelBillet;
 import vue.menuContextuel.MenuContextuelPersonne;
 import vue.outils.MultiLineLabel;
-
-import modele.Billeterie;
-import modele.ListeBillets;
-import modele.ListePersonnes;
+import controleur.option.OptionSelectionMultipleListener;
 
 
 @SuppressWarnings("serial")
 public class FenetrePrincipale extends Fenetre {
 	
-	private Billeterie billeterie;
+	private Billetterie billeterie;
 	private JPanel contentPane;
 	private JTable tableauPersonnes;
 	private JTable tableauBillets;
@@ -48,9 +47,9 @@ public class FenetrePrincipale extends Fenetre {
 	 * Cette fenêtre constitue le coprs de l'application et permet à l'utilisteur d'accéder à différents onglets.
 	 * 
 	 * @param billets la billeterie en cours
-	 * @see Billeterie
+	 * @see Billetterie
 	 */
-	public FenetrePrincipale(Billeterie billets) {
+	public FenetrePrincipale(Billetterie billets) {
 		
 		this.billeterie = billets;
 		billeterie.setFenetre(this);
@@ -76,8 +75,8 @@ public class FenetrePrincipale extends Fenetre {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
-		JTabbedPane Onglets = new JTabbedPane(JTabbedPane.TOP);
-		contentPane.add(Onglets);
+		JTabbedPane onglets = new JTabbedPane(JTabbedPane.TOP);
+		contentPane.add(onglets);
 		
 
 		
@@ -99,8 +98,11 @@ public class FenetrePrincipale extends Fenetre {
 		ongletPersonne.add(barre, "North");
 		tableauPersonnes.setComponentPopupMenu(new MenuContextuelPersonne(billeterie.getListePersonnes(), tableauPersonnes));
 		ongletPersonne.add(new JScrollPane(tableauPersonnes), "Center");
-		
-		Onglets.addTab(Langue.getTraduction("persons"), null, ongletPersonne, null);
+		try {
+			onglets.addTab(Langue.getTraduction("persons"), new ImageIcon(this.getClass().getResource("icon_personne.png")), ongletPersonne, null);
+		} catch (Exception e) {
+			onglets.addTab(Langue.getTraduction("persons"), null, ongletPersonne, null);
+		}
 		
 		
 		/* Onglet Billets */
@@ -119,7 +121,12 @@ public class FenetrePrincipale extends Fenetre {
 		tableauBillets.setComponentPopupMenu(new MenuContextuelBillet(billeterie.getListeBillets(), tableauBillets));
 		ongletBillet.add(new JScrollPane(tableauBillets), "Center");
 		
-		Onglets.addTab(Langue.getTraduction("tickets"), null, ongletBillet, null);
+		try {
+			onglets.addTab(Langue.getTraduction("tickets"), new ImageIcon(this.getClass().getResource("icon_ticket.png")), ongletBillet, null);
+		} catch (Exception e) {
+			onglets.addTab(Langue.getTraduction("tickets"), null, ongletBillet, null);
+		}
+		
 		
 		
 		/* Onglet Options */
@@ -141,18 +148,25 @@ public class FenetrePrincipale extends Fenetre {
 		ongletOptions.add(new JLabel(Langue.getTraduction("option_language")), gridBagConstraints);
 		gridBagConstraints.gridx = 1;
 		ongletOptions.add(Langue.choixLangueMenu(this), gridBagConstraints);
-		
-		Onglets.addTab(Langue.getTraduction("options"), null, ongletOptions, null);
+		try {
+			onglets.addTab(Langue.getTraduction("options"),new ImageIcon(this.getClass().getResource("icon_option.png")), ongletOptions, null);		
+		} catch (Exception e) {
+			onglets.addTab(Langue.getTraduction("options"), null, ongletOptions, null);
+		}
 		
 		/* Onglet Statistique */
 		ongletStats = new OngletStats(billeterie);
-		Onglets.addTab(Langue.getTraduction("statistics"), null, ongletStats, null);
+		try {
+			onglets.addTab(Langue.getTraduction("statistics"),new ImageIcon(this.getClass().getResource("icon_stats.png")), ongletStats, null);		
+		} catch (Exception e) {
+			onglets.addTab(Langue.getTraduction("statistics"), null, ongletStats, null);
+		}
 		
 		/* Onglet A propos */
 		JPanel ongletAPropos = new JPanel();
 		MultiLineLabel multiLineLabel = new MultiLineLabel(Langue.aPropos());
 		ongletAPropos.add(multiLineLabel);
-		Onglets.addTab(Langue.getTraduction("about") + Proprietes.getOption("nomLogiciel"), null, ongletAPropos, null);
+		onglets.addTab(Langue.getTraduction("about") + Proprietes.getOption("nomLogiciel"), null, ongletAPropos, null);
 		
 		/* Affichage de la fenetre */
 		this.afficherFenetre();

@@ -16,7 +16,7 @@ import controleur.commande.FenetreCommanderAction;
 import controleur.details.FenetreDetailsAction;
 import controleur.modifier.FenetreModifierAction;
 
-import modele.Billeterie;
+import modele.Billetterie;
 import modele.ListePersonnes;
 
 @SuppressWarnings("serial")
@@ -28,9 +28,9 @@ public class BarreOutilsPersonnes extends JPanel {
 	 * Cette classe permet l'affichage du champ de recherches et des boutons de la barre d'outils de l'onglet Personnes
 	 * 
 	 * @param billeterie la billeterie en cours
-	 * @see Billeterie
+	 * @see Billetterie
 	 */
-	public BarreOutilsPersonnes(Billeterie billeterie) {
+	public BarreOutilsPersonnes(Billetterie billeterie) {
 		setLayout(new FlowLayout(FlowLayout.LEFT));
 		
 		textRecherche = new JTextField();

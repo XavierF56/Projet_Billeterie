@@ -6,13 +6,13 @@ import javax.swing.AbstractAction;
 import javax.swing.JCheckBox;
 import javax.swing.ListSelectionModel;
 
-import modele.Billeterie;
+import modele.Billetterie;
 
 @SuppressWarnings("serial")
 public class OptionSelectionMultipleListener extends AbstractAction {
 
 	private JCheckBox box;
-	private Billeterie billeterie;
+	private Billetterie billeterie;
 	
 	/**
 	 * Cette classe permet la gestion de l'option permettant la sélection mutliple par l'utilisteur.
@@ -20,7 +20,7 @@ public class OptionSelectionMultipleListener extends AbstractAction {
 	 * @param box la checkbox liée à cette option
 	 * @param billeterie la billeterie en cours
 	 */
-	public OptionSelectionMultipleListener(JCheckBox box, Billeterie billeterie) {
+	public OptionSelectionMultipleListener(JCheckBox box, Billetterie billeterie) {
 		this.box = box;
 		this.billeterie = billeterie;
 		

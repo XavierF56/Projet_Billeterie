@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 import vue.fenetres.FenetrePrincipale;
 
-import modele.Billeterie;
+import modele.Billetterie;
 
 public class Langue {	
 	
@@ -76,7 +76,7 @@ public class Langue {
 						
 						Proprietes.setCurrentLangage(s);
 						fenetrePrincipale.dispose();
-						FenetrePrincipale frame = new FenetrePrincipale(new Billeterie("database.sqlite"));
+						FenetrePrincipale frame = new FenetrePrincipale(new Billetterie("database.sqlite"));
 						frame.setVisible(true);
 					}
 				}

@@ -5,13 +5,14 @@ import java.awt.EventQueue;
 
 import vue.fenetres.FenetrePrincipale;
 
-import modele.Billeterie;
+import modele.Billetterie;
 
 /**
  * TODO Continuer la Javadoc
  * TODO Booleen true false -> vrai faux
  * TODO Bouton payer tout / donner tout / selection multiple / payer et donner (Bruno)
  */
+
 public class Launcher {
 
 	/**
@@ -26,7 +27,7 @@ public class Launcher {
 					Proprietes.proprietesInit();
 					Langue.langueInit();
 
-					FenetrePrincipale frame = new FenetrePrincipale(new Billeterie(Proprietes.getOption("billeterie")));
+					FenetrePrincipale frame = new FenetrePrincipale(new Billetterie(Proprietes.getOption("billeterie")));
 					frame.setVisible(true);
 				} catch (Exception e) {
 					Constantes.afficherException(e);

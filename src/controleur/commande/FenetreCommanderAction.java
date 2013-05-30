@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 import vue.fenetres.FenetreCommander;
 
-import modele.Billeterie;
+import modele.Billetterie;
 import modele.ListeBillets;
 import modele.ListeObjet;
 import modele.Objet;
@@ -22,18 +22,18 @@ import modele.Personne;
 public class FenetreCommanderAction extends AbstractAction {
 	
 	private ListeObjet listeObjets;
-	private Billeterie billeterie;
+	private Billetterie billeterie;
 
 	/** L'action FenetreCommander permet l'appel de la fenetre Commander
 	 * 
 	 * @param listeObjets la liste des objets selectionnes
 	 * @param billeterie la billeterie en cours
 	 * @see ListeBillets
-	 * @see Billeterie
+	 * @see Billetterie
 	 * @see FenetreCommander
 	 * @see AbstractAction
 	 */
-	public FenetreCommanderAction(ListeObjet listeObjets, Billeterie billeterie) {
+	public FenetreCommanderAction(ListeObjet listeObjets, Billetterie billeterie) {
 		super(Langue.getTraduction("order_ticket"));
 		this.listeObjets = listeObjets;
 		this.billeterie = billeterie;

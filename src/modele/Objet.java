@@ -5,7 +5,7 @@ import java.util.Map;
 
 public abstract class Objet {
 	protected Map<String,Object> map = new HashMap<String,Object>(); // le champ id n'est pas present dans cette map
-	protected Billeterie billeterie;
+	protected Billetterie billeterie;
 
 	/********** Methodes abstract ************/
 	/**
@@ -28,7 +28,7 @@ public abstract class Objet {
 			return Integer.valueOf((String) map.get("id"));
 		}
 	}
-	public Billeterie getBilleterie() {
+	public Billetterie getBilleterie() {
 		return this.billeterie;
 	}
 	public Map<String, Object> getHashMap() {

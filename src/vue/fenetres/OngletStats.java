@@ -11,13 +11,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.text.MaskFormatter;
 
-import modele.Billeterie;
+import modele.Billetterie;
 import controleur.option.ModifierDateAction;
 
 @SuppressWarnings("serial")
 public class OngletStats extends JPanel {
 	
-	private Billeterie billeterie;
+	private Billetterie billeterie;
 	private GridBagConstraints gridBagConstraints;
 	private JLabel totalArticles;
 	private JLabel moisArticles;
@@ -32,7 +32,7 @@ public class OngletStats extends JPanel {
 	 * 
 	 * @param billeterie la billeterie en cours
 	 */
-	public OngletStats(Billeterie billeterie) {
+	public OngletStats(Billetterie billeterie) {
 		super();
 		this.billeterie = billeterie;
 		createLabel();

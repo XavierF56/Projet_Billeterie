@@ -15,7 +15,7 @@ import controleur.basique.FenetreSupprimerAction;
 import controleur.basique.RechercheAction;
 import controleur.modifier.FenetreModifierAction;
 
-import modele.Billeterie;
+import modele.Billetterie;
 
 @SuppressWarnings("serial")
 public class BarreOutilsBillets extends JPanel {
@@ -26,9 +26,9 @@ public class BarreOutilsBillets extends JPanel {
 	 * Cette classe permet l'affichage du champ de recherches et des boutons de la barre d'outils de l'onglet Billets
 	 * 
 	 * @param billeterie la billeterie en cours
-	 * @see Billeterie
+	 * @see Billetterie
 	 */
-	public BarreOutilsBillets(Billeterie billeterie) {
+	public BarreOutilsBillets(Billetterie billeterie) {
 		textRecherche = new JTextField();
 		textRecherche.setColumns(20);
 		textRecherche.addKeyListener(new RechercheAction(billeterie.getListeBillets(), textRecherche));
