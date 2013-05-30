@@ -66,8 +66,10 @@ public class FenetreCommandeAjouter extends Fenetre {
 		contentPane.add(champs, "Center");
 		
 		/* Valider */
+		ValiderQuantiteAction action = new ValiderQuantiteAction(fenetre, this, commande, billet, champs);
+		champs.ajouterListener(action);
 		JPanel panelSouth = new JPanel();
-		panelSouth.add(new JButton(new ValiderQuantiteAction(fenetre, this, commande, billet, champs)));
+		panelSouth.add(new JButton(action));
 		contentPane.add(panelSouth, "South");
 		add(contentPane);
 		
