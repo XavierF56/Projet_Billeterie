@@ -153,22 +153,27 @@ public abstract class ListeObjet extends AbstractTableModel{
 	private String requete (String chaine) {
 		String retour = "SELECT id FROM " + table + " WHERE ";
 		boolean premier = true;
+		chaine = chaine.replace("'", "");
 		List<Attribut> list = getAttributs();
 		String[] st = chaine.split("\\s+");
 		
-		for (int j = 0; j < st.length; j++) {
-			for (int i = 0; i < list.size() ; i++) {
-				if(list.get(i).getType() == Constantes.STRING) {
-					String aAjouter = list.get(i).getNomBDD() + " Like '"+st[j]+"%' ";
-					if(!premier) {
-						retour = retour.concat(" OR ");
+		if(st.length > 0) {
+			for (int j = 0; j < st.length; j++) {
+				for (int i = 0; i < list.size() ; i++) {
+					if(list.get(i).getType() == Constantes.STRING) {
+						String aAjouter = list.get(i).getNomBDD() + " Like '"+st[j]+"%' ";
+						if(!premier) {
+							retour = retour.concat(" OR ");
+						}
+						retour = retour.concat(aAjouter);
+						premier = false;
 					}
-					retour = retour.concat(aAjouter);
-					premier = false;
 				}
 			}
+			return retour;
+		} else {
+			return "SELECT id FROM " + table;
 		}
-		return retour;
 	}
 	
 	

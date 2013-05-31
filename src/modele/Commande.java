@@ -33,7 +33,9 @@ public class Commande {
 		this.personne = personne;
 		this.nbArticle = 0;
 		this.prixTotal = 0;
-		
+		personne.getBilleterie().getListePersonnes().reinitialise();
+		personne.getBilleterie().getListePersonnes().fireTableDataChanged();
+
 		
 	}
 	

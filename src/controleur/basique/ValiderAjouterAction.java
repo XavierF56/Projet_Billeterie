@@ -35,6 +35,7 @@ public class ValiderAjouterAction extends AbstractAction implements KeyListener 
         super(Langue.getTraduction("validate"));
         this.fenetre = fenetre;
         this.listeObjet = listeObjet;
+        this.sub = sub;
     }
     
     /**
